@@ -1,0 +1,16 @@
+
+\chapter{Parameter Selection Process}
+\label{ch:parameter_selection_process}
+
+The HubLink and the baseline approaches each expose a variety of parameters that, in an ideal scenario, would be optimized via a full hyperparameter-tuning procedure using separate training and test datasets. However, we deviate from this optimal approach due to practical constraints, as we found that experiments with \glspl{llm} are both costly and time-consuming. Since the durations of multi-week experiments fall outside the scope of this master thesis, we adopt an alternative workflow we refer to as the \emph{Parameter Selection Process}. The goal of this process is to determine the parameter configurations that optimize the retrieval performance of the \gls{kgqa} retrievers in our experimental setting while respecting the time and resource constraints of this project. Consequently, the results of this process are configurations for each retriever, which we then used in our experiments.
+
+The following sections are organized as follows. First, in Section~\ref{sec:selection_planning}, we explain the planning process that was done prior to conducting the selection process. Then, Sections \ref{sec:param_selection_hublink}, \ref{sec:param_selection_difar}, \ref{sec:param_selection_fidelis}, and \ref{sec:param_selection_mindmap}, describe the selection process for HubLink and the baseline retrievers: DiFaR, FiDeLiS, and Mindmap. Finally, in Section~\ref{sec:param_selection_threats_to_validity}, we discuss threats to the validity of the parameter selection process.
+
+
+
+\input{chapters/9_parameter_selection_process/sections/1_planning}
+\input{chapters/9_parameter_selection_process/sections/2_hublink}
+\input{chapters/9_parameter_selection_process/sections/3_difar}
+\input{chapters/9_parameter_selection_process/sections/4_fidelis}
+\input{chapters/9_parameter_selection_process/sections/5_mindmap}
+\input{chapters/9_parameter_selection_process/sections/7_validity_evaluation}

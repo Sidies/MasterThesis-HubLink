@@ -1,0 +1,229 @@
+%% LaTeX2e class for student theses
+%% thesis.tex
+%% 
+%% Karlsruhe Institute of Technology
+%% Institute for Program Structures and Data Organization
+%% Chair for Software Design and Quality (SDQ)
+%%
+%% Dr.-Ing. Erik Burger
+%% burger@kit.edu
+%%
+%% See https://sdq.kastel.kit.edu/wiki/Dokumentvorlagen
+%%
+%% Version 1.4, 2023-06-19
+
+%% Available page modes: oneside, twoside
+%% Available languages: english, ngerman
+%% Available modes: draft, final (see README)
+\documentclass[twoside, english, final]{sdqthesis}
+
+%% ---------------------------------
+%% | Information about the thesis  |
+%% ---------------------------------
+
+%% Name of the author
+\author{Marco Schneider}
+
+%% Title (and possibly subtitle) of the thesis
+\title{HubLink: Leveraging Language Models for Enhanced Scholarly Information Retrieval on Research Knowledge Graphs}
+
+%% Type of the thesis 
+\thesistype{Master's Thesis}
+
+%% Change the institute here, ``KASTEL'' is default
+% \myinstitute{Institute for \dots}
+
+%% You can put a logo in the ``logos'' directory and include it here
+%% instead of the SDQ logo
+% \grouplogo{myfile}
+%% Alternatively, you can disable the group logo
+% \nogrouplogo
+
+%% The reviewers are the professors that grade your thesis
+\reviewerone{Prof. Dr. Ralf H. Reussner }
+\reviewertwo{Prof. Dr.-Ing. Anne Koziolek }
+
+%% The advisors are PhDs or Postdocs
+\advisorone{Dipl.-Inform. Angelika Kaplan }
+%% The second advisor can be omitted
+\advisortwo{Dr.-Ing. Jan Keim}
+
+%% Please enter the start end end time of your thesis
+\editingtime{30. November 2024}{30. May 2025}
+
+\settitle
+
+%% --------------------------------
+%% | Bibliography                 |
+%% --------------------------------
+
+%% Use biber instead of BibTeX, see README
+\usepackage[citestyle=numeric,style=numeric,backend=biber,sorting=none]{biblatex}
+\addbibresource{references.bib}
+
+
+%% ----------------
+%% |   Acronyms   |
+%% ----------------
+\newacronym{ann}{ANN}{Approximate Nearest Neighbor}
+\newacronym{enn}{ENN}{Exact Nearest Neighbor}
+\newacronym{kg}{KG}{Knowledge Graph}
+\newacronym{kge}{KGE}{Knowledge Graph Embedding}
+\newacronym{kb}{KB}{Knowledge Base}
+\newacronym{llm}{LLM}{Large Language Model}
+\newacronym{lm}{LM}{Language Model}
+\newacronym{tog}{ToG}{Think-on-Graph}
+\newacronym{kbqa}{KBQA}{Question Answering over Knowledge Bases}
+\newacronym{kgqa}{KGQA}{Question Answering over Knowledge Graphs}
+\newacronym{qa}{QA}{Question Answering}
+\newacronym{kglmqa}{KGLM-QA}{Knowledge Graph Language Model-Question Answering}
+\newacronym{sqa}{SQA}{Scholarly Question Answering}
+\newacronym{orkg}{ORKG}{Open Research Knowledge Graph}
+\newacronym{rkg}{RKG}{Research Knowledge Graph}
+\newacronym{swa}{SWA}{Software Architecture}
+\newacronym{rag}{RAG}{Retrieval-Augmented Generation}
+\newacronym{tgqa}{TGQA}{Template Generated Question Answering}
+\newacronym{fcqa}{FCQA}{Final Curated Question Answering}
+\newacronym{ap}{AP}{Asking Point}
+\newacronym{eat}{EAT}{Expected Answer Type}
+\newacronym{amt}{AMT}{Amazon Mechanical Turk}
+\newacronym{se}{SE}{Software Engineering}
+\newacronym{dsr}{DSR}{Design Science Research}
+\newacronym{karagen}{KARAGEN}{Knowledge Augmented Retrieval and Generation ENgine}
+\newacronym{rdf}{RDF}{Resource Description Framework}
+\newacronym{iri}{IRI}{Internationalized Resource Identifier}
+\newacronym{rgar}{RGAR}{Retrieval, Generation, and Additional Requirement}
+\newacronym{gqm}{GQM}{Goal Question Metric}
+\newacronym{gnn}{GNN}{Graph Neural Network}
+\newacronym{ofat}{OFAT}{One-Factor-at-a-Time}
+\newacronym{ecsa}{ECSA}{European Conference on Software Architecture}
+\newacronym{icsa}{ICSA}{International Conference on Software Architecture}
+\newacronym{cli}{CLI}{Command Line Interface}
+\newacronym{bert}{BERT}{Bidirectional Encoder Representations from Transformers}
+\newacronym{api}{API}{Application Programming Interface}
+\newacronym{ce}{CE}{Carbon Emissions}
+\newacronym{ec}{EC}{Energy Consumption}
+
+\newacronym{ir}{IR}{Information Retrieval}
+\newacronym{is}{IS}{Information System}
+\newacronym{sp}{SP}{Semantic Parsing}
+
+\newacronym{cot}{COT}{Chain of Thought}
+\newacronym{tot}{ToT}{Tree of Thought}
+\newacronym{rar}{RaR}{Rephrase and Respond}
+\newacronym{qald}{QALD}{Question Answering over Linked Data}
+
+\newacronym{eo}{EO}{Evaluable Output}
+\newacronym{gt}{GT}{Ground Truth}
+
+\newacronym{tp}{TP}{True Positive}
+\newacronym{tn}{TN}{True Negative}
+\newacronym{fp}{FP}{False Positive}
+\newacronym{fn}{FN}{False Negative}
+\newacronym{doi}{DOI}{Digital Object Identifier}
+
+\newacronym{mrr}{MRR}{Mean Reciprocal Rank}
+\newacronym{map}{MAP}{Mean Average Precision}
+\newacronym{rouge}{ROUGE}{Recall-Oriented Understudy for Gisting Evaluation}
+\newacronym{bleu}{BLEU}{Bilingual Evaluation Understudy}
+
+\newacronym{grag}{GraphRAG}{Graph Retrieval Augmented Generation}
+
+\newacronym{difar}{DiFaR}{Direct Fact Retrieval}
+
+% To make Chapter capitalized
+\addto\extrasenglish{%
+  \def\chapterautorefname{Chapter}%
+}
+
+%% ====================================
+%% ====================================
+%% ||                                ||
+%% || Beginning of the main document ||
+%% ||                                ||
+%% ====================================
+%% ====================================
+\begin{document}
+
+%% Set PDF metadata
+\setpdf
+
+%% Set the title
+\maketitle
+
+%% The Preamble begins here
+\frontmatter
+
+\input{sections/declaration.tex}
+
+\setcounter{page}{1}
+\pagenumbering{roman}
+
+%% ----------------
+%% |   Abstract   |
+%% ----------------
+ 
+%% For theses written in English, an abstract both in English
+%% and German is mandatory.
+%%
+%% For theses written in German, a German abstract is sufficient.
+%%
+%% The text is included from the following files:
+%% - sections/abstract
+
+\includeabstract
+
+%% ------------------------
+%% |   Table of Contents  |
+%% ------------------------
+\tableofcontents
+
+\listoffigures
+\listoftables
+
+\printglossaries
+
+%% -----------------
+%% |   Main part   |
+%% -----------------
+
+
+
+\mainmatter
+
+\input{chapters/1_introduction/introduction}
+
+\input{chapters/2_fundamentals/fundamentals}
+
+\input{chapters/3_related_work/related_work}
+
+\input{chapters/4_hublink/hublink}
+
+\input{chapters/5_taxonomy_construction_approach/taxonomy_construction_approach}
+
+\input{chapters/6_question_taxonomy/question_taxonomy}
+
+\input{chapters/7_implementation/implementation}
+
+\input{chapters/8_experimentation_preliminaries/experimentation_preliminaries}
+
+\input{chapters/9_parameter_selection_process/parameter_selection_process}
+
+\input{chapters/10_experimentation/experimentation}
+
+\input{chapters/11_conclusions/conclusions}
+
+%% --------------------
+%% |   Bibliography   |
+%% --------------------
+
+%% Add entry to the table of contents for the bibliography
+\printbibliography[heading=bibintoc]
+
+%% ----------------
+%% |   Appendix   |
+%% ----------------
+\appendix
+\input{sections/appendix.tex}
+
+\end{document}

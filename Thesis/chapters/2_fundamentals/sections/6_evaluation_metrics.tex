@@ -1,0 +1,176 @@
+
+
+% The accuracy of ANNS is typically measured as a discrepancy with exact search results. For k-nearest neighbour search, a common metric is "n-recall@k," which is the fraction of the true n nearest neighbors found within the k first search results. \cite{douze_faiss_2024}
+
+
+
+\section{Evaluation Metrics}
+\label{sec:fundamentals_evaluation_rag}
+
+To evaluate \gls{grag} approaches, the evaluation metrics can be broadly categorized into two types: \emph{generation} and \emph{retrieval} quality \cite{peng_graph_2024,yu_evaluation_2024}. Evaluating the generation quality is about the assessment of the generated answer, while the retrieval quality is about the of retrieved information and the coverage of the answer.
+
+
+\subsection{Evaluating the Retrieval Component}
+
+The evaluation of retrievers dates back to early information retrieval research. Conventional metrics typically compare the retrieved contexts with a set of \emph{golden-labeled} contexts. These metrics fall into two types: \emph{Rank-agnostic} or \emph{Rank-aware}, depending on whether they consider the order in which the contexts are retrieved \cite{yu_evaluation_2024,alinejad_evaluating_2024}. In the following, we introduce commonly used metrics based on  \textcite{yu_evaluation_2024, ibrahim_survey_2024,hu_unveiling_2024}.
+
+\paragraph{Rank-agnostic Metrics} These metrics measure the quality of retrieval without considering the position of the item in the list of retrieved contexts. 
+
+\begin{itemize}
+    \item \textbf{Accuracy:} An assessment of the ratio of correctly retrieved contexts compared to the total number of retrieved contexts.
+    
+    \[
+    \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+    \]
+
+    \gls{tp} refers to contexts that are relevant to the query and are accurately retrieved. \gls{tn} refers to contexts that are irrelevant to the query and have not been retrieved. \gls{fp} refers to contexts that are irrelevant to the query but have been incorrectly retrieved. \gls{fn} refers to contexts that are relevant to the query but have not been retrieved.
+
+    \item \textbf{Precision:} Measures the proportion of relevant contexts retrieved by the system to the total number of contexts retrieved by the system.
+    
+    \[
+    \text{Precision} = \frac{TP}{TP + FP}
+    \]
+
+    \item \textbf{Recall:} Quantifies the proportion of relevant contexts that have been retrieved from the total number of relevant contexts for a given query, considering the top \(k\) results.
+    
+    \[
+    \text{Recall} = \frac{TP}{TP + FN}
+    \]
+
+    \item \textbf{F1:} An assessment which calculates the harmonic mean of precision and recall.
+
+    \[
+    \text{F1} = 2 \times \frac{Precision \times Recall}{Precision + Recall}
+    \]
+\end{itemize}
+
+
+\paragraph{Rank-aware Metrics} These metrics additionally evaluate the order in which relevant items are presented. Typically, the higher the relevant item is placed in the list, the better the score.
+
+\begin{itemize}
+    \item \textbf{Hits@k} A measure of the fraction of correct retrieved contexts that appear in the top \(k\) total of retrieved contexts.
+    \[
+    \text{Hits@k} = \frac{H_k}{N_{query}}.
+    \]
+    In the above formula, \( H_k \) is the number of times a relevant context entry is in the top-k and \(N_{query}\) is the total amount of retrieved context.
+
+    \item \textbf{Mean Reciprocal Rank (MRR)} Measures the average of the inverse ranks of the first relevant context retrieved by the system. This means that the metric focuses on how high the retriever ranks the first relevant context.
+    \[
+    MRR = \frac{1}{|Q|} \sum^{|Q|}_{i=1} \frac{1}{rank_i}
+    \]
+    In the formula given above, \(|Q|\) represents the total number of queries, and \(rank_i\) denotes the rank position of the first relevant document for the \(i\)-th query.
+    
+    \item \textbf{Mean Average Precision (MAP)} Computes the average of the precision values at different cut-off points for each query. Consequently, this metric gives an aggregate view on how well the retriever ranks the relevant contexts.
+    \[
+    MAP =  \frac{1}{|Q|} \sum^{|Q|}_{q=1} \frac{\sum^n_{k=1} (P(k) \times rel(k))}{|relevant \space documents_q|} 
+    \]
+    In the formula given above, \(P(k)\) represents the precision at position \(k\) in the ranking list, and \(rel(k)\) is an indicator function that is one if the document at rank \(k\) is relevant and zero otherwise. In addition, \(n\) denotes the total number of documents retrieved.
+
+    \item \textbf{Exact Match (EM)} quantifies the proportion of retrieved contexts that exactly match the expected contexts.
+    \[
+    Exact Match = \frac{PEM}{N_{pred}}
+    \]
+    Where in the formula \(PEM\) is the proportion of the exact matches and \((N_{pred}\) is the total number of expected contexts.
+\end{itemize}
+
+
+\subsection{Evaluating the Generation Component}
+
+To assess the quality of the generated answer, often traditional metrics are borrowed from other natural language processing tasks like machine translation or summarization \textcite{yu_evaluation_2024,ibrahim_survey_2024,alinejad_evaluating_2024,alinejad_evaluating_2024}. However, these metrics often fail to fully capture the performance within an \gls{llm}-based \gls{qa} system \cite{alinejad_evaluating_2024}. Consequently, \gls{llm} models are employed as evaluative judges to assess the quality of generated answers \cite{es_ragas_2023}.
+
+\paragraph{Traditional Natural Language Processing Generation Metrics} Common metrics that are applied to the evaluation in \gls{rag} are \textcite{yu_evaluation_2024,ibrahim_survey_2024,alinejad_evaluating_2024,alinejad_evaluating_2024}:
+
+\begin{itemize}
+    \item \textbf{ROUGE} \gls{rouge} is a set of metrics that evaluate the quality of the generated text by comparing it to the ground truth. There are multiple variants available: \gls{rouge}-N calculates recall by comparing the presence of n-grams in the generated text and the ground truth. \gls{rouge}-L uses the longest common subsequence to capture meaning in the generated text. \gls{rouge}-W additionally uses weights for consecutive matches, distinguishing between spatially aligned and scattered matches. \gls{rouge}-S incorporates skip-bigrams to balance flexibility and structure sensitivity. \gls{rouge}-SU is a variant of \gls{rouge}-S that uses skip-bigrams and unigrams to evaluate the quality of the generated text \cite{lin_rouge_2004}.
+
+    \item \textbf{BLEU} The \acrfull{bleu} metric measures the quality of the generated text by comparing it with the ground truth by calculating the overlap of n-grams\cite{papineni_bleu_2001}. The \gls{bleu} score is calculated as:
+    \[
+    BLEU = BP \cdot \exp\left(\sum^N_{n=1} w_n \log p_n\right)
+    \]
+    In this formula, \(BP\) is the brevity penalty that penalizes short-generated translations, \(w_n\) is the weight for the n-gram, and \(p_n\) is the precision of the n-grams that match the reference.
+
+    \item \textbf{BertScore} This metric uses contextual embeddings that, unlike n-gram-based metrics, capture the semantic meaning of the generated text. BertScore uses pre-trained transformer models like Bert to transform the generated text and the ground truth into embeddings. With the embeddings, the cosine similarity between the generated text and the ground truth is calculated, resulting in precision, recall, and f1 scores \cite{zhang_bertscore_2020}
+
+\end{itemize}
+
+\paragraph{LLM as a Judge Metrics} \glspl{llm} can be prompted with an evaluation scheme to assess the answers based on user-defined metrics. They have shown a great ability to capture semantic nuances and attend to variations in answers \cite{alinejad_evaluating_2024,yu_evaluation_2024}. Recently, a framework has been established focused on providing different \gls{llm}-based metrics \cite{es_ragas_2023}. Their framework is available online\footnote{\url{https://github.com/explodinggradients/ragas} [last accessed on 26.03.2025]} from which the following metric explanations have been taken from:
+
+\begin{itemize}
+    \item \textbf{Faithfulness} Measures the factual consistency of the generated answer against the given context, where the answer is regarded as faithful if all the claims made by the answer can be inferred from the given context.
+    \[
+    \text{Faithfulness} = \frac{\text{Number of supported claims}}{\text{Total number of claims}}
+    \]
+
+    \item \textbf{Answer Relevancy} Focuses on how relevant the answer is to the question where higher scores indicate better alignment while lower scores are given if the answer is incomplete or includes redundant information. To calculate the score, an \gls{llm} generates $N$ questions based on the generated answer and then calculates the cosine similarity between the actual question and the generated questions.
+    \[
+    \text{Answer Relevancy} = \frac{1}{N}\sum^N_{i=1}\text{cosine similarity}(E_{g_i},E_o)
+    \]
+    Where $N$ denotes the number of generated questions, $E_{g_i}$ the embedding of the i-th generated question, and $E_o$ is the embedding of the actual question.
+
+    \item \textbf{Factual Correctness} evaluates how well the generated answer aligns with a golden reference. The \gls{llm} decomposes both answers into individual claims and computes \gls{tp}, \gls{fp}, and \gls{fn} as follows:
+    \[
+    \begin{aligned}
+    \text{True Positives (TP)} &= \text{Claims in the answer also found in the reference} \\
+    \text{False Positives (FP)} &= \text{Claims in the answer not found in the reference} \\
+    \text{False Negatives (FN)} &= \text{Claims in the reference not found in the answer}
+    \end{aligned}
+    \]
+    Precision, recall, and F1 scores are then calculated using these values, as defined above.
+\end{itemize}
+
+
+\subsection{Micro vs. Macro Averaging}
+When evaluating the performance of systems across a dataset of multiple questions, the overall performance needs to be assessed through aggregation. There exist two common types of aggregate scores: \emph{micro-averaging} and \emph{macro-averaging} \cite{hu_unveiling_2024}:
+
+\begin{enumerate}
+    \item \textbf{Micro-Averaging} calculates the aggregation of metrics globally, for example, by counting the overall \gls{tp}, \gls{fn}, \gls{tn}, and \gls{fp} scores to calculate micro-Precision, micro-Recall, and micro-F1. This approach gives equal weight to each individual retrieved-context across all questions. Consequently, questions that involve a larger number of such individual contexts will have a proportionally greater influence on the overall micro-averaged score.
+    
+    \item \textbf{Macro-Averaging} calculates each metric independently for each question and then takes the unweighted mean of the resulting scores. This essentially gives equal weight to each question, regardless of the number of contexts requested. It prevents the metric from being skewed by the performance of majority classes and ensures that the performance of minority classes is also represented.
+\end{enumerate}
+
+The choice of the preferred averaging method depends on the evaluation goals. In \gls{llm}-based evaluations, \emph{macro-averaging} is the preferred metric as observed by \textcite{hu_unveiling_2024}. The authors suggest that this calculation is preferred as it ensures that all classes, regardless of size, are considered equally.
+
+
+\subsection{Sustainability Metrics}
+
+\textcite{kaplan_responsible_2025} highlight the importance of integrating sustainability metrics into the evaluation of natural language processing systems. They advocate for assessments that consider both performance and environmental aspects by tracking the energy consumption measured in kilowatt-hours (kWh) or megajoules (MJ) and the carbon emissions in CO$_2$. The authors propose several metrics for evaluating sustainability either by using energy consumption or carbon emissions:
+
+
+\begin{itemize}
+    \item \textbf{Total Carbon Emission (CE):} Represents the absolute carbon footprint, measured in kilograms of CO$_2$ equivalents (kg CO$_2$e), resulting from the operation of the system during training or inference.
+
+    \item \textbf{Relative Carbon Emission (CE$_rel$):} Links environmental impact directly to performance metrics, facilitating the assessment of carbon efficiency per unit of performance. The performance metric should be chosen based on the context.
+    \[
+    \text{CE}_{rel} = \frac{\text{CE}}{\text{Performance Metric}}
+    \]
+
+    \item \textbf{Delta-based Carbon Emission ($\Delta$CE):} To compare different systems performance improvements against carbon emissions. Using the lowest-performing system as a baseline, this metric reveals the environmental cost-effectiveness between two systems:
+    \[
+    \Delta\text{CE} = (\text{Performance Metric} - \text{Performance Metric}_{base}) \times \frac{\text{CE}_{base}}{\text{CE}}
+    \]
+
+    \item \textbf{Normalized Carbon Emission (nCE and nCE\textsubscript{rel}):} Normalizes the carbon emissions between the best and worst performing systems, providing a standardized scale (0 to 1) for easier comparison across different evaluations:
+    \[
+    n(\text{CE}) = 1 - \frac{\text{CE} - \text{CE}_{lowest}}{\text{CE}_{highest} - \text{CE}_{lowest}}
+    \]
+    \[
+    n(\text{CE}_{rel}) = 1 - \frac{\text{CE}_{rel} - \text{CE}_{rel,lowest}}{\text{CE}_{rel,highest} - \text{CE}_{rel,lowest}}
+    \]
+\end{itemize}
+
+
+
+
+
+
+% evaluates the broader societal and environmental impact of a system. Metrics focus on minimizing resource use, ensuring technical durability, and aligning the development with ethical and societal goals \cite{becker_sustainability_2015}.
+% \textcite{kaplan_responsible_2025}
+
+
+% However, traditional methods focus on retrieval that has a high top k recall, rather than taking into account that useful information has been recovered \cite{yu_evaluation_2024}. For this reason, new methods, known as llm-as-a-judge, have become a standard practice in which an \gls{llm} is used to evaluate semantic information between retrieved contexts and the ground truth \cite{alinejad_evaluating_2024,yu_evaluation_2024,salemi_evaluating_2024}.
+
+% \paragraph{RAGAS} is a framework that employs various metrics that use \glspl{llm} to evaluate the generation and retrieval component of a \gls{rag} system. Since the publication of the framework in \cite{es_ragas_2023}, the set of available metrics has been updated\footnote{\url{https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/} [last accessed on 14.01.2025]}. RAGAS provides \emph{Context Precision} to evaluate for each retrieved context whether the context is relevant or not using an \gls{llm}. Furthermore, \emph{Context Recall} divides the golden answer into claims to check if each claim is included in the context.
+
+% For the evaluation of the generated answer it is still common to use traditional metrics like \gls{rouge} and \gls{bleu} that do not require the use of a language model. However, it is becoming standard to include language models as evaluative judges to be able to capture the context of the generated answer \cite{yu_evaluation_2024}.
+
+% \paragraph{RAGAS} is a framework that provides a comprehensive list of metrics both \gls{llm}-based and non-\gls{llm}-based to evaluate the quality of the generated text. These include \emph{Faithfulness} to quantify whether the generated answer is grounded in the retrieved context and \emph{Answer Relevance} to evaluate if the generated answer appropriately addresses the user query \cite{es_ragas_2023}. 

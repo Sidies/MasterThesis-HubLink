@@ -1,0 +1,32 @@
+
+
+\section{Limitations}
+\label{sec:hublink_limitations}
+
+The primary limitation of HubLink is the requirement of an index. This index is crucial for inference because only the information stored in the index is seen by the retriever. Consequently, if a question asks for information that is not indexed as part of a hub, it is not considered. This requires careful management of the index, for which we outline several possibilities in Section~\ref{sec:updating_the_index}. Nevertheless, we argue that using an index instead of training is a considerable benefit, as building the index itself does not require any additional data but the graph itself.
+
+Beyond the limitation of the index, several other considerations affect the HubLink approach. The definition of optimal criteria to classify \texttt{HubRoot} entities from which the hubs are built is not straightforward and depends on the underlying graph. If these criteria are not well defined, relevant information may not be encapsulated within hubs, rendering it unreachable until the criteria and index are updated.
+
+Furthermore, the indexing process itself, particularly for large or frequently updated graphs, can be computationally intensive and time-consuming. In addition, the decomposition of paths into multiple vector representations during indexing contributes to increased storage requirements of the index. These factors introduce maintenance overhead, as changes in the graph necessitate updates to the HubLink index.
+
+Moreover, the answer generation capabilities of HubLink are significantly dependent on the \gls{llm} utilized. Whether the \gls{llm} is able to pre-filter extraneous information during the generation of partial answers and subsequently synthesize these into a coherent final answer relies upon the performance of the \gls{llm} and also whether the prompts are clear and specific enough for the \gls{llm} to understand. This may require the adaptation of prompts for different \glspl{llm}, tasks, or domains to achieve optimal results.
+
+Operational aspects also introduce limitations. For instance, the graph traversal retrieval strategy requires a topic entity as an input, which implies either user provision or an auxiliary mechanism for entity linking from the query. Additionally, HubLink is an embedding-based system at its core and, as such, inherits certain limitations common to these types of systems. For example, as described by \textcite{wang_reasoning_2024}, the processing and interpretation of numerical constraints, such as dates, value ranges, or specific metric comparisons, presents challenges for such systems.
+
+% If the information that is asked for is not indexed as part of a hub, it can't be found by the retriever. This is a limitation of the retrieval process, as the retriever can only find information that is part of a hub.
+
+% The definition of the optimal criteria to classify HubRoots is not straightforward, as it depends on the underlying graph ontology. If the criteria is not well defined, relevant information might not be encapsulated within hubs, making it undiscoverable during retrieval.
+
+% If new types of entities or relationships are added into the RKG, and they do not fit the existing HubRoot classification criteria or are not part of any current hub, they will not be indexed and thus the system will not be able to retrieve information about it until the HubRoot criteria is updated.
+
+% Especially for large graphs, the indexing process can be computationally expansive and time-consuming. Future graph updates necessitate an update to the index. If these updates are frequent this can lead to a significant overhead. Furthermore, as a graph provider, in addition to the graph itself, the index of HubLink has to be managed as well which adds further maintenance costs.
+
+% The decomposition of paths during the indexing process increases the size of the index requiring more overall storage.
+
+% The answer generation heavily depends on prompt engineering. It is important that during the generation of partial answers, the LLM pre filters unnecessary information and moves forward those information that could potentially be relevant for the final answer. Consequently, the generation of the final answer needs to be able to synthesize all relevnt information from the partial answers, which depends on the prompt engineering instructions. COnsequently, it might be necessary to adapt the prompts for specific tasks as a general prompt might not be sufficient for all scenarios.
+
+% The graph traversal strategy requires a topic entity as input. This requires either the user to provide such an entity or a automatic procedure that maps the question to an appropriate entity in the graph. An example for such an approach can be found in the work of \textcite{wang_reasoning_2024}.
+
+% For complex queries or in dense graph regions, the number of candidate hubs and paths can become very large, impacting the performance of ranking, pruning, and subsequent LLM processing steps.
+
+% The processing of numerical constraints, such as dates, ranges of values or specific metric comparisons, presents a potential challenge for embedding-based retrieval approaches like HubLink, as highlighted in previous research \cite{jin_floating-point_2024}.

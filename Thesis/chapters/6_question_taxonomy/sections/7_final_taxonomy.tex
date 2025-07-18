@@ -1,0 +1,361 @@
+
+\section{Categories and Classes of the Taxonomy}
+\label{sec:taxonomy_final}
+
+% Answer Type: What kind of thing the answer is.
+% Constraint: What filters or conditions are applied
+% Boolean: Which papers applied [Boolean] the evaluation method [Named Entity] with the name Interview?
+
+In Section~\ref{sec:taxonomy_design_construction}, three different increments of the taxonomy were created in an iterative process. With the last increment being $\mathcal{T}_3$, which is presented in \autoref{tab:taxonomy_t3}, we have reached a satisfactory point by validating the generality (\hyperref[tab:gqm_taxonomy_validation]{\textbf{Q1.1}}), appropriateness (\hyperref[tab:gqm_taxonomy_validation]{\textbf{Q1.2}}), orthogonality (\hyperref[tab:gqm_taxonomy_validation]{\textbf{Q1.3}}), relevance (\hyperref[tab:gqm_taxonomy_validation]{\textbf{Q2.1}}), and novelty (\hyperref[tab:gqm_taxonomy_validation]{\textbf{Q2.2}}). We therefore introduce the categories and classes of the final \gls{kgqa} retrieval taxonomy in this section, before demonstrating its application in the following Section~\ref{sec:taxonomy_application}.
+
+\subsection{Graph Representation}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{@{}lp{8cm}@{}}
+        \toprule
+        \textbf{Class} & \textbf{Description} \\
+        \midrule
+        \textbf{Single Fact}
+            & Whether the answer can be found in a single fact of the \gls{kg}.\\
+        \cmidrule(l){1-2}
+            \textbf{Multi Fact}
+            & Whether the answer must be aggregated from multiple facts in the \gls{kg}.\\
+        \bottomrule
+    \end{tabular}
+    \caption[Graph Representation Category of the Taxonomy]{Graph representation category of the \gls{kgqa} retrieval taxonomy. It classifies questions by the amount of facts that need to be retrieved to provide a complete answer.}
+    \label{tab:graph_representation}
+\end{table}
+
+The goal of the \textbf{Graph Representation} category is to classify the number of facts required to answer a given question. Here, a fact in a graph is formed by two entities connected through a relationship \cite{abu-salih_domain-specific_2021}. Specifically, in a \gls{rdf} graph, such a fact is represented as a triple consisting of $(subject, predicate, object)$ \cite{wood_rdf_2014}.
+
+The category comprises two distinct classes, as shown in \autoref{tab:graph_representation}. The \emph{Single Fact} class is assigned when only one fact is needed, whereas the \emph{Multi Fact} class is used if multiple facts must be combined to construct the answer. These two classes are mutually exclusive, meaning that a question can be assigned to one of them only. Furthermore, it is important to note that in order to apply this category appropriately, it is essential to have knowledge of the underlying structure of the \gls{kg}. Specifically, it must be determined whether the answer to the question is represented by a single triple or spans across multiple triples within the graph.
+
+
+\subsection{Answer Type}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{@{}lp{8cm}@{}}
+        \toprule
+        \textbf{Class} & \textbf{Description} \\
+        \midrule
+        \textbf{Named Entity}
+            & The expected answer contains a specific named entity, such as people, organizations, locations, systems, technologies, and other concrete subjects or objects that are usually capitalized. \\
+        \cmidrule(l){1-2}
+            \textbf{Description}
+            & The expected answer contains a descriptive phrase or sentence, such as explanations, definitions, theoretical constructs, or conceptual overviews. \\
+        \cmidrule(l){1-2}
+            \textbf{Temporal}
+            & The expected answer refers to a specific point in time or a time range, such as dates, timestamps, or general time expressions. \\
+        \cmidrule(l){1-2}
+            \textbf{Quantitative}
+            & The expected answer contains a numerical value, such as a measurements, monetary values, or general counts. \\
+        \cmidrule(l){1-2}
+            \textbf{Boolean}
+            & The expected answer is binary, typically \enquote{yes} or \enquote{no}. \\
+        \cmidrule(l){1-2}
+            \textbf{Other Type}
+            & The expected answer is of a type that does not fit into any of the other defined classes. \\
+        \bottomrule
+    \end{tabular}
+    \caption[Answer Type Category of the Taxonomy]{Answer type category of the \gls{kgqa} retrieval taxonomy. It classifies questions by the types that are contained within the expected answer.}
+    \label{tab:answer_type}
+\end{table}
+
+The \textbf{Answer Type} category serves to systematically classify questions based on the types expected in their answers. Consequently, applying this category necessitates the formulation of hypothetical answers, since the classification is determined by the inherent types present in the anticipated response. Furthermore, multiple classifications are allowed and may even be necessary for complex questions. A total of six distinct classes are defined, as presented in Table \ref{tab:answer_type}.
+
+\emph{Named Entity} is applied when the answer contains specific named entities. This includes persons, organizations, geographical locations, as well as formal identifiers such as publication titles or Digital Object Identifiers (DOIs). An example of such a question is \enquote{What is the long form of MVC?}, which in the context of software engineering stands for \enquote{Model-View-Controller}. Since this is the name of a popular software architectural style, we can classify that the expected answer to this question is a named entity.
+
+\emph{Description} classifies expected answers that consist of explanatory or definitional natural language expressions. These answers are formulated in complete sentences and provide detailed information about concepts, processes, or relationships. An example of this classification is the question \enquote{What does the MVC architecture pattern do?}. Because this question expects the answer to be a complete sentence explanation in natural language, it qualifies for this class.
+
+\emph{Temporal} refers to expected answers that involve temporal expressions, either as specific points in time or as intervals of time. For example, the question \enquote{When was the MVC software architecture pattern first mentioned?} asks for a specific publication date. Because the answer is expected to provide temporal information, the class qualifies.
+
+\emph{Quantitative} includes expected answers that contain numerical information. This can include absolute numbers, units of measurement, statistical values, or comparative quantities. An example of a question that qualifies for this class is \enquote{How much does the application of the MVC software architectural style affect the response time of the system?}. The answer to this question is expected to be a number that quantifies the change in response time. Since this is a quantitative type, the class qualifies.
+
+\emph{Boolean} denotes expected answers that represent a binary decision. Typically, these are statements that can be answered with \enquote{yes} or \enquote{no}. This class is particularly useful for decision-making questions such as \enquote{Does using the MVC software architecture pattern improve the maintainability of the system?}. Since the answer is expected to be a binary yes or no, the class qualifies.
+
+\emph{Other Type} is used for answer types that do not clearly fit into any of the aforementioned classes. It serves as a fallback classification.
+
+
+\subsection{Condition Type}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{@{}lp{8cm}@{}}
+        \toprule
+        \textbf{Class} & \textbf{Description} \\
+        \midrule
+        \textbf{Named Entity}
+            & The question contains a condition that requires the answer to involve a specific named entity, such as people, organizations, locations, systems, technologies, and other concrete subjects or objects that are usually capitalized. \\
+        \cmidrule(l){1-2}
+            \textbf{Description}
+            & The question contains a description of a condition that the answer must meet, such as explanations, definitions, theoretical constructs, or conceptual overviews. \\
+        \cmidrule(l){1-2}
+            \textbf{Temporal}
+            & The question contains a condition that requires the answer to be limited to a specific time or time range, such as dates, timestamps, or general time expressions. \\
+        \cmidrule(l){1-2}
+            \textbf{Quantitative}
+            & The question contains a condition that requires the answer to be limited to a specific numeric expression, such as a measurement, monetary value, or general count. \\
+        \cmidrule(l){1-2}
+            \textbf{Other Type}
+            &  The question contains a condition that does not fit into any of the other defined classes. \\
+        \bottomrule
+    \end{tabular}
+    \caption[Condition Type Category of the Taxonomy]{The condition type category of the \gls{kgqa} retrieval taxonomy. It classifies questions by the types of conditions contained within them.}
+    \label{tab:condition_type}
+\end{table}
+
+The \textbf{Condition Type} category classifies questions based on the conditions that a valid answer must fulfill. Although it shares five of the six classes with the category \textbf{Answer Type}, as shown in \autoref{tab:condition_type}, its focus lies on the constraints and requirements expressed within the question rather than the types of the expected answer itself. Because a question can impose multiple different types of constraints, these classes are not mutually exclusive.
+
+\emph{Named Entity} applies when the question specifies a named entity to which the answer must refer. These typically include persons, organizations, technologies, or other clearly identifiable entities. For example, in the question \enquote{What defines a microservice architecture?}, the term \enquote{microservice architecture} constitutes a concrete entity and therefore serves as a conditional constraint. This is because the answer must explicitly name this entity.
+
+\emph{Description} is used when the question includes a descriptive condition involving conceptual, functional, or relational aspects. An illustrative case is: \enquote{What is a software architecture pattern that allows for the development of scalable, modular, and maintainable systems?}, which specifies the qualitative requirements that the answer must address.
+
+\emph{Temporal} refers to conditions that impose temporal constraints, such as the mention of a specific point or range in time. For example, the question \enquote{Which software architecture patterns were introduced in 2014?} requires that the answer only includes patterns introduced within that year.
+
+\emph{Quantitative} is relevant when a question includes numerical constraints. These may be percentages, counts, measurements, or statistical values. For instance, the question \enquote{Which software architecture pattern has the potential to improve the scalability of software systems by 20\%?} demands an answer that specifically corresponds to this numerical condition.
+
+\emph{Other Type} serves as a fallback class for conditions that do not clearly fall into any of the aforementioned classes.
+
+
+\subsection{Answer Format}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{@{}lp{8cm}@{}}
+        \toprule
+        \textbf{Class} & \textbf{Description} \\
+        \midrule
+        \textbf{Simple}
+            & The expected answer is brief, straightforward, and minimalistic, often consisting of a one-sentence response, a yes/no answer, or a direct factual statement without additional elaboration. \\
+        \cmidrule(l){1-2}
+            \textbf{Enumerative}
+            & The expected answer is formatted as a list, for example listing the properties or characteristics inherent to a phenomenon, object, or entity. \\
+        \cmidrule(l){1-2}
+            \textbf{Explanatory}
+            & The expected answer provides a textual explanation about a certain phenomenon, object, or entity. \\
+        \cmidrule(l){1-2}
+            \textbf{Other Format}
+            & The expected answer format does not fit into any of the other classes. \\
+        \bottomrule
+    \end{tabular}
+    \caption[Answer Format Category of the Taxonomy]{The answer format category of the \gls{kgqa} retrieval taxonomy. It classifies questions by the expected formatting of the answer.}
+    \label{tab:answer_format}
+\end{table}
+
+The \textbf{Answer Format} category classifies questions based on the expected structure and presentation of the corresponding answer. Consequently, applying this category requires the formulation of a hypothetical answer, as the classification is grounded in the anticipated formatting of the response. In most cases, the assignment to one class will be mutually exclusive. However, for more complex questions that pursue multiple intentions or contain embedded instructional components, assigning multiple classes may be appropriate.
+
+\emph{Simple} applies to questions for which a brief, direct, and unambiguous response is expected. This often involves a single sentence or even a single word, typically conveying a factual statement without elaboration. For instance, the question \enquote{What is the typical first layer in a layered architecture?} qualifies for this class, as it expects a concise, definitive answer.
+
+\emph{Enumerative} is used when the answer is expected to consist of a list, such as a series of properties, components, or characteristics of a concept or entity. An illustrative example is \enquote{What are the typical layers in a layered architecture?} where the anticipated answer involves listing distinct architectural layers.
+
+\emph{Explanatory} applies to questions that require a multi-sentence textual explanation. These responses provide more elaborate contextualization or definitions and go beyond the conciseness of the \emph{Simple} class. An example is \enquote{What is the definition of a layered architecture?}, which demands a comprehensive and structured explanation.
+
+\emph{Other Format} serves as a fallback class for answers that do not clearly conform to any of the previously defined formats.
+
+
+\subsection{Retrieval Operation}
+
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{@{}lp{8cm}@{}}
+        \toprule
+        \textbf{Class} & \textbf{Description} \\
+        \midrule
+        \textbf{Basic}
+            & The answer can be retrieved directly without applying additional operations. \\
+        \cmidrule(l){1-2}
+            \textbf{Relationship}
+            & Requires identifying a connection or dependency between pieces of information, such as causalities or correlations. \\
+        \cmidrule(l){1-2}
+            \textbf{Negation}
+            & Requires identifying where a condition does not hold, based on explicit negation or missing information.  \\
+        \cmidrule(l){1-2}
+            \textbf{Aggregation}
+            & Requires aggregating multiple pieces of information into a single answer. \\
+        \cmidrule(l){1-2}
+            \textbf{Counting}
+            & Requires counting the number of relevant instances in the data. \\
+        \cmidrule(l){1-2}
+            \textbf{Superlative}
+            & Requires identifying the most or least of certain information \\
+        \cmidrule(l){1-2}
+            \textbf{Ranking}
+            & Requires ordering information based on a specific criterion. \\
+        \cmidrule(l){1-2}
+            \textbf{Comparison}
+            & Requires comparing two or more pieces of information based on common attributes. \\
+        \bottomrule
+    \end{tabular}
+    \caption[Retrieval Operation Category of the Taxonomy]{The retrieval operation category of the \gls{kgqa} retrieval taxonomy. It classifies questions by the operation that needs to be performed on the data in the \gls{kg} to arrive at the answer.}
+    \label{tab:retrieval_operation}
+\end{table}
+
+The \textbf{Retrieval Operation} category classifies the questions according to the operations that must be applied to the information contained within the \gls{kg} in order to derive an answer. In most cases, the assignment of a single class is sufficient. However, for more complex questions that pursue multiple intentions, it may be necessary to assign multiple classes. Furthermore, it is important to note that some classes inherently include operations required by others. In such cases, only the class representing the more complex operation should be assigned. In addition, an accurate classification in this category is only possible when the structure of the underlying \gls{kg} is known. This is due to the level of granularity at which the data may be stored. For example, some information is contained within a single triple, while other information is distributed across multiple triples. Furthermore, it must be considered whether certain operations are already precomputed and stored in the graph or whether the operation must be performed during retrieval.
+
+\emph{Basic} refers to questions that require only locating and retrieving a specific piece of information. The answer is directly available in the graph without the need for additional operations. For instance, the question \enquote{What is the definition of the Client-Server software architecture pattern?} qualifies as Basic, assuming the answer is stored in a single triple.
+
+\emph{Relationship} involves identifying connections or dependencies between multiple entities in the graph. This includes causal, hierarchical, or associative relationships that are not stored in a single triple. For example, \enquote{Which components in a client-server software architecture need to communicate with each other?} requires uncovering a communication relationship between components, which needs to be found by understanding the relationships between the triples.
+
+\emph{Negation} applies when the answer requires determining the absence of a condition. This can be based on explicit negation or on the absence of expected triples. For example, \enquote{Is the system not based on a software architecture pattern?} requires verifying that no such relationship exists in the graph.
+
+\emph{Aggregation} encompasses questions that involve combining multiple pieces of information into a single response. This includes both qualitative and quantitative aggregations, such as listing characteristics: \enquote{What are the characteristics of a client-server architecture?} or computing averages: \enquote{What is the average runtime of systems based on the client-server architecture?}. The classification assumes that the aggregation is not precomputed in the graph.
+
+\emph{Counting} applies to questions that require determining the number of instances that satisfy a particular condition. For example, \enquote{How many implemented systems are based on the client-server architecture?}. This also assumes that the count is not already stored in the graph.
+
+\emph{Superlative} refers to questions that seek to identify the most or least of something, either in qualitative or quantitative terms. For example, \enquote{What is the software architecture design pattern that has been applied the most?} requires calculating frequency or degree of importance. Although this may involve a counting operation, only the \emph{Superlative} class should be assigned in such cases.
+
+\emph{Ranking} applies to questions that require sorting a set of entities according to a given criterion, which may be quantitative or qualitative. An example is: \enquote{What are the systems that are based on the client-server architecture sorted by their runtimes?}. The sorting must be performed at retrieval time.
+
+\emph{Comparison} involves evaluating two or more pieces of information relative to one another based on a shared attribute or criterion. This can be qualitative or quantitative. For instance, \enquote{What is the runtime of system X compared to the runtime of system Y?} requires retrieving and comparing individual data points, assuming the comparative conclusion is not already stored.
+
+\subsection{Intention Count}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{@{}lp{8cm}@{}}
+        \toprule
+        \textbf{Class} & \textbf{Description} \\
+        \midrule
+            \textbf{Single Intention}
+            & Questions that focus on one objective or query, which cannot be meaningfully divided into separate, independent questions without losing their original context. \\
+        \cmidrule(l){1-2}
+            \textbf{Multiple Intentions}
+            & Questions that embed multiple distinct objectives or queries, which could be broken up into multiple separate components or questions, each addressing a different aspect. \\
+        \bottomrule
+    \end{tabular}
+    \caption[Intention Count Category of the Taxonomy]{The intention count category of the \gls{kgqa} retrieval taxonomy. It classifies questions based on the number of distinct intentions embedded within them.}
+    \label{tab:intention_count}
+\end{table}
+
+The \emph{Intention Count} category distinguishes between two mutually exclusive classes, as presented in \autoref{tab:intention_count}. A practical criterion for classification is whether the question can be meaningfully split into multiple subquestions without altering its overall intent or expected answer. The following classes are contained within the category:
+
+\emph{Single Intention} applies to questions that pursue a single, coherent objective. Decomposing such questions would change the meaning or completeness of the original inquiry. An example is: \enquote{What even is a software architecture pattern?} The question expresses a singular intention, and splitting it would diminish its clarity or alter the intended response.
+
+\emph{Multiple Intentions} encompasses questions that consist of multiple distinct objectives or components. Each part could stand alone as an independent question, and collectively, they retain the original meaning. For example, \enquote{What is a software architecture pattern and how can I apply it?} This question seeks both a conceptual explanation and a practical application, representing two separate intentions that can be addressed individually.
+
+\subsection{Answer Credibility}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{@{}lp{8cm}@{}}
+        \toprule
+        \textbf{Class} & \textbf{Description} \\
+        \midrule
+            \textbf{Subjective}
+            & Questions that expect answers that are not strictly bound by objective evidence. \\
+        \cmidrule(l){1-2}
+            \textbf{Objective}
+            & Questions that expect answers grounded in verified data, facts, or empirical evidence. \\
+        \cmidrule(l){1-2}
+            \textbf{Normative}
+            & Questions expecting answers based on norms, ethics, or policies. \\
+        \bottomrule
+    \end{tabular}
+    \caption[Answer Credibility Category of the Taxonomy]{The answer credibility category of the \gls{kgqa} retrieval taxonomy. It classifies questions based on the truthfulness of the information in the answer.}
+    \label{tab:answer_credibility}
+\end{table}
+
+The \textbf{Answer Credibility} category classifies questions based on the nature of truthfulness expected in the corresponding answer, as summarized in \autoref{tab:answer_credibility}. The classes in this category are mutually exclusive, with one exception. If the question has multiple intentions, it might expect more than one credibility type.
+
+
+\emph{Subjective} applies to questions where the expected answer is shaped by personal experiences, preferences, or interpretations. Such answers are not strictly bound by objective evidence. An example question is: \enquote{What is the common opinion about applying the layered architecture design pattern?} This type of question seeks insights that may vary across individuals or contexts.
+
+\emph{Objective} characterizes questions that require answers grounded in verified data, factual records, or empirical observations. The goal is to produce a response based on measurable, observable, or documented information, free from personal bias or interpretation.
+
+\emph{Normative} refers to questions in which the expected answer is informed by value-based judgments, recommendations, or ethical principles. These answers reflect what ought to be the case, drawing upon norms, societal values, or policy guidelines.
+
+\subsection{Question Goal}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{@{}lp{8cm}@{}}
+        \toprule
+        \textbf{Class} & \textbf{Description} \\
+        \midrule
+            \textbf{Information Lookup}
+            & Questions that seek factual information or descriptions about something. \\
+        \cmidrule(l){1-2}
+            \textbf{Reasoning}
+            & Questions aimed at understanding why something occurs.. \\
+        \cmidrule(l){1-2}
+            \textbf{Problem Solving}
+            & Questions aimed aimed at identifying practical solutions, strategies, or methods to overcome a challenge or limitation. \\
+        \cmidrule(l){1-2}
+            \textbf{Problematization}
+            & Questions aimed at articulating deficiencies or problems in current theories or practices. \\
+        \cmidrule(l){1-2}
+            \textbf{Improvement}
+            & Questions aimed at enhancing existing tools, methods, or practices. \\
+        \cmidrule(l){1-2}
+            \textbf{Prediction}
+            & Questions aimed aimed at anticipating future developments, outcomes, or trends. \\
+        \cmidrule(l){1-2}
+            \textbf{Other Goal}
+            & Questions whose goal is not covered by any of the other classes. \\
+        \bottomrule
+    \end{tabular}
+    \caption[Question Goal Category of the Taxonomy]{The question goal category of the \gls{kgqa} retrieval taxonomy. It classifies questions by the goal of the scholarly literature search process.}
+    \label{tab:question_goal}
+\end{table}
+
+The \textbf{Question Goal} category classifies questions according to the primary objective they pursue in the scholarly literature search process. In most cases, only one class from this category should be applied. However, if a question contains multiple intentions, it may contain multiple goals, consequently requiring multiple classes for classification.
+
+\emph{Information Lookup} refers to questions that seek a presentation of factual information from the \gls{kg} without requiring further explanation or justification. These are typically descriptive in nature. An example is: \enquote{What are the characteristics of an event-driven architecture?}
+
+\emph{Reasoning} applies to questions that seek to uncover causes, mechanisms, or theoretical explanations for observed phenomena. The goal is to understand why something happens without necessarily seeking a solution. For instance: \enquote{Why is the application of an event-driven architecture useful for improving maintainability?}
+
+\emph{Problem Solving} classifies questions that explicitly ask for practical solutions, strategies, or methods to address a stated problem. An example would be: \enquote{How can I apply the event-driven architecture pattern to improve maintainability?}
+
+\emph{Problematization} refers to questions that articulate issues or shortcomings in existing theories or practices. These questions often indicate the need for further scientific investigation. An example is \enquote{What difficulties do practitioners encounter when applying the event-driven architecture pattern?}
+
+\emph{Improvement} is used when the question aims to enhance existing tools, methods, or practices. It goes beyond problem identification by seeking actionable ways to make refinements. For example: \enquote{How can the maintainability of a software system be improved?}
+
+\emph{Prediction} classifies questions that attempt to anticipate future developments, trends, or outcomes. These are speculative in nature. An example is \enquote{How likely is it that LLMs will replace software developers in the future?}
+
+\emph{Other Goal} serves as a residual class for questions whose aims do not align clearly with any of the aforementioned classes.
+
+
+
+% \subsection{}
+
+% \begin{table}[t]
+%     \centering
+%     \begin{tabularx}{\textwidth}{@{}X X X@{}}
+%         \toprule
+%         \textbf{Category Description} & \textbf{Class} & \textbf{Class Description} \\
+%         \midrule
+%         \multicolumn{3}{c}{Graph Representation [o]} \\
+%         \midrule
+%         \multirow{2}{*}{\begin{tabular}[c]{@{}l@{}}Amount of facts required to \\ compose the answer.\end{tabular}}    
+%         & Single Fact
+%         & Whether the answer can be found in a single fact of the \gls{kg}.\\
+%         \cmidrule(l){2-3}
+%         & Multi Fact
+%         & Whether the answer must be aggregated from multiple facts in the \gls{kg}.\\
+%         \midrule
+
+%         \multirow{2}{*}{Answer Type}        
+%         & Named Entity
+%         & \\
+%         \cmidrule(l){2-3}
+%         & Description
+%         & \\
+%         \cmidrule(l){2-3}
+%         & Metadata
+%         & \\
+%         \cmidrule(l){2-3}
+%         & Quantitative
+%         & \\
+%         \midrule
+        
+%         \bottomrule
+%     \end{tabularx}
+%     \caption{[o] means the category is orthogonal meaning that each question can only be classified by one of its classes. [g] Knowledge Graph abhängig}
+%     \label{tab:taxonomy_summary}
+% \end{table}
+
+
+

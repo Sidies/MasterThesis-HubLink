@@ -1,0 +1,62 @@
+
+\section{Clustering of Extracted Classes}
+\label{sec:taxonomy_clustering}
+
+After extracting 227 classes for question classification, we performed the \textsc{Clustering} phase of the taxonomy construction process. The goal of the clustering process is to semantically group classes with similar names or descriptions and to merge duplicate classes proposed by multiple publications, thereby providing an overview of the unique classes and reducing redundancy. The clustering process is carried out in two steps: \emph{Deduplication} and \emph{Categorization}, as described in Section~\ref{sec:tax_proc_clustering}.
+
+\subsection{Deduplication Process}
+In the first step, the names of the question classification classes and the descriptions provided by the respective authors were manually analyzed for similarities. All classes $\mathcal{C}$ that shared a similar or identical name and had semantically similar descriptions were grouped together. After performing this process, the 227 classes in $\mathcal{C}$ were consolidated into 96 merged classes $\hat{\mathcal{C}}$. Each merged class was then given a unique name and description by combining the names and descriptions of the classes within it.
+
+\subsection{Categorization Process}
+In the second step, we clustered the classes $\hat{\mathcal{C}}$ into categories. For this purpose, we analyzed the names and descriptions of the groups to identify commonalities. Classes that exhibited coherence were grouped into a category, resulting in a total of nine categories. Finally, based on the combined names and descriptions of the classes $\hat{\mathcal{C}}$ within the categories, we established a unique name and description for each of the categories. The detailed process is documented in our replication package \cite{schneider_replication_2025}. An overview of each category and its metadata is shown in \autoref{table:clustering_result}. In the following, we present the final categories with their names, descriptions, and characteristics.
+
+\label{enum:cluster_1}
+\paragraph{Category 1} We identified that the classes in this category are about the representation of knowledge in a \gls{kg}. It describes the granularity of the facts that the retriever needs to retrieve in order to arrive at the answer. The cluster distinguishes between two classes. First, questions that require the retrieval of multiple facts from the graph to be answered. Second, questions that require only one fact. As such, we named this category \emph{Graph Representation}. Five sources form this cluster \cite{banerjee_dblp-quad_2023,auer_sciqa_2023,dubey_lc-quad_2019,jaradeh_question_2020,bordes_large-scale_2015}. From the categories of these papers we can conclude that they originate from the development of \gls{kgqa} datasets, with most contributions emerging in the last five years. Moreover, the contributions span both the academic and general domains, suggesting a broad applicability of this distinction. 
+
+\label{enum:cluster_2}
+\paragraph{Category 2} This category contains the largest number of classes among all categories, encompassing a total of 33 classes derived from 25 different publication sources \cite{allam_question_2016,moldovan_structure_2000,steinmetz_what_2021,singhal_att_1999, dillon_classification_1984,riloff_rule-based_2000,taffa_hybrid-squad_2024,mikhailian_learning_2009,sjoberg_future_2007, nguyen_ripple_2017,chernov_linguistically_2015,li_learning_2002, shaw_writing_2003,bolotova_non-factoid_2022,banerjee_dblp-quad_2023,auer_sciqa_2023,dubey_lc-quad_2019,jaradeh_question_2020,tran_comparative_2022,easterbrook_selecting_2008,ratan_formulation_2019,kamper_types_2020,liu_taxonomy_2015,karras_divide_2023,thuan_construction_2019}. Each class categorizes a question based on the expected format and content of its answer. These classes span a wide range, including \emph{entities}, \emph{names}, \emph{dates}, \emph{monetary values}, and \emph{bibliometric numbers}. We find that some classes are addressed by multiple sources. The \emph{boolean} class is the most widely considered, appearing in 10 sources. This is followed by the Human/Person, Location, and Quantitative classes, each appearing in seven sources. The classes \emph{date} and \emph{description} are also commonly represented, with five sources each. Additionally, the classes \emph{undefined}, \emph{time}, \emph{organization}, and \emph{entity} are mentioned in four sources each. The remaining classes are referenced less frequently. Overall, we named this category \emph{answer type}.
+
+\label{enum:cluster_3}
+\paragraph{Category 3} This category consists of classes that define the types of operations a retriever must perform to arrive at an answer, such as \emph{negation}, \emph{contingencies}, \emph{counting}, and \emph{comparison}. With contributions from 17 different sources \cite{allam_question_2016,sjoberg_future_2007,banerjee_dblp-quad_2023,auer_sciqa_2023,nguyen_ripple_2017,easterbrook_selecting_2008,dillon_classification_1984, ratan_formulation_2019,kamper_types_2020,dubey_lc-quad_2019,usbeck_qald-10_2023,steinmetz_what_2021,tran_comparative_2022,bolotova_non-factoid_2022,jaradeh_question_2020,bordes_large-scale_2015,karras_divide_2023}, it is the second most prevalent cluster identified in our extraction. The majority of these sources stem from the \gls{kgqa} dataset literature, although the category is also addressed in works on question classification and in studies focused on scholarly research questions. It is primarily considered within open-domain and academic contexts but also receives attention in the software engineering domain. In addition, specialized fields such as requirements engineering and Covid-related research contribute to this category. We refer to this category as \emph{Question Types}.
+
+
+\begin{sidewaystable}[p]
+    \centering
+    \resizebox{\textwidth}{!}{
+    \begin{tabularx}{\textwidth}{p{4cm} p{1.5cm} p{1.5cm} X X X}     
+        \toprule
+        \textbf{Category Name} & \textbf{Classes} & \textbf{Sources} & \textbf{Domains} & \textbf{Years} & \textbf{Source Categories} \\
+        \midrule
+        Graph Representation & 2 & 5 & Scholarly, Open & 2015, 2019, 2020, 2023 & KGQA Dataset \\
+        Answer Type & 33 & 25 & Scholarly, Open, Software Engineering, Language specific, Spoken NLP, Covid, Healthcare, Social Science, Requirements Engineering, Design Science & 1984, 1999, 2000, 2002, 2003, 2007, 2008, 2009, 2015, 2016, 2017, 2019, 2020, 2021, 2022, 2023, 2024 & Question Classifier, KGQA Dataset, Research Questions, Other \\
+        Question Types & 18 & 17 & Scholarly, Open, Software Engineering, Language specific, Healthcare, Covid, Requirements Engineering & 1984, 2007, 2015, 2016, 2017, 2019, 2020, 2021, 2022, 2023 & Question Classifier, KGQA Dataset, Research Questions, Other \\
+        WH-Patterns & 9 & 5 & Scholarly, Open, Covid, Language specific & 2000, 2017, 2022, 2023 & Question Classifier, KGQA Dataset \\
+        Specialized KB Types & 2 & 3 & Scholarly, Open & 2019, 2021, 2023 & KGQA Dataset \\
+        Research Focus & 8 & 2 & Scholarly, Software Engineering & 2003, 2024 & KGQA Dataset, Research Questions \\
+        Answer Credibility & 5 & 5 & Requirements Engineering, Social Science, Healthcare, Open & 1984, 2020, 2022, 2023 & KGQA Dataset, Question Classifier, Research Questions \\
+        Question Goal & 7 & 7 & Software Engineering, Design Science, Open & 2000, 2003, 2008, 2016, 2019, 2022 & Research Questions, Question Classifier \\
+        Application Specific & 12 & 5 & Design Science, Language specific, Spoken NLP, Open & 2000, 2015, 2017, 2019, 2021 & Research Questions, Question Classifier, KGQA Dataset \\
+        \bottomrule
+    \end{tabularx}
+    }
+    \caption[Clustering of Extracted Classes]{Clustering Results for the Extracted Question Types from the Literature}
+    \label{table:clustering_result}
+\end{sidewaystable}
+
+\label{enum:cluster_4}
+\paragraph{Category 4} This category groups questions based on their interrogative form, distinguishing between different \enquote{Wh} word patterns such as \emph{what}, \emph{where}, \emph{which}, \emph{when}, \emph{who}, \emph{why}, \emph{whose}, and \emph{whom}. It is rooted in early question classification research and continues to be relevant in current studies. The cluster is derived from five different sources \cite{auer_sciqa_2023,riloff_rule-based_2000,tran_comparative_2022,nguyen_ripple_2017,moldovan_structure_2000} and spans both scholarly and general domains, with additional contributions from specialized areas such as Covid-related research and studies focused on the Vietnamese language. We refer to this fourth category as \emph{WH-Patterns}.
+
+\label{enum:cluster_5}
+\paragraph{Category 5} We named this category \emph{Specialized Knowledge Base Types}, as it comprises question classes tailored to specific \glspl{kb}. These include classes related to \gls{orkg}, SPARQL queries, and Wikidata qualifiers. Consequently, such classifications are only applicable when the question is executed against the corresponding \gls{kb}. The category is supported by three recent sources \cite{auer_sciqa_2023,steinmetz_what_2021,dubey_lc-quad_2019}, spanning both scholarly and general domains. Notably, it is exclusively addressed within the context of \gls{kgqa} dataset literature.
+
+\label{enum:cluster_6}
+\paragraph{Category 6} We refer to the category as \emph{Research Focus} as it centers on classifying questions according to their research-related focus. It includes classes such as Research Output, Development Methods, and Modeling Approaches and is supported by only two publications. The first is \cite{taffa_hybrid-squad_2024}, a 2024 contribution in the \gls{kgqa} dataset category, which specifically targets scholarly content. The second is \cite{shaw_writing_2003}, a 2003 study centered on research questions within the software engineering domain.
+
+\label{enum:cluster_7}
+\paragraph{Category 7} We refer to this category as \emph{Answer Credibility}, as it classifies questions based on the perceived truthfulness or reliability of the expected answer. It includes classes such as \emph{factual}, \emph{opinion}, \emph{debate}, \emph{conversational}, and \emph{predictive}. This cluster is supported by five sources \cite{karras_divide_2023,bolotova_non-factoid_2022,liu_taxonomy_2015,dillon_classification_1984,kamper_types_2020}, spanning domains such as requirements engineering, social sciences, healthcare, and the open domain. Most sources are from recent years, with the earliest dating back to 1984. The category is considered in \gls{kgqa} dataset literature, question classification studies, and research focusing on scholarly questions.
+
+\label{enum:cluster_8}
+\paragraph{Category 8} We refer to the eighth category as \emph{Question Goal}, as it captures the overarching intent or purpose behind a question. It includes classes such as \emph{exploratory}, \emph{reasoning}, \emph{problem solving}, and \emph{gap spotting}. This category is supported by seven sources \cite{easterbrook_selecting_2008,thuan_construction_2019,ratan_formulation_2019,shaw_writing_2003,bolotova_non-factoid_2022,moldovan_structure_2000,allam_question_2016}, spanning domains such as software engineering, design science, and the open domain. The publication years range from 2000 to 2022, reflecting both foundational and more recent work. The category is primarily addressed in question classification studies and literature focused on research question formulation.
+
+\label{enum:cluster_9}
+\paragraph{Category 9} We refer to this category as \emph{Application Specific}, as it encompasses classes that are tailored to particular applications or use cases. These include categories such as Research Question Utilization, Research Question Typology, and Outcome Artifact Classification. The category is supported by five sources \cite{thuan_construction_2019,nguyen_ripple_2017,chernov_linguistically_2015,moldovan_structure_2000,steinmetz_what_2021}, spanning domains such as design science, Vietnamese language studies, spoken natural language processing, and the open domain. The publication years range from 2000 to 2021. This category is addressed in question classification studies, research question-focused literature, and \gls{kgqa} dataset research.

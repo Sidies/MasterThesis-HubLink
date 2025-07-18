@@ -1,0 +1,48 @@
+
+% Generalisierbarer Prozess zur Taxonomie erstellung (Operationalisierungsschritte bei Usman Fehlen), die Skripte zur Erstellung
+% Welche Anforderungen, die Instanzierung auch selbst?, 
+
+% In this master thesis, we develop a novel retrieval approach for the scholarly \gls{kgqa} task. To support the evaluation of this method, we further provide a question taxonomy for \gls{kgqa} retrieval systems and semi-automatically created \gls{qa} datasets. To that end, we propose to take advantage of the unique structural properties of an \gls{rkg} to conduct a source aware retrieval. In this context, the contributions provided by the master thesis are as follows:
+
+% In this master thesis, we investigate the potential of using a \gls{kgqa} approach to support scholarly literature search using a schema-agnostic and training-free approach.
+
+\section{Research Contributions}
+
+This thesis provides the following contributions to investigate the potential of using \gls{kgqa} to support scholarly literature search:
+
+\begin{enumerate}[label=\textbf{C\arabic*}, leftmargin=2.5em]
+    \item \label{enum:c1} A novel \gls{kgqa} retrieval approach named \emph{HubLink}, which is a schema-agnostic and training-free method designed to conduct source-aware inference on \glspl{kg}.
+    \begin{enumerate}[label=\textbf{C1.\arabic*}]
+        \item \label{enum:c1.1} The \gls{sqa}-framework, which enables modular testing of \gls{rag} pipelines with various \glspl{kg} and retrieval approaches and the semi-automatic generation of \gls{kgqa} datasets.
+        \item \label{enum:c1.2} Implementations of five training-free and schema-agnostic \gls{kgqa} retrieval approaches from the existing literature adapted for use on the \gls{orkg}.
+        % \item \label{enum:c1.3} Experimental evaluations against state-of-the-art, non-semantic parsing, and training-free baselines, demonstrating the superior performance of HubLink, particularly on complex questions.
+    \end{enumerate}
+    \item \label{enum:c2} A question taxonomy for classifying questions targeting scholarly \gls{kgqa}, facilitating the development of diverse \gls{kgqa} datasets to evaluate the performance and capabilities of retrieval systems.
+    \begin{enumerate}[label=\textbf{C2.\arabic*}]
+        \item \label{enum:c2.2} A systematic question taxonomy construction process to synthesize existing knowledge from the literature, emphasizing replicability, transparency, and validation.
+    \end{enumerate}
+    \item \label{enum:c3} A new \gls{kgqa} dataset for the \gls{orkg} featuring four variants for different graph schemas, designed to benchmark the performance and robustness of \gls{kgqa} systems across a wide range of question types in the scholarly literature search task.
+\end{enumerate}
+
+The primary contribution of this thesis is HubLink (\textbf{C1}), a novel \gls{kgqa} approach that conceptually decomposes the graph into structures termed \emph{hubs}. Each hub is individually evaluated to determine its relevance in answering the provided question, with a subsequent generation of partial answers for each relevant hub. These partial answers are then synthesized into a final answer. This modular approach enables the retrieval process to be source-aware, schema-agnostic, and training-free. To support this contribution, a framework (\textbf{C1.1}) that implements a modular and configurable \gls{rag} pipeline to benchmark \gls{kgqa} approaches on different \glspl{kg} is contributed. Subsequently, implementations of five established state-of-the-art \gls{kgqa} approaches from the literature are provided, which were previously tested only in open-domain settings. Their implementations were adapted (\textbf{C1.2}) for compatibility with the \gls{orkg} and tested with regard to their performance against our novel HubLink approach in an extensive evaluation.
+
+Furthermore, a question taxonomy (\textbf{C2}) is contributed, which enables the classification of questions specifically targeting \gls{kgqa} for the scholarly literature search task. This facilitates the creation of diverse and complex \gls{kgqa} datasets incorporating questions designed to test various capabilities of \gls{kgqa} approaches. To support this contribution, a taxonomy construction process (\textbf{C2.1}) is provided that systematically synthesizes knowledge from the literature and operationalizes the generation of taxonomies, complete with tool support for easy application.
+
+Finally, new \gls{kgqa} datasets (\textbf{C3}) for the \gls{orkg} are contributed, which are based on an \gls{swa} schema and the question taxonomy (\textbf{C2}). Consequently, the datasets include a variety of questions that target different retrieval capabilities to thoroughly test \gls{kgqa} approaches. In addition, the datasets are based on six distinct use cases for the scholarly literature search task to ensure relevance to real-world scenarios and relate to four different graph variants corresponding to different graph schemas, to evaluate the schema-agnostic property and robustness of \gls{kgqa} approaches.
+
+
+
+% The first contribution (\textbf{C1}) is a taxonomy specifically designed to classify the characteristics of questions posed to \gls{kgqa} retrieval systems in the scholarly literature search domain, enabling the creation of diverse question datasets that test a broad range of retrieval capabilities.
+
+
+% To address this gap, we propose HubLink, a novel retrieval approach that takes advantage of the unique structural properties of \glspl{rkg}. In \glspl{rkg}, information about publications is naturally grouped into subgraphs. HubLink exploits this observation by pre-embedding each subgraph into so-called hub structures using a pre-trained embedding model during an offline indexing step. In this step, each subgraph is decomposed into distinct content levels that preserve both semantic and structural context. 
+
+% At query time, the input question is similarly decomposed and encoded. HubLink retrieves the most relevant hubs through embedding similarity, assembles partial answers from each, and consolidates them into a final response. Crucially, HubLink also tracks the source of each retrieved piece of information, allowing the system to draw on multiple publications to provide diverse evidence. This is particularly important for complex scholarly questions that involve multiple constraints and require the synthesis of methodological details or results from different sources. We hypothesize that leveraging \gls{rkg} structure while maintaining source diversity fosters more accurate and transparent answers.
+
+% To support robust evaluation, we also contribute a question taxonomy specifically designed to characterize the types of question posed to \gls{kgqa} retrieval systems in the literature search domain. This taxonomy enables the creation of diverse question datasets that test a broad range of retrieval capabilities. Using this framework, we semi-automatically generated new scholarly \gls{qa} datasets for the \gls{orkg} that reflect real-world literature search scenarios based on common use cases, ensuring that our evaluation covers realistic, relevant and diverse scholarly information needs.
+
+% Our experiments, conducted on the \gls{orkg}, show that HubLink outperforms state-of-the-art non-semantic parsing and training-free baselines including StructGPT \cite{jiang_structgpt_2023}, Think-on-Graph \cite{sun_think--graph_2024}, MindMap \cite{wen_mindmap_2024}, Fidelis \cite{sui_fidelis_2024}, and DiFaR \cite{baek_direct_2023}, especially on complex questions involving multiple constraints and relational paths.
+
+% In summary, we demonstrate that a retrieval approach such as HubLink can advance scholarly literature search by integrating the structured advantages of \glspl{rkg} with the natural language understanding capabilities of \glspl{llm}. This minimizes the time to locate relevant information, lessens the cognitive load for researchers, and facilitates accessibility. Therefore, this work contributes to the development of more effective workflows in academic research.
+
+% In doing so, we take a step toward knowledge-based scientific communication, where the semantic organization of research data, combined with powerful language models, enables more efficient exploration of the rapidly expanding scholarly landscape. By reducing the burden of manual literature searches, our aim is to contribute to more productive, transparent, and wide-reaching scientific research.

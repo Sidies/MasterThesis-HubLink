@@ -1,0 +1,212 @@
+
+\chapter{Evaluation}
+\label{ch:experimentation}
+
+This chapter presents our evaluation of HubLink, which constitutes contribution \hyperref[enum:c1]{\textbf{C1}} of this thesis. We conducted the evaluation following the \gls{gqm} plan that we outlined in Section~\ref{sec:evaluation_goals_and_metrics}. To establish a comparative baseline, we incorporated five \gls{kgqa} approaches sourced from existing literature for which we detail the selection process in Section~\ref{sec:implementation_baselines}. All \gls{kgqa} approaches, including the baselines, were executed using their final configurations, which we determined through the parameter selection process described in \autoref{ch:parameter_selection_process}. Particularly for our HubLink approach, the chosen configuration along with three additional variations have been evaluated:
+
+\begin{enumerate}
+    \item \emph{HubLink (T)}: This configuration has been selected through our parameter selection process (see \autoref{tab:hublink_final_config}) and utilizes the \emph{graph traversal} strategy of HubLink.
+    \item \emph{HubLink (D)}: This variant employs the same configuration parameters as HubLink (T) but instead uses the \emph{direct retrieval} strategy.
+    \item \emph{HubLink (F)}: We designed this configuration for reduced runtime, employing the \emph{direct retrieval} strategy, and limiting the \emph{number of hubs} to 10 per question.
+    \item \emph{HubLink (O)}: This variant shares its parameters with HubLink (T) but utilizes the \emph{mxbai-embed-large} embedding model and the \emph{Qwen2.5-14B} \gls{llm}.
+\end{enumerate}
+
+The first variant HubLink (T) is expected to achieve the best performance across the variants, as the parameters have been chosen by the parameter selection process. We introduced the other variants to better understand the performance characteristics of HubLink under different operational conditions. Specifically, HubLink (D) allows us to compare the efficacy of the \emph{direct retrieval} strategy against the \emph{graph traversal} strategy used in HubLink (T), which are explained in Section~\ref{sec:hublink_overview_retrieval_generation}. HubLink (F) aims to provide an economical version optimized for rapid execution, which is a crucial factor for practical usability. Finally, HubLink (O) enables us to assess the performance of our approach when using open-source models. However, the open-source variant is not expected to yield competitive performance compared to the OpenAI models. This is because we were only able to run smaller models due to hardware constraints. Still, including this configuration makes it possible to understand the difference in performance when using smaller models.
+
+Furthermore, our evaluation incorporated four distinct graph variants, which we introduce in Section~\ref{sec:contribution_templates}. However, because of the high cost involved, we were unable to test all the experiments for each of the variants. Consequently, we chose the graph variant \hyperref[enum:gv1]{\textbf{GV1}} for the experiments in which the use of multiple variants was not necessary for the reasons provided in Section~\ref{sec:selection_planning_graph_variant}.
+
+In the sections that follow, we first discuss the evaluation results related to retrieval performance (\hyperref[sec:evaluation_goals_and_metrics]{\textbf{ReT1}}) in Section~\ref{sec:evaluating_relevance_and_robustness_of_retrieved_contexts}. Subsequently, Section~\ref{sec:evaluating_answer_alignment} analyzes the evaluation results concerning answer generation performance (\hyperref[sec:evaluation_goals_and_metrics]{\textbf{GeT1}} and \hyperref[sec:evaluation_goals_and_metrics]{\textbf{GeT2}}). We then conclude our evaluation with a comprehensive discussion of the findings in Section~\ref{sec:discussion_on_evaluation_results}, before finally addressing threats to validity in Section~\ref{sec:general_threats_to_validity}.
+
+\input{chapters/10_experimentation/sections/1_retrieval}
+\input{chapters/10_experimentation/sections/2_generation}
+\input{chapters/10_experimentation/sections/4_discussion}
+\input{chapters/10_experimentation/sections/5_threats_to_validity}
+
+
+
+% "Experiment is a controlled type of study where the objective commonly is to compare two or more alternatives. A hypothesis is formulated and the researcher would like to be able to show a cause and effect relationship based on the treatments provided to the participants." \cite{wohlin_experimentation_2024}
+
+% "An experiment is a formal, rigorous, and controlled investigation. In an experiment the key factors are identified and manipulated, while other factors in the context are kept unchanged" \cite{wohlin_experimentation_2024}
+
+% "Experiments are foremost quantitative since they have a focus on measuring different variables, changing them, and measuring them again. During these investigations quantitative data is collected and then statistical methods are applied." \cite{wohlin_experimentation_2024}
+
+% "Definition 6.1 An experiment (or controlled experiment) in software engineering is an empirical enquiry that manipulates one factor or variable of the studied setting. Based on randomization, different treatments are applied to or by different subjects, while keeping other variables constant, and measuring the effects on the outcome variables. In human-oriented experiments, humans apply different treatments to objects, while in technology-oriented experiments, different technical treatments are applied to objects." \cite{wohlin_experimentation_2024}
+
+% "The objective is to manipulate one or more variables and control all other variables at fixed levels. The effect of the manipulation is measured, and based on this a statistical analysis can be performed." \cite{wohlin_experimentation_2024}
+
+% "Those variables that we want to study to see the effect of the changes in the independent variables are called dependent variables (or response variables). Often there is only one dependent variable in an experiment. All variables in a process that are manipulated and controlled are called independent variables." \cite{wohlin_experimentation_2024}
+
+% KB Variante:
+% KB v1: 
+% KB v2: 
+% KB v3:
+% KB v4:  
+
+% AKTUELLE PLANNUNG 
+% ---------------
+% 1. Experiment
+
+% Tuning-Metrik: Recall bzw. F2 (unterschiedliche Gewichtung Recall und Precision)
+
+% - Knowledge Base: Hierfür das Annotated Dataset im ORKG verwenden [ICSA2022] -> TODO: v3 (?)
+% -- Link zur Knowledge Base: https://gitlab.com/software-engineering-meta-research/ak-theses/mastertheses/ma-marco-schneider/implementation/-/blob/experiments/sqa-system/data/external/merged_ecsa_icsa.json?ref_type=heads
+% TODO Graph
+
+% - Erstellen des KGQA Dataset auf diesem Graphen anhand der Matrix 
+% -- Fragen: Matrix im Onenote -> https://1drv.ms/o/c/64993a62c00d7835/Eqir56XA5pNClx4UMo2GURoB5tZoYijw9ms4DsUJOu6vXA?e=477yKA
+% -- Generation Notebook -> https://gitlab.com/software-engineering-meta-research/ak-theses/mastertheses/ma-marco-schneider/implementation/-/blob/experiments/sqa-system/experiments/qa_dataset_generation/annotations_graph/qa_generation.ipynb?ref_type=heads
+% -- Final QA Dataset.csv -> https://gitlab.com/software-engineering-meta-research/ak-theses/mastertheses/ma-marco-schneider/implementation/-/blob/experiments/sqa-system/experiments/qa_dataset_generation/annotations_graph/final_qa_dataset.csv?ref_type=heads
+
+% - Festlegen der Base-Konfigurationen und die Tuning-Spaces fest
+% -- Configurationen im Wiki -> https://gitlab.com/software-engineering-meta-research/ak-theses/mastertheses/ma-marco-schneider/implementation/-/wikis/pages/experiments/experiment_1_configs (X)
+
+% - Dann Ausführung des Experiments: 
+% -- Der ordner wo das erste Experiment stattfindet: https://gitlab.com/software-engineering-meta-research/ak-theses/mastertheses/ma-marco-schneider/implementation/-/tree/experiments/sqa-system/experiments/1_experiment?ref_type=heads
+% -- (7 Fragen aus Use Case 1?) Zwischenergebnis: https://gitlab.com/software-engineering-meta-research/ak-theses/mastertheses/ma-marco-schneider/implementation/-/tree/experiments/sqa-system/experiments/1_experiment/runs/llm_tests?ref_type=heads
+%Testfragen: https://gitlab.com/software-engineering-meta-research/ak-theses/mastertheses/ma-marco-schneider/implementation/-/blob/experiments/sqa-system/experiments/1_experiment/runs/llm_tests/test_qa_dataset.csv?ref_type=heads
+%% TODO: Warum Testfragen?
+% Ergebnis: https://gitlab.com/software-engineering-meta-research/ak-theses/mastertheses/ma-marco-schneider/implementation/-/blob/experiments/sqa-system/experiments/1_experiment/runs/llm_tests/visualization/average_metrics_per_config/average_Retrieval_metrics_per_config_part_2.pdf?ref_type=heads
+%% 
+% - Dann alle Retriever (Hublink und 5 Baselines) ausführen und die "Beste Konfiguration" bestimmen anhand von F2
+%% TODO: Systematisches Vorgehen nach [Quelle]
+% - Jetzt die besten Konfigurationen zusammenbauen und dann erneut das Experiment ausführen. Die Ergebnisse dann analysieren
+% - Hypothese: The proposed retrieval approach (HubLink) improves the accuracy of answering SWA literature research-related questions in a QA system compared to baseline retrieval methods when operating on a sparse RKG.
+% - H1: The HubLink retriever improves the accuracy and relevance of the retrieved Knowledge Graph (KG) facts compared to baseline retrievers
+% - H2: The HubLink retriever improves the faithfulness, correctness, and relevance of the generated answers compared to baseline retrievers.
+% - H3: The HubLink retriever can answer a wider range of desired question types.
+%% TODO: xx
+% - H4 The runtime of the HubLink retriever is comparable to baseline retrievers.
+% - H5 The environmental and monetary costs of the HubLink retriever are comparableto baseline retrievers.
+%% TODO: COmbined Metrics
+
+
+% ---------------
+% 2. Experiment
+% - Jetzt variieren wir die Struktur der Contributions um herauszufinden, was es für eine Auswirkung hat, dass die Informationen tiefer im Graph liegen oder wenn mehr Pfade traversiert werden müssen um zu den Informationen zu gelangen.
+
+% - Validity Threat: Wir tunen nur auf Variante 3 und nicht auf alle Varianten, um die Auführungszeit und die Kosten im Rahmen zu halten. Denoch, durch das Fix halten der Parameter der Retriever und das Variieren des Graphen lässt sich prüfen, welche auswirkungen
+
+% - Varianten die wir probieren:
+% -- 1. Graph: Tiefe Hierarchy, alle Annotated Daten in einer Contribution (Classifcations 2)
+% -- 2. Graph: Flache Hierarchy, alle Annotated Daten in einer Contribution (Classification 1)
+% -- 3. Graph: Tiefe Hierarchy, Annotated Daten semantisch aufgeteilt auf verschiedene Contributions (Die Contributions mit markierung 2)
+% -- 4. Graph: Flache Hierarchy, Annotated Daten semantisch aufgeteilt auf verschiedene Contributions (Die Contributions mit markierung 1)
+% - Comparison:
+% -- Hublink vs. Baselines für jeden Graphen
+% - Hypotheses: Varying the structural template of the ORKG graph (deep vs. shallow hierarchy and aggregated vs. semantically separated contributions) does not have a significant impact on the quality of answers produced by HubLink.
+% - Potentielles Problem: Durch die Veränderung des Graphen wird die HOP Anzahl die benötigt wird für eine Frage im QA Dataset verändert. Außerdem wird es passieren das "Goldene Triple" im QA Dataset nicht mehr richtig sind. 
+% - Lösung: Ich muss jede Frage manuell überprüfen und anpassen.
+% ---------------
+
+% 3. Experiment
+% - Statt auf den Annotationsdaten zu arbeiten, testen wir jetzt Sentence-Based Daten.
+
+% - 1. Extrahieren von Sentence-Based Daten aus den Volltexten der Publikationen
+% - 2. Hochladen in den ORKG mit einer neuen Contribution
+% - 3. Erstellen eines neuen QA Datensets
+% - 4. Ausführen der besten Konfigurationen (aus Experiment 1) auf den Volltext Daten
+    
+% - Hypothese: When fulltext data is added to the ORKG graph (resulting in a denser RKG), the proposed retrieval approach (HubLink) outperforms baseline retrieval methods in accurately answering literature research–related questions.
+
+
+
+% --------------------------
+% EXPERIMENTE
+
+% 1. Experiment
+% - Recall als Tuning Metric (?)
+% - Annotated und Metadaten 
+% - KGQA Dataset auf diesem Graphen (ca. 30-50 Fragen)
+% - Baseline Konfiguration festlegen für HubLink und Baseline Retriever
+% - Base Configs auf allen vier Graphen ausführen
+% - Beste Graph-Config für jede Baseline festlegen
+% - Baselines und HubLink tunen für die jeweilig beste Graph-Config
+% - Nochmal auf allen Graph-Configs mit dem besten Tuning alle Baselines und HubLink ausführen
+% - Jetzt kann man für jede Graph-Config die Performance von HubLink mit den Baselines vergleichen
+% - Hypotheses:
+% -- Performance and Structure
+% --- The HubLink retriever improves the accuracy and relevance of the retrieved Knowledge Graph (KG) facts compared to baseline retrievers.
+% --- The HubLink retriever improves the faithfulness, correctness, and relevance of the generated answers compared to baseline retrievers.
+% -- Relevance
+% --- The HubLink retriever can answer a wider range of desired question types.
+% -- Efficiency
+% --- The runtime of the HubLink retriever is comparable to baseline retrievers.
+% --- The environmental and monetary costs of the HubLink retriever are comparable to baseline retrievers.
+
+% ---------------
+
+% 2. Experiment
+% - Jetzt lade ich zusätzlich die Fulltext Daten in den ORKG Graphen
+% - Dann erstelle ich ein neues KGQA Dataset auf diesem Graphen (ca. 100 Fragen)
+% - Um die Experimente im Rahmen zu halten, verwende ich die "besten Konfigurationen" aus Experiment 1
+% - Comparison:
+% -- Die Hublink Configurationen untereinander
+% -- Die Baseline Configurationen untereinander
+% -- Die beste Hublink Configuration vs. die beste Baseline Configurationen
+% - Hypothese: When fulltext data is added to the ORKG graph (resulting in a denser RKG), the proposed retrieval approach (HubLink) outperforms baseline retrieval methods in accurately answering literature research–related questions.
+
+% ---------------
+
+% 3. Experiment
+% We refer to this experiment as "Document-based", because our intention is to evaluate "How well the HubLink retriever is able to retrieve relevant document passages from a document for a given question", as opposed to the "Knowledge Graph based" experiments, where we evaluate "How well the HubLink retriever is able to retrieve relevant statements from a knowledge graph for a given question".
+% - Jetzt testen wir, wie gut HubLink + KARAGEN in der Lage sind relevante Textabschnitte in Publikationen im Vergleich zu State-of-the-Art Document Retrieval Approaches zu finden.
+% - Dafür nutzen wir das gleiche QA Dataset wie in Experiment 3
+% - Die HubLink Ausführung aus Experiment 3 kann wiederverwendet werden
+% - Ausführen von den Document-based Baselines
+% - Comparison:
+% -- Die Baseline Configurationen untereinander
+% -- Hublink vs. Baselines
+% - Hypothese: The combination of HubLink and KARAGEN retrieves relevant text passages in publications more effectively than state-of-the-art document retrieval approaches.
+
+
+% ALT
+% #################################################################
+
+
+
+% ---------------
+% 1. Experiment
+% -> Die Realistische Contribution nehmen -> Distributed Deep Variante -> Weil besser Erweiterbar und durch Tiefe mehr Semantischer Zusammenhang entsteht
+% - Beim ersten Experiment lade ich nur die Annotated und Metadaten in den ORKG Graphen.
+% - Dann erstelle ich das KGQA Dataset auf diesem Graphen (ca. 30-50 Fragen)
+% - Dann HubLink ausführen und "die beste Konfiguration" finden
+% - Dann die Baselines ausführen und auch hier die "beste Konfiguration" finden
+% - Comparison:
+% -- Die Hublink Configurationen untereinander
+% -- Die Baseline Configurationen untereinander
+% -- Die beste Hublink Configuration vs. die beste Baseline Configurationen
+% - Hypothese: The proposed retrieval approach (HubLink) improves the accuracy of answering SWA literature research-related questions in a QA system compared to baseline retrieval methods when operating on a sparse RKG.
+% ---------------
+% 2. Experiment
+% - Jetzt variiere ich das Template des ORKG Graphen und teste mit den Konfigurationen von Experiment 1 die Retriever auf dem Graphen
+% -- 1. Graph: Tiefe Hierarchy, alle Annotated Daten in einer Contribution
+% -- 2. Graph: Flache Hierarchy, alle Annotated Daten in einer Contribution
+% -- 3. Graph: Tiefe Hierarchy, Annotated Daten semantisch aufgeteilt auf verschiedene Contributions
+% -- 4. Graph: Flache Hierarchy, Annotated Daten semantisch aufgeteilt auf verschiedene Contributions
+% - Comparison:
+% -- Hublink vs. Baselines für jeden Graphen
+% - Hypotheses: Varying the structural template of the ORKG graph (deep vs. shallow hierarchy and aggregated vs. semantically separated contributions) does not have a significant impact on the quality of answers produced by HubLink.
+% - Potentielles Problem: Durch die Veränderung des Graphen wird die HOP Anzahl die benötigt wird für eine Frage im QA Dataset verändert. Außerdem wird es passieren das "Goldene Triple" im QA Dataset nicht mehr richtig sind. 
+% - Lösung: Ich muss jede Frage manuell überprüfen und anpassen.
+% ---------------
+% 3. Experiment
+% - Jetzt lade ich zusätzlich die Fulltext Daten in den ORKG Graphen
+% - Dann erstelle ich ein neues KGQA Dataset auf diesem Graphen (ca. 100 Fragen)
+% - Um die Experimente im Rahmen zu halten, verwende ich die "besten Konfigurationen" aus Experiment 1
+% - Comparison:
+% -- Die Hublink Configurationen untereinander
+% -- Die Baseline Configurationen untereinander
+% -- Die beste Hublink Configuration vs. die beste Baseline Configurationen
+% - Hypothese: When fulltext data is added to the ORKG graph (resulting in a denser RKG), the proposed retrieval approach (HubLink) outperforms baseline retrieval methods in accurately answering literature research–related questions.
+% ---------------
+% 4. Experiment
+% We refer to this experiment as "Document-based", because our intention is to evaluate "How well the HubLink retriever is able to retrieve relevant document passages from a document for a given question", as opposed to the "Knowledge Graph based" experiments, where we evaluate "How well the HubLink retriever is able to retrieve relevant statements from a knowledge graph for a given question".
+% - Jetzt testen wir, wie gut HubLink + KARAGEN in der Lage sind relevante Textabschnitte in Publikationen im Vergleich zu State-of-the-Art Document Retrieval Approaches zu finden.
+% - Dafür nutzen wir das gleiche QA Dataset wie in Experiment 3
+% - Die HubLink Ausführung aus Experiment 3 kann wiederverwendet werden
+% - Ausführen von den Document-based Baselines
+% - Comparison:
+% -- Die Baseline Configurationen untereinander
+% -- Hublink vs. Baselines
+% - Hypothese: The combination of HubLink and KARAGEN retrieves relevant text passages in publications more effectively than state-of-the-art document retrieval approaches.
+

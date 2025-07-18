@@ -1,0 +1,38 @@
+
+\section{Generalizability and Scalability}
+\label{sec:hublink_generality_and_chances}
+
+The fundamental design of HubLink offers potential regarding its range of application and performance capabilities. This section discusses these aspects. First, we explain why we consider HubLink to be schema-agnostic. Then, we examine the adaptability of the approach to other domains. Last, we explore the scalability of the approach by discussing how the modularity of the approach facilitates efficient processing even on \glspl{kg} comprising millions of entities and relations.
+
+\subsection{Why HubLink is Schema-Agnostic}
+% This means that it does not make assumptions about the particular vocabulary or ontology used in the underlying \gls{kg} and consequently, does not rely on a fixed set of entity types or relation predicates. 
+% Training based but schema agnostic: LLMs
+% Training based and not schema agnostic: Semantic Parsing
+% not schema agnostic: Semantic parsing with examples
+
+We define \emph{schema-agnostic} as a characteristic of a system that does not rely on a fixed schema (i.e., a predefined set of classes, predicates, or relations). Instead, such a system operates on arbitrary or previously unseen graph structures without requiring adaptation of its core functionality.
+
+HubLink is designed to be schema-agnostic because all core processing steps, including graph traversal, extraction, embedding, and retrieval, work on generic triples. Consequently, HubLink does not depend on any particular classes, property names, or specific ontology structures. This design makes the approach directly applicable to graphs with diverse or evolving schemas without necessitating changes to the underlying algorithms.
+
+Nevertheless, the implementation of the \textsc{isHubRoot} classification function introduces a point where schema awareness can be incorporated, particularly if classification relies on entity types. The degree of sensitivity to schema evolution in such instances depends on the specific implementation chosen. For example, in the experimental setting conducted for this thesis, the \emph{Paper} type from the \gls{orkg} served as a criterion for \texttt{HubRoot} classification. We argue that this specific choice does not render the overall approach inherently schema-reliant. This argument is supported by two main points: first, the designated type is fundamental to the graph structure in that context and is not anticipated to undergo frequent changes. Second, the construction and retrieval of paths within hubs remain entirely independent of schema-defined types. Furthermore, as defined in Section~\ref{sec:hublink_hubroot_definition}, the HubLink approach supports alternative methods for classifying \texttt{HubRoots} that do not use any direct schema information from the graph, thus offering a mechanism to maintain schema independence even in the hub classification stage.
+
+
+% Although schema information can optionally be used as a criterion for the \texttt{isHubRoot} classification function, this is not a requirement. Even if specific types are used to define which nodes serve as hub roots, the construction and retrieval of paths within those hubs remain entirely schema-agnostic. This ensures that HubLink can operate flexibly on heterogeneous graphs.
+
+\subsection{Applicability to Other Domains}
+
+Although the current implementation of HubLink has focused on \glspl{rkg}, which store scientific data, the approach is not limited to this domain. We believe that HubLink is broadly applicable to any field where the knowledge base is organized around well-defined entities. This includes domains such as internal company documents, Wikipedia articles, medical case records, or biological entities such as genes or proteins.
+
+The key strength of HubLink lies in its ability to extract, aggregate, and retrieve information centered around specific objects. If these objects of interest are identifiable within the given data context, they can be used as hubs, making HubLink a flexible and adaptable solution across diverse domains. 
+
+\subsection{Scalability to Large Graphs}
+
+In addition to cross-domain applicability, scalability is a critical factor for the practical use of HubLink. Although large-scale evaluations fall outside the scope of this thesis, we argue that HubLink is well suited for deployment on \glspl{kg} containing millions of triples. This is because a unique advantage of HubLink lies in its modular, hub-based design. For queries that span multiple subgraphs or require aggregating information from distributed sources, the HubLink approach allows the graph to be decomposed into hubs. Each hub can then be individually evaluated to determine whether it contributes to answering the query. This allows the system to scale horizontally by distributing the evaluation across multiple hubs or even machines. This modular approach has the potential to handle complex queries efficiently by dividing the problem into smaller subproblems. We argue that HubLink opens up new possibilities for scalable and intelligent retrieval across large and complex \glspl{kg}. 
+
+To realize the indexing of large-scale graphs, we propose two complementary strategies:
+
+\paragraph{Indexing the entire Graph:} 
+One possible strategy is to index the entire graph using the embedding-based method of HubLink. Since the vector similarity search does not scale linearly with the size of the graph, response times remain relatively stable even as the graph grows. However, this property applies exclusively to the \emph{direct retrieval} strategy because, in contrast, the \emph{graph traversal} strategy requires evaluating all hubs that can be reached from the topic entity. However, this makes the traversal strategy particularly effective for queries targeting a specific region of the graph, as the topic entity naturally constrains the retrieval scope, leading to more focused searches.
+
+\paragraph{Partitioning the Graph:} 
+An alternative approach that would also allow for control of the retrieval section involves partitioning the graph into multiple indices. This method proves advantageous when the relevant semantic domain of a query is known in advance. The underlying assumption is that large-scale \glspl{kg} can be divided into semantically coherent subgraphs. Once such segmentation is performed, indexing can be limited to the subgraphs that are relevant to the queries. Consequently, it becomes necessary to select the appropriate index before processing a question. This selection can be carried out manually or automatically, for example, through an \gls{llm}-based classification mechanism.

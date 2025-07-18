@@ -1,0 +1,19 @@
+% To improve efficiency, the update process can be optimized by leveraging the timestamps of the modified triples, as only those paths affected by actual changes need to be removed and rebuilt, thereby avoiding the unnecessary reconstruction of unaffected components.
+
+\section{Updating the Index}
+\label{sec:updating_the_index}
+
+The HubLink retriever can only respond to questions based on the information stored in the associated index. For this reason, it is essential to update the index whenever changes are made to the graph to ensure that the data remains consistent and up-to-date. The following section explains how this update process can be implemented.
+
+As illustrated in the pseudocode of the function \textsc{hubIndexNeedsToBeUpdated}, changes in individual hubs can be detected by comparing the hash values of the current \texttt{HubPath} objects with those stored in the index. A mismatch indicates a modification and thereby signals the need for an update. Alternatively, if each triple in the graph is annotated with a timestamp indicating its last modification, this metadata can also serve as a criterion for determining whether an update is required. When a hub is identified as outdated, it can then be refreshed by invoking the \textsc{buildHubs} method. This procedure removes outdated entries from the index and rebuilds the corresponding \texttt{HubPaths}. 
+
+The pseudocode in Section~\ref{sec:hublink_indexing} demonstrates how the index update can be implemented. This indexing function is designed to serve both initialization and maintenance purposes. During an update run, the algorithm iterates through each hub, verifying whether the paths stored in the graph remain consistent with those in the index. If discrepancies are detected, the affected components are updated accordingly. This procedure, which we refer to as the \emph{Fixed Update} strategy, entails a comprehensive review of the index performed at specified intervals. Although computationally intensive, this approach guarantees that the entire index is synchronized upon completion.
+
+An alternative strategy is the \emph{Dynamic Update}, wherein updates are executed in real time in response to changes in the graph. When a modification occurs, the affected hubs are immediately updated using the \textsc{buildHubs} method. This method requires the integration of a monitoring routine that is automatically triggered upon any update to the graph. Such a routine can either invoke \textsc{buildHubs} directly or interact with the vector index to selectively adjust the relevant data entries.
+
+In summary, we propose the following two strategies to maintain index consistency:
+
+\begin{itemize} 
+    \item \textbf{Fixed Update:} Involves a complete and periodic examination of the index to identify and refresh outdated hubs. This process is performed at predefined intervals and ensures full synchronization.
+    \item \textbf{Dynamic Update:} Executes updates immediately following any modification to the graph. A monitoring routine initiates the update process, targeting only the affected components.
+\end{itemize}

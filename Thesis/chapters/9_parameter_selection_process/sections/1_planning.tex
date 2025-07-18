@@ -1,0 +1,79 @@
+
+\section{Planning}
+\label{sec:selection_planning}
+
+This section documents the planning of the parameter selection process. We first describe the methodology that was applied to realize the process. Next, we explain why we chose the Recall and Hits@10 metrics for the selection. Following this, we describe the dataset that was applied and the \glspl{llm}. Then, we describe the preliminary pipeline steps that are implemented before we describe why we decided to omit the StructGPT and ToG \gls{kgqa} approaches.
+
+\subsection{Methodology}
+\label{sec:selection_planning_methodology}
+
+To carry out this process, we apply the \gls{ofat} method to identify the best parameters according to the Recall and Hits@10 metrics. In this method, a base configuration is selected and then each factor is successively varied over its range while all other factors are kept constant \cite{montgomery_design_2017}. Consequently, we defined a base configuration and a range of parameter values for each \gls{kgqa} approach. Then, following the \gls{ofat} method, multiple run configurations have been created based on the base configuration and ranges to subsequently test them using a reduced version of the \gls{kgqa} dataset.
+
+
+\subsection{Metrics for Selection}
+\label{sec:selecting_tuning_metric}
+
+To conduct the selection, metrics need to be chosen that allow us to determine whether a change in the value of a parameter is justified. For the selection process, we focused on retrieval performance rather than generation. This is because the generation of the answers depends on the retrieved contexts, which means that if the retriever cannot find the contexts that are relevant, it will not be able to generate an answer based on it. With regard to the choice of retrieval metrics, our primary metric is Recall, although we also use Hits@10 where needed. There are several reasons for these metrics, which we explain in the following:
+
+First, when constructing the \gls{kgqa} datasets (see Section~\ref{sec:implementation_qa_dataset_generation}), we ensured that only those triples were designated as the ground truth for which the content required to answer the question is actually present. We deliberately omitted any intermediate triples that must be traversed to reach the target since they are not strictly necessary to answer the actual question. To illustrate, consider a question that is asking for the authors of a paper. The authors are stored in separate nodes that all connect to a root node named \emph{Authors List}. That root node serves only as a means to reach the author nodes and does not provide the information necessary to answer the question. In our preliminary tests, we observed that retrievers tend to include such intermediate nodes in their retrieved context. Furthermore, because answer generation occurs after context retrieval, these nodes could be helpful during answer generation by providing additional context to the \gls{llm}. Consequently, we chose not to penalize this behavior, which is consistent with using the Recall metric.
+
+With regard to the Hits@10 metric, this metric allows us to understand whether the retriever ranks those contexts that are more relevant higher than those that are less relevant. For example, if the retriever includes intermediate triples in their output, the Hits@10 metric is still maximal if those triples that are actually relevant are higher on the list of outputs.
+
+\subsection{Choosing a Graph Variant}
+\label{sec:selection_planning_graph_variant}
+
+In Section~\ref{sec:contribution_templates} we introduced four different graph variants for our experiments to test the robustness of \gls{kgqa} approaches. However, due to cost reasons, we were unable to run the parameter selection process (and experiments) on all four graph variants. We therefore decided on \hyperref[enum:gv1]{\textbf{GV1}} as we believe that it is the graph variant with the most realistic modeling for real-world scenarios. The reason for this is that long paths allow the relationships between information to be captured, which preserves crucial context. Furthermore, the content is distributed by concern, which allows for extensibility in the future.
+
+\subsection{Using a Reduced KGQA Dataset}
+\label{sec:selection_planning_reduced_qa}
+
+In addition to only running the selection process on one graph variant as mentioned above, we used a reduced version of the label-based \gls{kgqa} dataset (for \hyperref[enum:gv1]{\textbf{GV1}}) during the selection process. As described in Section~\ref{sec:implementation_qa_dataset_generation}, the \gls{kgqa} datasets were created with respect to use cases and retrieval operations. Each question is also classified as either semi-typed or untyped. For almost any pairing of a use case with a retrieval operation, there are four corresponding pairs of questions and answers. When constructing the reduced dataset, we therefore selected one semi-typed question per combination to ensure that each question is representative of the larger dataset. We chose semi-typed over untyped questions, as we expected them to perform better, which is important when selecting parameters. Consequently, the reduced \gls{kgqa} dataset for graph variant \hyperref[enum:gv1]{\textbf{GV1}} contains a total of 44 questions.
+
+
+
+% We created \textbf{GV1} in such a way that it provides continued value for future use. This means that it should be easy to read and extendable for future contexts. 
+
+% We gathered the majority of our results using graph variant \hyperref[enum:gv1]{\textbf{GV1}} as we expect \hyperref[enum:gv1]{\textbf{GV1}} to be the most relevant model for real-world scenarios due to its inherent extendability and its capability to capture semantic relationships. We explicitly state in each following section which graph variants we employed for the presented results.
+
+\subsection{Large Language and Embedding Models}
+\label{sec:selection_planning_llms}
+
+As all retrievers are based on \glspl{llm}, the model selection is crucial for the performance of the retriever. Since HubLink, DiFaR, Mindmap, and FiDeLiS also work with embeddings, the selection of the embedding model is equally important.
+
+For our experiments and the selection process, we implemented the following endpoints: \emph{OpenAI} as a proprietary provider as well as \emph{Ollama} and \emph{Hugging Face} for open-source models, both of which are run locally on the server. Furthermore, when choosing which models to use, we considered the following points:
+
+\begin{enumerate}
+    \item The OpenAI endpoint is proprietary and can introduce high costs if not managed carefully. As such, we considered the associated costs of the models and how many models from OpenAI we are using.
+    \item Through testing, we found the Hugging Face models to be less optimized than the Ollama ones. This means that the amount of hardware memory resources required to run models on the Hugging Face endpoint is higher than on the Ollama endpoint, which may lead to \emph{out-of-memory} errors.
+    \item We are restricted to the hardware resources available on our server. We have $32 GB$ of GPU memory available, which is enough to fit optimized \glspl{llm} of the size of $32B$ parameters on the GPU. However, running embedding models in parallel is then not feasible. Moreover, even if a large model fits on the GPU, its response time is likely too slow to be used in our experiments. Consequently, we chose to use smaller models. 
+\end{enumerate}
+
+To help in the selection process, we reviewed popular leaderboards to assess the performance of the models available. We examined two leaderboards, both reflecting the status as of February 16, 2025. For \glspl{llm}, we examined the \emph{Chatbot Arena Leaderboard}\footnote{\url{https://huggingface.co/spaces/lmarena-ai/chatbot-arena-leaderboard} [last accessed on 16.02.2025]}, proposed by \textcite{chiang_chatbot_2024}. For embedding models, we observed the \emph{Massive Multilingual Text Embedding Benchmark (MMTEB)}\footnote{\url{https://huggingface.co/spaces/mteb/leaderboard} [last accessed on 16.02.2025]}, introduced by \textcite{enevoldsen_mmteb_2025}. A snapshot of both leaderboards at the time of review is available in our replication package \cite{schneider_replication_2025}.
+
+\subsubsection{Selection of LLMs}
+
+We selected the following \glspl{llm} for our experiments: \emph{GPT-4o}, because the model is ranked at the highest position in the Chatbot Arena leaderboard via the OpenAI endpoint. \emph{GPT-4o-mini}, ranked 24th yet delivering a strong performance at a fraction of the cost and also \emph{O3-mini}, a newly released model that inherently implements chain-of-thought reasoning \cite{wei_chain--thought_2023}. To include open-source options, we chose \emph{Qwen2.5}, which is the Ollama endpoint model that performs the best on the leaderboard. However, due to our hardware constraints, we had to reduce the model to its $14B$ parameter variant. Furthermore, we selected \emph{Llama3.1}, which represents the second-best Ollama model in the leaderboard. However, we had to scale it down to the $8B$ parameter model because of hardware constraints. We also evaluated \emph{DeepSeek-R1} \cite{deepseek-ai_deepseek-r1_2025}, a new open-source reasoning model with promising benchmarks, but its performance-to-runtime ratio was substantially worse than that of our selected models, so we excluded it.
+
+\subsubsection{Selection of Embedding Models} 
+
+For embedding models, we included \emph{text-embedding-3-large}, the largest embedding model available via the OpenAI API. With regard to open-source models, we chose the \emph{Mxbai-Embed-Large} model, which is a fast and popular open-source model ranked 41st on the MMTEB leaderboard. Because it has a quick response time with good performance, it is a good choice for the base configurations in our selection process. We also evaluated \emph{Granite-Embedding}, a new Ollama endpoint model that is not yet on the leaderboard. Still, it is a promising model that is fast and looks to have a good performance. Finally, we tested \emph{gte-Qwen2-7B-instruct}, the top-ranked MMTEB model, but it exhibited slow inference and unexpectedly poor performance. We are not entirely sure why the performance of the model was poor, but we suspect that it may be due to the fact that it was used over the Hugging Face endpoint, which uses unoptimized models. Ollama, on the other hand, provides expert optimization for their models, which makes them faster and could make them perform better. This is the reason we opted to use models from Ollama over those provided on Hugging Face.
+
+\subsection{Pre-, Post-Retrieval and Generation}
+\label{sec:selection_planning_steps}
+
+Our \gls{rag} pipeline involves four steps: 1) Pre-Retrieval, 2) Retrieval, 3) Post-Retrieval, and 4) Generation. In the following, we are going to introduce each step and its relevance to the parameter selection process.
+
+\paragraph{Pre-Retrieval:} The pre-retrieval step is responsible for the preprocessing of the input question. We implemented a question augmentation technique that prompts an \gls{llm} to improve the given question by clarifying ambiguities, incorporating related keywords or phrases that will help the retrieval system retrieve more accurate and comprehensive information, and adding nouns or noun phrases to terms to clearly indicate their types or roles. Regarding the parameter selection, we tested each retriever with and without augmentation.
+
+\paragraph{Retrieval:} The retrieval step is where both HubLink and the \gls{kgqa} baseline retrievers are applied. Each \gls{kgqa} approach has its own set of parameters relevant to the parameter selection process. For each parameter, we chose a range of values that were tested. The ranges are documented for each approach in the following sections.
+
+\paragraph{Post-Retrieval:} In the post-retrieval step, the retrieved context from the previous step is processed. We implemented a function that prompts an \gls{llm} to rerank the retrieved contexts based on the provided question. During the parameter selection process, we then tested each \gls{kgqa} approach with and without reranking.
+
+\paragraph{Generation:} The generation step is responsible for generating the final answer based on the question and the contexts that have been retrieved. The generation is done by prompting an \gls{llm} with the question and the contexts and asking it to generate an answer. However, because almost all \gls{kgqa} approaches provide an answer as part of their procedure, the generation step is skipped to retain the original answer of the approach. The only exception is \gls{difar}, for which generation prompting is used.
+
+\textit{We provide the prompts that have been used for the question augmentation, reranking, and generation procedures in Appendix \ref{sec:appendix:prompts}.}
+
+\subsection{Omitting StructGPT and ToG}
+\label{sec:selection_planning_omitted_retrievers}
+
+The use of the StructGPT \cite{jiang_structgpt_2023} and ToG \cite{sun_think--graph_2024} \gls{kgqa} approaches proved to be unsuitable in our experimental setting. Both approaches were unable to retrieve any relevant information from the graph, which is why we omitted them from the selection process and the experiments. A more detailed analysis of why these approaches are unable to answer the questions in our experiment can be found in Section~\ref{sec:discussion_on_evaluation_results}. 

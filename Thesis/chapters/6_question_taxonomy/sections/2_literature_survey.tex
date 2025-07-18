@@ -1,0 +1,71 @@
+
+\section{Literature Survey}
+\label{sec:literature_Survey}
+
+In this section, we document the literature survey that was conducted as part of the taxonomy development. A total of two iterations were performed to collect relevant candidate papers.
+
+In the following, we start by defining the inclusion and exclusion criteria that have been specified to guide the assessment of relevance for paper candidates. Then, we describe the first iteration of the literature survey. Next, we outline the Google Scholar search that was carried out to find additional paper candidates. Finally, we detail the second iteration of the literature survey.
+
+
+\subsubsection{Inclusion and Exclusion Criteria}
+Following the advice of the construction approach in Section~\ref{sec:tax_con_literature_survey}, we define the following \emph{inclusion} and \emph{exclusion} criteria to assess the relevance of papers during the survey:
+
+\paragraph{Inclusion Criteria}
+\begin{itemize}
+    \item Publications that directly or indirectly propose classes for the classification of questions.
+\end{itemize}
+
+\paragraph{Exclusion Criteria}
+\begin{itemize}
+    \item Publications for which the full text is not available.
+    \item Publications that do not contain information on classes for the classification of questions.
+    \item Publications that are not written in English.
+\end{itemize}
+
+In the following, we outline the two search iterations that were carried out. The search was stopped after two iterations in order to keep the scope of the thesis manageable. We also believe that, by the end of the second iteration, we had exhausted the pool of interesting information reachable from the seed papers and the applied search queries. This is supported by the fact that only 22 candidates are considered for a third iteration, which is noticeably lower than the 46 candidates examined during the second iteration. Therefore, if future work is interested in the continuation of the research, we recommend adding more search queries to increase the number of candidates. This continuation can be carried out seamlessly by utilizing our prepared artifacts in the replication package \cite{schneider_replication_2025}.
+
+\subsection{First Literature Survey Iteration}
+
+We populated the initial \emph{intermediate list} $\mathcal{L}_1$ with 11 publications provided by the thesis supervisor. After reviewing each paper, five publications have been excluded for not meeting the inclusion criteria or for not complying with the exclusion criteria. Through processing of the references and citations of the remaining papers, we added 19 papers to $\mathcal{L}_2$ and a total of six publications to the \emph{final list} $\mathcal{F}$. 
+
+Looking at the relevant publications, some focus on the creation of \gls{qa} classifiers. \textcite{li_learning_2002} define a two-layered hierarchical taxonomy of question types in an open-domain context and learn a hierarchical question classifier based on this taxonomy. In addition, \textcite{singhal_att_1999} present a \gls{qa} system based on a taxonomy of question types. 
+
+Instead of creating \gls{qa} classifiers, other publications focus on the creation of \gls{kgqa} datasets. \textcite{auer_sciqa_2023} present a scientific \gls{kgqa} dataset that has been created based on the \gls{orkg}. The dataset focuses on scholarly questions and includes a variety of types for the classification of questions. Furthermore, \textcite{karras_divide_2023} present a dataset of competency questions for the \gls{orkg}. Although they do not provide a question taxonomy explicitly in their paper, we extracted the question types from these instantiated questions.
+
+Specifically in the domain of \gls{se}, \textcite{shaw_writing_2003} describes key components and considerations necessary to write effective research articles, which also include classes specifically suited for research questions. Furthermore, \textcite[287-290]{easterbrook_selecting_2008} provide a comprehensive guide for selecting empirical research methods in \gls{se}. Their work includes a categorization of the kinds of research question asked in \gls{se}.
+
+\subsection{Search for Additional Relevant Paper Candidates}
+
+To find additional sources of information and avoid clustering around a single topic, we conducted a search on Google Scholar after the first iteration. Our intention with this search was to find papers that were not already covered by the seed papers, meaning that they have not already been added in the lists $\mathcal{L}_1$ or $\mathcal{F}$. The search was carried out using the following search queries, which we chose based on the objective that we defined in the planning phase:
+
+\begin{enumerate}[label=\textbf{Q\arabic*:}, leftmargin=5em]
+    \item \enquote{research questions} AND \enquote{classification} OR \enquote{taxonomy} OR \enquote{types}
+    \item \enquote{questions} AND \enquote{classification} OR \enquote{taxonomy} OR \enquote{types}
+    \item \enquote{research questions} AND \enquote{construction} OR \enquote{development} OR \enquote{formulation}
+    \item \enquote{question} AND \enquote{construction} OR \enquote{development} OR \enquote{formulation}
+    \item \enquote{software engineering} AND \enquote{research questions} OR \enquote{classification} OR \enquote{taxonomy}
+    \item \enquote{question answering} AND \enquote{classification} OR \enquote{taxonomy} OR \enquote{types}
+    \item \enquote{question answering} AND \enquote{datasets} AND \enquote{graph}
+    \item \enquote{question answering} AND \enquote{scholarly} AND \enquote{graph}
+    \item \enquote{question answering} AND \enquote{structure}
+\end{enumerate}
+
+For each query, we looked at the first 40 results that have been returned sorted by relevance. The full search process that details each paper that was added by the search queries is available in our replication package \cite{schneider_replication_2025}. In the following, we provide an overview of the query results.
+
+The first query \textbf{Q1} returned 3,620,000 results, from which we added four new candidates to $\mathcal{L}_2$. \textbf{Q2} returned 6,560,000 results. Although some publications looked interesting on the basis of their titles and abstracts, their full texts were not available. The next query \textbf{Q3} had 2,960,000 results from which we added four more candidates. Query \textbf{Q4} returned 4,560,000 results, but we excluded each paper through the application of our inclusion and exclusion criteria. Next, \textbf{Q5} returned 1,240,000 results, from which we added five publications to $\mathcal{L}_2$. In addition, one paper was found through the query that was already added to $\mathcal{L}_1$. The following query \textbf{Q6} returned 308,000 results, from which one paper was already considered in our candidates, and four more papers were added. The next query \textbf{Q7} had 76,900 results from which one paper was already considered and three more were added. Query \textbf{Q8} had the least number of results, with 5,040 papers returned, but the most relevant papers to our cause. We added three more papers to our candidates for the next iteration. Eight papers that the query returned were already in $\mathcal{L}_1$, $\mathcal{L}_2$ or $\mathcal{F}$. Finally, \textbf{Q9} had 196,000 results, from which we added four more candidates to our list. One of the returned papers was already on our list. In summary, a total of 28 new publications were added to $\mathcal{L}_2$ based on these searches.
+
+\subsection{Second Literature Survey Iteration}
+
+The second iteration started with a total of 47 papers in $\mathcal{L}_2$. After processing each paper, we added 23 publications to $\mathcal{L}_3$ for the next iteration. Furthermore, we added 21 papers to the final list $\mathcal{F}$.
+
+% Dataset Papers
+Several of the new papers added to $\mathcal{F}$ propose new datasets or benchmarks for \gls{kgqa}. \textcite{dubey_lc-quad_2019} introduce LC-QuAD, which is a large dataset of natural language questions with paraphrases along with corresponding SPARQL queries for Wikidata and DBpedia. In their work, they specifically provide a taxonomy of classes for question classification. In addition, \textcite{bordes_large-scale_2015} present the SimpleQuestions dataset, which is specifically designed for single-fact retrieval. Although they provide minimal information on question types in their work, we were able to identify some classes. \textcite{tran_comparative_2022} developed COVID-KGQA, which is a multilingual corpus related to COVID. In their work, they also evaluated the influence of a \enquote{Wh}-based question taxonomy on the performance of their dataset. \textcite{usbeck_qald-10_2023} add another \gls{kgqa} dataset with QALD-10, which is a \gls{qa} benchmarking dataset. They provide some information about the types of questions that are included in the dataset. Furthermore, \textcite{banerjee_dblp-quad_2023} created the DBLP-Quad dataset which is focused on scholarly questions. Their work also provides a taxonomy that describes the types of question that the dataset consists of. Another dataset is Hybrid-SQuAD, which has been designed to address scholarly \gls{qa} by \textcite{taffa_hybrid-squad_2024}. In addition, \textcite{jaradeh_question_2020} present a BERT-based \gls{qa} system for tabular representations in \gls{orkg}, together with the ORKG-QA benchmark, a small dataset of scholarly questions. \textcite{steinmetz_what_2021} survey the challenges for \gls{kgqa} datasets and extract the answer types from these.
+
+% Classifier Papers
+Beyond the datasets themselves, several studies focus on creating classifier models with the task of classifying questions. \textcite{bolotova_non-factoid_2022} provide a systematic categorization of non-factoid questions and their corresponding answer structures intended for open-domain \gls{qa} systems. \textcite{liu_taxonomy_2015} similarly propose a taxonomy for classifying questions on social networks such as Twitter. Furthermore, \textcite{moldovan_structure_2000} provide a comprehensive taxonomy for open-domain \gls{qa} that integrates both syntactic and semantic techniques, while \textcite{riloff_rule-based_2000} discuss a rule-based system for reading comprehension and illustrate how hand-crafted rules depend on distinct question types. Furthermore, \textcite{nguyen_ripple_2017} propose an ontology-based \gls{qa} system for the Vietnamese language, including question structures as part of their work. \textcite{chernov_linguistically_2015} describe a question interpretation module for a dialogue-based quiz \gls{qa} application.
+
+% Research Question Papers
+Another set of publications examines how to classify or formulate research questions. \textcite{dillon_classification_1984} investigates the classification of research questions as suggested by Aristotle. \textcite{ratan_formulation_2019}  emphasize how a well-structured research question facilitates effective scholarly work. In addition, \textcite{kamper_types_2020} discusses the importance of well-defined research questions in the field of healthcare. They provide and discuss a small taxonomy of question types. \textcite{sjoberg_future_2007} propose a taxonomy of archetype classes for \gls{se} research, suggesting a foundational framework for shaping and guiding empirical studies.
+
+% Other
+Other papers focus on the design and evaluation of \gls{qa} systems. \textcite{allam_question_2016} provide an overarching view of \gls{qa} and its core components, revealing how the types of questions factor into the architecture of the system. A more conceptual approach is seen in \textcite{mikhailian_learning_2009}, who introduce the ideas of Asking Point and Expected Answer Type as guiding concepts to capture the intent of the question. 

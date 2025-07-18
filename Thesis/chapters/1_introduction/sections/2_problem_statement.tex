@@ -1,0 +1,19 @@
+
+\section{Problem Statements}
+\label{sec:problem_statements}
+
+\gls{kgqa} approaches show promising results in the \gls{qa} setting. However, most approaches are applied to the general-purpose domain and are not tailored to scholarly content. Those approaches that target scholarly \gls{kgqa} often rely on \gls{sp} techniques that struggle with dynamically evolving schemas and often require training data. As a result, the potential of applying \gls{kgqa} to support effective scholarly search remains largely untapped, leading to our first problem statement:
+
+\begin{enumerate}[label=\textbf{P\arabic*}, leftmargin=2.5em]
+    \item \label{enum:p1} There is an underexplored potential in applying \gls{kgqa} in the scholarly domain to help researchers find relevant literature faster and more reliably. Initial approaches show promising results, but they struggle with evolving schemas and often require training data. This problem hinders the practical application of \gls{qa} systems on the scholarly literature search task in real-world scenarios. 
+\end{enumerate}
+
+The application of a \gls{kgqa} approach to an \gls{rkg} has the potential to help researchers in finding related literature faster and more reliably. This is made possible through the natural language capabilities of \glspl{llm} that allow researchers to ask for information of interest using natural language rather than having to manually search for it. 
+
+To assess whether such a \gls{kgqa} system is capable of answering desirable questions for literature search, a taxonomy can help. Such a taxonomy classifies questions according to their complexity and the retrieval capabilities required to arrive at the answer. Although there are existing taxonomies, such as in DBLP-QuAD \cite{banerjee_dblp-quad_2023} and SciQA \cite{dubey_lc-quad_2019} for \gls{kgqa} or the works provided by \textcite{li_learning_2002} and \textcite{singhal_att_1999} for general \gls{qa}, they often propose divergent classification schemes. Without a synthesized and domain-relevant taxonomy, it is challenging to assess whether a given system can handle the full range of question types and retrieval complexities found in scholarly search tasks. Such a taxonomy can be helpful to guide the development of robust \gls{kgqa} datasets used for benchmarking and tailored to the needs of researchers, leading to our second problem statement:
+
+\begin{enumerate}[label=\textbf{P\arabic*}, leftmargin=2.5em, start=2]
+    \item \label{enum:p2} There is a lack of a taxonomy that allows the classification of the characteristics of questions posed to \gls{kgqa} retrieval systems in the scholarly literature search task. This hinders the creation of diverse question datasets to test the retrieval capabilities of \gls{kgqa} approaches on different \gls{rkg}. 
+\end{enumerate}
+
+Using such a taxonomy and applying it to the scholarly literature search task can help in the process of creating \gls{qa} datasets to reliably determine whether a retrieval approach is able to meet its challenges.

@@ -1,0 +1,133 @@
+
+
+\section{Parameter Selection for FiDeLiS}
+\label{sec:param_selection_fidelis}
+
+In the following sections, we first introduce the base configuration and the parameter ranges that were tested in the parameter selection process for the FiDeLiS approach. Then, we discuss the results of the test runs and explain which parameter values were selected for the final configuration used in our subsequent experiments.
+
+\subsection{Base Configuration and Parameter Ranges}
+\begin{table}[t]
+    \centering
+    \begin{tabularx}{\textwidth}{l X}
+        \toprule
+        \textbf{Parameter} & \textbf{Parameter Space} \\
+        \midrule
+        \texttt{Top k} & \underline{10}, 20, 30 \\
+        \texttt{Top n} & \underline{10}, 20, 30 \\
+        \texttt{Alpha} & 0.1, \underline{0.3}, 0.6 \\
+        \texttt{Do Question Augmentation} & \underline{False}, True \\
+        \texttt{Do Reranking} & \underline{False}, True \\
+        \texttt{\gls{llm}} & \underline{gpt-4o-mini}, gpt-4o, o3-mini, \underline{Qwen2.5-14B}, Llama3.1-8B \\
+        \texttt{Embedding Model} & \underline{mxbai-embed-large}, text-embedding-3-large, \newline granite-embedding \\
+        \bottomrule
+    \end{tabularx}
+    \caption[Base Configuration and Parameter Space for FiDeLiS]{The base configuration (\underline{underlined}) and the parameter space for FiDeLiS.}
+    \label{tab:fidelis_tuning_configs}
+\end{table}
+
+
+In \autoref{tab:fidelis_tuning_configs}, the parameter values for the base configuration and the ranges of tested parameters for FiDeLiS are presented. In the following, we briefly introduce each parameter.
+
+\paragraph{Top $k$:} This parameter determines the width of the beam search at each given step. The paths that are found are pruned by relevance with an \gls{llm} to $k$ paths. As such, when the parameter value is increased, more contexts are gathered, which should increase the likelihood of finding relevant information. We started with a value of 10, as this is the maximum number of triples requested in the \gls{kgqa} dataset and increased the value from there to 20 and 30 to see how the number of paths affects performance.
+
+\paragraph{Top $n$:} This parameter determines the number of neighbor paths that are kept when expanding each current path, which determines the number of paths that are sent to the \gls{llm} for subsequent pruning. The more paths are kept, the higher the likelihood of finding relevant information. Similarly to the $k$ parameter, we started with a value of 10 and increased the value from there to see how it affects the performance.
+
+\paragraph{Alpha:} This parameter determines the weight that the path score gets in comparison to the relation and neighbor scores. The higher the number, the more weight the path score gets. We started from the proposed default value from the authors, which is 0.3, and varied the score to 0.1 and 0.6.
+
+\paragraph{Do Question Augmentation:} Same as with the other approaches, we disabled the question augmentation in the base configuration and assessed its impact on the results during testing.
+
+\paragraph{Do Reranking:} Same as with the other approaches, we disabled the reranking by default and assessed the impact of enabling the reranking in one of the test runs.
+
+\paragraph{\gls{llm}:} We expect the \gls{llm} to have a major impact on the performance of the approach as it guides the process of finding the relevant paths. We already introduced the models that were used in the parameter selection in Section~\ref{sec:selection_planning_llms}. For our base configuration we used the model \emph{gpt-4o-mini} as it is cost effective and fast.
+
+\paragraph{Embedding Model:} The embedding model is used to generate the embeddings of the keywords from the question, as well as the predicates and entities from the graph. We also expect this to have a major impact on the performance as this is the primary way of pruning the paths in each depth of the beam search. We used \emph{text-embedding-3-large} as the embedding model for our base configuration, as it allows to run multiple \gls{rag} pipelines in parallel because the model is accessed over an API and not run locally, circumventing hardware constraints. The other models that were tried are introduced in Section~\ref{sec:selection_planning_llms}.
+
+\subsection{Parameter Selection}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{llll}
+        \toprule
+        \textbf{Parameter } & \textbf{Config} & \textbf{Recall} & \textbf{Hits@10} \\
+        \midrule
+        \multirow{5}{*}{Large Language Model} 
+            & \underline{gpt-4o-mini} & 0.129 & 0.129 \\
+            & gpt-4o & 0.076 (-41.1\%) & 0.076 (-41.1\%) \\
+            & gpt-O3-mini & \textbf{0.136 (+5.4\%)} & \textbf{0.136 (+5.4\%)} \\
+            & qwen2.5:14b & 0.004 (-96.9\%) & 0.004 (-96.9\%) \\
+            & llama3.1 & 0.011 (-91.5\%) & 0.000 (-100.0\%) \\
+        \midrule
+        \multirow{3}{*}{Embedding Model} 
+            & \underline{mxbai-embed-large} & \textbf{0.129} & \textbf{0.129} \\
+            & text-embedding-3-large & 0.137 (+6.2\%) & 0.136 (+5.4\%) \\
+            & granite-embedding & 0.083 (-35.7\%) & 0.083 (-35.7\%) \\
+        \midrule
+        \multirow{4}{*}{Top k}
+            & \underline{10} & \textbf{0.129} & \textbf{0.129} \\
+            & 20 & 0.083 (-35.7\%) & 0.072 (-44.2\%) \\
+            & 30 & 0.068 (-47.3\%) & 0.053 (-58.9\%) \\
+        \midrule
+        \multirow{4}{*}{Top n}
+            & \underline{10} & \textbf{0.129} & \textbf{0.129} \\
+            & 20 & 0.118 (-8.5\%) & 0.117 (-9.3\%) \\
+            & 30 & 0.110 (-14.7\%) & 0.110 (-14.7\%) \\
+        \midrule
+        \multirow{4}{*}{Alpha}
+            & 0.1 & 0.095 (-26.4\%) & 0.095 (-26.4\%) \\
+            & \underline{0.3} & \textbf{0.129} & \textbf{0.129} \\
+            & 0.6 & 0.110 (-14.7\%) & 0.110 (-14.7\%) \\
+        \midrule
+        \multirow{2}{*}{Do Reranking} 
+            & \underline{False} & \textbf{0.129} & \textbf{0.129} \\
+            & True & 0.118 (-8.5\%) & 0.117 (-9.3\%) \\      
+        \midrule
+        \multirow{2}{*}{Do Question Augmentation} 
+            & \underline{False} & 0.129 & 0.129 \\
+            & True & 0.072 (-44.2\%) & 0.072 (-44.2\%) \\
+        \bottomrule
+    \end{tabular}
+    \caption[Results of the Parameter Selection Process for FiDeLiS]{The results for the parameter selection process of FiDeLiS. The base configuration parameter is \underline{underlined}, and the highest metric score per parameter is \textbf{bold}.}
+    \label{tab:fidelis_parameter_selection}
+\end{table}
+
+The results for 13 different configurations of the FiDeLiS approach are presented in \autoref{tab:fidelis_parameter_selection}. It is immediately apparent that the overall performance scores are considerably lower for FiDeLiS compared to the other approaches tested, indicating challenges with this specific question-answering task, which we discuss in Section~\ref{sec:discussion_on_evaluation_results}. Because the scores are rather low, it is hard to attribute the observed results to the change of the parameter or the randomness involved in the retrieval process. While we proceed with parameter selection based on the available data, the choices have been made with low confidence due to these factors. The final configuration for the FiDeLiS approach is shown in \autoref{tab:fidelis_final_config}.
+
+\paragraph{Large Language Model:} 
+Looking at the results, the choice of \gls{llm} has significantly impacted the performance of FiDeLiS. The baseline model, \emph{gpt-4o-mini}, achieved Recall and Hits@10 scores of 0.129. The \emph{gpt-o3-mini} model performed slightly better, yielding scores of 0.136 (+5.4\%). The \emph{gpt-4o} model performed considerably worse with a Recall of 0.076 (-41.1\%) and Hits@10 at 0.076 (-41.1\%). This is surprising because similar results are not reflected in the experiments of other approaches. In addition, the open-source models tested failed almost completely on the task as their scores are near zero. We assume that this can be attributed to the requirements for structured \gls{llm} outputs that the FiDeLiS approach has, which these models struggled to produce consistently. Based solely on the results of this experiment, \textbf{\emph{gpt-O3-mini}} is the best choice for the final FiDeLiS configuration.
+
+\paragraph{Embedding Model:} 
+The choice of the embedding model also influenced the results of FiDeLiS. The baseline \emph{mxbai-embed-large} model achieved the score 0.129 for both Recall and Hits@10. The \emph{text-embedding-3-large} model yielded a slightly better but almost negligible performance, with a Recall of 0.137 (+6.2\%) and Hits@10 of 0.136 (+5.4\%). In contrast, \emph{granite-embedding} performed significantly worse with a score of 0.083 (-35.7\%) on both metrics. Based on achieving the highest scores in the comparison, we selected \textbf{\emph{text-embedding-3-large}} for the final configuration.
+
+\paragraph{Top k:} 
+The baseline value of 10 resulted in a Recall and Hits@10 of 0.129. Increasing the parameter to 20 decreased Recall by 35.7\% and Hits@10 by 44.2\%, while setting the parameter to 30 resulted in an even larger drop of 47.3\% for Recall and 58.9\% for Hits@10. This indicates that increasing the width worsened the results. Therefore, we selected the value of \textbf{10} for the final configuration.
+
+\paragraph{Top n:} 
+For the top-n parameter, the baseline value of 10 achieved a Recall and Hits@10 of 0.129. Increasing the value to 20 resulted in a Recall of 0.118 (-8.5\%) and Hits@10 of 0.117 (-9.3\%), lowering the performance. Increasing the top-n parameter to 30 decreased performance again by -14.7\%. Although the absolute differences are small, given the low overall scores, the trend indicates that the baseline value performed the best. Therefore, we set the parameter value to \textbf{10} in the final configuration.
+
+\paragraph{Alpha:}
+The authors of the paper suggest using an alpha score of 0.3. It achieved a Recall and Hits@10 of 0.129. Lowering the value to 0.1 decreased the scores to 0.095 (-26.4\%) and increasing the value to 0.6 reduced the scores to 0.110 (-14.7\%). As a result of this data, we set the value to \textbf{0.3} in the final configuration.
+
+\paragraph{Do Reranking:} 
+Not using the reranking step after the retrieval yielded Recall and Hits@10 scores of 0.129. Enabling the reranking resulted in lower performance for both Recall (-8.5\%) and Hits@10 (-9.3\%). As the reranking process negatively affected the results, we \textbf{disabled} it for the final configuration of FiDeLiS.
+
+\paragraph{Do Question Augmentation:}
+Similar to the reranking step, enabling question augmentation proved detrimental to the performance. Compared to the baseline without augmentation, which has both scores at 0.129, enabling it caused a substantial drop in both Recall and Hits@10 to 0.072 (-44.2\%). Given this significant negative impact, we \textbf{disabled} the augmentation for the final configuration.
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{l l}   
+        \toprule
+        \textbf{Parameter} & \textbf{Value} \\
+        \midrule
+        \texttt{Top k} & 10 \\
+        \texttt{Top n} & 10 \\
+        \texttt{Alpha} & 0.3 \\
+        \texttt{LLM} & gpt-o3-mini \\
+        \texttt{Embedding Model} & text-embedding-3-large \\ 
+        \texttt{Do Question Augmentation} & False \\
+        \texttt{Do Reranking} & False \\
+        \bottomrule
+    \end{tabular}
+    \caption[Final Configuration of FiDeLis]{The final configuration used for subsequent experiments for the FiDeLiS \gls{kgqa} baseline approach.}
+    \label{tab:fidelis_final_config}
+\end{table}

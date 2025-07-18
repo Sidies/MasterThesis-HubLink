@@ -1,0 +1,7 @@
+
+\section{Implementation of HubLink}
+\label{sec:implementation_hublink}
+
+We implemented our proposed HubLink approach by closely following the pseudocode outlined in \autoref{ch:hublink}. For the implementation, we used object-oriented programming, distributing specific responsibilities across different classes. Moreover, to accelerate index building and partial answer generation, we implemented parallel execution using multiple threads.
+
+For the vector store, we chose Chroma\footnote{\url{https://www.trychroma.com/} [last accessed on 25.04.2025]} because it can run locally without a server, making it easy to use and only requiring the installation of a Python package. HubLink is seamlessly integrated into the \gls{sqa} framework and can be run using the configuration system provided. We implemented both proposed HubLink strategies to evaluate their performance on our \gls{kgqa} dataset.

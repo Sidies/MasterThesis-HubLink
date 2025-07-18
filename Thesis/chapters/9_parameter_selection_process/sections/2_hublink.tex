@@ -1,0 +1,226 @@
+
+\section{Parameter Selection for HubLink}
+\label{sec:param_selection_hublink}
+
+In the sections that follow, we initially outline the base configuration and the range of parameters explored during the parameter selection phase for the HubLink retriever. Subsequently, we analyze the results of the test runs and detail the parameter values chosen for the final configuration utilized in our subsequent evaluations.
+
+\subsection{Base Configuration and Parameter Ranges}
+
+\begin{table}[t]
+    \centering
+    \begin{tabularx}{\textwidth}{l X}
+        \toprule
+        \textbf{Parameter} & \textbf{Parameter Space} \\
+        \midrule
+        \texttt{Do Traversal Strategy} & \underline{False}, True \\
+        \texttt{Extract Question Components} & False, \underline{True} \\
+        \texttt{Top Paths to Keep} & \underline{10}, 20, 30 \\
+        \texttt{Number of Hubs} & \underline{10}, 20, 30 \\
+        \texttt{Filter Output Context} & False, \underline{True} \\
+        \texttt{Diversity Ranking Penalty} & 0, 0.01, \underline{0.05}, 0.1 \\
+        \texttt{Path Weight Alpha} & 0, 3, \underline{5}, 9 \\
+        \texttt{Do Question Augmentation} & \underline{False}, True \\
+        \texttt{Do Reranking} & \underline{False}, True \\
+        \texttt{\gls{llm}} & \underline{gpt-4o-mini}, gpt-4o, o3-mini, \underline{Qwen2.5-14B}, Llama3.1-8B \\
+        \texttt{Embedding Model} & \underline{mxbai-embed-large}, text-embedding-3-large, granite-embedding \\
+        \bottomrule
+    \end{tabularx}
+    \caption[Base Configuration and Parameter Space for HubLink]{The base configuration (\underline{underlined}) and the parameter space for HubLink.}
+    \label{tab:hublink_tuning_configs}
+\end{table}
+
+
+In \autoref{tab:hublink_tuning_configs}, the parameter values for the base configuration and the ranges of parameters tested for HubLink are presented, which we will discuss in the following:
+
+\paragraph{Do Traversal Strategy:} The parameter determines whether the approach can use a provided topic entity that accompanies the question. When set to \texttt{True}, the \emph{graph traversal} strategy is employed, using the topic entity as the starting point in the graph. However, for the base configuration of the selection process, we used the \emph{direct retrieval} strategy because this strategy is faster, allowing us to test more configurations during the selection process.
+
+\paragraph{Extract Question Components:} This parameter specifies whether the component extraction process is used. If used, the question components are extracted using an \gls{llm} and utilized in addition to the question during the search for relevant hubs. This technique is integral to the HubLink retriever and has the purpose of enhancing the performance of queries that have multiple constraints. To evaluate our design decision to add this extraction, we tested the difference in performance during the selection process when the extraction is enabled or disabled. For the base configuration, it remains enabled.
+
+\paragraph{Filter Output Context:} When generating partial answers, the hub paths are used. Each path can include multiple triples that form the path. To determine which of the triples are actually needed for the answer, we added a filtering based on an \gls{llm}. During the selection process, we tested our design decision of adding this filtering step by disabling it in one execution. However, for the base configuration the filtering remains enabled, as it is an integral part of the HubLink approach.
+
+\paragraph{Top Paths to Keep:} This parameter defines the number of paths retained per hub. Increasing this value allows more context to be used during partial answer generation, which can improve performance, but may also introduce noise. We set this value at 10, as this is the maximum number of triples requested in the applied \gls{kgqa} dataset. We also increased the value to 20 and 30 to test the effect of allowing more context.
+
+\paragraph{Number of Hubs:} The parameter specifies how many hubs are used to generate partial answers. A higher value increases the chances of finding relevant context, but also increases runtime and cost. We set 10 as the starting point and varied the values in increments of 10 up to 30 to assess the impact of additional context on retrieval performance. As mentioned previously, the starting value is based on the maximum number of triples requested from the \gls{kgqa} dataset.
+
+\paragraph{Diversity Ranking Penalty:} This parameter influences the overall score of each hub and determines the emphasis on diversity among the hub paths during reranking. This technique is a core part of HubLink and was added during the design phase to decrease the likelihood of hubs being pruned because they have a high diversity of scores. The higher the value, the more diversity is tolerated. During development, we found that the value of 0.05 provides satisfactory results, which is why we set it as the default. We further tested the values of 0, 0.01 and 0.1 to see how they change the results.
+
+\paragraph{Path Weight Alpha:} During the design of HubLink, we added weighting when calculating the final scores of the hubs before pruning them, which in theory should reduce the likelihood of pruning hubs that have unevenly distributed hub path scores. During development, we found the value of 5 to provide satisfactory results, which is why we set it as the value in the base configuration. We also tested the values 0, 3, and 9.
+
+\paragraph{Do Question Augmentation:} This parameter determines whether the question is augmented before it is provided to the \gls{kgqa} approach. It is not part of the HubLink retriever itself but rather a pre-retrieval step that is applied before sending the question to the retriever. We disabled it by default and assessed its impact on the results during the parameter selection process.
+
+\paragraph{Do Reranking:} The reranking process is also not part of the approach but rather a post-retrieval step that is applied on the list of contexts returned by the approach. In theory, it should improve the results of rank-based scores, as those contexts that are relevant are put at the top of this list. However, if the approach is already good at ranking by relevance, adding this step should not have much of an effect. 
+
+\paragraph{\gls{llm}:} The \gls{llm} is used to generate partial answers, filter the context, convert paths to texts, and generate the final answer. The models selected for the parameter selection process were already introduced in Section~\ref{sec:selection_planning_llms}. For our base configuration, we used two models, \emph{gpt-4o-mini} and \emph{Qwen2.5-14B}, to reduce the runtime of the parameter selection process by running multiple configurations in parallel. Therefore, the embedding models and the other \glspl{llm} have been tested with the \emph{Qwen2.5-14B} model as the base, and the remaining parameters have been run with \emph{gpt-4o-mini} as the base. 
+
+\paragraph{Embedding Model:} The embedding model is used to transform the question and the hubs into vectors. The models that we used during the selection process are introduced in Section~\ref{sec:selection_planning_llms}. Regarding the base configuration, we used the \emph{mxbai-embed-large} model because it is cost-efficient and fast.
+
+
+
+% \subsection{Static Parameters}
+
+% In addition to the parameters that were varied during the parameter selection process, other parameters are not relevant for selection and were static. We explain them in the following.
+
+% \paragraph{Max Workers:} This parameter determines the number of threats to use during the indexing and partial answer generation. It depends on the environment in which the retriever is used and must be set as such. For our experiments we set this number to 8.
+
+% \paragraph{Compare Hubs with Same Hop Amount:} This parameter is only relevant for the traversal strategy as it determines during the retrieval process, whether the hubs that are compared with each other need to have the same amount of hops from the topic entity. Because the \gls{orkg} has a predefined static structure with no unexpected intermediate nodes, the value is set to false.
+
+% \paragraph{Indexing Root Entity Types:} This parameter determines the types of root entities that are used as entry points in the graph to start the indexing process. We are not setting this parameter as we are providing the IDs of the entities directly with the next parameter.
+
+% \paragraph{Indexing Root Entity IDs:} This parameter determines the root entities that are used as entry points in the graph to start the indexing process. For our use case, we set the node of the research field of \emph{Software Architecture and Design} as the indexing entry point, since all our experimentation data are stored within this research field.
+
+% \paragraph{Force Index Update:} With this parameter, it is possible to force the indexing to take place during the initialization of the retriever. This is helpful to capture changes in the graph but it is not interesting parameter for testing.
+
+% \paragraph{Check Updates During Retrieval:} Allows to update those Hubs that are touched during the retrieval process and update their index without having to reindex the whole graph. This is also a helpful parameter to capture changes in the graph, but not an interesting parameter to test.
+
+% \paragraph{Max Hub Path Length:} This parameter controls the maximum length of the hub paths. In the \gls{orkg}, we want each publication node to be a hub. Because we know the structure of each publication and their paths prior, we know that there are no cases where the length exceeds a point where it would be relevant for restriction. As such, we do not restrict the length of the paths.
+
+% \paragraph{Hub Types:} This parameter specifies the types of nodes to be considered as roots for a hub. For our application, which involves retrieving and comparing paper information, we assign this parameter to the type of paper as defined in the \gls{orkg}.
+
+% \paragraph{Hub Edges:} This is another parameter to define which node in the graph should act as a root for a hub. In this case, this parameter defines a threshold that determines a node as a hub if their outbound edge count exceeds the value. In our experiment, we are already setting the roots of the hubs by type, which is why we do not need to set this parameter.
+
+% \paragraph{Max Level:} In the traversal strategy, answer generation is performed in levels. First, hubs of the current level are searched and then partial answers are generated for each hub. If no answers are generated, the next level is searched. This parameter determines the maximum number of levels in the search. Because of the subgraph structure of the ORKG that we are using for our experiments, we know that there are no Hubs that are reached on the second level. As such, we set this parameter to 1.
+
+% \paragraph{Use Source Documents:} This parameter determines whether the HubLink retriever linking process is used. Because we used the label-based dataset in this experiment, we did not use the source linking process. This is because the data that are asked for in the questions are on such an abstraction level that the answer cannot be found in the full texts of the publication.
+
+% \paragraph{Distance Metric:} The distance metric determines how the similarity score between the embeddings in the vector store and the question is calculated. Three distance metrics are supported: cosine, inner-product and l2 distance. In our preliminary testing we tried each of those variants and found them to perform exactly the same. Therefore, we chose \emph{cosine} as the default distance metric due to its popularity.
+
+
+\subsection{Parameter Selection}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{llll}
+        \toprule
+        \textbf{Parameter} & \textbf{Value} & \textbf{Recall} & \textbf{Hits@10} \\
+        \midrule
+        \multirow{5}{*}{Large Language Model} 
+            & \underline{gpt-4o-mini} & 0.512 & 0.372 \\
+            & gpt-o3-mini & 0.608 (+18.7\%) & \textbf{0.499 (+34.1\%)} \\
+            & gpt-4o & \textbf{0.615 (+20.1\%)} & 0.481 (+29.3\%) \\
+            & Qwen2.5-14B & 0.448 (-12.5\%) & 0.367 (-1.3\%) \\
+            & Llama3.1-8B & 0.374 (-27.0\%) & 0.259 (-30.4\%) \\
+        \midrule
+        \multirow{3}{*}{Embedding Model}
+            & \underline{mxbai-embed-large} & 0.448 & 0.367 \\
+            & text-embedding-3-large & \textbf{0.555 (+23.9\%)} & \textbf{0.494 (+34.6\%)} \\
+            & granite-embedding & 0.490 (+9.4\%) & 0.405 (+10.4\%) \\
+        \midrule
+        \multirow{4}{*}{Path Weight Alpha}
+            & 0 & 0.391 (-23.6\%) & 0.248 (-33.3\%) \\
+            & 3 & 0.491 (-4.1\%) & 0.340 (-8.6\%) \\
+            & \underline{5} & \textbf{0.512} & \textbf{0.372} \\
+            & 9 & \textbf{0.505} (-1.4\%) & 0.343 (-7.8\%) \\
+        \midrule
+        \multirow{4}{*}{Diversity Ranking Penalty}
+            & 0.00 & 0.338 (-34.0\%) & 0.265 (-28.8\%) \\
+            & 0.01 & 0.412 (-19.5\%) & 0.323 (-13.2\%) \\
+            & \underline{0.05} & \textbf{0.512} & \textbf{0.372} \\
+            & 0.10 & 0.474 (-7.4\%) & 0.328 (-11.8\%) \\
+        \midrule
+        \multirow{3}{*}{Top Paths to Keep}
+            & \underline{10} & \textbf{0.512} & \textbf{0.372} \\
+            & 20 & 0.438 (-14.5\%) & 0.301 (-19.1\%) \\
+            & 30 & 0.247 (-51.8\%) & 0.155 (-58.3\%) \\
+        \bottomrule
+    \end{tabular}
+    \caption[Results of the Parameter Selection Process for HubLink Part 1]{The results of the parameter selection process for HubLink. The base configuration parameter is \underline{underlined}, and the highest metric score per parameter is \textbf{bold}. This is the first out of two tables that display the results.}
+    \label{tab:hublink_parameter_selection_part_1}
+\end{table}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{l l l l}
+        \toprule
+        \textbf{Parameter} & \textbf{Value} & \textbf{Recall} & \textbf{Hits@10} \\
+        \midrule
+        \multirow{3}{*}{Number of Hubs} 
+            & \underline{10} & 0.512 & 0.372 \\
+            & 20 & 0.517 (+1.0\%) & 0.325 (-12.6\%) \\
+            & 30 & \textbf{0.554 (+8.2\%)} & \textbf{0.356 (-4.3\%)} \\
+        \midrule
+        \multirow{2}{*}{Output Filtering} 
+            & \underline{True}  & 0.512 & \textbf{0.372} \\
+            & False & \textbf{0.631 (+23.2\%)} & 0.191 (-48.7\%) \\
+        \midrule
+        \multirow{2}{*}{Extract Question Components} 
+            & \underline{True} & \textbf{0.512} & 0.372 \\
+            & False & 0.440 (-14.1\%) & \textbf{0.375 (+0.8\%)} \\
+        \midrule
+        \multirow{2}{*}{Do Question Augmentation} 
+            & True & 0.500 (-0.2\%) & 0.333 (-8.8\%) \\
+            & \underline{False} & \textbf{0.512} & \textbf{0.372} \\
+        \midrule
+        \multirow{2}{*}{Do Reranking} 
+            & True & 0.497 (-2.8\%) & \textbf{0.334 (-10.4\%)} \\
+            & \underline{False} & \textbf{0.512} & 0.372 \\
+        \midrule
+        \multirow{2}{*}{Do Traversal Strategy} 
+            & True & \textbf{0.559 (+9.2\%)} & \textbf{0.422 (+13.4\%)} \\
+            & \underline{False} & 0.523 & 0.395 \\
+        \bottomrule
+    \end{tabular}
+    \caption[Results of the Parameter Selection Process for HubLink Part 2]{The results of the parameter selection process for HubLink. The base-configuration parameter is \underline{underlined}, and the highest metric score per parameter is \textbf{bold}. This is the second out of two tables that display the results.}
+    \label{tab:hublink_parameter_selection_part_2}
+\end{table}
+
+We ran a total of 22 configurations that we split into two base configurations to run them in parallel. The final configuration parameters are shown in \autoref{tab:hublink_final_config} and the results of the parameter selection process are presented in \autoref{tab:hublink_parameter_selection_part_1} and \autoref{tab:hublink_parameter_selection_part_2}, which we will discuss in the following:
+
+\paragraph{Large Language Model:} 
+Comparing the five \glspl{llm}, we observe a strong correlation between the capability of the model and the retrieval performance. The \emph{gpt-4o-mini} model achieved a Recall of 0.512 and a Hits@10 of 0.372. Larger and more advanced models like \emph{gpt-o3-mini} and \emph{gpt-4o} significantly outperformed the baseline, achieving Recall improvements of +18.7\% and +20.1\% respectively, and Hits@10 improvements of +34,1\% and +29.3\%. The results also indicate that the open-source models, \emph{Qwen2.5-14B} and particularly \emph{Llama3.1-8B}, have considerably lower performance. This suggests that the capabilities of the \gls{llm} have a high impact on the effectiveness of HubLink, and potentially even better results could be achieved with larger or more capable future models. Although \emph{gpt-4o} achieved the highest Recall (+20.1\%), \emph{o3-mini} reached the highest Hits@10 score (+34.1\%). Therefore, both are strong choices for the final configuration. We selected \textbf{\emph{o3-mini}} for our final configuration because it is the newer model according to its release date.
+
+\paragraph{Embedding Model:} 
+For the embedding model comparison, the baseline \emph{mxbai-embed-large} resulted in a Recall of 0.448 and Hits@10 of 0.367. Switching to \emph{text-embedding-3-large} produced substantial improvements across both metrics, boosting Recall by +23.9\% to 0.555 and Hits@10 by +34.6\% to 0.494. The \emph{granite-embedding} model also outperformed the baseline (+9.4\% Recall, +10.4\% Hits@10) but was clearly inferior to \emph{text-embedding-3-large}. This indicates that the choice of embedding model has a major impact on the performance of HubLink. Based on these results, we selected \textbf{\emph{text-embedding-3-large}} as the embedding model for the final configuration.
+
+\paragraph{Path Weight Alpha:} 
+Setting alpha to 0 resulted in a drastic performance drop (-23.6\% Recall, -33.3\% Hits@10), indicating that path weighting is essential. The baseline value of \textbf{5} achieved the highest scores for both Recall (0.512) and Hits@10 (0.372). Increasing alpha further to 9 led to a slight decrease in performance compared to the baseline. This suggests that while weighting paths is beneficial, excessive weighting might negatively impact the results. Consequently, we retained the baseline value of \textbf{5} for the alpha parameter.
+
+\begin{sloppypar}
+\paragraph{Diversity Ranking Penalty:} 
+The results for the diversity penalty mirror those of the \texttt{PathWeightAlpha} parameter. Disabling the diversity penalty (0.00) resulted in a drastic performance drop (-34.0\% Recall, -28.8\% Hits@10). The baseline value of \textbf{0.05} yielded the best results, achieving the highest Recall (0.512) and Hits@10 (0.372) among the values tested. Increasing the penalty to 0.10 resulted in lower scores compared to 0.05. This suggests that while diversification is beneficial, an excessive penalty might negatively impact results. We therefore selected \textbf{0.05} for the diversity penalty.
+\end{sloppypar}
+
+\paragraph{Top Paths to Keep:} 
+The baseline for the number of paths that are kept per hub was set to 10. Increasing the number of paths to 20 or 30 led to a significant drop in performance. Keeping 20 paths reduced Recall by 14.5\% and Hits@10 by 19.1\%, while keeping 30 paths caused a drastic drop (-51.8\% Recall, -58.3\% Hits@10). The baseline value of \textbf{10} yielded the best performance, which is unexpected because, in theory, adding more paths provides more context for each hub when generating partial answers, increasing the chance of retrieving relevant information from the graph. We hypothesize that this discrepancy is due to the use of the \emph{gpt-4o-mini} model during execution. It is likely that the model was overwhelmed by the large volume of context, causing relevant information to be lost because of additional noise in the data. As a result, the model may have struggled to extract key facts from the data. It remains to be tested whether the results persist with a different \gls{llm} that handles large contexts more effectively. However, for our final configuration, we rely on the current results rather than assumptions and set the number of paths to 10.
+
+\begin{sloppypar}
+\paragraph{Number of Hubs:} 
+The effect of increasing the number of hubs contrasts with the \texttt{TopPathsToKeep} parameter. While keeping more paths per hub degraded performance, increasing the number of hubs from the baseline of 10 improved Recall (+1.0\% for 20 hubs, +8.2\% for 30 hubs). This supports the intuition that providing more context increases the likelihood of retrieving relevant information. We hypothesize that this works better than increasing paths per hub because the context is processed sequentially by the \gls{llm} rather than simultaneously. However, the Hits@10 metric showed a less positive trend, decreasing for 20 hubs (-12.6\%) and remaining slightly below the baseline even for 30 hubs (-4.3\%). This suggests a trade-off where more hubs lead to more relevant information overall, increasing the Recall, but this might make it slightly harder to rank the relevant contexts within the top 10. For our final configuration, we prioritized the notable Recall improvement and selected \textbf{30} hubs, accepting the minor Hits@10 decrease relative to the 10-hub baseline.
+\end{sloppypar}
+
+\paragraph{Output Filtering:} 
+The output filtering step has the aim of reducing the HubLink output to the triples that are actually relevant to the question. Without filtering, HubLink returns all triples from the paths used in the final answer, including many that are not useful. The baseline configuration had filtering enabled, yielding Recall 0.512 and Hits@10 0.372. Disabling filtering resulted in a substantial Recall increase to 0.631 (+23.2\%) but caused a drastic drop in Hits@10 to 0.191 (-48.7\%). This clearly demonstrates the function of the filter as removing irrelevant triples boosts precision (increasing Hits@10) at the cost of potentially removing some relevant triples (reducing the Recall). Because we were using \emph{gpt-4o-mini} for the baseline, we hypothesize that its limitations might contribute to removing relevant triples alongside irrelevant ones. Given that our final configuration uses the more capable \emph{o3-mini} model, we anticipate its filtering performance will be improved. Therefore, despite the Recall drop observed with the baseline model, we \textbf{enabled} output filtering in the final configuration, prioritizing cleaner, more precise results.
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{l l}   
+        \toprule
+        \textbf{Parameter} & \textbf{Value} \\
+        \midrule
+        \texttt{LLM} & gpt-o3-mini \\
+        \texttt{Embedding Model} & text-embedding-3-large \\ 
+        \texttt{Do Traversal Strategy} & True \\
+        \texttt{Extract Question Components} & True \\
+        \texttt{Top Paths to Keep} & 10 \\
+        \texttt{Number of Hubs} & 30 \\
+        \texttt{Filter Output Context} & True \\
+        \texttt{Diversity Ranking Penalty} & 0.05 \\
+        \texttt{Path Weight Alpha} & 5 \\ 
+        \texttt{Do Question Augmentation} & False \\
+        \texttt{Do Reranking} & False \\
+        \bottomrule
+    \end{tabular}
+    \caption[Final Configuration for HubLink]{The final configuration used in subsequent experiments for our proposed HubLink approach.}
+    \label{tab:hublink_final_config}
+\end{table}
+
+\paragraph{Extract Question Components:} 
+The goal of extracting components from questions is to help the retriever better handle complex queries with multiple constraints. Enabling this component extraction resulted in a Recall of 0.512 and Hits@10 of 0.372. Disabling it caused a substantial drop in Recall to 0.440 (-14.1\%), although it yielded a marginally higher Hits@10 score of 0.375 (+0.8\%). However, the significant impact on Recall outweighs the negligible gain in Hits@10. Therefore, we conclude that component extraction is crucial for effectiveness and \textbf{enabled} the extraction for the final configuration.
+
+\paragraph{Do Question Augmentation:} 
+Disabling the prior augmentation of the question yielded a Recall 0.512 and Hits@10 0.372. Enabling the augmentation had a negligible impact, with Recall dropping to 0.500 (-0.2\%) but resulted in a noticeable decrease in the Hits@10 score to 0.333 (-8.8\%). Although question augmentation might be more beneficial for less structured or untyped queries, our experiments on the typed questions in the reduced \gls{qa} dataset did not show an advantage. Based on the observed decrease in ranking performance without any Recall benefit, we \textbf{disabled} the augmentation for the final configuration.
+
+\paragraph{Do Reranking:} 
+The inclusion of a ranking step, where the \gls{llm} reorders the initially retrieved paths based on relevance to the question, should improve the Hits@10 score. The results show that disabling the ranking resulted in a Recall of 0.512 and Hits@10 of 0.372. Enabling the reranker unexpectedly led to slightly worse performance on both metrics. Recall decreased slightly to 0.497 (-2.8\%), and Hits@10 decreased to 0.334 (-10.4\%). These results contradict the expectation that reranking should primarily boost Hits@10. The observed degradation suggests either that the specific reranking implementation or model used was ineffective for this task, or potentially that the initial ranking provided by HubLink was already close to optimal, and the reranking step introduced noise. Given that enabling reranking demonstrated worse performance, we \textbf{disabled} it for the final configuration.
+
+\paragraph{Traversal Strategy:} 
+This parameter switches HubLink from the \emph{direct retrieval strategy} to the \emph{graph traversal strategy}. The former achieved a Recall of 0.523 and Hits@10 of 0.395, while the latter achieved a Recall of 0.559 (+9.2\%) and Hits@10 of 0.422 (+13.4\%). Given these results, we observe a small increase in performance using the traversal strategy. This would suggest that it is helpful to provide a topic entity that guides the retrieval procedure. However, we argue that the \gls{kg} that we are using for the experiments is too small to gather significant results. It remains to be tested on a large graph whether the retrieval substantially improves with the traversal strategy. For our final configuration, we \textbf{enabled} the traversal strategy due to the improvement in performance on our data.

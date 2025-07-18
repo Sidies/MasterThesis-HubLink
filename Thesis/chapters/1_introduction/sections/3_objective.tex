@@ -1,0 +1,35 @@
+
+% The primary objective of this thesis is to design, implement, and evaluate a new training-free and schema-agnostic retrieval approach that takes advantage of the inherent structure of \glspl{rkg} to improve the quality and reliability of \gls{qa} systems for literature search tasks.
+
+% Although HubLink is designed to be domain-agnostic, this work focuses on its application within the scholarly domain, using the \gls{orkg} as a representative \gls{rkg} for empirical evaluation.
+
+% HubLink is built on the insight that \glspl{rkg} organize knowledge around publication nodes, forming natural \enquote{hubs} of semantically related information. By exploiting this structure and incorporating source diversity during retrieval, HubLink addresses key challenges in scholarly question answering particularly those involving multiple constraints and the need to aggregate evidence from various sources.
+
+
+\section{Objective and Research Questions}
+
+After discussing the potential benefits and importance of utilizing \gls{kgqa} to enhance the search of scholarly literature and addressing the issues with existing approaches (\textbf{P1}) together with the evaluation of \gls{kgqa} retrieval systems (\textbf{P2}), we establish the research objective of this thesis as follows:
+
+\begin{tcolorbox}
+    \textbf{Research Goal:} Design a training-free and schema-agnostic retrieval approach leveraging \glspl{rkg} and pre-trained \glspl{llm} that enhances the quality, transparency, and reliability of context retrieval in \gls{kgqa} systems specifically tailored to scholarly literature search tasks. Additionally, construct a taxonomy for classifying questions posed to \gls{kgqa} retrieval systems to support the assessment of capabilities and performance of such systems in the scholarly literature task.
+\end{tcolorbox}
+
+A new retrieval approach that does not rely on a \gls{kg} schema and is training-free would benefit the exploration of the potential that such systems can have in literature search tasks. This addresses the first problem, \textbf{P1}. Furthermore, a taxonomy for characterizing questions in \gls{kgqa} retrieval can help to guide the construction of \gls{kgqa} datasets used for benchmarking retrieval systems. This addresses the second problem, \textbf{P2}.
+
+To achieve this goal, the thesis is guided by research questions. The first question concerns the design and technical foundation of the new \gls{kgqa} retrieval approach:
+
+\begin{enumerate}[label=\textbf{RQ\arabic*}, leftmargin=2.5em]
+    \label{enum:rq1}
+    \item How can a schema-agnostic retrieval algorithm leveraging an \gls{rkg} and a pre-trained \gls{llm} be developed for the \gls{kgqa} setting to effectively integrate diverse scholarly sources, adapt to evolving schemas and account for the provenance of information during retrieval without relying on training data?
+\end{enumerate}
+
+This research question addresses the first problem (\hyperref[sec:problem_statements]{\textbf{P1}}) as it directly targets the limitations of current scholarly \gls{kgqa} approaches. By developing a schema-agnostic and training-free approach, it explores the potential of retrieval without relying on the schema of the \gls{rkg} and thus is scalable and dynamically adaptable. Furthermore, without the requirement of a training dataset, the approach becomes more conveniently applicable and thus more relevant to apply in a real-world use case. Moreover, accounting for the provenance of information during inference is a critical aspect of scholarly literature search, as it supports the generation of complete, transparent, and balanced results. Provenance awareness helps prevent over-reliance on a single source and encourages the integration of diverse perspectives, ensuring that results capture complementary aspects that may not be covered by only one source alone.
+
+The second question is related to understanding the nature of questions targeting scholarly \gls{kgqa} systems. Since the search for scholarly literature covers a wide range of information needs, it is important to characterize these needs and ensure that the evaluation datasets reflect their diversity, which can be achieved using a taxonomy. This motivates the following question:
+
+\begin{enumerate}[label=\textbf{RQ\arabic*}, leftmargin=2.5em, start=2]
+    \label{enum:rq2}
+    \item How can existing general \gls{qa} and \gls{kgqa} taxonomies be synthesized and extended to form a comprehensive taxonomy tailored to define the characteristics of questions posed to \gls{kgqa} retrieval systems for the literature search task?
+\end{enumerate}
+
+The second research question addresses the second problem (\hyperref[sec:problem_statements]{\textbf{P2}}). A taxonomy of this kind offers insight into the extent of capabilities that a \gls{kgqa} approach has in answering questions posed with regard to the scholarly literature search task. In our thesis, we apply this taxonomy to create \gls{kgqa} datasets that allow the evaluation of our proposed \gls{kgqa} approach and understand its capabilities.

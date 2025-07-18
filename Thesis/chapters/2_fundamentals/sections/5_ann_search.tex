@@ -1,0 +1,12 @@
+
+\section{Approximate Nearest Neighbor (ANN) Search}
+\label{sec:fundamentals_ann_search}
+
+\acrfull{ann} search is a technique used to find data points that are likely close or similar to a given query point in a high-dimensional vector space. Unlike \gls{enn} search, which guarantees finding the absolute closest data points, \gls{ann} search trades some accuracy for significantly improved efficiency and speed \cite{douze_faiss_2024,wu_retrieval-augmented_2024}. The core idea behind \gls{ann} search is to preprocess the data into an indexing structure that tries to achieve a trade-off between search quality and search efficiency \cite{wu_retrieval-augmented_2024}. 
+% Techniques include choosing appropriate distance metrics and advanced \gls{ann} indexing algorithms.
+
+To understand the value of \gls{ann} search, it is helpful to first consider \gls{enn} search. Given a dataset of vectors ${x_i, i=1..N} \subset \mathbb{R}^d$ and a query vector $q \in \mathbb{R}^d$, a typical \gls{enn} search involves finding the index $n$ of the database vector $x_n$ that minimizes the distance to $q$, typically using a distance metric such as the Euclidean Distance (L2). Other popular similarity metrics are cosine similarity or inner product similarity, for which the objective would be to maximize the score. \cite{douze_faiss_2024}
+
+A straightforward technique for \gls{enn} search is brute force, which involves calculating the distance between the query vector $q$ and every single database vector $x_i$ and then identifying one or more vectors with the smallest distance. The amount of vectors is often denoted by a $k$ parameter. However, this process is slow on large datasets where \gls{ann} search comes in handy. Here, database vectors are preprocessed in a specialized indexing structure to allow for quickly narrowing down the search space at query time. \cite{douze_faiss_2024,wu_retrieval-augmented_2024}
+
+Various different \gls{ann} indexing techniques exist. \emph{Inverted File System with Product Quantization (IVFPQ)} involves the partitioning of the vector space by applying clustering algorithms to then use fine-grained quantization to compress the vectors. \emph{The Hierarchical Navigable Small World (HNSW)} is a technique that builds hierarchical graph structures where each node represents a vector. \emph{Tree-based Indexing} organizes the vectors into hierarchical tree-like structures to separate the vector space. \cite{wu_retrieval-augmented_2024}

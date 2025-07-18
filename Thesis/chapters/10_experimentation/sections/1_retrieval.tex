@@ -1,0 +1,517 @@
+
+
+
+\section{Evaluating Retrieval Quality}
+\label{sec:evaluating_relevance_and_robustness_of_retrieved_contexts}
+
+In this section, we present our evaluation results addressing retrieval target \hyperref[sec:evaluation_goals_and_metrics]{\textbf{ReT1}}. We begin by analyzing the retrieval performance of HubLink in comparison to the baseline approaches, with a focus on the accuracy and relevance of the retrieved contexts. Subsequently, we examine the impact that the chosen retrieval operation has on overall retrieval performance. Following this, we investigate the applicability and performance of HubLink in various scholarly literature search use cases. We then analyze the influence of type information, when present in the input question, on retrieval outcomes. Next, we assess the robustness of HubLink to structural and lexical variations within the graph. Furthermore, we analyze the relationship between retrieval performance metrics, runtime, and \gls{llm} token efficiency. Finally, we evaluate the environmental impact of HubLink relative to the baseline \gls{kgqa} approaches.
+
+\subsection{Improvement of Retrieval Accuracy and Relevance}
+\label{sec:results_retrieval_relevance_and_accuracy}
+
+To effectively assist researchers in scholarly literature searches, a \gls{kgqa} approach must be capable of extracting a broad range of relevant information from the \gls{rkg} that matches a given question. In the following, we analyze the performance of our proposed HubLink approach in comparison to established \gls{kgqa} approaches, specifically focusing on the accuracy and relevance of the retrieved contexts. Here, accuracy refers to the extent to which the approach is capable of fetching the desired triples from the graph, while relevance pertains to the degree to which the retrieved triples correspond to the golden triples. 
+
+The evaluation results in \autoref{tab:q11:relevance_and_accuracy} demonstrate that HubLink substantially improves the accuracy and relevance of retrieved triples compared to established \gls{kgqa} baseline methods. In the following, we first discuss the results regarding the different HubLink variants before we focus on the comparison of the baseline approaches.
+
+\begin{table}[t]
+\centering
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llllllll@{}}
+\toprule
+Approach & Recall & Precision & F1 & Hits@10 & MAP@10 & MRR@10 & EM@10 \\ 
+\midrule
+HubLink (T) & \textbf{0.754} & 0.246 & 0.328 & \textbf{0.512} & \textbf{0.299} & 0.502 & \textbf{0.298}  \\ 
+HubLink (D) & 0.709 & 0.221 & 0.277 & 0.436 & 0.259 & 0.486 & 0.273 \\ 
+HubLink (F) & 0.649 & \textbf{0.278} & \textbf{0.344} & 0.451 & 0.267 & 0.473 & 0.290 \\ 
+HubLink (O) & 0.559 & 0.144 & 0.188 & 0.408 & 0.272 & \textbf{0.526} & 0.222 \\ 
+DiFaR & 0.352 & 0.011 & 0.022 & 0.208 & 0.151 & 0.297 & 0.104 \\ 
+Mindmap & 0.119 & 0.030 & 0.045 & 0.015 & 0.002 & 0.013 & 0.007 \\ 
+FiDeLiS & 0.093 & 0.053 & 0.063 & 0.093 & 0.063 & 0.103 & 0.053 \\ 
+\bottomrule
+\end{tabular}%
+% }
+\caption[Comparative Retrieval Performance]{Comparative overall retrieval performance of HubLink and baseline \gls{kgqa} approaches on graph variant \hyperref[enum:gv1]{\textbf{GV1}} of the \gls{orkg}. All presented metrics are macro-averaged.}
+\label{tab:q11:relevance_and_accuracy}
+\end{table}
+
+\subsubsection{Analyzing HubLink Variants}
+
+The HubLink variant (T), which employs the graph traversal strategy, has achieved the highest scores among all variants. With regard to variant (D), which uses the direct retrieval strategy, we observe a decrease in performance. Specifically, the F1 score for HubLink (D) decreases by approximately 15.55\% (from 0.328 to 0.277), and MAP@10 shows a reduction of approximately 13.38\% (from 0.299 to 0.259). The MRR@10 metric experiences a smaller decrease of approximately 3.19\% (from 0.502 to 0.486), while EM@10 drops by approximately 8.39\% (from 0.298 to 0.273). In particular, the Hits@10 score sees a substantial decrease of approximately 14.84\% (from 0.512 to 0.436) for HubLink (D) compared to HubLink (T). These results suggest that, for our data, the graph traversal strategy is more effective. Although the direct retrieval strategy (HubLink (D)) offers the operational advantage of not requiring a predefined topic entity, this convenience comes at the cost of reduced retrieval efficacy. While we hypothesize that the size of the tested \gls{rkg} may not fully represent the differences between the strategies, the observed performance degradation with direct retrieval could already indicate potential challenges that could be amplified on larger and more complex graph structures. This aspect warrants further investigation in future work.
+
+The HubLink (F) variant, designed for reduced runtime, presents a notable trade-off. Compared to HubLink (T), it shows a lower Recall (0.649 versus 0.754) and Hits@10 (0.451 versus 0.512). However, HubLink (F) achieves the highest Precision (0.278) and F1 score (0.344) among all evaluated variants, surpassing even HubLink (T) (Precision 0.246, F1 0.328). In our opinion, the improved Precision score is attributed to the reduced number of triples that this variant retrieves. This is because, by retrieving fewer triples overall, the proportion of truly relevant triples among those retrieved can be higher, thus increasing Precision. The results also underscore the significant role that the number of considered hubs plays in retrieval performance.
+
+The open-source variant HubLink (O) generally shows lower performance in most metrics compared to the other HubLink configurations, as it records the lowest metric scores across all variants. This outcome is consistent with previous observations from the parameter selection process (see Section~\ref{tab:hublink_parameter_selection_part_1}). This suggests that the capability of the applied \gls{llm} has a substantial impact on the retrieval performance. An interesting exception is MRR@10, where HubLink (O) achieves the highest score of all variants. This indicates that when HubLink (O) does identify a correct triple within the top 10 results, that triple is often ranked high. However, the lower Hits@10 implies that the model is less frequently successful in placing a correct triple within the top 10.
+
+% Possible challenges of direct strategy on larger graphs
+% Number of Hubs have a significant role in retrieval performance. Increasing Recall but decreasing Precision and ranking quality.
+% The LLM and Embedding models have a significant impact on retrieval performance
+
+\subsubsection{Analyzing against Baselines}
+
+HubLink (T) achieved a Recall of 0.754, representing a 114\% improvement over the next best \gls{kgqa} approach (\gls{difar}), which reached a Recall of 0.352. In contrast, Mindmap and FiDeLiS retrieved only approximately 10\% of the expected triples from the graph. This result indicates that the baseline approaches struggled significantly with the task. In particular, both \gls{difar} and HubLink utilize dense vector retrieval mechanisms, while Mindmap and FiDeLiS rely on subgraph construction and stepwise reasoning, respectively. These findings suggest that in the context of our evaluation, embedding-based approaches offer a clear advantage in retrieving a larger proportion of relevant triples.
+
+Although Precision values were generally lower across all models, HubLink (T) again outperformed baselines with a Precision of 0.246, highlighting its relatively greater ability to return correct triples. However, the absolute score is rather low, which indicates that a large number of irrelevant triples is also retrieved. However, as discussed in Section~\ref{sec:selecting_tuning_metric}, these triples may still contribute positively to answer generation.
+
+In evaluating the effectiveness of the ranking, HubLink (T) achieved a Hits@10 score of 0.512, which is more than twice as high as the next best baseline. However, this metric also reveals that the most relevant triples did not always appear at the top, suggesting weaknesses in overall ranking performance. The other ranking metrics further clarify this pattern. The MAP@10 score of 0.299 and the MRR@10 score of 0.502 indicate that while HubLink generally ranks relevant triples higher than baselines, its ability to consistently prioritize them in the topmost positions remains limited. Nevertheless, these scores are significantly higher than those of other methods, confirming a substantial advancement in contextual relevance and ranking quality over baseline methods.
+
+% Significantly better retrieval performance than baseline approaches
+% Baselines seem to generally struggle. Embedding-based methods seem to perform the best
+% Absolute Precision and ranking performance of HubLink suggests that many irrelevant  triples are included. The retriever shows limited performance in ranking.
+
+
+\subsubsection{Discussion on Overall Retrieval Performance}
+
+Our analysis of HubLink variants and the comparison to baseline methods reveals significant advancements in retrieval accuracy and relevance for scholarly literature search. We determined that the graph traversal strategy yields superior performance over the direct retrieval strategy. Furthermore, we observed that increasing the number of hubs during retrieval enhances Recall. However, this enhancement corresponds to a reduction in Precision and ranking performance. These outcomes suggest that, while more hubs allow for a broader retrieval scope, thereby capturing a larger set of potentially relevant items, the specificity to the query context diminishes. Moreover, the results for HubLink (O) affirm the critical role that the choice of the \gls{llm} and the underlying embedding model plays in the retrieval performance of HubLink. Additionally, the absolute Precision and ranking scores indicate a current limitation in the ability of HubLink to accurately assess the relevance of triples.
+
+When we contrast HubLink with established baseline approaches, the advantages of our method become particularly clear. All HubLink variants demonstrate a marked improvement across all evaluated metrics. We generally observe low performance from the baseline approaches, suggesting their limited applicability to scholarly literature searches. Interestingly, the data indicate that embedding-based methods are superior for this task.
+
+
+% Q1.1 To what extent does the HubLink retrieval algorithm improve context relevance and accuracy compared to baseline KGQA methods in scholarly literature search?
+\begin{enumerate}[label={}]
+    \item \textbf{Answer to \hyperref[sec:evaluation_gqm_plan]{Q1}:} \textit{Our HubLink retrieval approach significantly improves retrieval performance with respect to relevance and Precision compared to established baseline \gls{kgqa} methods in the scholarly literature search setting. The approach more than doubles the Recall of the next best baseline, indicating a substantially better retrieval of relevant triples. Precision is also markedly higher, suggesting an improved assessment of relevance during retrieval. However, the absolute Precision and ranking performance of HubLink highlights a weakness and a potential need for improvement. Nevertheless, these results collectively demonstrate that HubLink offers a notable improvement in the retrieval of contextually relevant triples.}
+\end{enumerate}
+
+\subsection{Impact of Operation Complexity}
+
+\begin{table}[hp]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llllllll@{}}
+\toprule
+Retrieval Operation & Recall & Precision & F1 & Hits@10 & MAP@10 & MRR@10 & EM@10 \\ 
+\midrule
+\multicolumn{8}{c}{HubLink (T)} \\
+\midrule
+basic & \textbf{0.917} & \textbf{0.382} & \textbf{0.480} & \textbf{0.917} & \textbf{0.445} & 0.490 & \textbf{0.389} \\
+aggregation & 0.810 & 0.209 & 0.285 & 0.497 & 0.225 & 0.347 & 0.240 \\
+counting & 0.840 & 0.275 & 0.372 & 0.644 & 0.357 & 0.526 & 0.340 \\
+ranking & 0.817 & 0.321 & 0.414 & 0.561 & 0.360 & \textbf{0.576} & 0.363 \\
+comparative & 0.742 & 0.262 & 0.366 & 0.456 & 0.320 & 0.560 & 0.296 \\
+relationship & 0.628 & 0.254 & 0.314 & 0.410 & 0.298 & 0.528 & 0.331 \\
+negation & 0.584 & 0.072 & 0.122 & 0.244 & 0.125 & 0.419 & 0.144 \\
+superlative & 0.656 & 0.129 & 0.193 & 0.319 & 0.207 & 0.540 & 0.237 \\
+\midrule
+\multicolumn{8}{c}{HubLink (D)} \\
+\midrule
+basic & \textbf{0.861} & 0.217 & 0.276 & \textbf{0.611} & 0.297 & 0.332 & 0.228 \\
+aggregation & 0.730 & 0.166 & 0.217 & 0.388 & 0.188 & 0.365 & 0.200 \\
+counting & 0.723 & 0.218 & 0.293 & 0.481 & 0.287 & 0.410 & 0.253 \\
+ranking & 0.659 & 0.221 & 0.278 & 0.428 & 0.278 & 0.494 & 0.269 \\
+comparative & 0.701 & 0.314 & \textbf{0.376} & 0.444 & 0.287 & 0.537 & 0.339 \\
+relationship & 0.689 & \textbf{0.347} & \textbf{0.376} & 0.456 & \textbf{0.314} & 0.627 & \textbf{0.411} \\
+negation & 0.639 & 0.065 & 0.118 & 0.325 & 0.169 & 0.534 & 0.200 \\
+superlative & 0.690 & 0.133 & 0.204 & 0.332 & 0.229 & \textbf{0.635} & 0.244 \\
+\midrule
+\multicolumn{8}{c}{HubLink (F)} \\
+\midrule
+basic & \textbf{0.806} & 0.279 & 0.338 & \textbf{0.694} & \textbf{0.364} & 0.392 & 0.287 \\
+aggregation & 0.652 & 0.215 & 0.277 & 0.427 & 0.172 & 0.267 & 0.235 \\
+counting & 0.779 & 0.273 & 0.376 & 0.477 & 0.301 & 0.561 & 0.273 \\
+ranking & 0.630 & 0.236 & 0.320 & 0.404 & 0.224 & 0.458 & 0.235 \\
+comparative & 0.617 & 0.366 & 0.428 & 0.504 & 0.355 & 0.549 & 0.366 \\
+relationship & 0.610 & \textbf{0.420} & \textbf{0.443} & 0.456 & 0.310 & 0.541 & \textbf{0.428} \\
+negation & 0.509 & 0.148 & 0.216 & 0.311 & 0.177 & 0.487 & 0.211 \\
+superlative & 0.575 & 0.251 & 0.315 & 0.325 & 0.232 & \textbf{0.572} & 0.263 \\
+\midrule
+\multicolumn{8}{c}{HubLink (O)} \\
+\midrule
+basic & \textbf{0.806} & \textbf{0.280} & \textbf{0.345} & \textbf{0.806} & \textbf{0.590} & 0.617 & 0.297 \\
+aggregation & 0.638 & 0.123 & 0.164 & 0.426 & 0.250 & 0.391 & 0.204 \\
+counting & 0.710 & 0.170 & 0.249 & 0.600 & 0.404 & \textbf{0.714} & 0.273 \\
+ranking & 0.611 & 0.128 & 0.188 & 0.394 & 0.256 & 0.514 & 0.234 \\
+comparative & 0.387 & 0.075 & 0.118 & 0.285 & 0.179 & 0.443 & 0.150 \\
+relationship & 0.465 & 0.265 & 0.274 & 0.328 & 0.259 & 0.653 & \textbf{0.328} \\
+negation & 0.499 & 0.039 & 0.067 & 0.232 & 0.121 & 0.475 & 0.144 \\
+superlative & 0.322 & 0.031 & 0.055 & 0.149 & 0.084 & 0.382 & 0.106 \\
+\bottomrule
+\end{tabular}%
+}
+\caption[HubLink Performance by Operation Complexity]{Impact of the retrieval operation on the performance of the HubLink approach. The results are based on graph variant \hyperref[enum:gv1]{\textbf{GV1}} and all metrics have been macro-averaged. The results for the baseline approaches are provided in Appendix~\ref{sec:appendix:additional_evaluation_results_operation_complexity}.}
+\label{tab:q12:retrieval_operation}
+\end{table}
+
+To effectively address a wide array of scholarly questions characterized by varying semantic and logical complexity, a \gls{kgqa} approach must be able to handle diverse reasoning operations. In the following, we analyze the performance of HubLink across different operations, which are provided by our \gls{kgqa} retrieval taxonomy (see \autoref{ch:question_catalog}). 
+
+The results of the experiment are presented in \autoref{tab:q12:retrieval_operation}, which shows the retrieval performance of each of the four HubLink variants for eight distinct operations.
+
+For \emph{Basic} operations, which entail the retrieval of a single triple without further processing, all HubLink variants demonstrate their highest Recall and Hits@10 scores. These findings suggest that the approach shows the best performance in retrieving triples for simple, fact-based questions solvable through single triple lookups. 
+
+Furthermore, although HubLink (T) and HubLink (O) have achieved the highest F1 scores with the \emph{Basic} operation questions, the same is not true for the other variants. HubLink (D) and HubLink (F) achieved the highest F1 scores with \emph{Comparative} and \emph{Relationship} questions. Moreover, we observe that Precision and F1 scores are generally lower than Recall across all operations, suggesting inherent difficulties for the retriever in precisely identifying relevant information. This is particularly evident in the case of \emph{Negation} and \emph{Superlative} operations, which consistently yield lower Precision and F1 scores across all variants when compared to other operations. This pattern indicates that the retriever faces challenges in accurately identifying relevant information when these logical constructs are involved. The Hits@10 metric further confirms this trend, as it also shows lower scores for these operations.
+
+An examination of the MAP@10, MRR@10, and EM@10 metrics does not reveal a clear, overarching trend in performance across the different operations that is consistent for all HubLink variants. However, we observe a minor trend where \emph{negation} and \emph{superlative} operations tend to yield lower scores.
+
+% Basic operation has the best performance, but is also the least complex
+% Operations other than basic generally emit a lower performance.
+% Negation and superlative operations are the most difficult for the retriever
+
+% Q1.2 How does retrieval performance vary with the logical complexity of operations required by different scholarly questions?
+\begin{enumerate}[label={}]
+    \item \textbf{Answer to \hyperref[sec:evaluation_gqm_plan]{Q2}:} \textit{The results indicate that the highest Recall is achieved with basic operation questions, with a noticeable performance drop for questions demanding more complex reasoning operations. Furthermore, the results suggest a general limitation in assessing relevance, as the retriever consistently retrieves more contexts than asked for and struggles to differentiate effectively between relevant and irrelevant contexts. This difficulty is particularly pronounced for negation and superlative operations.}
+\end{enumerate}
+
+
+\subsection{Applicability to Different Scholarly Literature Search Use Cases}
+
+
+\begin{table}[t]
+\centering
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llllllll@{}}
+\toprule
+Use Case & Recall & Precision & F1 & Hits@10 & MAP@10 & MRR@10 & EM@10 \\ 
+\midrule
+\multicolumn{8}{c}{HubLink (T)} \\
+\midrule
+1 & 0.800 & \textbf{0.507} & \textbf{0.575} & \textbf{0.767} & \textbf{0.557} & \textbf{0.644} & \textbf{0.552} \\
+2 & \textbf{0.848} & 0.252 & 0.364 & 0.729 & 0.301 & 0.341 & 0.281 \\
+3 & 0.768 & 0.252 & 0.343 & 0.507 & 0.268 & 0.543 & 0.287 \\
+4 & 0.663 & 0.198 & 0.277 & 0.395 & 0.266 & 0.561 & 0.255 \\
+5 & 0.702 & 0.122 & 0.186 & 0.350 & 0.184 & 0.408 & 0.213 \\
+6 & 0.779 & 0.206 & 0.286 & 0.428 & 0.278 & 0.512 & 0.257 \\
+\midrule
+\multicolumn{8}{c}{HubLink (D)} \\
+\midrule
+1 & \textbf{0.791} & \textbf{0.450} & \textbf{0.510} & \textbf{0.745} & \textbf{0.495} & 0.556 & \textbf{0.489} \\
+2 & 0.715 & 0.073 & 0.127 & 0.410 & 0.155 & 0.281 & 0.111 \\
+3 & 0.675 & 0.265 & 0.332 & 0.444 & 0.234 & 0.459 & 0.298 \\
+4 & 0.543 & 0.195 & 0.225 & 0.302 & 0.184 & 0.444 & 0.234 \\
+5 & 0.756 & 0.144 & 0.191 & 0.317 & 0.183 & 0.481 & 0.236 \\
+6 & 0.790 & 0.213 & 0.295 & 0.463 & 0.341 & \textbf{0.691} & 0.284 \\
+\midrule
+\multicolumn{8}{c}{HubLink (F)} \\
+\midrule
+1 & \textbf{0.770} & \textbf{0.524} & \textbf{0.591} & \textbf{0.758} & \textbf{0.499} & 0.538 & \textbf{0.533} \\
+2 & 0.674 & 0.150 & 0.228 & 0.438 & 0.202 & 0.272 & 0.158 \\
+3 & 0.611 & 0.262 & 0.313 & 0.347 & 0.162 & 0.385 & 0.240 \\
+4 & 0.524 & 0.268 & 0.330 & 0.390 & 0.254 & 0.503 & 0.291 \\
+5 & 0.675 & 0.234 & 0.308 & 0.370 & 0.247 & \textbf{0.597} & 0.253 \\
+6 & 0.676 & 0.271 & 0.336 & 0.489 & 0.293 & 0.534 & 0.306 \\
+\midrule
+\multicolumn{8}{c}{HubLink (O)} \\
+\midrule
+1 & 0.689 & \textbf{0.370} & \textbf{0.436} & 0.667 & \textbf{0.581} & \textbf{0.719} & \textbf{0.395} \\
+2 & \textbf{0.776} & 0.195 & 0.284 & \textbf{0.690} & 0.297 & 0.380 & 0.250 \\
+3 & 0.531 & 0.152 & 0.162 & 0.374 & 0.275 & 0.512 & 0.254 \\
+4 & 0.357 & 0.047 & 0.068 & 0.220 & 0.156 & 0.473 & 0.148 \\
+5 & 0.463 & 0.044 & 0.077 & 0.251 & 0.150 & 0.484 & 0.135 \\
+6 & 0.609 & 0.112 & 0.176 & 0.360 & 0.243 & 0.620 & 0.195 \\
+\bottomrule
+\end{tabular}%
+% }
+\caption[HubLink Performance by Use Case]{Assessment of different scholarly use cases on the retrieval performance of HubLink. The results are based on graph variant \hyperref[enum:gv1]{\textbf{GV1}} and all metrics have been macro-averaged. The use cases are introduced in Section~\ref{sec:qa_use_cases}. The results for the baseline approaches are provided in Appendix~\ref{sec:appendix:additional_evaluation_results_use_cases}.}
+\label{tab:q13:use_cases}
+\end{table}
+
+\autoref{tab:q13:use_cases} presents the evaluation results for the HubLink approach across six predefined scholarly literature search use cases. These use cases, as detailed in Section~\ref{sec:qa_use_cases}, are distinguished by their input condition type (metadata, content, or both) and expected answer type (metadata or content). The subsequent discussion analyzes the performance across the four different HubLink variants.
+
+Concerning Recall performance, use cases involving metadata conditions in the query demonstrate superior results. Specifically, Use Case 1 (metadata input, metadata output) and Use Case 2 (metadata input, content output) generally have the highest Recall scores across all HubLink variants. Use Case 5 (mixed input, content output) and Use Case 6 (mixed input, metadata output), which also include metadata conditions, tend to follow closely in Recall performance. This pattern suggests that the approach encounters greater challenges with query conditions based solely on \emph{content}, as Use Case 3 (content input, metadata output) and Use Case 4 (content input, content output) consistently show lower Recall values.
+
+We further observe that the second, fourth, and fifth use cases, which require content-type answers, tend to exhibit lower Precision scores across all HubLink variants. This suggests that the approach is less effective in accurately identifying relevant information when the expected answer type is content. Regarding the ranking metrics (MAP@10, MRR@10, EM@10), Use Case 1 consistently demonstrates the strongest performance across all HubLink variants for most of these metrics. However, for the other five use cases, no consistently discernible pattern emerges that would suggest a general superiority or inferiority of any specific use case across all variants or ranking metrics.
+
+Overall, the results suggest that optimal performance is most frequently achieved in use cases that involve metadata-based query conditions or require metadata as output. This observation aligns with current scholarly research practice, where researchers typically search by titles or keywords. Nevertheless, the data indicate that the Recall performance of HubLink for queries requiring content-specific information is also relatively high. This suggests that HubLink has the potential to transform current research workflows from metadata-based to content-based searches. However, our findings also reveal limitations in effective ranking and filtering, particularly when dealing with content-based query conditions or answers, as well as mixed condition scenarios. This indicates that the integration of subsequent filtering and reranking mechanisms could be beneficial to mitigate these limitations.
+
+% The retriever is generally better at handling metadata conditions in the query
+% The Recall performance is generally robust across most use cases
+% The Precision and ranking effectiveness tends to decline in scenarios involving purely content-based query conditions or when content-type answers are required
+
+
+% Q1.3 How does retrieval performance vary across distinct scholarly literature-search use cases?
+\begin{enumerate}[label={}]
+    \item \textbf{Answer to \hyperref[sec:evaluation_gqm_plan]{Q3}:} \textit{The Recall performance of the proposed HubLink approach is generally robust across most use cases. However, the overall performance for Precision and ranking effectiveness tends to decline in scenarios involving content-based question conditions or when content-type answers are required. The approach often includes a higher proportion of irrelevant information and faces challenges in ranking the most relevant triples at the top positions for content-focused use cases.}
+\end{enumerate}
+
+
+\subsection{Impact of Type Information in the Question}
+
+
+\begin{table}[t]
+\centering
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llllllll@{}}
+\toprule
+Semi-Typed & Recall & Precision & F1 & Hits@10 & MAP@10 & MRR@10 & EM@10 \\ 
+\midrule
+\multicolumn{8}{c}{HubLink (T)} \\
+\midrule
+True & \textbf{0.763} & \textbf{0.258} & \textbf{0.352} & \textbf{0.567} & \textbf{0.328} & \textbf{0.512} & \textbf{0.323} \\ 
+False & 0.747 & 0.233 & 0.302 & 0.456 & 0.268 & 0.488 & 0.273 \\ 
+\midrule
+\multicolumn{8}{c}{HubLink (D)} \\
+\midrule
+True & \textbf{0.730} & \textbf{0.229} & \textbf{0.302} & \textbf{0.461} & \textbf{0.272} & \textbf{0.493} & \textbf{0.284} \\ 
+False & 0.691 & 0.212 & 0.251 & 0.411 & 0.247 & 0.485 & 0.263 \\ 
+\midrule
+\multicolumn{8}{c}{HubLink (F)} \\
+\midrule
+True & \textbf{0.680} & \textbf{0.321} & \textbf{0.394} & \textbf{0.498} & \textbf{0.318} & \textbf{0.535} & \textbf{0.334} \\ 
+False & 0.622 & 0.237 & 0.296 & 0.407 & 0.218 & 0.415 & 0.248 \\ 
+\midrule
+\multicolumn{8}{c}{HubLink (O)} \\
+\midrule
+True & 0.377 & 0.258 & 0.495 & 0.110 & 0.537 & 0.156 & 0.196 \\ 
+False & \textbf{0.441} & \textbf{0.287} & \textbf{0.565} & \textbf{0.179} & \textbf{0.583} & \textbf{0.222} & \textbf{0.251} \\ 
+\bottomrule
+\end{tabular}%
+% }
+\caption[Results of Semi-Typed Questions on Retrieval Performance]{The impact of questions that add information about the condition types compared to those that do not. The results are based on graph variant \hyperref[enum:gv1]{\textbf{GV1}} and all metrics have been macro-averaged. The results for the baseline approaches are provided in Appendix~\ref{sec:appendix:additional_evaluation_results_type_information}.}
+\label{tab:q14:semi_typed}
+\end{table}
+
+In \autoref{tab:q14:semi_typed}, the performance of four different HubLink variants is presented, comparing questions that include semi-typed information with those that do not. Such type annotations could assist the retriever in disambiguating the roles of entities within the graph and narrowing the candidate search space by filtering semantically irrelevant triples.
+
+The results indicate that semi-typed questions lead to improved performance across all reported metrics for HubLink variants (T), (D), and (F). The magnitude of these improvements is generally modest for variants (T) and (D), while variant (F) exhibits more noticeable gains, particularly in Precision, F1, MAP@10, MRR@10, and EM@10. Conversely, for HubLink variant (O), which uses an open-source \gls{llm} and embedding model, the inclusion of type information results in a performance decline across all metrics compared to when type information is absent.
+
+Although a consistent positive trend is observed for variants (T), (D), and (F) and a negative trend is observed for variant (O), the differences in performance, especially for (T) and (D), are relatively small. Overall, while the presence of type information appears to exhibit a minor to moderate positive effect for the non-open-source variants, its impact is not consistently substantial across all these variants in the current experimental setup. Interestingly, for the open-source variant, the inclusion of type information seems to have a negative effect on retrieval performance.
+
+% \textbf{Q1.4} What impact does the presence or absence of explicit type information in questions have on the retrieval performance?
+\begin{enumerate}[label={}]
+    \item \textbf{Answer to \hyperref[sec:evaluation_gqm_plan]{Q4}:} \textit{A minor positive impact on retrieval performance is observed for non-open-source \glspl{llm} when explicit type information is included in questions. However, the magnitude of this positive effect is quite small and is not significant. In contrast, the open-source variant shows a negative impact when type information is included.}
+\end{enumerate}
+
+\subsection{Robustness to Structural and Lexical Variability in Graph Schema}
+\label{sec:evaluation_robustness_to_structural}
+
+In the following section, we analyze the robustness of the HubLink retrieval approach in terms of performance consistency across different graph schemas introduced in Section~\ref{sec:contribution_templates}. Furthermore, we analyze the impact of the number of hops required to reach the relevant triples. In this context, robustness refers to the ability of the retrieval system to maintain consistent performance in terms of accuracy and relevance.
+
+In the subsequent evaluations, we focus on the performance of HubLink (T), as the execution of all HubLink variants on all graph variants would have been too costly. We chose HubLink variant (T) as it consistently shows the highest retrieval performance in our previous evaluations. 
+
+\subsubsection{Analyzing Different Graph Variants}
+\begin{table}[t]
+\centering
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llllllll@{}}
+\toprule
+Graph & Recall & Precision & F1 & Hits@10 & MAP@10 & MRR@10 & EM@10 \\
+\midrule
+\multicolumn{8}{c}{HubLink (T)} \\
+\midrule
+GV1 & 0.755 & 0.246 & 0.327 & 0.513 & 0.298 & 0.500 & 0.299 \\
+GV2 & 0.759 & 0.276 & 0.352 & 0.518 & 0.333 & 0.522 & 0.324 \\
+GV3 & \textbf{0.812} & 0.350 & 0.423 & 0.596 & 0.408 & 0.650 & 0.406 \\
+GV4 & 0.804 & \textbf{0.393} & \textbf{0.452} & \textbf{0.597} & \textbf{0.425} & \textbf{0.661} & \textbf{0.444} \\
+\midrule
+\multicolumn{8}{c}{DiFaR} \\
+\midrule
+GV1 & 0.352 & 0.011 & 0.022 & 0.207 & 0.150 & 0.295 & 0.104 \\
+GV2 & 0.314 & 0.009 & 0.019 & 0.199 & 0.142 & 0.268 & 0.096 \\
+GV3 & 0.523 & \textbf{0.017} & \textbf{0.035} & 0.302 & \textbf{0.230} & 0.442 & 0.154 \\
+GV4 & \textbf{0.528} & \textbf{0.017} & \textbf{0.035} & \textbf{0.304} & 0.228 & \textbf{0.449} & \textbf{0.158} \\
+\midrule
+\multicolumn{8}{c}{Mindmap} \\
+\midrule
+GV1 & 0.119 & 0.030 & 0.045 & 0.015 & 0.002 & 0.013 & 0.007 \\
+GV2 & 0.093 & 0.025 & 0.037 & 0.008 & 0.001 & 0.006 & 0.005 \\
+GV3 & 0.133 & 0.043 & 0.061 & \textbf{0.030} & 0.007 & 0.023 & 0.015 \\
+GV4 & \textbf{0.127} & \textbf{0.044} & \textbf{0.062} & \textbf{0.030} & \textbf{0.010} & \textbf{0.036} & \textbf{0.018} \\
+\midrule
+\multicolumn{8}{c}{FiDeLiS} \\
+\midrule
+GV1 & 0.092 & 0.052 & 0.063 & 0.092 & 0.062 & 0.103 & 0.053 \\
+GV2 & 0.099 & 0.055 & 0.064 & 0.099 & 0.065 & 0.110 & 0.054 \\
+GV3 & 0.259 & 0.114 & 0.139 & 0.259 & 0.150 & 0.240 & 0.112 \\
+GV4 & \textbf{0.276} & \textbf{0.121} & \textbf{0.142} & \textbf{0.276} & \textbf{0.156} & \textbf{0.248} & \textbf{0.117} \\
+\bottomrule 
+\end{tabular}%
+% }
+\caption[Results on Retrieval Performance on Different Graph Variants]{Test results for the evaluation of four different graph variants introduced in Section~\ref{sec:contribution_templates}. All metrics have been macro-averaged.}
+\label{tab:q5:different_graph_variants}
+\end{table}
+
+A key characteristic of the proposed HubLink approach and the applied baseline approaches is their schema-agnostic design, which allows the application to various graph schemas without having to change the configuration or implementation of the approach. To explore the practical implications of this flexibility, we evaluated the performance of HubLink and the baseline approaches on four different graph variants (\hyperref[tab:q5:different_graph_variants]{\textbf{GV1-GV4}}) introduced in Section~\ref{sec:contribution_templates}. The results are presented in \autoref{tab:q5:different_graph_variants} and discussed in the following.
+
+The retrieval performance of HubLink (T) against the baseline approaches for the first graph variant (\hyperref[enum:gv1]{\textbf{GV1}}) has already been extensively discussed in Section~\ref{sec:results_retrieval_relevance_and_accuracy}. In summary, the results for \hyperref[enum:gv1]{\textbf{GV1}} indicate that the HubLink approach is capable of effectively retrieving relevant information from the \gls{orkg} and achieving high Recall and ranking scores. The baseline approaches, on the other hand, struggled to achieve comparable performance.
+
+For graph variant \hyperref[enum:gv2]{\textbf{GV2}}, which also features long paths similar to \hyperref[enum:gv1]{\textbf{GV1}} but incorporates semantic grouping in which all information is stored in a single \gls{orkg} contribution, we observe minor improvements for HubLink (T). Although the Recall remains similar to \hyperref[enum:gv1]{\textbf{GV1}}, the Precision increased by approximately 12\%, leading to a higher F1 score. In addition, minor improvements in ranking performance can also be observed, particularly with MAP@10 increasing by approximately 12\% and EM@10 by 8\%. This suggests that the semantic grouping of information in \hyperref[enum:gv2]{\textbf{GV2}} may have a positive impact on the relevance assessment. This positive trend is further supported by FiDeLiS, which also shows improved performance in \hyperref[enum:gv2]{\textbf{GV2}} compared to \hyperref[enum:gv1]{\textbf{GV1}}. However, for Mindmap and DiFaR, the results indicate a reduction across all metrics, contradicting this assumption.
+
+With \hyperref[enum:gv3]{\textbf{GV3}}, characterized by shorter paths and distributing information across multiple \gls{orkg} contributions, significant improvements were observed across all models. For HubLink (T), most metrics increase by approximately 15 to 25\% when compared to \hyperref[enum:gv2]{\textbf{GV2}}. However, for the Recall metric, the increase is only minor (approximately 7\%), suggesting that the Recall score stays relatively stable. For the baseline approaches, on the other hand, the shorter paths led to substantial improvements in overall retrieval performance. The scores of DiFaR increased by approximately 52 to 89\% across all metrics when compared to \hyperref[enum:gv2]{\textbf{GV2}}. Similarly, FiDeLiS more than doubled its scores across all metrics, with the Recall and Hits@10 scores increasing by over 160\%. The same trend can be observed for the Mindmap retriever, though the absolute scores still remain low. These results suggest that shorter paths are beneficial for the retrieval performance of all approaches, in particular for the baseline approaches.
+
+Finally, the last graph variant \hyperref[enum:gv4]{\textbf{GV4}} combines shorter paths with the semantic grouping of information in a single \gls{orkg} contribution. Compared to \hyperref[enum:gv3]{\textbf{GV3}}, a minor performance increase can be observed in particular for the Precision (by approximately 12\%) and EM@10 (by approximately 9\%) scores. Similar improvements can be seen for the baseline methods, but the increase is only minor. These results suggest that the performance impact of grouping information in a single \gls{orkg} contribution compared to distributing it across multiple contributions is not significant.
+
+In summary, the evaluations reveal consistent patterns across all \gls{kgqa} approaches examined: shorter path lengths significantly enhance performance. Moreover, the results indicate that the baseline approaches struggle substantially with longer paths, highlighting their limitations in multi-hop reasoning. In contrast, the performance of HubLink (T) remained substantially superior across all variants, demonstrating high adaptability and robust performance regardless of the underlying graph structure variations.
+
+
+% The HubLink Recall stays relatively stable across all variants with only a minor increase of approximately 7\% when paths are short
+% The HubLink Precision and ranking is significanlty improved when paths are shorter
+% No noticable difference is observed for distributing information across multiple contributions or grouping all information in a single contribution
+% Baselines perform significantly better when paths are shorter
+
+\subsubsection{Analyzing Number of Hops}
+\begin{table}[t]
+\centering
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llllllll@{}}
+\toprule
+Hop Count & Recall & Precision & F1 & Hits@10 & MAP@10 & MRR@10 & EM@10 \\
+\midrule
+\multicolumn{8}{c}{HubLink (T)} \\
+\midrule
+1 & \textbf{1.000} & \textbf{1.000} & \textbf{1.000} & \textbf{1.000} & \textbf{1.000} & \textbf{1.000} & \textbf{1.000} \\
+2 & 0.937 & 0.792 & 0.818 & 0.938 & 0.755 & 0.750 & 0.792 \\
+3 & 0.732 & 0.358 & 0.446 & 0.699 & 0.427 & 0.509 & 0.404 \\
+4 & 0.934 & 0.300 & 0.446 & 0.933 & 0.408 & 0.450 & 0.300 \\
+5 & 0.813 & 0.212 & 0.313 & 0.524 & 0.268 & 0.459 & 0.246 \\
+6 & 0.720 & 0.188 & 0.262 & 0.414 & 0.238 & 0.494 & 0.255 \\
+\midrule
+\multicolumn{8}{c}{DiFaR} \\
+\midrule
+1 & \textbf{1.000} & 0.010 & 0.010 & \textbf{1.000} & 0.167 & 0.167 & 0.100 \\
+2 & 0.667 & 0.007 & 0.013 & 0.333 & 0.153 & 0.250 & 0.050 \\
+3 & 0.380 & 0.007 & 0.018 & 0.311 & \textbf{0.307} & \textbf{0.469} & \textbf{0.113} \\
+4 & 0.300 & 0.004 & 0.004 & 0.000 & 0.000 & 0.000 & 0.000 \\
+5 & 0.465 & 0.014 & \textbf{0.028} & 0.210 & 0.149 & 0.326 & 0.109 \\
+6 & 0.285 & \textbf{0.011} & 0.022 & 0.176 & 0.120 & 0.262 & 0.108 \\
+\midrule
+\multicolumn{8}{c}{Mindmap} \\
+\midrule
+1 & \textbf{1.000} & \textbf{0.070} & \textbf{0.130} & 0.000 & 0.000 & 0.000 & 0.000 \\
+2 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+3 & 0.136 & 0.031 & 0.048 & 0.005 & 0.001 & 0.006 & 0.004 \\
+4 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+5 & 0.132 & 0.029 & 0.043 & 0.013 & 0.002 & 0.011 & \textbf{0.009} \\
+6 & 0.115 & 0.033 & 0.048 & \textbf{0.019} & \textbf{0.003} & \textbf{0.017} & 0.008 \\
+\midrule
+\multicolumn{8}{c}{FiDeLiS} \\
+\midrule
+1 & \textbf{1.000} & \textbf{0.500} & \textbf{0.670} & \textbf{1.000} & \textbf{1.000} & \textbf{1.000} & \textbf{0.857} \\
+2 & 0.667 & 0.358 & 0.440 & 0.667 & 0.639 & 0.667 & 0.433 \\
+3 & 0.060 & 0.037 & 0.045 & 0.060 & 0.052 & 0.062 & 0.037 \\
+4 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+5 & 0.126 & 0.068 & 0.082 & 0.126 & 0.072 & 0.118 & 0.067 \\
+6 & 0.050 & 0.031 & 0.035 & 0.050 & 0.021 & 0.070 & 0.024 \\
+\bottomrule
+\end{tabular}%
+% }
+\caption[Results on Retrieval Performance for Different Hops]{Test results for the evaluation of different hops. The results are based on graph variant \hyperref[enum:gv1]{\textbf{GV1}} and all metrics have been macro-averaged.}
+\label{tab:q5:hops_results}
+\end{table}
+
+% TODO: Verlinkung zur Mindmap diskussion
+
+\begin{table}[t]
+\centering
+\begin{tabular}{cc}
+\toprule
+\textbf{Hops} & \textbf{Value} \\
+\midrule
+1 & 1 \\
+2 & 6 \\
+3 & 24 \\
+4 & 5 \\
+5 & 33 \\
+6 & 101 \\
+\bottomrule
+\end{tabular}
+\caption[Distribution of Hops on GV1]{The distribution of hops for graph variant \hyperref[enum:gv1]{\textbf{GV1}}.}
+\label{tab:distribution_of_hops_gv1}
+\end{table}
+
+The number of hops signifies the maximum count of triples situated between the topic entity and the expected triples. It indicates how deeply the required information is embedded within the graph. In \autoref{tab:q5:hops_results}, the outcomes for HubLink and the baseline methods are presented, categorized by the necessary number of hops required to reach the desired triples. These evaluations were conducted using the graph variant \hyperref[enum:gv1]{\textbf{GV1}}. The distribution of questions based on the number of hops is detailed in \autoref{tab:distribution_of_hops_gv1}.
+
+For questions requiring only one or two hops representing information located in the immediate vicinity of the topic entity, distinct performance patterns emerge. In the 1-hop scenario, all methods achieve perfect Recall. However, a significant difference is observed in Precision and rank-based metrics, while the baseline methods exhibit substantially lower performance, particularly \gls{difar} and Mindmap. For those questions that necessitate two hops, the performance advantage of HubLink becomes more evident. The Recall remains very high at 0.937, indicating retrieval of almost all relevant triples. In contrast, FiDeLiS and DiFaR achieve a Recall of 0.667, while Mindmap fails entirely for this hop count. It is evident from these results that the Mindmap approach has considerable issues with our evaluation task, which we discuss in Section~\ref{sec:discussion_on_evaluation_results}. Concerning Precision at two hops, the results for HubLink (0.792) again significantly surpass those of the baseline methods.
+
+A notable divergence in performance occurs for questions that require three or more hops, corresponding to information deeper within the graph. Baseline methods generally exhibit a substantial degradation in effectiveness as the hop count increases. The performance of FiDeLiS drops sharply beyond two hops, with the Recall score only reaching 0.060 at three hops and becomes negligible or zero at four and six hops, but interestingly reaches a score 0.126 at five hops. Mindmap consistently yields very low Recall values (between 0.115 and 0.136) and near-zero values for all other metrics. \gls{difar} demonstrates greater resilience to high hop counts compared to FiDeLiS and Mindmap, maintaining Recall values between 0.285 and 0.465. However, even for \gls{difar}, a decline relative to the 1- and 2-hop scenarios is observed across all metrics. This collective performance decline across the baseline metrics suggests that the methods face significant challenges in effectively identifying relevant triples deep within the graph. In particular, the performance at 6 hops is based on a high number of questions, making the observed trend especially relevant.
+
+In contrast, the results for HubLink demonstrate considerably greater robustness to increasing hop counts. The Recall score remains relatively high across all evaluated hop distances, consistently exceeding 0.717 and peaking at 1.00 (1-hop) and 0.934 (4-hops). Furthermore, the Recall value of HubLink consistently exceeds the best performance baseline (\gls{difar}) by a substantial margin, often nearly doubling the Recall value for hop counts of three and more. Similarly, the Precision and rank-based metrics for HubLink remain significantly higher than those of the baselines.
+
+However, the results indicate that the effectiveness of HubLink is influenced by the hop count. We observe a large drop in Precision as the number of hops increases. This decline likely reflects the inherent challenge of maintaining high Precision as the search space expands with each additional hop. Exploring deeper into the graph retrieves a larger set of candidate triples, possibly making the accurate assessment of relevance for each triple more difficult. Rank-based metrics also show a generally decreasing trend for HubLink as hops increase, although the decline is less steep than for Precision. The Recall metric exhibits the least sensitivity to hop count for HubLink, indicating robustness in finding relevant information even when it is stored deep within the graph.
+
+In summary, the analysis based on hop count reveals that HubLink provides a substantial improvement in retrieval performance compared to the evaluated baseline methods. This advantage is particularly pronounced for questions where the target information is located deeper within the \gls{kg}, requiring higher hop counts. While baseline methods struggle significantly as the number of hops increases, HubLink maintains comparatively high Recall and superior Precision and ranking performance, demonstrating a greater capability to handle complex queries requiring multi-hop reasoning.
+
+% The baseline methods exhibit a significant degradation in performance as the hop count increases
+% HubLink shows considerably greater robustness to increasing hop counts, though especially the Precision and rank-based metrics show decreasing trends
+
+\subsubsection{Discussion on Robustness}
+
+Our analysis reveals that HubLink exhibits substantially greater robustness to different graph variants than the baseline approaches. Our findings suggest that a primary factor that influences performance across all approaches is the path length within the graph. We found that shorter paths generally yield better retrieval results, particularly for Precision and rank-based metrics. Although all approaches benefit from shorter paths, the baseline methods demonstrate a pronounced degradation with longer paths, highlighting their limitations. In contrast, HubLink maintains considerably more stable and superior performance.
+
+Furthermore, the types of entities in the four different applied graph variants differ. Because it was not necessary to change the configurations or implementations of the tested \gls{kgqa} approaches, this demonstrates their schema-agnostic design.
+
+Moreover, the examination of performance across different hop counts underscores the enhanced multi-hop reasoning capabilities of HubLink. As the required number of hops increases, baseline methods show a significant decline in effectiveness. HubLink, however, sustains high Recall and superior Precision and ranking scores, even when navigating multiple hops. While we observe some decline in the Precision for HubLink with increasing hops, its overall ability to retrieve deeply located information far surpasses that of the baselines. In essence, the results indicate that HubLink adapts more effectively to diverse graph structures and complexities, particularly excelling in scenarios demanding robust multi-hop inference.
+
+
+% \item \textbf{Q5} How robust is the proposed approach to structural and lexical variability across alternative knowledge graph schema representations?
+\begin{enumerate}[label={}]
+    \item \textbf{Answer to \hyperref[sec:evaluation_gqm_plan]{Q5}:} \textit{Our proposed HubLink approach significantly improves robustness compared to baseline methods. Our evaluations show that, while shorter graph paths generally improve retrieval performance, particularly with regard to relevance-focused metrics, HubLink is more effective across varied structures and excels at multi-hop reasoning, an area in which baseline methods struggle.}
+\end{enumerate}
+
+\subsection{Analysis of Runtime and LLM Token Consumption}
+\label{sec:evaluation_runtime_and_tokens}
+
+\begin{table}[t]
+\centering
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lllllll@{}}
+\toprule
+Approach & Recall & Runtime (s) & LLM Tokens \\
+\midrule 
+HubLink (T) & \textbf{0.754} & 177.470 & 82365 \\
+HubLink (D) & 0.709 & 155.387 & 79467 \\
+HubLink (F) & 0.649 & 80.740 & 28404 \\
+HubLink (O) & 0.559 & 239.593 & 82839 \\
+DiFaR & 0.352 & \textbf{3.442} & \textbf{25020} \\
+FiDeLiS & 0.092 & 129.914 & 102178  \\
+Mindmap & 0.119 & 90.186 & 13986 \\
+\bottomrule 
+\end{tabular}%
+% }
+\caption[Results on Runtime and LLM Token Consumption]{Results of runtime and \gls{llm} token consumption per question. The results are based on graph variant \hyperref[enum:gv1]{\textbf{GV1}} and all metrics have been macro-averaged.}
+\label{tab:runtime_tokens}
+\end{table}
+
+The runtime and \gls{llm} token consumption for the different HubLink versions and baseline approaches are presented in \autoref{tab:runtime_tokens}. These metrics provide insights into the computational efficiency and operational costs associated with each approach.
+
+The comparison between the different HubLink variants reveals distinct trade-offs between Recall, runtime, and token consumption. HubLink (T), which uses the graph traversal strategy, had an average runtime of approximately 177.47 seconds and consumed 82,365 \gls{llm} tokens per question. Switching to the direct retrieval strategy, HubLink (D) shows improved efficiency, as the runtime decreases to approximately 155.39 seconds, a reduction of about 12.4\% compared to HubLink (T). However, token consumption stays almost the same with only a reduction of approximately 3.5\%. Although the runtime is slightly lower, the Recall decreases as well (approximately 5.8\%).
+
+HubLink (F) is specifically optimized for speed by using the direct retrieval strategy and limiting the number of hubs to 10. It demonstrates the highest efficiency among the HubLink variants, as it required an average runtime of approximately 80.74 seconds per question. This makes HubLink (F) more than twice as fast as HubLink (T). Furthermore, this speed improvement is coupled with a significant decrease in resource usage since only 28,404 \gls{llm} tokens are needed. This token count is approximately 65.5\% fewer than HubLink (T). However, these efficiency gains result in a lower Recall of 0.649, a relative decrease of approximately 13.8\% compared to HubLink (T) and about 8.5\% compared to HubLink (D).
+
+Conversely, the open-source version of HubLink (O) exhibits the longest average runtime at approximately 239.59 seconds. Its token consumption (82,839) is nearly identical to that of HubLink (T), an expected outcome given their shared configuration parameters despite differing underlying models. This high resource usage for HubLink (O) is further associated with the lowest Recall (0.559) among the HubLink variants.
+
+Compared with baseline approaches, \gls{difar} stands out with an exceptional runtime efficiency, processing each question in approximately 3.44 seconds on average. However, the \gls{llm} token requirement of 25,020 is only marginally lower than that of HubLink (F) (28,404), indicating comparable operational costs between these two methods despite the vast difference in execution speed. Among the other baselines, Mindmap requires approximately 90.19 seconds per question, slightly slower than HubLink (F), while FiDeLiS takes approximately 129.91 seconds. In terms of token consumption, Mindmap is the most cost-effective approach, using only about 13,986 tokens per question. FiDeLiS, in contrast, incurs the highest cost, requiring over 102,178 tokens, substantially more than any other evaluated method.
+
+In summary, the results demonstrate that all HubLink variants achieve considerably higher Recall than the baseline methods. While \gls{difar} offers the lowest runtime by a significant margin, its Recall is substantially lower. HubLink (F) emerges as a balanced configuration, providing Recall performance nearly double that of \gls{difar} (0.649 vs. 0.352) with a runtime that, although higher than \gls{difar}, remains considerably faster than HubLink (T) or (O). Furthermore, the token consumption, and therefore the estimated operational cost, of HubLink (F) is comparable to \gls{difar}. Although Mindmap offers the lowest token cost and FiDeLiS incurs the highest, both approaches exhibit significantly lower Recall compared to HubLink. Therefore, HubLink (F) presents a convincing trade-off, delivering strong Recall performance with manageable runtime and reasonable computational expense when compared to the baselines.
+
+
+% \item \textbf{Q6} How efficient is the proposed approach considering runtime and language model tokens required when compared to baseline KGQA methods?
+\begin{enumerate}[label={}]
+    \item \textbf{Answer to \hyperref[sec:evaluation_gqm_plan]{Q6}:} \textit{The proposed HubLink approach achieves significantly higher Recall compared to baseline KGQA methods, with HubLink (F) balancing Recall, runtime efficiency, and operational token costs. While baseline methods like \gls{difar} offer superior runtime, they provide considerably lower Recall. HubLink (F) thus presents a favorable trade-off, offering strong retrieval performance alongside manageable computational costs.}
+\end{enumerate}
+
+\subsection{Environmental Sustainability Impact}
+\label{sec:evaluating_sustainability}
+
+\begin{table}[t]
+\centering
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lllllll@{}}
+\toprule
+Approach & Recall & CE ($CO_2$) & CE$_{rel}$ & $\Delta_{CE}$ & n(CE) & n(CE$_{rel}$) \\
+\midrule 
+HubLink (T) & \textbf{0.753905} & 0.004187 & 0.005554 & 0.482545 & 0.550789 & 0.837496 \\
+HubLink (D) & 0.709053 & 0.003664 & 0.005168 & 0.514019 & 0.608081 & 0.849320 \\
+HubLink (F) & 0.649467 & 0.001907 & 0.002936 & 0.892193 & 0.800543 & 0.917609 \\
+HubLink (O) & 0.559290 & 0.009216 & 0.016478 & 0.154695 & min & 0.503199 \\
+DiFaR & 0.352012 & \textbf{0.000086} & \textbf{0.000244} & \textbf{9.233593} & max & max \\
+FiDeLiS & 0.092840 & 0.003056 & 0.032921 & base & 0.674635 & min \\
+Mindmap & 0.119467 & 0.002130 & 0.017828 & 0.038211 & 0.776120 & 0.461889 \\
+\bottomrule 
+\end{tabular}%
+% }
+\caption[Results on Environmental Sustainability]{Results of environmental sustainability analysis. The results are based on graph variant \hyperref[enum:gv1]{\textbf{GV1}} and all metrics have been macro-averaged.}
+\label{tab:ablation_sustainability}
+\end{table}
+% \emph{HubLink (T)} uses the configuration from our parameter selection process. \emph{HubLink (F)} uses a faster configuration with only 10 hubs considered per inference and using the direct retrieval strategy. \emph{HubLink (O)} is the same configuration as (T) but uses mxbai-embed-large and Qwen2.5-14B.
+
+Traditional performance metrics like Recall do not capture the environmental footprint associated with computational methods. Responding to appeals for the incorporation of such factors \cite{kaplan_responsible_2025}, we evaluate the environmental sustainability of the approaches by analyzing their \acrfull{ce} relative to their Recall performance. The results are based on the graph variant \hyperref[enum:gv1]{\textbf{GV1}} and are presented in \autoref{tab:ablation_sustainability}.
+
+Similar to the previous runtime and cost analysis, we can see distinct sustainability profiles of the HubLink variants relative to their Recall capabilities. Although HubLink (T) achieves the highest Recall (0.753905), it incurs the highest absolute carbon emissions ($CE = 0.004187$ $CO_2$) relative to HubLink variants (D) and (F). Only HubLink (O) has higher absolute emissions ($CE = 0.009216$ $CO_2$) but, as indicated below, this is due to measurement limitations. Compared to the baseline approaches, the absolute carbon emissions of DiFaR are significantly lower ($CE = 0.000086$ $CO_2$), making it the most environmentally efficient approach across all our tested approaches. The consumption of FiDeLiS is similar to that of HubLink (D), and the consumption of Mindmap is similar to that of HubLink (F).
+
+Looking at the relative carbon emissions ($CE_{rel}$), which is the ratio of carbon emissions to Recall, we observe that DiFaR is the most efficient approach with a relative carbon emission of 0.000244. This is followed by HubLink (F), with a relative carbon emission of 0.002936, which is approximately 12 times higher than DiFaR. The relative carbon emissions of HubLink (D) and (T) are 0.005168 and 0.005554, respectively, indicating that the direct retrieval strategy in HubLink (D) is more efficient than the graph traversal strategy in HubLink (T). The open-source variant, HubLink (O), has the highest relative carbon emissions at 0.016478, making it the least efficient option. While the relative carbon emissions of Mindmap (0.017828) are similar to HubLink (O), its Recall is significantly lower, indicating a less favorable sustainability profile. FiDeLiS has the highest relative carbon emissions (0.032921) among all approaches, making it the least efficient in terms of environmental impact and Recall performance. The same trends are observed for the delta values ($\Delta_{CE}$).
+
+In conclusion, the evaluation shows a trade-off between Recall performance and environmental sustainability. \gls{difar} provides the most sustainable option, characterized by very low absolute and relative environmental impacts, but achieves considerably lower Recall than the HubLink approaches. In contrast, the fast HubLink variant (F) almost doubles the Recall compared to \gls{difar}, but incurs a disproportionately large increase in environmental cost per unit of Recall. Therefore, selecting an appropriate method requires careful consideration of the priority assigned to maximizing Recall versus minimizing environmental footprint. While HubLink (F) represents an optimized balance, it remains substantially less environmentally efficient per unit of Recall than \gls{difar}.
+
+\textit{Note that this observation applies only to the inference phase. The substantial environmental costs associated with \gls{llm} training are not included as they fall outside the scope of this work. Furthermore, only HubLink (O) was executed on infrastructure, allowing for the direct measurement of energy consumption and carbon emissions, whereas all other approaches used the OpenAI \gls{api}. Therefore, direct sustainability measurements for operations on external \gls{api} servers are not feasible. Consequently, this difference limits the direct comparability of the sustainability figures between the locally run open-source model and the \gls{api}-based models.}
+
+% Q7: How does the proposed approach compare with regard to the environmental impact when compared to baseline KGQA methods?
+\begin{enumerate}[label={}]
+    \item \textbf{Answer to \hyperref[sec:evaluation_gqm_plan]{Q7}:} \textit{Our proposed HubLink approach generally exhibits a higher Recall performance at the cost of increased environmental impact compared to the most sustainable baseline approach, \gls{difar}. While HubLink (F) achieves a Recall nearly double that of \gls{difar}, it incurs a disproportionately larger environmental cost per unit of Recall. This highlights the need for careful consideration of the trade-off between maximizing Recall and minimizing environmental footprint.}
+\end{enumerate}

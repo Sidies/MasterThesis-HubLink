@@ -1,0 +1,168 @@
+
+\section{Creating the KGQA Datasets}
+\label{sec:implementation_qa_dataset_generation}
+
+To be able to evaluate the retrieval capabilities on diverse retrieval operations and specific use cases in scholarly literature searches, we created new \gls{kgqa} datasets (\hyperref[enum:c3]{\textbf{C3}}). These datasets have been created with the help of the \gls{kgqa} retrieval taxonomy (\hyperref[enum:c3]{\textbf{C3}}) and six use cases using the semi-automatic generation procedures provided by the \gls{sqa} system (see Section~\ref{sec:qa_generator}).
+
+In the following, we first introduce the use cases for scholarly literature search. Then, we explain the different levels of content granularity to clarify the level at which the new datasets are situated. Finally, we introduce the new \gls{kgqa} datasets for four different graph variants.
+
+\subsection{Use Cases for Scholarly Literature Search}
+\label{sec:qa_use_cases}
+
+To create the \gls{kgqa} datasets, we prepared use cases. These use cases serve to support the creation process by incorporating real-world scenarios. To guide the development of use cases, we use the categories \emph{Answer Type} and \emph{Condition Type} from the \gls{kgqa} retrieval taxonomy introduced in \autoref{ch:question_catalog}. Here, \emph{Condition Type} refers to the types of conditions provided with a question. The \emph{Answer Type}, on the other hand, implicitly classifies the types of information expected in the answer.
+
+For the design of the use cases, we decided to adapt these two categories to make them better suited to our experimental data. This decision was based on the fact that both categories originally included a large number of classes, which would result in an unmanageable number of use cases if all combinations were considered. Consequently, because the labeled data that we use consists of two types of data (metadata and content data), as shown in \autoref{tab:swa_data_schema}, we apply this distinction by adapting the answer and condition types for the creation of use cases. The result is the following adaptation of the two categories:
+
+\begin{enumerate}[label={}, leftmargin=2.5em]
+    \item \textbf{Adapted Answer Type} Classifies whether a question expects a \emph{metadata} or \emph{content data} type in the answer.
+    \item \textbf{Adapted Condition Type} Classifies whether a question contains a condition of the \emph{metadata} or \emph{content data} type.
+\end{enumerate}
+
+Based on these adapted categories, we present six different use cases tailored to the scholarly literature search task.
+
+\begin{tcolorbox}[title=Use Case 1] % Input:Metadata, Output: Metadata
+The first use case reflects the current state of practice in scientific literature search. The researcher seeks additional details about the \emph{metadata} of one or more papers. To find this information, the researcher provides the \gls{kgqa} system with specific metadata information related to the papers they are interested in. In response, the \gls{kgqa} system returns information on other \emph{metadata} attributes of the papers rather than content information.
+\end{tcolorbox}
+
+The first use case is classified as \emph{Adapted Condition Type: Metadata} because all questions related to this use case require the answer to meet a specific metadata condition. Furthermore, this use case is categorized as \emph{Adapted Answer Type: Metadata}, as only metadata information is expected in the response.
+
+A practical example of this use case would be a researcher asking for the publications of a specific author. In this case, the name of the author serves as the input constraint, while the returned publication titles represent the output type. Both the input and output consist solely of metadata. Similarly, another example would be a question that provides keywords. The \gls{kgqa} system then has to return the titles of the papers that are related to those keywords. 
+
+Consequently, this use case reflects the current way of searching for scientific artifacts, since state-of-practice search engines like Google Scholar are expected to receive keywords and return titles of publications.
+
+\begin{tcolorbox}[title=Use Case 2] % Input:Metadata, Output: Content
+In the second use case, the researcher seeks information about the \emph{content} of one or more papers. In this use case, the researcher provides the \gls{kgqa} system with \emph{metadata} information about the papers and asks a question about their contents. The \gls{kgqa} system is then expected to extract content information related to specific papers that conform to the metadata constraints provided.
+\end{tcolorbox}
+
+The second use case is classified as \emph{Adapted Condition Type: Metadata}. However, its category regarding the second dimension is \emph{Adapted Answer Type: Content}, as the answer is expected to contain content information. From a retrieval perspective, we expect this use case to be more challenging, as it requires the \gls{kgqa} system to search through the extensive content information provided in the papers to find the expected answer.
+
+A practical example of this use case would be a researcher asking for the conclusions that a specific publication has drawn. In this case, the name of the publication serves as the input constraint, where the \gls{kgqa} system is required to search the content of the specific publication. The expected output would be the conclusions drawn in the publication, which is content-based information as it requires the \gls{kgqa} system to reason over the content of the publication. Another scenario that would fit this use case would be a researcher asking the \gls{kgqa} system what research problems an author has worked on. In this case, it would require retrieving information from all publications of the author, extracting and aggregating the research problems that each publication investigated, and returning the aggregated list of research problems as the answer.
+
+This use case shows the potential for \gls{kgqa} to help vastly improve the literature search process. By directly allowing researchers to find information based on the contents of a paper, the time and cognitive investment required to manually read through the text of the paper is reduced.
+
+\begin{tcolorbox}[title=Use Case 3] % Input:Content, Output: Metadata
+In the third use case, the researcher seeks information about \emph{metadata} of one or more papers. In this use case, the researcher provides the \gls{kgqa} system with \emph{content} constraints about the papers and asks a question about the metadata of the paper. The \gls{kgqa} system is then expected to extract metadata information related to the specific papers mentioned in the question.
+\end{tcolorbox}
+
+As opposed to the first two use cases, the third use case is classified as \emph{Adapted Condition Type: Content}. This is because the input constraint is based on content information. However, the expected answer is classified as \emph{Adapted Answer Type: Metadata}, as the answer is expected to only contain metadata information.
+
+A practical example of this use case would be a researcher asking for publications that contain a specific evaluation method or treat the same research problem. Such a question would require inferring over the contents of publications to find out whether they have applied the provided evaluation method or whether they treat the same research problem. In this case, the expected output would be the titles of the publications, which is metadata information, whereas the input constraint is based on the type of expected answer.
+
+This use case demonstrates the potential for improving the current document-centric literature search workflow. This is because a major difficulty faced by researchers is the identification of relevant publications that contain specific information. In the current workflow, researchers have to rely on metadata during their search. However, the desired information is often not explicitly stated in the title or abstract of the publication. Therefore, it is difficult to find the relevant publications using traditional search engines. Consequently, a \gls{kgqa} system that is able to find publications that contain specific content information would be a great improvement for the current literature research workflow.
+
+\begin{tcolorbox}[title=Use Case 4]
+In the fourth use case, the researcher seeks information about the \emph{content} of one or more papers. In this use case, the researcher provides the \gls{kgqa} system with content information about the paper, and asks a question about the \emph{content} of the paper. The \gls{kgqa} system is then expected to extract content information related to the specific papers mentioned in the question.
+\end{tcolorbox}
+
+The fourth use case has both the \emph{Adapted Condition Type} and \emph{Adapted Answer Type} classified as \emph{Content}. This is because both the input constraints and expected output types are based on content information. 
+
+A practical example of this use case would be a researcher asking for common reference architectures that are proposed when tackling a specific research problem. In this case, the input constraint would be the research problem, while the expected output would be the reference architectures that are proposed in the literature. Both the input and output are content information, as they require reasoning over the content of the publications to find out which reference architectures are proposed for a specific research problem.
+
+This use case is of particular interest when searching for definitions or explanations of specific concepts. In such cases, the location of the information in question is often uncertain, prompting the need to identify both the description and its source for the purpose of referencing it in another academic thesis.
+
+\begin{tcolorbox}[title=Use Case 5]
+In the fifth use case, a researcher seeks information about the \emph{content} of one or more papers. In this use case, the researcher provides the retriever with both \emph{metadata and content} information about the papers and asks a question about the content of the paper. The retriever is then expected to extract content information related to the specific papers mentioned in the question.
+\end{tcolorbox}
+
+The use cases until now only had a single type of input constraint. However, in the fifth use case, the input constraint is a combination of both \emph{metadata and content} information. This makes the task more difficult for the \gls{kgqa} system. It is now required to search for two different constraint types that might even be stored in different locations in the underlying \gls{kg}. The expected output is \emph{Adapted Answer Type: Content} as the answer is expected to contain content information. 
+
+Practical examples include combinations of the second and fourth use cases. For example, a researcher could ask for a summary of conclusions that publications have drawn in a specific time frame for a specific research problem. In this case, the input constraint would be the research problem and the time frame, which are content and metadata information, respectively. The expected output would be the summary of conclusions that are drawn in the publications, which is content information. 
+
+This use case is particularly interesting in scenarios where a researcher wants to save time by not reading the full text of a publication. Instead of reading the text, the researcher can pose questions to the document in order to retrieve the necessary information.
+
+\begin{tcolorbox}[title=Use Case 6]
+In the sixth use case, the researcher seeks information about \emph{metadata} of one or more papers. In this specific use case, the researcher provides the retriever with both \emph{metadata and content} information about the papers, such as the name of an evaluation method and the year of publication, and asks a question about the metadata of the papers. The retriever is then expected to extract metadata information related to the specific papers mentioned in the question.
+\end{tcolorbox}
+
+The sixth use case has the same \emph{Adapted Condition Types} as the fifth use case, but the second dimension is \emph{Adapted Answer Type: Metadata} as the answer is expected to contain metadata information. 
+
+The practical examples of this use case are a mixed version of the first and third use cases. For example, a researcher could request publications that have applied a specific evaluation method in a specific research field. In this case, the input constraint would be the evaluation method and the research field, which are content and metadata information, respectively. The expected output would be the titles of publications that have applied the evaluation method in the research field, which is metadata information.
+
+\textit{Note that, as evident from the aforementioned use cases, the Answer Type dimension is not being mixed. According to the \gls{kgqa} retrieval taxonomy, such a question would be designated as a Multiple Intentions question. Splitting this question into two distinct questions is a viable approach to enhance clarity and manage complexity. However, in the interest of maintaining manageable complexity, the multiple intentions are not being considered in the use cases.}
+
+\subsection{Overview of Content Granularity}
+\label{sec:content_granularity}
+
+When creating datasets, it is useful to classify the level of granularity the data contains. This helps to provide a better understanding of the content of the dataset. For this purpose, we introduce four levels of granularity, which differ in their degree of abstraction:
+
+\begin{enumerate} 
+    \item \textbf{Document-based:} The current standard for distributing literature online. Publications are stored as PDF files in a database together with their metadata. Users locate publications using the metadata and then extract relevant information from the documents themselves by reading the provided texts. 
+    \item \textbf{Chunk-based:} Originating from \gls{rag} \cite{lewis_retrieval-augmented_2021}, this approach divides documents into smaller chunks and embeds them into a vector space. Relevant chunks are retrieved from the database using nearest-neighbor search queries.
+    \item \textbf{Statement-based:} Here, concise summaries or statements are extracted from publications and stored directly in a database. 
+    \item \textbf{Label-based:} The highest level of abstraction, where publications are classified using labels, which may include hierarchical structures. These labels give readers a quick overview of the content of a publication. 
+\end{enumerate}
+
+Using this classification, we assign the datasets that we used for our experiments to the \emph{Label-based} abstraction level. This is because they consist of extracted terms structured according to a predefined schema as defined in \autoref{tab:swa_data_schema}.
+
+\subsection{Dataset Creation Process}
+\label{sec:label_based_qa_dataset}
+
+Contribution \textbf{C2} of this thesis are \gls{kgqa} datasets, which we used to carry out the experiments. These \gls{kgqa} datasets were created using the data from the publication dataset introduced in Section~\ref{sec:experiments_dataset}. For their creation, the data was first loaded into the \gls{orkg}, and then \gls{kgqa} pairs were generated using the semi-automated \gls{kgqa} generation strategy described in Section~\ref{sec:qa_generator}. In the following, we present the creation process and the key characteristics of these datasets.
+
+\subsubsection{Dataset Structure} 
+
+The datasets consist of \gls{kgqa} pairs. Each pair includes the question itself together with the corresponding \emph{ground-truth} data. This data is used during the evaluation to determine whether the answer and the data retrieved by the \gls{kgqa} approach are correct. In this context, the ground truth represents one possible valid answer to the question, as well as a collection of triples needed to answer it. In addition to the question and the ground truth, each \gls{kgqa} pair also includes further metadata. This encompasses a \emph{topic entity} that can serve as an entry point into the graph for the retriever, the \glspl{doi} of the papers referenced in the question, and the template used to generate the question. The pairs are also classified according to use case, semi-typed nature, and the categories defined in the taxonomy.
+
+\subsubsection{Question Diversity}
+
+To ensure that the questions in the \gls{kgqa} datasets exhibit a high degree of variability that allows meaningful conclusions about the capabilities of a \gls{kgqa} system, we structured the datasets considering multiple dimensions. First, we use the \emph{use cases} described in Section~\ref{sec:qa_use_cases} to map each question to a realistic application scenario. During the creation phase, we assigned questions to each of the six use cases to ensure a balanced distribution between them. To further reflect the retrieval capabilities required for each question, we incorporated the \emph{Retrieval Operation} category from the \gls{kgqa} retrieval taxonomy introduced in \autoref{ch:question_catalog}. Each question is assigned to a specific retrieval operation, ensuring that operations are covered evenly. 
+
+Additionally, the dataset distinguishes between \emph{untyped} and \emph{semi-typed} questions. This distinction is meant to assess how well a retriever can handle synonyms or missing type information:
+
+\begin{itemize}
+    \item \textbf{Semi-Typed Questions} Each question in the dataset targets specific triples in the \gls{kg}, with each triple consisting of a subject, predicate, and object. Depending on the triple, either the subject or the predicate may carry type information about the object. For example, the requested triple $(Research Object Entity, Name, Reference Architecture)$, requires the question to specify that the reference architecture is a research object.
+    
+    \item \textbf{Untyped Questions} In contrast, \emph{untyped} questions do not include the type information. Using the same example, the question would simply ask about the reference architecture without stating that it is a research object. This increases the difficulty of retrieval because the retriever must infer the object type based solely on the object name.
+\end{itemize}
+
+
+\subsubsection{Restrictions} 
+
+To keep the datasets manageable in terms of complexity, certain constraints were applied during the creation. First, the number of golden triples needed to answer a question was limited to a maximum of 10. This limitation ensures that questions do not require information spread across the entire dataset. Without this restriction, answering broad questions would require extensive aggregation, resulting in runtimes that are too long for the scope of a master thesis.
+
+Furthermore, it is essential that the retriever parameters are set in such a way that the retrievers can fully answer the given questions. By limiting the number of golden triples, we can ensure that this is the case. Consequently, the chosen threshold of 10 represents a compromise between the efficiency of the retrievers and the expressiveness of the questions. A higher threshold would require increasing retriever parameters, such as maximum depth or width, leading to longer runtimes. A lower threshold, on the other hand, would reduce the informativeness of the questions or even make some of them unanswerable. Therefore, selecting a limit of ten triples strikes a balance between maintaining acceptable runtimes and preserving the relevance and feasibility of the questions.
+
+\begin{table}[t]
+\centering
+\begin{tabular}{lccccccc}
+\toprule
+\textbf{} & \multicolumn{6}{c}{\textbf{Use Cases}} \\
+\cmidrule(lr){2-7}
+\textbf{Retrieval Operation} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} \\
+\midrule
+aggregation   & 4 & 4 & 4 & 4 & 4 & 4 \\
+basic         & 4 & 4 & 4 & 1 & 4 & 1 \\
+comparative   & 4 & 4 & 4 & 4 & 4 & 4 \\
+counting      & 4 & 4 & 4 & 4 & 4 & 4 \\
+negation      & 0 & 0 & 4 & 4 & 4 & 4 \\
+ranking       & 4 & 4 & 4 & 4 & 4 & 4 \\
+relationship  & 4 & 4 & 4 & 4 & 4 & 4 \\
+superlative   & 0 & 0 & 4 & 4 & 4 & 4 \\
+\bottomrule
+\end{tabular}
+\caption[Distribution of Question Templates]{Distribution of question templates across the use case and retrieval operation dimensions.}
+\label{tab:distribution_of_question_templates}
+\end{table}
+
+\subsubsection{Template Questions} 
+
+To utilize the semi-automatic \gls{kgqa} generation described in Section~\ref{sec:qa_generator}, template questions are required. For the datasets, a total of 170 different template questions were created manually, the full list of which is available in our replication package (see \cite{schneider_replication_2025}). As mentioned previously, these questions were diversified along the dimensions of the use case and retrieval operation. The precise distribution of these template questions is shown in \autoref{tab:distribution_of_question_templates}. For most combinations of use case and retrieval operation, four template questions were generated, although there are some exceptions. Specifically, for the use cases four and six, only two suitable examples were found for the \emph{Basic} operation. Additionally, for use cases one and two, no suitable template questions were identified for the \emph{Negation} and \emph{Superlative} classes that were meaningful and below the threshold of ten golden triples.
+
+Regarding the semi-typed nature of the questions, the dataset contains 86 semi-typed and 84 untyped questions. Generally, an equal number of semi-typed and untyped questions were created for each combination of use case and retrieval operation, with the exception of the individual questions for use cases four and six as mentioned above.
+
+\subsubsection{Classification According to KGQA Retrieval Taxonomy} 
+
+According to the classification following the \gls{kgqa} retrieval taxonomy described in \autoref{ch:question_catalog}, the distribution is as follows: Within the \emph{Condition Type} category, 133 questions were classified as \emph{Named Entity} and 37 as \emph{Named Entity, Temporal}. This indicates that two types of constraints must be considered by the retriever: either solely the consideration of a named entity or additionally a temporal constraint.
+
+For the \emph{Answer Format} category, the dataset comprises 61 \emph{Enumerative}, 58 \emph{Simple}, and 51 \emph{Explanatory} questions. The classification according to \emph{Graph Representation} shows that 152 questions belong to the \emph{Multi-Fact} type, meaning they require multiple triples for their answer, while 18 questions are categorized as \emph{Single-Fact}, requiring only one triple.
+
+In the \emph{Answer Type} category, 86 questions expect an answer of type \emph{Named Entity}, 20 questions require a \emph{Quantitative} answer, two questions anticipate a \emph{Boolean} answer, and two additional questions have an \emph{Other Type} of response. Furthermore, the dataset includes questions with more complex answer types: 24 questions expect either \emph{Description} combined with \emph{Quantitative} (\emph{Description, Quantitative}) or \emph{Description} with \emph{Named Entity} (\emph{Description, Named Entity}). Additionally, 13 questions require answers of the type \emph{Description, Quantitative, Temporal}, and 8 questions expect answers of the type \emph{Description, Named Entity, Temporal}, which means that they also require a year.
+
+With respect to the \emph{Intention Count} category, the dataset exclusively contains \emph{Single Intention} questions, as multiple intentions were not considered. For the \emph{Question Goal} category, due to insufficient variability in the publication data, only the class \emph{Information Lookup} applies. Regarding \emph{Answer Credibility}, all the questions meet the \emph{Objective} criterion.
+
+\subsubsection{Dataset Creation} 
+To generate the datasets, we used the semi-automatic cluster and subgraph-based generation methods introduced in Section~\ref{sec:qa_generator}. Based on the template question and the provided generation methods, we generated a total of 170 initial questions for the graph variant \hyperref[enum:gv2]{\textbf{GV2}}. Then, each question and the corresponding ground truth were reviewed manually to ensure that both the question and the generated golden answers are consistent and grammatically correct. To further ensure quality, an additional \gls{llm}-based feedback script was employed, which checked each question and answer to provide feedback for changes if necessary.
+
+After the quality of each question-answer pair was verified, we manually classified each question with the remaining categories of the \gls{kgqa} retrieval taxonomy. Then, we employed the \emph{conversion} scripts introduced in Section~\ref{sec:orkg_ensuring_repeatability} to generate the \gls{kgqa} datasets for the graph variants \hyperref[enum:gv1]{\textbf{GV1}}, \hyperref[enum:gv3]{\textbf{GV3}}, and \hyperref[enum:gv4]{\textbf{GV4}}.
+
+

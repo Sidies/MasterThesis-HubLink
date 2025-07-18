@@ -1,0 +1,10 @@
+
+\section{Dependent and Independent Variables}
+\label{sec:exp_prelim_variables}
+This section describes the independent and dependent variables of our experiments.
+
+\paragraph{Independent Variables:} These variables encompass the specific experimental configurations that are systematically varied between runs while performing the evaluation. The key independent variables include the choice of the core retrieval algorithm, modifications to its parameters, the specific dataset used for evaluation, the underlying knowledge base, and the selected \gls{llm}. These variables represent the factors that are manipulated to observe their effect on overall performance.
+
+\paragraph{Dependent Variables:} The dependent variables represent those constructs that we are interested in improving. Consequently, these constitute the quantitative performance measures used to assess the outcomes of different experimental configurations and directly correspond to the metrics detailed in the evaluation plan (see Section~\ref{sec:evaluation_goals_and_metrics})
+
+The experimental methodology involves the execution of a series of tests in which specific configurations of independent variables (pipeline components and parameters) are applied. For each configuration, the dependent variables (retrieval, generation, and operational metrics) are measured. The primary objective of this process is to analyze the collected data to determine the influence of variations in the independent variables on the observed system performance in the different categories of dependent variables. Because each \gls{kgqa} approach has a different set of parameters (independent variables), we employ a \emph{Parameter Selection Process} to choose the appropriate values for our subsequent experiments. The selection process is documented in the following \autoref{ch:parameter_selection_process}.

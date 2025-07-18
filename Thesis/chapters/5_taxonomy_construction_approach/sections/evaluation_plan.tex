@@ -1,0 +1,50 @@
+
+\section{Evaluation Plan}
+\label{sec:taxonomy_evaluation_plan}
+
+\begin{table}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabularx}{\textwidth}{p{0.3\textwidth} X X}
+\toprule
+\textbf{Goal} & \textbf{Question} & \textbf{Metric} \\
+\midrule
+\multirow{3}{=}{\textbf{G1} Validate the suitability of the taxonomy by checking that it allows objects under study to be classified appropriately, with the correct scope and level of detail.} 
+& \textbf{Q1.1} Has the taxonomy reached an appropriate level of generality and granularity? 
+& \textbf{M1.1.1} Laconicity \newline \textbf{M2.1.2} Lucidity \\
+\cmidrule(lr){2-3}
+& \textbf{Q1.2} Is the taxonomy appropriate, comprising only necessary classes? 
+& \textbf{M1.2.1} Completeness \newline \textbf{M2.2.2} Soundness \\
+\cmidrule(lr){2-3}
+& \textbf{Q1.3} Is the taxonomy orthogonal without overlapping classes? 
+& \textbf{M1.3.1} Orthogonality \newline matrix \\
+\cmidrule(lr){2-3}
+\multirow{3}{=}{\textbf{G2} Assess the quality and relevance of the taxonomy to existing ones to validate its purpose.} 
+& \textbf{Q2.1} Is the taxonomy relevant, comprising only necessary classes and categories? 
+& \textbf{M2.1.1} Fraction of relevant classes and categories \\
+\cmidrule(lr){2-3}
+& \textbf{Q2.2} Is the taxonomy novel, having the right extent of new categories?
+& \textbf{M2.2.1} Innovation \newline \textbf{M2.2.2} adaption \\
+\cmidrule(lr){2-3}
+& \textbf{Q2.3} Is the taxonomy significant which enables a more precise description?
+& \textbf{M2.3.1} Classification Delta \\
+\bottomrule
+\end{tabularx}%
+}
+\caption[GQM Plan for Taxonomy Validation]{Overview of the \gls{gqm} plan for the validation of the taxonomy.}
+\label{tab:gqm_taxonomy_validation}
+\end{table}
+
+This section includes an evaluation plan which is applied in the validation and application phases of our proposed taxonomy construction process. The plan is implemented following the \gls{gqm} method \cite{basili_methodology_1984,basili_software_1992} and is illustrated in \autoref{tab:gqm_taxonomy_validation}. The plan consists of two goals with a total of six questions and nine metrics. The metrics are based on the taxonomy evaluation approach proposed by \autocite{kaplan_introducing_2022} and are described in Section~\ref{sec:fund_evaluating_taxonomy}.
+
+The first goal, \textbf{G1}, concentrates on validating the \emph{suitability} of the taxonomy. It seeks to confirm that the taxonomy allows for the appropriate classification of the objects under study, maintaining the correct scope and level of granularity. Three questions address this goal. \textbf{Q1.1} evaluates whether the taxonomy achieves an appropriate level of generality and granularity. An insufficient number of classes may reduce informational utility, whereas an excessive number can introduce unnecessary complexity, hindering effective application. \textbf{Q1.2} assesses appropriateness, focusing on whether the taxonomy encompasses all necessary categories while excluding unnecessary ones. This involves balancing the inclusion of classifications required for comprehensive characterization against the avoidance of rarely utilized categories. \textbf{Q1.3} examines orthogonality, evaluating the degree of overlap among categories. Low orthogonality indicates redundancy due to overlapping categories. Minimizing such overlap enhances the precision of classification.
+
+The second goal, \textbf{G2}, relates to the validation of the purpose of the taxonomy by assessing its quality and relevance relative to existing taxonomies. This goal encompasses three questions. \textbf{Q2.1} assesses the relevance of the classes and categories concerning the stated objectives of the taxonomy. This involves demonstrating the necessity of each element for fulfilling the intended function of the taxonomy. Question \textbf{Q2.2} investigates the novelty of the taxonomy, specifically the extent to which it introduces new classes or adapts existing ones compared to established taxonomies. Finally, \textbf{Q2.3} evaluates the  significance by determining whether the taxonomy facilitates a more precise description or classification within its domain than preceding taxonomies permit.
+
+% \subsection{Validating the Suitability}
+
+% 
+
+% \textbf{Q2.1} concerns verifying that the taxonomy is neither too broad nor too specific. It is about finding an appropriate level of granularity. A low number of classes diminishes information utility, whereas an excessive number introduces noise, complicating taxonomy application. We quantify the generality and granularity using the \emph{laconicity} and \emph{lucidity} metrics \cite{kaplan_introducing_2022}. The second question \textbf{Q2.2} addresses the appropriateness, focusing on whether the taxonomy includes sufficient categories without any that are unnecessary. It is about maintaining the trade-off between adding classifications that are required to sufficiently classify the characteristics of a \gls{kgqa} system, without introducing categories that are never used. To quantify the appropriateness, the \emph{completeness} and \emph{soundness} metrics are used \cite{kaplan_introducing_2022}. The third question \textbf{Q2.3} addresses the orthogonality, which is about the evaluation of whether the taxonomy has overlapping categories. If the orthogonality is low, the taxonomy has overlapping categories which can be removed to increase preciseness. If issues are found during this validation step, the development process returns to the taxonomy refinement step to correct the shortcomings. The result is a new increment of the taxonomy which has to be validated once again. 
+
+% \subsection{Validating the Purpose}

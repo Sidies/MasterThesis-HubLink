@@ -1,0 +1,129 @@
+
+\section{Baseline KGQA Retrieval Approaches}
+\label{sec:implementation_baselines}
+
+To evaluate our HubLink approach against existing \gls{kgqa} approaches, we implemented five distinct baseline methods within the \gls{sqa} system. This section details the selection process and the implementation of these baselines. First, we outline how candidate approaches were identified and filtered. Then, we explain the methodology of each selected retriever and briefly describe its implementation.
+
+% The retrievers have been implemented using the provided interface of the \gls{sqa}. Consequently, the parameters with which the retrievers are initialized are controlled using a JSON configuration file that is injected before experiment initialization.
+
+\subsection{Selection of Baselines Approaches}
+
+To compare HubLink with state-of-the-art methods from the literature, we selected and implemented several approaches drawn from recent publications. The chosen baseline approaches represent established methods within the field previously evaluated on open-domain \gls{kgqa} benchmarks. In the following, we outline the systematic process through which these methods were chosen.
+
+\subsubsection{Collecting Paper Candidates} 
+
+Recently, surveys have been published that structure the current approaches found in the literature. \textcite{pan_unifying_2024} provide an in-depth analysis of the integration of \glspl{llm} with \glspl{kg}, which includes \gls{kgqa} but also goes beyond that. In their work, they propose a categorization of different integration strategies, assigning each examined paper to one of these categories. From this structure, we selected the categories relevant to \gls{kgqa}, namely \emph{KG-Enhanced LLM - Inference}, \emph{LLM-Augmented KG - Question Answering}, and \emph{Synergized Reasoning}, as these directly address the integration of \glspl{llm} and \glspl{kg} for question-answering tasks. 
+
+Another survey by \textcite{peng_graph_2024} proposes a taxonomy for \gls{grag} approaches, which classifies the methods in a range of dimensions. From this set, we include all publications covered by the survey, except those classified as \emph{Non-parametric}, \emph{GNN-based} retrievers, or those considered \emph{Training-based}. 
+
+In addition to the surveys, we conducted a Google Scholar search to identify further \gls{kgqa} approaches. Since both surveys were published in 2024, we limited our search to this year in order to find additional approaches not yet captured by the surveys.
+
+
+\subsubsection{Excluding Papers not Relevant}
+
+Through the above-mentioned surveys and Google Scholar search, we collected an initial pool of 76 publications. The next step was to identify the \gls{kgqa} approaches most relevant for comparison with HubLink by applying the following exclusion criteria to each of the publications:
+
+\begin{enumerate}[label=\textbf{[C\arabic*]}]
+    \item \textbf{LLM-Based:} The approach proposed in the publication must employ a pre-trained \gls{llm} to support the retrieval process. Embedding models are also included under this criterion. This is relevant because our objective is to explore how \glspl{llm} can support literature search within a \gls{qa} context.
+    \item \textbf{KGQA Approach:} The approach proposed in the publication must represent a generalizable \gls{kgqa} approach. Specifically, it should accept a question in natural language and a \gls{kg} as input, with the goal of extracting relevant information from the \gls{kg} to answer the question.
+    \item \textbf{Training-Free:} The approach proposed in the publication must not require additional training or fine-tuning of pre-trained \glspl{llm}, nor the training of other models such as \glspl{gnn}. Consequently, all approaches that depend on a dataset of training examples have been excluded, as we lack the resources for extensive training.
+\end{enumerate}
+
+Applying these criteria to the collection of 76 publications resulted in 13 relevant papers. Specifically, one paper was excluded for not using an \gls{llm} (\textbf{C1}), 21 were excluded as they did not represent a suitable \gls{kgqa} approach (\textbf{C2}), and 41 were excluded for requiring model training (\textbf{C3}). The complete list of candidates and the filtering results are provided in the replication package \cite{schneider_replication_2025}.
+
+\subsubsection{Assessing Implementation Feasibility}
+
+For the remaining 13 papers deemed relevant, we evaluated the availability and applicability of their implementations provided by the authors for integration into the \gls{sqa} system.
+
+The approaches RoK \cite{wang_reasoning_2024} and KSL \cite{feng_knowledge_2023} were excluded as they do not provide source code. Their complexity made reimplementation impractical without access to the original code.
+
+In the case of KG-GPT \cite{kim_kg-gpt_2023}, after reviewing the code repository\footnote{\url{https://github.com/jiho283/KG-GPT} [last accessed 24.11.2024]}, we found that the implementation corresponds to a claim verification pipeline rather than a traditional \gls{qa} setting. This assumes a prior mapping of claim entities to graph entities, which is not available in our use case.
+
+For ODA \cite{sun_oda_2024}, although the authors provide a repository\footnote{\url{https://github.com/Akirato/LLM-KG-Reasoning} [last accessed 24.11.2024]}, it contains only graph and dataset resources, lacking the implementation of the ODA approach itself.
+
+DiFaR \cite{baek_direct_2023} does not have a public implementation. However, its methodology closely resembles the \gls{rag} framework \cite{lewis_retrieval-augmented_2021}, differing mainly in embedding graph triples instead of documents. Given the experience of the thesis author with similar architectures, we deemed reimplementation feasible based on the description of the paper.
+
+For the remaining methods: StructGPT \cite{jiang_structgpt_2023}, ToG \cite{sun_think--graph_2024}, Mindmap \cite{wen_mindmap_2024}, ToG-2 \cite{ma_think--graph_2024}, GoG \cite{xu_generate--graph_2024}, GRAPH-COT \cite{jin_graph_2024}, and FiDeLiS \cite{sui_fidelis_2024}, we found that the provided source code was generally adaptable for integration into the \gls{sqa} system.
+
+\subsubsection{Deciding on Final Implementations}
+
+After assessing implementation feasibility, eight of the 13 methods remained as candidates: StructGPT, ToG, Mindmap, ToG-2, GoG, GRAPH-COT, FiDeLiS, and DiFaR. To keep the scope of this work manageable, we ultimately selected five of these for implementation, guided by their methodological diversity. We categorize the eight candidates as follows:
+
+\begin{itemize}
+    \item \textbf{Stepwise reasoning:} These approaches iteratively query the \gls{llm} to derive an answer step by step. This category includes: StructGPT \cite{jiang_structgpt_2023}, ToG \cite{sun_think--graph_2024}, ToG-2 \cite{ma_think--graph_2024}, GoG \cite{xu_generate--graph_2024}, GRAPH-COT \cite{jin_graph_2024}, and FiDeLiS \cite{sui_fidelis_2024}.
+    \item \textbf{Subgraph construction:} These methods focus on building relevant subgraphs from which information is extracted. Mindmap \cite{wen_mindmap_2024} is the only candidate in this category.
+    \item \textbf{Embedding-based:} These methods primarily use dense vector representations for retrieval. DiFaR \cite{baek_direct_2023} is the only candidate here.
+\end{itemize}
+
+During the conceptual phase of this work, prior to this baseline selection, StructGPT \cite{jiang_structgpt_2023} and ToG \cite{sun_think--graph_2024} were implemented to evaluate the general feasibility of the thesis. At the time, both were highly cited and provided an adaptable public code. However, these approaches are very similar and share a weakness particularly relevant to scholarly literature search, as their entity selection can become random beyond a certain threshold, making correct entity identification dependent on chance. This significantly impacts the quality of the answer, as detailed in Section~\ref{sec:discussion_on_evaluation_results}.
+
+Although ToG-2 \cite{ma_think--graph_2024}, a successor to ToG, was published during the conduct of this thesis, the issue described above was not resolved in the new version. For this reason, we decided not to implement this approach. Instead, we selected FiDeLiS \cite{sui_fidelis_2024} from the Stepwise reasoning category, as it specifically addresses the entity selection problem using an embedding-based similarity assessment. This brings the total number of implemented methods in the Stepwise reasoning category to three.
+
+In the Subgraph construction and Embedding-based categories, only Mindmap \cite{wen_mindmap_2024} and DiFaR \cite{baek_direct_2023} remained after filtering. Therefore, both were implemented as baselines, bringing the total number of baseline methods implemented to five.
+
+
+
+
+\subsection{Direct Fact Retrieval (DiFaR)}
+
+\gls{difar} is a \gls{kgqa} retrieval approach proposed by \textcite{baek_direct_2023}. It was evaluated on fact retrieval tasks across two different domains: \gls{qa} and dialogue generation. For \gls{qa}, three different datasets were used: \textsc{SimpleQuestions} and \textsc{WebQuestionsSP} for the Freebase graph, and \textsc{Mintaka} for the Wikidata graph. For dialogue generation, they used the \textsc{OpenDialKG} dataset designed for the Freebase graph. Their tests show that the approach outperforms all baselines, although performance is lower for intrinsically more complex multi-hop retrieval questions.
+
+
+\subsubsection{Approach Explanation} 
+The retriever first undergoes an indexing phase, during which it converts all triples in the \gls{kg} into a set of embeddings. At query time, the question is embedded using the same embedding model that was used for the triple conversion. Subsequently, a nearest-neighbor search is performed to find the triples whose embeddings are closest to the question embedding, thus enabling a quick search through potentially billions of dense vectors. These triples serve as the context for answering the question. The researchers further propose a refinement, termed DiFaR2, involving a reranking of the retrieved triples. This approach utilizes a language model provided with both the question and the retrieved triples to evaluate triple relevance.
+
+\subsubsection{Approach Implementation} 
+We implemented the \gls{difar} approach based on the descriptions provided in the paper. In our implementation, the indexing process starts by selecting an initial entity within the graph and then traversing sequentially from it. Each triple collected during traversal is then embedded using a pre-trained embedding model. The specific embedding model is selected based on the provided configuration file. These vectors are then stored in a vector store. At query time, the question is processed to generate its embedding. This embedding is used in a \gls{ann} search on the data stored in the vector store. The triples retrieved from this search are then incorporated into an \gls{llm} prompt for the generation of the final answer. Regarding the proposed reranking, the \gls{sqa} system already provides a post-retrieval procedure that reranks contexts based on relevance, which can be enabled via configuration.
+
+
+
+
+\subsection{Think-on-Graph (ToG)}
+
+\textcite{sun_think--graph_2024} propose \gls{tog}, a \gls{kgqa} retrieval approach based on beam search. The authors evaluated their approach on nine different datasets for the Freebase and Wikidata graphs to demonstrate its advantage in reasoning over knowledge-intensive tasks. The datasets used for Freebase were \textsc{ComplexWebQuestions}, \textsc{WebQuestionsSP}, \textsc{GrailQA}, \textsc{SimpleQuestions}, and \textsc{WebQuestions}. For the Wikidata graph, the datasets were \textsc{QALD10-en}, \textsc{T-REx}, \textsc{Zero-Shot RE}, and \textsc{Creak}. Their tests show that \gls{tog} achieves state-of-the-art performance on six out of the nine datasets.
+
+\subsubsection{Approach Explanation} 
+The process is initialized with topic entities, which act as entry points into the graph. Starting from these entities, an exploration takes place. During exploration, the system iteratively traverses the \gls{kg} to build reasoning paths. At the start of each iteration, the current set of reasoning paths includes all entities and relations discovered so far. The \gls{llm} identifies candidate relations by querying the \gls{kg} for relations connected to the tail entities of the paths of the previous iteration. These relations are ranked by their relevance to the question. The top N are then selected using an \gls{llm}-based pruning step to narrow the search space. Next, the \gls{llm} uses the selected relations to find candidate entities, which are then randomly pruned to stay within a predefined threshold specified in the parameters. The reasoning paths are updated with the newly discovered entities and relations, effectively increasing their depth by one with each iteration.
+
+The reasoning phase follows, involving evaluation and potential termination. The \gls{llm} evaluates whether the current reasoning paths contain enough information to answer the question. If so, it generates an answer using these paths. If not, exploration continues until either an answer can be formulated or a predefined maximum depth is reached. If sufficient information is not found by then, the \gls{llm} resorts to its internal knowledge to produce a response.
+
+
+\subsubsection{Approach Implementation} 
+The original code provided by the authors is available online\footnote{\url{https://github.com/IDEA-FinAI/ToG/} [last accessed 21.11.2024]}. We adapted their code with minimal necessary changes to work with the \gls{sqa} system interface. During testing, we encountered several issues requiring further adjustments. First, many executions failed because some outputs of the \gls{llm} deviated from the expected output format. We found that the original parser was unable to handle these variations in \gls{llm} output. To address this, we developed a more robust parser capable of extracting information from a wider range of \gls{llm} outputs. Second, we parallelized the entity searching and scoring processes, as the original sequential implementation was inefficient. Third, the original implementation only returned the \gls{llm}-generated answer. We extended the output to also return the triples used to generate the answer to allow for evaluation of retrieval performance. Finally, many of the prompts used by the retriever are few-shot prompts requiring examples. In the original code, these prompts targeted a different knowledge base, so we modified the examples to align with our label-based \gls{qa} dataset.
+
+
+\subsection{StructGPT}
+Another \gls{kgqa} retrieval approach based on beam search is StructGPT, proposed by \textcite{jiang_structgpt_2023}. In their work, the authors explore reasoning over multiple types of structured data, including tables, \glspl{kg}, and databases, within a unified paradigm. Consequently, they evaluated StructGPT on a wide range of tasks, including \gls{kgqa}, table-based \gls{qa}, and text-to-SQL, using a total of 9 different datasets. For \gls{kgqa}, they tested \textsc{WebQuestionsSP} and \textsc{MetaQA}. For table-based \gls{qa}, they used \textsc{TabFact}, \textsc{WikiTableQuestions}, and \textsc{Fever}. For text-to-SQL, the datasets were \textsc{Spider}, \textsc{WikiSQL}, and \textsc{SParC}. The authors claim that StructGPT enhances the reasoning performance of \glspl{llm} on structured data in zero-shot and few-shot settings, achieving results comparable to competitive, fully supervised methods. 
+
+\subsubsection{Approach Explanation} 
+The retrieval process begins with a designated topic entity, serving as the entry point into the \gls{kg}. The method first aggregates all unique relations associated with the topic entity. These relations then undergo preprocessing steps to filter out redundancies and to linearize the remaining relations into a simple string format suitable for \gls{llm} input. The \gls{llm} is responsible for selecting a single relation per iteration to guide the traversal path. In the first iteration, it selects one relation deemed relevant to the query. In subsequent iterations, while considering the history of previously selected relations, the selection process still yields only one new relation.
+
+Once a relation is selected, all entities connected to the current entity via the selected relation are gathered from the graph. These retrieved triples are subsequently classified based on their type. However, we observe that this classification appears relevant only for the Freebase graph, which we do not use in our project. Following the classification, the \gls{llm} examines the retrieved triples to determine whether the information is sufficient to answer the query. During this verification, the number of triples considered is constrained to a predetermined maximum to limit the context size that is queried to the \gls{llm}. If the \gls{llm} deems the information adequate, it generates the answer. Otherwise, the procedure continues with the next iteration, with the \gls{llm} selecting another relation and the retrieval of additional triples. This process continues until an answer is generated or the maximum number of iterations is reached.
+
+\subsubsection{Approach Implementation} 
+The implementation of StructGPT is publicly available online\footnote{\url{https://github.com/RUCAIBox/StructGPT/} [last accessed 21.11.2024]}. We adapted the original code with minimal modifications necessary for compatibility with the \gls{sqa} system interface. During implementation, we observed that the traversal mechanism did not operate as intended in the original code because the main loop terminated prematurely using an unconditional break statement after the first iteration. Because the descriptions in the paper and the surrounding code logic suggests iterative traversal, we removed this break statement, allowing the loop to execute up to the specified maximum iterations.
+
+Additional modifications were necessary. We observed excessive runtime and consequently implemented parallelization for retrieving and processing relations for each entity. Furthermore, the original implementation could not traverse the edges of entities against the direction of the graph, which impairs the ability of the retriever to provide answers to many questions in the \gls{kgqa} datasets used in our experiments. We addressed this by adding the functionality for bidirectional retrieval. Lastly, the original implementation returned only the generated answer. We extended the output to also include the retrieved triples to be able to assess the retrieval part of the approach. For this to work, we needed to add an \gls{llm}-based filtering of the triples, as the total number of triples from which the answer is generated is very large.
+
+\subsection{FiDeLiS}
+
+The FiDeLiS retriever is another beam search-based method proposed by \textcite{sui_fidelis_2024}. The approach was evaluated on the Freebase and Wikidata graphs. For Freebase, the datasets \textsc{WebQuestionsSP} and \textsc{ComplexWebQuestions} have been tested. For Wikidata, the \textsc{CR-LT-KGQA} dataset was used. Their tests show that the approach outperforms existing baselines across all datasets.
+
+\subsubsection{Approach Explanation} 
+The approach is initiated with a question and a corresponding topic entity, which serves as the entry point in the graph. Then, an \gls{llm} generates a strategic plan to address the question, including extracting relevant keywords and converting the query into a declarative statement. Subsequently, the extracted keywords are embedded using a pre-trained embedding model. The main iterative process then begins by retrieving all relational paths associated with the current entities, starting from the topic entity. Both the predicates and their associated tail entities are embedded and subsequently scored based on similarity to the keyword embeddings. The resulting relations are ranked, and only the top N are retained and added to a cumulative list of candidate paths. If the maximum path length has not been reached, the top-K candidates from this list are selected for further expansion in the next iteration, guided by the previously generated plan. At each iteration, a deductive termination check determines whether the process should halt, and a final answer can be synthesized from the candidate paths. The loop continues until the step limit is reached or an answer is produced.
+
+\subsubsection{Approach Implementation} 
+The implementation of FiDeLis is publicly available online\footnote{\url{https://anonymous.4open.science/r/FiDELIS-E7FC} [last accessed on 03.02.2025]}. We adapted the original code with minimal necessary changes to work with the \gls{sqa} system interface. However, some modifications were required. First, we had to adapt the output parsers to be more robust when working with various \glspl{llm}, as the original parsers required the \gls{llm} output to match the expected format exactly, which is not always the case in reality. Second, we adapted the code to return the retrieved triples, enabling evaluation of the retrieval performance of the method. Third, we encountered long execution times. To accelerate retrieval, we implemented a caching mechanism to avoid redundant graph queries and parallelized the entity scoring process.
+
+\subsection{Mindmap}
+The Mindmap retriever, proposed by \textcite{wen_mindmap_2024}, is a \gls{kgqa} retrieval approach that extracts relevant entities from a question and constructs evidence subgraphs. The approach was evaluated in the medical \gls{qa} domain using three datasets: \textsc{GenMedGPT-5k}, \textsc{GMCQA}, and \textsc{ExplainCPE}, covering scenarios such as patient-doctor dialogues, clinical dialogues, and multiple choice questions from a pharmacist examination. They constructed two \glspl{kg} that contain medical concepts and relationships, demonstrating state-of-the-art performance.
+
+
+\subsubsection{Approach Explanation} 
+The retriever starts with a preprocessing step where all entities within the \gls{kg} are embedded. At query time, it prompts an \gls{llm} to extract entities from the input question. Based on these extracted entities, a nearest neighbor search identifies the entities most semantically similar within the \gls{kg}. For each identified graph entity, the retriever constructs two types of evidence subgraphs: (1) the shortest paths connecting the identified entities within the graph and (2) the 1-hop neighbors of each identified entity. Subsequently, the content of both subgraphs is transformed into natural language descriptions using an \gls{llm}. The final answer is generated by prompting the \gls{llm} with the natural language descriptions and the original question, allowing the model to synthesize information into a coherent response.
+
+\subsubsection{Approach Implementation} 
+The implementation of the Mindmap retriever is publicly available online\footnote{\url{https://github.com/wyl-willing/MindMap/tree/main}[last accessed on 26.02.2025]}. We adapted their code with minimal necessary changes to integrate with the \gls{sqa} interface. However, several more substantial modifications were required for the retriever to function correctly in our setup.
+
+First, the retriever requires a shortest path algorithm to function. The original implementation relied on the built-in shortest-path functionality provided in the graph framework. Since the \gls{sqa} system is designed for generic \gls{rdf} graphs lacking this specific feature, we implemented a bidirectional breadth-first search algorithm to find the shortest paths between entities in the graph. Second, the original code relied on precomputed text files for entity embeddings. To handle arbitrary graphs and questions dynamically, we replaced this with an on-the-fly embedding process, storing entity vectors in a vector store and computing question embeddings during retrieval. Third, we adapted the prompts, correcting grammatical errors (possibly due to translation introduced by the original authors) and modifying the few-shot examples for our label-based \gls{kgqa} dataset. Fourth, we parallelized the queries that retrieve all neighbors of an entity because we identified this process to be a performance bottleneck. Finally, we ensured that the retriever also returns the triples found during retrieval, which allows the evaluation of the retrieval component of the approach.
+

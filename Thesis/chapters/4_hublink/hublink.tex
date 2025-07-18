@@ -1,0 +1,22 @@
+\chapter{HubLink: KGQA by Graph Decomposition}
+\label{ch:hublink}
+
+
+This chapter introduces HubLink, a novel approach for \gls{kgqa}, representing the primary Contribution \hyperref[enum:c1]{\textbf{C1}} of this thesis. HubLink is specifically designed as a schema-agnostic and training-free method. Its core principle involves subdividing the graph into distinct subgraph structures, termed \emph{Hubs}, during an indexing phase. These Hubs facilitate source-aware information retrieval at query time, enabling the identification of provenance for the retrieved information. This characteristic is particularly valuable within scholarly literature search contexts, where traceability of findings is essential.
+
+The structure of this chapter is organized to systematically present the HubLink framework. It begins with a high-level overview of the approach in Section~\ref{sec:hublink_overview}. Following this, Section~\ref{sec:hublink_formal_definitions} establishes the necessary formal definitions and concepts.
+
+The subsequent sections provide a detailed explanation of the HubLink algorithm. Section~\ref{sec:hublink_data_models} introduces the core data models utilized. The process of identifying the root entities of the hub within the graph is presented in Section~\ref{sec:hublink_finding_hub_root_entities}. Section~\ref{sec:hublink_indexing} then explains the comprehensive indexing procedure, which includes the construction and storage of Hubs. Operations specific to the vector store employed for indexing and retrieval are described in Section~\ref{sec:hublink_vector_store_operations}. Section~\ref{sec:hublink_retrieval_strategies} elaborates on the two distinct retrieval strategies implemented within HubLink. The algorithmic description concludes in Section~\ref{sec:hublink_answer_generation}, which details the answer generation and source-linking mechanisms.
+
+After presenting the algorithm, the chapter discusses broader aspects of the HubLink framework. Section~\ref{sec:hublink_design_rationale} examines the key design decisions made during development and provides their rationale. Section~\ref{sec:hublink_generality_and_chances} evaluates the applicability of HubLink to domains beyond scientific literature and assesses its scalability potential for large graphs. Considerations for maintaining index updates over time are discussed in Section~\ref{sec:updating_the_index}. Finally, an analysis of the limitations of the approach is provided in Section~\ref{sec:hublink_limitations}. 
+
+
+
+\input{chapters/4_hublink/sections/1_retriever_overview}
+\input{chapters/4_hublink/sections/2_retriever_definitions}
+\input{chapters/4_hublink/sections/3_algorithm}
+\input{chapters/4_hublink/sections/4_design_rationale}
+\input{chapters/4_hublink/sections/5_chances_and_generality}
+\input{chapters/4_hublink/sections/6_updating_the_index}
+\input{chapters/4_hublink/sections/7_limitations}
+

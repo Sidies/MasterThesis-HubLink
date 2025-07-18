@@ -1,0 +1,16 @@
+
+\section{Research Questions Revisited}
+\label{sec:research_questions_revisited}
+
+The primary research goal was to design a new schema-agnostic and training-free retrieval approach capable of effectively retrieving scholarly knowledge from \glspl{rkg}, along with developing a systematic taxonomy to assess the capabilities of such systems. In this section, we revisit the two primary research questions that we defined and successfully addressed based on our contributions.
+
+\begin{enumerate}[label={}]
+    \item \textit{\hyperref[enum:rq1]{\textbf{RQ1}} How can a schema-agnostic retrieval algorithm leveraging an \gls{rkg} and a pre-trained \gls{llm} be developed for the \gls{kgqa} setting to effectively integrate diverse scholarly sources, adapt to evolving schemas and account for the provenance of information during retrieval without relying on training data?} 
+\end{enumerate}
+
+We found that the most effective way is to implement an embedding-based approach, which we refer to as HubLink. This approach does not require any further training data as it relies on the inherent semantic connections between words and sentences. This makes it particularly suitable for handling evolving schemas and unseen entities, as no knowledge about the schema is required during retrieval. Moreover, by dividing the graph into hub structures, with each hub representing a publication, the source of the information is taken into account during retrieval. By doing so, an overreliance on a single source is mitigated and the \gls{llm} is encouraged to integrate diverse perspectives.
+
+\begin{enumerate}[label={}]
+    \item \textit{\hyperref[enum:rq2]{\textbf{RQ2}} How can existing general \gls{qa} and \gls{kgqa} taxonomies be synthesized and extended to form a comprehensive taxonomy tailored to define the characteristics of questions posed to \gls{kgqa} retrieval systems for the literature search task?}
+\end{enumerate}
+We found that the creation of such a taxonomy can be successfully achieved through the taxonomy construction methodology introduced in this thesis. This systematic approach involves extracting relevant concepts from the existing literature, followed by clustering and relevance assessment phases to initialize a synthesized taxonomy, which is then incrementally refined and validated. The utility of this methodology was confirmed through the successful development of a specific taxonomy designed to classify question characteristics within the domain of \gls{kgqa} systems applied to literature searches. The practical value of the resulting taxonomy was further underscored during the creation of \gls{kgqa} benchmarking datasets. Here, the taxonomy served as a framework to ensure that the datasets cover a diverse range of question types, enabling a comprehensive assessment of different system capabilities during evaluation.

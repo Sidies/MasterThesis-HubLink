@@ -1,0 +1,129 @@
+
+
+\section{Parameter Selection for Mindmap}
+\label{sec:param_selection_mindmap}
+
+In the sections that follow, we initially outline the base configuration and the range of parameters explored during the parameter selection phase for the Mindmap \gls{kgqa} baseline approach. Subsequently, we analyze the results of the test runs and detail the parameter values chosen for the final setup utilized in our subsequent experiments.
+
+\subsection{Base Configuration and Parameter Ranges}
+
+\begin{table}[t]
+    \centering
+    \begin{tabularx}{\textwidth}{l X}
+        \toprule
+        \textbf{Parameter} & \textbf{Parameter Space} \\
+        \midrule
+        \texttt{Final Paths To Keep} & \underline{10}, 20, 30 \\
+        \texttt{Shortest Paths To Keep} & \underline{10}, 20, 30 \\
+        \texttt{Neighbors to Keep} & \underline{10}, 20, 30 \\
+        \texttt{Do Question Augmentation} & \underline{False}, True \\
+        \texttt{Do Reranking} & \underline{False}, True \\
+        \texttt{\gls{llm}} & \underline{gpt-4o-mini}, gpt-4o, o3-mini, \underline{Qwen2.5-14B}, Llama3.1-8B \\
+        \texttt{Embedding Model} & \underline{mxbai-embed-large}, text-embedding-3-large, \newline granite-embedding \\
+        \bottomrule
+    \end{tabularx}
+    \caption[Base Configuration and Parameter Space for Mindmap]{The base configuration (\underline{underlined}) and parameter space for the Mindmap \gls{kgqa} approach.}
+    \label{tab:mindmap_tuning_configs}
+\end{table}
+
+The parameter values for the base configuration, together with the ranges of parameters tested for Mindmap, are shown in \autoref{tab:mindmap_tuning_configs}. In what follows, we provide a concise overview of each parameter individually.
+
+\paragraph{Final Paths To Keep:} This parameter determines how many of the computed evidence paths are retained for the final answer. Increasing this value allows for the consideration of more context but also increases cost and may introduce noise. We initially set this value to 10 because this is the maximum number of golden triples requested by the applied \gls{kgqa} dataset. We then tested the values 20 and 30.
+
+\paragraph{Shortest Paths to Keep:} This parameter determines how many candidate shortest paths are retained during the search between entities. A higher value allows to consider more context but also increases cost and complexity. Same as with the previous parameter, the base configuration value has been set to 10 and we tested the values 20 and 30.
+
+\paragraph{Neighbors to Keep:} This parameter determines how many one-hop neighbor relationships are included when building the prompt for the \gls{llm}. As with the previous parameters, a higher value allows for more context but increases cost and complexity. We set it to 10 by default and increased the values to 20 and 30.
+
+\paragraph{Do Question Augmentation:} Same as with the other \gls{kgqa} approaches, we disabled the question augmentation in the base configuration and assessed its impact on the results during
+testing.
+
+\paragraph{Do Reranking:} Same as with the other \gls{kgqa} approaches, we disabled the reranking by default and assessed the impact of enabling the reranking in one of the test runs.
+
+\paragraph{LLM:} The \gls{llm} has several tasks in the Mindmap approach. First, it is responsible for the extraction of entities from the question. Second, it transforms the path information into a natural language description. Lastly, it generates the final answer. The models that were tried out are introduced in Section~\ref{sec:selection_planning_llms}. In our initial setup, we employed two models, namely \emph{gpt-4o-mini} and \emph{Qwen2.5-14B}, to decrease the runtime of the parameter selection process by executing several configurations simultaneously. Consequently, embedding models and other \glspl{llm} were evaluated using the \emph{Qwen2.5-14B} model as the baseline, while all other parameters were tested with \emph{gpt-4o-mini} as the foundation.
+
+\paragraph{Embedding Model:} The embedding model determines the model that is used for embedding the entities of the knowledge graph and the question. The models that we used are introduced in Section~\ref{sec:selection_planning_llms}. We use \emph{mxbai-embed-large} in the base configuration because of its runtime and cost efficiency.
+
+
+\subsection{Parameter Selection}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{llll}
+        \toprule
+        \textbf{Parameter } & \textbf{Config} & \textbf{Recall} & \textbf{Hits@10} \\
+        \midrule
+        \multirow{5}{*}{Large Language Model} 
+            & \underline{gpt-4o-mini} & 0.113 & \textbf{0.029} \\
+            & gpt-4o & 0.107 (-5.3\%) & 0.021 (-27.6\%) \\
+            & gpt-O3-mini & \textbf{0.113 (+0.0\%)} & 0.013 (-55.2\%) \\
+            & qwen2.5:14b & 0.085 (-24.8\%) & 0.008 (-72.4\%) \\
+            & llama3.1 & 0.000 (-100.0\%) & 0.000 (-100.0\%) \\
+        \midrule
+        \multirow{3}{*}{Embedding Model} 
+            & \underline{mxbai-embed-large} & 0.085 & 0.008 \\
+            & text-embedding-3-large & \textbf{0.118 (+38.8\%)} & 0.006 (-25.0\%) \\
+            & granite-embedding & 0.083 (-2.4\%) & \textbf{0.019 (+137.5\%)} \\
+        \midrule
+        \multirow{4}{*}{Neighbors to Keep}
+            & \underline{10} & \textbf{0.113} & \textbf{0.029} \\
+            & 20 & 0.113 (+0.0\%) & 0.029 (+0.0\%) \\
+            & 30 & 0.113 (+0.0\%) & 0.029 (+0.0\%) \\
+        \midrule
+        \multirow{4}{*}{Final Paths to Keep}
+            & \underline{10} & \textbf{0.113} & \textbf{0.029} \\
+            & 20 & 0.113 (+0.0\%) & 0.029 (+0.0\%) \\
+            & 30 & 0.113 (+0.0\%) & 0.029 (+0.0\%) \\
+        \midrule
+        \multirow{4}{*}{Shortest Paths to Keep}
+            & \underline{10} & \textbf{0.113} & \textbf{0.029} \\
+            & 20 & 0.113 (+0.0\%) & 0.029 (+0.0\%) \\
+            & 30 & 0.113 (+0.0\%) & 0.029 (+0.0\%) \\
+        \midrule
+        \multirow{2}{*}{Do Reranking} 
+            & \underline{False} & \textbf{0.129} & \textbf{0.129} \\
+            & True & 0.118 (-6.2\%) & 0.121 (-6.2\%) \\      
+        \midrule
+        \multirow{2}{*}{Do Question Augmentation} 
+            & \underline{False} & 0.129 & 0.129 \\
+            & True & 0.129 (\(\pm\)0.0\%) & 0.129 (\(\pm\)0.0\%) \\
+        \bottomrule
+    \end{tabular}
+    \caption[Results of the Parameter Selection Process for Mindmap]{Results of the parameter selection process for Mindmap. The base configuration parameter is \underline{underlined}, and the highest metric score per parameter is \textbf{bold}.}
+    \label{tab:mindmap_parameter_selection}
+\end{table}
+
+The parameter selection results for the Mindmap approach with 16 configurations are detailed in \autoref{tab:mindmap_parameter_selection}, with the final configuration shown in \autoref{tab:mindmap_final_config}. Similarly to the FiDeLiS approach, we observed low performance across all configurations, particularly for the Hits@10 metric, which often remains near zero. This indicates that Mindmap significantly struggles with this question-answering task, which we further discuss in Section~\ref{sec:discussion_on_evaluation_results}. Given these data, we only reviewed the Recall value as the Hits@10 scores were too low to observe significant differences. Moreover, given the generally low scores, it is not possible to attribute the results to parameter changes or random variations in the retrieval process. Consequently, our decisions have been made with limited confidence because of these issues.
+
+\paragraph{Large Language Model:}
+The baseline model that was used is \emph{gpt-4o-mini} which scored a Recall of 0.113. The model \emph{gpt-o3-mini} has the same Recall value of 0.113 while \emph{gpt-4o} lost 5.3\%. Similarly to FiDeLis, open source models performed poorly. The \emph{Llama3.1} model failed entirely and the \emph{qwen2.5:14b} model lost 24.8\% in Recall. Given that \emph{gpt-4o-mini} and \textbf{\emph{gpt-o3-mini}} achieved the same Recall, we decided on the latter for the final configuration because the general trend for the other approaches also tends towards this model.
+
+\paragraph{Embedding Model:}
+The baseline model \emph{mxbai-embed-large} achieved a Recall of 0.085, while the \emph{text-embedding-3-large} boosted the Recall value to 0.118 (+38.8\%). In contrast, \emph{granite-embedding} caused a minor dip in Recall (-2.4\%). Given these data, the final configuration used the \textbf{\emph{text-embedding-3-large}} model.
+
+\paragraph{Path and Neighbor Parameters:}
+The tests for the parameters \texttt{Final Paths to Keep}, \texttt{Shortest Paths to Keep}, and \texttt{Neighbor Paths to Keep} were run with a baseline value of 10. In all three cases, increasing the value to 20 or 30 had no measurable effect. Since increasing the limits did not provide any benefit, we retained the base configuration values for the final configuration.
+
+\paragraph{Do Reranking:}
+Disabling reranking resulted in a Recall and Hits@10 value of 0.129. Enabling reranking should theoretically improve the Hits@10 score if the approach does not already rank the values by their relevance. However, enabling the reranking resulted in lower scores for both metrics with a Recall of 0.118 (-6.2\%) and Hits@10 of 0.121 (-6.2\%). Consequently, since reranking did not improve the performance, we \textbf{disabled} it for the final configuration.
+
+\paragraph{Do Question Augmentation:}
+Disabling the augmentation yielded a Recall and Hits@10 value 0.129. Enabling augmentation did not change the results. Because the results of other approaches suggest that the augmentation can negatively affect performance, we decided to \textbf{disable} the augmentation.
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{l l}   
+        \toprule
+        \textbf{Parameter} & \textbf{Value} \\
+        \midrule
+        \texttt{Final Paths to Keep} & 10 \\
+        \texttt{Shortest Paths to Keep} & 10 \\
+        \texttt{Neighbor Paths to Keep} & 10 \\
+        \texttt{LLM} & gpt-o3-mini \\
+        \texttt{Embedding Model} & text-embedding-3-large \\ 
+        \texttt{Do Question Augmentation} & False \\
+        \texttt{Do Reranking} & False \\
+        \bottomrule
+    \end{tabular}
+    \caption[Final Configuration for Mindmap]{The final configuration used for subsequent experiments for the Mindmap \gls{kgqa} approach.}
+    \label{tab:mindmap_final_config}
+\end{table}

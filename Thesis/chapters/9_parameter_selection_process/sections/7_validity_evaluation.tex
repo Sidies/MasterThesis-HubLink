@@ -1,0 +1,20 @@
+
+\section{Threats to Validity}
+\label{sec:param_selection_threats_to_validity}
+
+
+In this section, we discuss threats to validity specific to the parameter selection process. The goal of the parameter selection process was to find a near-optimal value for each parameter of the \gls{kgqa} approaches, capable of achieving high overall retrieval performance on our \gls{kgqa} dataset.
+
+There is a risk that we did not achieve this goal for every parameter we tested. This is due to the limited number of questions used and the limited parameter ranges tested. We were required to impose these constraints to limit the overall execution time of the selection process to stay within the scope of this master thesis. Therefore, our requirement was not to achieve an optimum but to get as close to it as possible, given the constraints. We minimized this risk by carefully considering parameter ranges to ensure that each value tested was both useful and plausible.
+
+Furthermore, we recognize a risk regarding the HubLink approach concerning model selection. This is because, during our development, the prompts were tested and optimized on the \emph{gpt-4o-mini} model. Consequently, there could be a bias towards OpenAI models. Moreover, we were unable to run larger open-source models as we were restricted by hardware requirements. 
+
+Additionally, the results exhibit some level of stochasticity, which means that for the same question, the contexts retrieved by the retriever can vary. This can be attributed to two phenomena. First, since we are working with \glspl{llm}, they exhibit a certain degree of randomness in their outputs. However, to keep this randomness low, we set the temperature parameter to zero, which reduces the risk of varying outputs. Second, some retrievers work with embedding models, which also have a certain degree of randomness when transforming text into vectors. Finally, the vectors are stored in the Chroma\footnote{\url{https://www.trychroma.com/} [last accessed 28.03.2025]} database, which uses the HNSW \cite{malkov_efficient_2018} indexing algorithm that is inherently non-deterministic to a certain degree (see Section~\ref{sec:fundamentals_ann_search}). We further observed that each time the database starts, the index is reinitialized, which can cause minor changes to vectors that are very close to each other in the \gls{ann} search compared to previous runs. Despite this, our analysis remains valid, as the randomness induces negligible variations that we do not see as significant enough to impact the overall findings.
+
+
+
+% Another risk to validity arises from the fact that we were not able to perform extensive hyper-parameter tuning. As a result, the parameters we selected are not necessarily the best possible ones. This means that the performance of the retrievers might actually be better than what is reflected in our results. Nevertheless, limiting the number of parameters was necessary in order to keep the execution time within a reasonable scope. When selecting the test parameters, we focused on their practical applicability and chose ranges that offer a wide test coverage.
+
+
+
+% Chroma DB randomness: https://github.com/chroma-core/chroma/issues/2675

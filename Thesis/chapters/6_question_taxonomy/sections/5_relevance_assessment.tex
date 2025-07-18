@@ -1,0 +1,63 @@
+
+\section{Relevance Assessment of Clusters}
+\label{sec:relevance_of_clusters_analysis}
+
+In this section, we present the \textsc{Relevance Assessment} phase of the taxonomy construction approach. For each category presented in the prior Section~\ref{sec:taxonomy_clustering}, we discuss the relevance to the taxonomy. This assessment is based on the established name and description of the category to determine if it aligns with the goal of the taxonomy. In particular, a category is seen as relevant if each of the following questions hold true:
+
+\begin{enumerate}[label=\textbf{GQ\arabic*.}, leftmargin=2.5em]
+    \item Does the category capture characteristics of questions to test the capabilities of \gls{kgqa} retrieval systems, or does it reflect aspects specific to the scholarly literature search domain?
+    \item Can the category be generalized across different \gls{kgqa} systems and within the literature search domain?
+    \item Can the classes within the category inform and guide the construction of diverse and meaningful evaluation datasets?
+\end{enumerate}
+
+In the following, we assess each category towards the questions.
+
+\hyperref[enum:cluster_1]{\textbf{Category 1 – Graph Representation}} \\
+This category captures structural aspects of question complexity by distinguishing between questions that require the retrieval of single versus multiple facts. This distinction directly impacts the complexity of the retrieval process and is broadly applicable across \gls{kgqa} systems. Moreover, it is particularly relevant in the scholarly domain, where complex questions are common. The cluster also offers concrete guidance for the construction of datasets that vary in granularity with respect to graph traversal. \\
+\textit{Relevant:} \textbf{Yes}
+
+\hyperref[enum:cluster_2]{\textbf{Category 2 – Answer Type}} \\
+This category categorizes questions by the expected type of answer, such as dates, entities, quantities, or boolean values. These categories are helpful in describing the characteristics of questions in a literature search to construct diverse datasets. Furthermore, they are broadly applicable across domains and \gls{kgqa} systems. \\
+\textit{Relevant:} \textbf{Yes}
+
+\hyperref[enum:cluster_3]{\textbf{Category 3 – Question Types}} \\
+This category focuses on logical and computational operations implied by a question, such as comparison, counting, or negation. These operations are central in retrieval and directly relate to the functional requirements of a retriever. The cluster generalizes across domains and offers valuable guidance for the inclusion of questions targeting different retrieval abilities. \\
+\textit{Relevant:} \textbf{Yes}
+
+\hyperref[enum:cluster_4]{\textbf{Category 4 – WH-Patterns}} \\
+Although WH-patterns are commonly used in question classification, they primarily reflect linguistic surface forms rather than the underlying retrieval characteristics. Furthermore, the classes are not general enough to provide meaningful characteristics in the scholarly literature search setting. Its utility for guiding the construction of a diverse dataset is also limited. While it may promote diversity with regard to WH-forms, it is not helpful to capture the meaning of questions or reliably correspond to distinct retrieval challenges. \\
+\textit{Relevant:} \textbf{No}
+
+\hyperref[enum:cluster_5]{\textbf{Category 5 – Specialized Knowledge Base Types}} \\
+This category encompasses classes that are specific to certain knowledge bases, such as Wikidata qualifiers or ORKG-specific constructs. Although these distinctions are meaningful within their contexts, they do not generalize across \gls{kgqa} systems or domains. Consequently, the cluster offers limited value for constructing broadly applicable evaluation datasets and is more reflective of system-specific constraints than question-inherent properties. \\
+\textit{Relevant:} \textbf{No}
+
+\hyperref[enum:cluster_6]{\textbf{Category 6 – Research-Focus}} \\
+This category categorizes questions based on their orientation towards research-related topics such as research methods or modeling approaches. Although the classes may be domain-specific, they align closely with our focus on scholarly literature search. In addition, the cluster is relevant for designing evaluation datasets that capture the diversity of scholarly questions. \\
+\textit{Relevant:} \textbf{Yes}
+
+\hyperref[enum:cluster_7]{\textbf{Category 7 – Answer Credibility}} \\
+This category considers the credibility of expected answers, such as factual, predictive, or opinion-based. Because the literature search can include various credibility types, this classification is relevant to the scholarly literature search and generalizable across different domains. Moreover, considering this classification promotes diversity in the creation of question datasets. \\
+\textit{Relevant:} \textbf{Yes} 
+
+\hyperref[enum:cluster_8]{\textbf{Category 8 – Question Goal}} \\
+This category addresses the underlying intent behind a question, such as problem solving, reasoning, or exploration. These types of goals are relevant for scholarly literature search to capture the intent behind the question. As such, it promotes diversity in question dataset creation. \\
+\textit{Relevant:} \textbf{Yes}
+
+\hyperref[enum:cluster_9]{\textbf{Category 9 – Application-Specific}} \\
+This category includes classes that are defined in relation to specific applications or use contexts, such as outcome artifact classification or research question typologies. Although these categories may be useful within individual domains, they do not reflect generalizable properties of the questions themselves. \\
+\textit{Relevant:} \textbf{No}
+
+Based on the analysis of category relevance, we conclude that six out of a total of nine identified categories can be considered relevant. Each of these categories further comprises a number of classes. For each individual class, a relevance assessment was also performed, with the detailed results documented in our replication package \cite{schneider_replication_2025}. In total, 96 classes within the categories were examined, of which 58 were rated as relevant and 38 as not relevant. This yields a class-level relevance ratio of:
+
+\[
+\text{Relevance}_\text{classes} = \frac{|\text{relevant classes}|}{|\text{total classes}|} = \frac{58}{96} \approx 0.6
+\]
+
+This indicates that approximately 60\% of the classes extracted from the literature are considered relevant for our taxonomy. A similar pattern emerges at the category level. The relevance ratio for categories is given by
+
+\[
+\text{Relevance}_\text{categories} = \frac{|\text{relevant categories}|}{|\text{total categories}|} = \frac{6}{9} = \frac{2}{3} \approx 0.66
+\]
+
+This indicates that a substantial portion of the identified categories are meaningful for structuring our taxonomy.

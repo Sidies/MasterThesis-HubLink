@@ -1,0 +1,143 @@
+
+\section{Taxonomies}
+\label{sec:fundamentals_taxonomy}
+
+A taxonomy is understood as a classification system designed to organize objects or concepts \cite{kundisch_update_2022,usman_taxonomies_2017,nickerson_method_2013,kaplan_introducing_2022}. Although terms such as \emph{classification}, \emph{framework}, and \emph{typology} are sometimes used interchangeably, the term \emph{taxonomy} is used most frequently in the literature \cite{nickerson_method_2013}. Consequently, for the remainder of this thesis, we will also use the term taxonomy.
+
+Historically, taxonomies have been fundamental to research and practices across numerous disciplines, including natural sciences, social sciences, organizational science, strategic management, and information systems, as they are essential systems for structuring and understanding complex bodies of knowledge \cite{nickerson_method_2013,kundisch_update_2022}. The essence of a taxonomy is the classification process, a crucial cognitive task integral to conceptualization, language, mathematics, statistics, and overall data analysis \cite[7,11]{bailey_typologies_2003}. A \emph{classification} is described as a process or system of organizing objects into groups or classes based on their similarity \cite{nickerson_method_2013}.
+
+\subsection{Formal Definition}
+Formally, a taxonomy $T$ can be understood as a set of $n$ dimensions $D_i(i=1, \dots,n)$, where each dimension consists of $k_i \geq2$ characteristics $C_{ij}(j=1,\dots k_i)$ such that for any object of interest a classification based on $C_{ij}$ for each $D_i$ can be applied \cite{nickerson_method_2013}. Although some taxonomies require the classification of each dimension to be mutually exclusive, we consider this not to be a mandatory characteristic.
+
+
+\subsection{Approaches to Taxonomy Development}
+
+Historically, the methodologies utilized in the creation of taxonomies have traditionally been classified into two primary categories \cite{bailey_typologies_2003,nickerson_method_2013}:
+
+\begin{itemize}
+    \item \textbf{Conceptual (Deductive):} In this method, the researcher suggests categories or types derived from established theories, concepts, or models, typically without depending on empirical data, though such data may be employed for validation purposes. 
+    \item \textbf{Empirical (Inductive):} Here, the process begins with empirical data about objects, and the classification is derived from this data, frequently using statistical techniques like cluster analysis.
+    \item \textbf{Hybrid:} This approach combines conceptual and empirical elements and allows taxonomy developers to move back and forth between theoretical conceptualization and empirical observation.
+\end{itemize}
+
+However, often there is no systematic approach used for the creation of a taxonomy as it is created ad-hoc on the basis of intuition \cite{nickerson_method_2013,usman_taxonomies_2017,kundisch_update_2022}. To provide researchers with a systematic framework that helps in the creation of taxonomies, several approaches have been defined in the literature \cite{nickerson_method_2013,usman_taxonomies_2017,kundisch_update_2022,bayona-ore_critical_2014}. One such approach has been proposed by \textcite{usman_taxonomies_2017}, which is based on the taxonomy construction process from \textcite{bayona-ore_critical_2014}. This process involves five phases:
+
+\begin{enumerate}
+    \item \textbf{Planning} Is about defining the context and initial setting of the taxonomy.
+    
+    \item \textbf{Identification and Extraction} Is about the identification of terms that are relevant for the taxonomy with its subsequent extraction.
+
+    \item \textbf{Design and Construction} Is about analyzing the extracted terms to identify and describe dimensions, categories, and relationships. In addition, guidelines for the application of the taxonomy should be provided.
+
+    \item \textbf{Testing and Validation} Is about evaluating whether the taxonomy is useful to achieve the desired goals.
+
+    \item \textbf{Deployment} Is about the application of the taxonomy.
+\end{enumerate}
+
+\subsection{Evaluating a Taxonomy}
+\label{sec:fund_evaluating_taxonomy}
+
+Although many taxonomies are observed to be rarely evaluated and often developed in an ad-hoc manner \cite{usman_taxonomies_2017,kundisch_update_2022}, structured methods for the evaluation exist. To validate taxonomies, \textcite{kaplan_introducing_2022} present a three-step evaluation method to evaluate the structure, applicability, and purpose.
+
+\paragraph{First Step: Suitability} The first step is to evaluate the suitability of the taxonomy structure by assessing the \emph{generality}, \emph{appropriateness}, and \emph{orthogonality}. The generality is measured by \emph{laconicity} and \emph{lucidity}, while appropriateness is measured by \emph{completeness} and \emph{soundness}.
+
+Given the classes $c \in C$ in the taxonomy $C$. Let $\mathcal{R}$ be a finite set of objects under study where each object under study $R \in \mathcal{R}$ has relevant terms $r\in R$. 
+% Then a relation between the classes $c\in C$ and a relevant term $r \in R$ is defined as $m^C_R \subseteq C\times R$.
+
+\begin{itemize}
+    \item \textbf{Laconicity} assesses if terms in the objects under study map to at most one class, indicating the taxonomy is not too fine-grained:
+    \[
+    \text{laconicity}(C, \mathcal{R}) = \frac{\sum_{R \in \mathcal{R}} \sum_{r \in R} \text{laconic}(C, R, r)}{\sum_{R \in \mathcal{R}} |R|} \in [0, 1]
+    \]
+    where $\text{laconic}(C, R, r) = 1$ if $r$ maps to at most one $c$, and 0 otherwise.
+
+    \item \textbf{Lucidity} assesses if each class maps to at most one relevant term, indicating the taxonomy is not too coarse-grained:
+    \[
+    \text{lucidity}(C, \mathcal{R}) = \frac{\sum_{c \in C} (\min_{R \in \mathcal{R}} \text{lucid}(C, R, c))}{|C|} \in [0, 1]
+    \]
+    where $\text{lucid}(C, R, c) = 1$ if $c$ maps to at most one $r$, and 0 otherwise.
+
+    \item \textbf{Completeness} assesses if all relevant terms in the objects under study are covered by at least one class:
+    \[
+    \text{completeness}(C, \mathcal{R}) = \frac{\sum_{R \in \mathcal{R}} \sum_{r \in R} \text{complete}(C, R, r)}{\sum_{R \in \mathcal{R}} |R|} \in [0, 1]
+    \]
+    where $\text{complete}(C, R, r) = 1$ if $r$ maps to at least one $c$, and 0 otherwise.
+
+    \item \textbf{Soundness} assesses if every class in the taxonomy maps to at least one relevant term:
+    \[
+    \text{soundness}(C, \mathcal{R}) = \frac{\sum_{c \in C} (\max_{R \in \mathcal{R}} \text{sound}(C, R, c))}{|C|} \in [0, 1]
+    \]
+    where $\text{sound}(C, R, c) = 1$ if $c$ maps to at least one $r$, and 0 otherwise.
+
+    \item \textbf{Orthogonality Matrix} The orthogonality ensures that classes are distinct and non-overlapping. It is assessed by using a self-referencing orthogonality matrix where entries indicate dependencies between classes and fewer dependencies indicate a better overall orthogonality.
+\end{itemize}
+
+
+\paragraph{Second Step: Applicability} The second step is to define whether the taxonomy can be used consistently and effectively. When possible, this should be evaluated by different users, often through user studies. Here, the \emph{reliability} of the user results can be evaluated by using inter-annotator agreement metrics like Krippendorff's $\alpha$. Furthermore, \emph{correctness} can be employed to assess how accurately users apply the taxonomy compared to a gold standard, using metrics like precision, recall, and F1. Finally, \emph{ease-of-use} is about how easily users understand and apply the taxonomy, evaluated via questionnaires.
+
+\paragraph{Third Step: Purpose} The third and final step of evaluation is the assessment of purpose. This involves the evaluation of the \emph{relevance}, \emph{novelty}, and \emph{significance}. Here, the novelty measures the degree of innovation and adaptation compared to existing taxonomies and is assessed by employing the metrics \emph{innovation} and \emph{adaption}. The significance evaluates if the taxonomy offers a more detailed categorization than predecessors and is assessed through a \emph{classification delta}.
+
+\begin{itemize}
+    \item \textbf{Relevance} assesses whether each category and class contributes meaningfully to the intended purpose. It can be quantified by argumentatively assessing the relevance and then calculating the fraction of relevant classes and categories.
+
+    \item \textbf{Innovation} assesses the proportion of classes or categories in the evaluated taxonomy that are entirely new compared to a set of previous taxonomies $\mathcal{T}$:
+    \[
+    \text{innovation}(C, \mathcal{T}) = \frac{\sum_{c \in C} \min_{T \in \mathcal{T}} \text{new}(C, T, c)}{|C|} \in [0, 1]
+    \]
+    where $\text{new}(C, T, c) = 1$ if $c$ is not equal to or adapted from any $d \in T$, and 0 otherwise.
+
+    \item \textbf{Adaption} assesses the proportion of classes or categories in the evaluated taxonomy that have been adapted from classes or categories in previous taxonomies $\mathcal{T}$:
+    \[
+    \text{adaptation}(C, \mathcal{T}) = \frac{\sum_{c \in C} \max_{T \in \mathcal{T}} \text{adapted}(C, T, c)}{|C|} \in [0, 1]
+    \]
+    where $\text{adapted}(C, T, c) = 1$ if $c \simeq d$ for any $d \in T$, and 0 otherwise.
+
+    \item \textbf{Classification Delta} assesses whether the evaluated taxonomy $C$ provides a more detailed categorization for a set of objects $\mathcal{R}$ compared to the most detailed previous taxonomy in $\mathcal{T}$:
+    \[
+    \text{classification\_delta}(C, \mathcal{T}, \mathcal{R}) = \frac{|\sim_C| - (\max_{T \in \mathcal{T}} |\sim_T|)}{|\mathcal{R}|} \in [-1, 1]
+    \]
+\end{itemize}
+
+
+
+
+
+
+% To validate the structural quality of a taxonomy,  \textcite{kaplan_introducing_2022} propose to evaluate the \emph{generality}, \emph{appropriateness}, and \emph{orthogonality}. To quantify the generality of a taxonomy, the \emph{laconicity} and \emph{lucidity} are used.
+
+
+
+% Taxonomies are structured schemes that are used to classify and organize knowledge across various disciplines\cite{usman_taxonomies_2017}. As described by \textcite{usman_taxonomies_2017} and \textcite{kaplan_introducing_2022}, they serve multiple purposes: providing a common terminology, clarifying interrelationships among concepts, identifying gaps in the current understanding, and supporting decision-making processes. Although taxonomies are often visualized as hierarchical trees, they can also be represented in various other forms. This includes facets, paradigms, rings, or \glspl{kg}. In the field of software engineering, taxonomies are valuable in managing the growing complexity of classifying processes, approaches, and solution. Ultimately this supports a clearer communication among researchers and practitioners.
+
+% \subsection{Taxonomy Development Method}
+% % Developing Taxonomies
+% A development method for taxonomies has been proposed by \textcite{usman_taxonomies_2017}. They propose that the development of a taxonomy for software engineering should be done in four phases:
+
+% The first phase is \emph{Planning}, which is about defining the context and initial setting of the taxonomy. The authors propose that the phase should include six activities:
+
+% \begin{enumerate}[label=\textbf{B\arabic*}]
+%     \item \label{enum:b1} Selecting the \gls{se} knowledge area where the taxonomy is applied.
+%     \item \label{enum:b2} Defining the objectives and scope of the taxonomy.
+%     \item \label{enum:b3} Describing the subject matter of the taxonomy.
+%     \item \label{enum:b4} Selecting the classification structure type.
+%     \item \label{enum:b5} Determining the classification procedure type.
+%     \item \label{enum:b6} Defining the sources and data collection methods.
+% \end{enumerate}
+
+% The next phase is \emph{Identification and Extraction}, which is about the identification of terms that are relevant for the taxonomy with its subsequent extraction. According to \textcite{usman_taxonomies_2017} this phase should have the following activities:
+
+% \begin{enumerate}[label=\textbf{B\arabic*}, start=7]
+%     \item \label{enum:b7} Extracting the terms relevant to the new taxonomy from the collected data.
+%     \item \label{enum:b8} Perform terminology control by identifying duplicate terms and removing those redundancies.
+% \end{enumerate}
+
+% The following phase is \emph{Design and Construction}, which is about analyzing the extracted terms to identify and describe dimensions, categories, and relationships. In addition, guidelines for the application of the taxonomy should be provided. It is proposed that this phase should include four activities:
+
+% \begin{enumerate}[label=\textbf{B\arabic*}, start=9]
+%     \item \label{enum:b9} Identifying and describing top-level dimensions.
+%     \item \label{enum:b10} Identifying and describing categories for each dimension.
+%     \item \label{enum:b11} Identifying and describing the relationships between dimensions and categories, which might be skipped if there are no clear relationships that can be identified.
+%     \item \label{enum:b12} Providing guidelines for using the taxonomy.
+% \end{enumerate}
+
+% The final phase is \emph{Validation} through benchmarking, orthogonality, and utility demonstration. This will be further elaborated on in the following section.

@@ -1,0 +1,36 @@
+
+\section{Future Work}
+\label{sec:future_work}
+
+This thesis presented HubLink, a novel schema-agnostic and training-free \gls{kgqa} retrieval approach, alongside a new taxonomy for classifying \gls{kgqa} questions within the scholarly domain. Building upon these contributions and the findings presented, this section outlines potential directions for future work. These directions are organized based on their relevance to the HubLink retrieval approach as well as the developed taxonomy and its construction process.
+
+\subsection{Schema-Agnostic and Training-Free KGQA Retrieval}
+
+Future work related to the HubLink retrieval approach could focus on the following areas:
+
+\paragraph{Improving Answer Generation} Our evaluation results presented in Section~\ref{sec:evaluating_answer_alignment} indicate limitations in the alignment between retrieved contexts and the final generated answers for HubLink. Future work could investigate methods to enhance this alignment. Potential strategies include advanced prompt engineering techniques aimed specifically at improving the accuracy of the answer generation process relative to the provided context or exploring alternative synthesis methods beyond single-prompt generation. 
+
+\paragraph{Further Evaluations} As described in Section~\ref{sec:content_granularity}, the \gls{kgqa} datasets that were used in this thesis reside at the label-based granularity level. Future work could apply HubLink to other datasets that involve the retrieval of knowledge from \glspl{rkg} at a different level of granularity to verify the results provided in this thesis. This includes the evaluation of the \emph{linking} feature provided by HubLink, which was not useful in our evaluation scenario, due to the label-based abstraction level in our data. However, if data are used at other granularity levels, the linking feature could be beneficial.
+
+\paragraph{Improving Relevancy Ranking} A limitation that our evaluation of retrieval performance in Section~\ref{sec:evaluating_relevance_and_robustness_of_retrieved_contexts} reveals is the observed limitation of HubLink to rank relevant context higher than irrelevant context. Consequently, future work could focus on improving this limitation, possibly through refined prompt strategies for relevance assessment or the integration of dedicated reranking steps following the retrieval phase.
+
+\paragraph{Extension of Hub Content} One interesting research direction for enhancing HubLink involves the extension of the hubs with further information. Future work could explore expanding the index with information such as summaries or precomputations of numerical aggregations derived from associated papers. Such extensions possess the potential to enrich the contextual information available during retrieval and synthesis, possibly leading to more comprehensive and accurate answers.
+
+\paragraph{Numerical Constraints} The processing of numerical constraints, such as dates, ranges of values, or specific metric comparisons, presents a potential challenge for embedding-based retrieval approaches like HubLink, as highlighted in previous research \cite{jin_floating-point_2024}. Although we do have temporal constraints in our evaluation and the retriever demonstrates that it is able to consider them during inference, these do not involve complex time spans. Future work should explicitly evaluate the performance of HubLink on questions requiring complex numerical reasoning or filtering.
+
+\paragraph{Document-based Setting} In our work, we primarily focused on the retrieval of knowledge stored in the graph. Future work could evaluate HubLink in a document retrieval setting. In such a setting, HubLink uses the \gls{kg} as a supporting structure similar to other prominent approaches in the literature \cite{edge_local_2024,guo_lightrag_2024}. The use of the linking capability of HubLink could be utilized in such a scenario to retrieve relevant document text chunks and return them. In this case, the knowledge information from the graph serves as a preliminary step to allow source-aware retrieval. We have already conducted preliminary work towards this evaluation, including the implementation of LightRag \cite{guo_lightrag_2024} and Microsoft GraphRAG \cite{edge_local_2024} as baselines, the preparation of the evaluation code of the \gls{sqa} system to work with document-based approaches, and the implementation of an algorithm for extracting structured knowledge from scientific papers. However, the evaluation could not be completed in the time frame of this thesis.
+
+\paragraph{Other Graphs} The evaluation in this thesis focused on the \gls{orkg}. Future studies could investigate the applicability and performance of HubLink on other \glspl{rkg} to assess its robustness and utility across different knowledge representations within the scholarly domain. Furthermore, as argued in Section~\ref{sec:hublink_generality_and_chances}, the design principles of HubLink suggest potential applicability beyond the scholarly domain, particularly for large and heterogeneous \glspl{kg}. Investigating the scalability and effectiveness of HubLink on various \glspl{kg} in other domains represents another important research direction to determine the generalization of the approach.
+
+
+\subsection{Taxonomy Construction and Application in KGQA}
+
+Regarding the proposed taxonomy and its construction process, future work could explore the following directions:
+
+\paragraph{Taxonomy Application in Diverse Domains} The taxonomy developed in this work proved useful in constructing a \gls{kgqa} dataset tailored to scholarly literature searches. However, its potential applicability extends beyond this specific context. Future work could explore the utility of this taxonomy for characterizing questions or guiding dataset creation in different \gls{kgqa} domains. This may necessitate adaptations to accommodate domain-specific question types or information needs but would test the broader relevance of the classification scheme.
+
+\paragraph{Continuation of Literature Survey} The construction of the \gls{kgqa} retrieval taxonomy involves a comprehensive literature survey that was stopped prematurely after the second iteration. Although we argue that most interesting approaches that stem from the seed papers are considered, future work could extend the search by incorporating more sources from different domains. This process can be easily extended using the artifacts provided in our replication package \cite{schneider_replication_2025}.
+
+\paragraph{Construction of new Taxonomies} This thesis introduced a systematic process for constructing taxonomies. To validate its broader utility and identify potential limitations, further application by researchers in different contexts would be valuable. Future work could involve employing this construction methodology to develop taxonomies in other subject areas or for different purposes. Such effort would help assess the robustness, adaptability, and generalizability of the proposed taxonomy construction process itself.
+
+

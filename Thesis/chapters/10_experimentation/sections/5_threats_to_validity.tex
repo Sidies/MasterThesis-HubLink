@@ -1,0 +1,58 @@
+
+
+\section{Threats to Validity}
+\label{sec:general_threats_to_validity}
+
+In this section, we discuss the threats to validity for our experiment results. For this discussion, we are using the descriptions and checklists provided by \textcite[131-140]{wohlin_experimentation_2024} who propose to discuss the concepts \emph{Conclusion Validity}, \emph{Internal Validity}, \emph{Construct Validity}, and \emph{External Validity}. However, their checklist applies to experiments with human subjects, which is not the case for our experiments. Consequently, we only include the points that are relevant for our experimental setup. In addition, we also include the concepts \emph{Credibility}, \emph{Dependability}, and \emph{Confirmability} proposed by \textcite{feldt_validity_2010}.
+
+\subsection{Conclusion Validity}
+
+The threats to conclusion validity are concerned with issues that affect the ability to draw the correct conclusion about the relations between the treatment and the outcome of an experiment.
+
+\emph{Reliability of Measures} describes that the outcome of a measurement should be the same for equal inputs. In our experiments, we use both traditional metrics and \gls{llm}-as-a-Judge metrics. For the \gls{llm}-based metrics, there is no guarantee that they will always produce the same evaluation for identical inputs. To mitigate this issue, we employ RAGAS \cite{es_ragas_2023}, a specialized evaluation framework for \gls{llm}-as-a-Judge metrics, because one of the main objectives of the framework is to enhance the reliability and reproducibility of these metrics.
+
+\emph{Reliability of Treatment Implementation} considers whether the treatments are applied correctly. We developed the \gls{sqa} framework, which allows us to maintain consistent configurations while selectively varying the treatments for the experiments. Consequently, we do not see any issues with the implementation of the treatments.
+
+\emph{Random Irrelevancies in the Experimental Setting} are concerned with random elements outside the experimental setting that disturb the results. For our experiments, we use a server provided by the institute that is shared among several users. This shared usage may introduce random disturbances, such as variations in execution time when others place a high load on the server during our experiments. To mitigate this, we verify that the server is not under load before starting the experiments.
+
+
+\subsection{Internal Validity}
+
+Threats to internal validity are those influences that can affect dependent variables with respect to causality without the knowledge of the researcher. As such, they threaten the conclusion about a possible causal relationship between the treatment and the outcome. From the checklist provided by \textcite[133-134]{wohlin_experimentation_2024}, we only see instrumentation as relevant for our experiments.
+
+\emph{Instrumentation} is about considering the quality of the artifacts used for the execution of the experiment that may negatively affect the results. To realize the execution of the experiments, we have implemented the \gls{sqa} framework and adapted baseline retrievers based on their descriptions provided by the authors and the available code to work with our framework. As such, there is a risk that if the implementations are poorly designed and executed, the results of the experiments are negatively affected. To mitigate this risk, the \gls{sqa} framework has undergone an architectural review and two rounds of code reviews with domain experts. Furthermore, the implementations of the baseline retrievers have been done with minimal changes to the original code (see Section~\ref{sec:implementation_baselines}).
+
+\subsection{Construct Validity}
+Construct validity ensures that the metrics and methods that we have used accurately capture the intended evaluation constructs that we outline in Section~\ref{sec:exp_prelim_evaluation_framework}. The following points from the checklist provided by \textcite[146-137]{wohlin_experimentation_2024} are relevant to our experiments.
+
+\emph{Inadequate Pre-operational Explication of Constructs} relates to the issue that the constructs are not sufficiently described before they are translated into measures or treatments. We do not see a risk of inadequate pre-operational explication of the constructs because the constructs that we are evaluating are based on the evaluation framework \gls{rgar} \cite{yu_evaluation_2024} and multiple surveys about \gls{rag} evaluation (see Section~\ref{sec:fundamentals_evaluation_rag}).
+
+\emph{Mono-Operation Bias} is concerned with the underrepresentation of constructs due to a singular independent variable, case, subject, or treatment. Although this singularity is not the case for our experiments, we still see a considerable threat of the underrepresentation of constructs. This is because we have only included a subset of the possible configurations for each retriever. However, this was necessary to keep the experiments within a reasonable scope. 
+
+\emph{Mono-Method Bias} is concerned with the risks of using only one type of measure or observation, which can become an issue if measurement bias occurs. However, as we are using established metrics (e.g., recall, precision) in the field and have tested them prior to the experimentation, we do not see the need to conduct multiple measurements for the same constructs. There is a small risk that the measurement of the faithfulness and relevance of the generated answers is underrepresented. However, we believe that the metrics chosen from the RAGAS framework are representative of the constructs. Furthermore, regarding singular observations, we are only performing each experiment once. Hence we only have a singular observation for each treatment. However, because we expect the results to be mostly consistent across multiple runs, we do not see this as a risk to our experiments.
+
+\emph{Interaction of Different Treatments} describes the risk of having one subject participate in more than one study, which could lead to a treatment interaction. In our experiments, we are not using human subjects, hence this is not a risk for our experiments. However, there is a risk that the results of the experiments are affected by the interaction of different treatments. This is because we are using the \gls{ofat} method to evaluate the effect of each factor on the outcome. However, this was necessary to keep the experiments within a reasonable scope. To reduce this risk, we have carefully considered the parameters of the retrievers that interact with each other.
+
+\emph{Restricted Generalizability Across Constructs} is about treatments that positively affect one construct but unintentionally negatively affect another construct. We do not see this as a risk for our experiments because the constructs are all evaluated at the same time, which makes it possible to see the trade-offs of treatments on each of the constructs. 
+
+\subsection{External Validity}
+
+The external validity ensures that the results of the experiment can be generalized beyond the experimental setting.
+
+\emph{Interaction of Selection and Treatment} is concerned with the effect that the subject population that is used does not represent the population of interest. In our experiments, there is a risk that the questions in our \gls{kgqa} dataset do not represent actual questions of interest that a researcher would ask. To mitigate this risk, we have generated the questions based on a question taxonomy of desired question types and six use cases for the literature research task.
+
+\emph{Interaction of Setting and Treatment} describes the issue of not using an experimental setting or tools that are representative of the real world. We mitigated this risk by developing the \gls{sqa} framework according to the state-of-the-art approach applied in\gls{qa} systems, which is the \gls{rag} approach. Furthermore, we researched common evaluation metrics for \gls{rag} systems and applied them to our experiments using the formulas and implementations provided.
+
+\subsection{Credibility}
+
+The credibility describes whether there is a risk that the results of the experiments are not true. We do not see a risk of credibility in our experiments. The experiments are carried out in a unified framework, the \gls{sqa} framework, which ensures that all treatments are applied under consistent conditions. This is further achieved by maintaining identical experimental settings and also by using the same hardware and software environment for all experiments. This makes it highly likely that any variance in outcomes is attributable to treatments rather than uncontrolled external factors.
+
+\subsection{Dependability}
+
+Dependability concerns the risk that the results of the experiments are not repeatable. There is a risk that the results of the experiments cannot be reproduced exactly, as we are working with \glspl{llm}, which are inherently non-deterministic. However, we expect the performances of the \gls{kgqa} approaches to be similar across multiple runs and the overall trends to be consistent. To allow for high reproducibility, the \gls{sqa} framework is able to exactly reproduce the same experimental setting, reducing the risk to only the randomness of the \glspl{llm}.
+
+\subsection{Confirmability}
+
+The confirmability is concerned with the risk that the results of the experiments are not based on the data but on the bias of the researcher. Based on the evaluation of the experimental results, we acknowledge the risk of bias in the interpretation of the results. This is because the interpretation of the results has been made by the understanding of the author of each of the constructs and their metrics. However, we mitigate this risk by clearly presenting the results in multiple diagrams, tables, and in a replication package. In addition, we thoroughly discuss the results. This allows the reader to draw their own conclusions. 
+
+Furthermore, the baselines have been chosen by the author of this paper and there is a risk that the selected retrievers are not representative of the state of the art in \gls{qa} systems for the literature research task. To mitigate this risk, we have carefully reviewed the most recent surveys \cite{yani_challenges_2021,procko_graph_2024,agrawal_can_2024,peng_graph_2024,li_survey_2024,pan_unifying_2024} on \gls{kgqa} and selected retrievers that were applicable for our task. More details on the selection of the retrievers can be found in Section~\ref{sec:implementation_baselines}.

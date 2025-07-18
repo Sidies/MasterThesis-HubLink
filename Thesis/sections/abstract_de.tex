@@ -1,0 +1,19 @@
+%% LaTeX2e class for student theses
+%% sections/abstract_de.tex
+%% 
+%% Karlsruhe Institute of Technology
+%% Institute for Program Structures and Data Organization
+%% Chair for Software Design and Quality (SDQ)
+%%
+%% Dr.-Ing. Erik Burger
+%% burger@kit.edu
+%%
+%% Version 1.5, 2024-02-12
+
+\Abstract
+\glsresetall
+Das exponentielle Wachstum wissenschaftlicher Literatur stellt Forschende vor erhebliche Herausforderungen, da die Suche nach relevanten wissenschaftlichen Beiträgen ein zeitaufwändiger und kognitiv anspruchsvoller Prozess ist. Obwohl die Integration von \glspl{rkg} mit \gls{kgqa} Systemen eine vielversprechende Alternative zur derzeitigen dokumentenzentrierten Kommunikation wissenschaftlicher Erkenntnisse darstellt, stoßen aktuelle Ansätze oft an Grenzen. Die meisten aktuellen Ansätze zur Datenextraktion aus \glspl{rkg} basieren auf \gls{sp}, was aufgrund der Abhängigkeit vom zugrundeliegenden Graphschema und dem Bedarf an Trainingsdaten auf praktische Schwierigkeiten stößt. Dies lässt das Potenzial schema-agnostischer und trainingsfreier \gls{kgqa}-Ansätze für wissenschaftliche Literatursuche weitgehend ungenutzt.
+
+Diese Arbeit schließt diese Lücke, indem sie HubLink vorstellt, einen schema-agnostischen und trainingsfreien Ansatz, der für \gls{kgqa} entwickelt wurde. HubLink verwendet vortrainierte \glspl{llm} und unterteilt den \gls{rkg} konzeptionell in \emph{Hubs}, die Wissen aus einzelnen Publikationen aggregieren. Diese Struktur ermöglicht eine quellenbewusste Inferenz, wodurch die für wissenschaftliche Aufgaben entscheidende Transparenz und Nachverfolgbarkeit der Datenherkunft verbessert wird, ohne auf feste Schemata oder Trainingsdatensätze angewiesen zu sein. Zur Unterstützung einer robusten Evaluierung führt diese Arbeit außerdem eine Taxonomie zur Klassifizierung wissenschaftlicher \gls{kgqa}-Fragen ein, die eine detaillierte Bewertung der Eigenschaften und Fähigkeiten von \gls{kgqa}-Systemen ermöglicht. Die Entwicklung dieser Taxonomie folgte einem operationalisierten und replizierbaren Erstellungsprozess, der ebenfalls in dieser Arbeit vorgeschlagen wird. Basierend auf der erstellten Taxonomie wurden neue \gls{kgqa}-Benchmarking-Datensätze für den \gls{orkg} erstellt, die vielfältige Anfragetypen, spezifische Anwendungsfälle der wissenschaftlichen Literatursuche und mehrere Graphschema-Variationen umfassen.
+
+Die Evaluierung anhand von fünf State-of-the-Art-Baseline-Methoden zeigt, dass der HubLink-Ansatz eine überlegene Leistung bei der Extraktion von relevanten Kontexten erzielt, insbesondere bei komplexen Fragen im Zusammenhang mit Anwendungsfällen der Literatursuche. Dies unterstreicht die Grenzen aktueller Methoden und die Fortschritte, die diese Arbeit bietet. Durch die Bereitstellung sowohl eines neuen \gls{kgqa}-Ansatzes als auch von Benchmarking-Werkzeugen leistet diese Masterarbeit einen wesentlichen Beitrag zur Weiterentwicklung im Bereich von \gls{kgqa} für wissenschaftliche Daten und ebnet den Weg für eine effizientere, zuverlässigere und wissenszentrierte wissenschaftliche Kommunikation.

@@ -1,0 +1,116 @@
+
+\section{Parameter Selection for DiFaR}
+\label{sec:param_selection_difar}
+
+In the sections that follow, we initially describe the base configuration and the range of parameters evaluated during the parameter selection process for the \gls{difar} approach. Subsequently, we analyze the outcomes of the test runs and outline the parameter values chosen for the final configuration employed in our later experiments.
+
+\subsection{Base Configuration and Parameter Ranges}
+
+\begin{table}[t]
+    \centering
+    \begin{tabularx}{\textwidth}{l X}
+        \toprule
+        \textbf{Parameter} & Parameter Space \\
+        \midrule
+        \texttt{Distance Metric} & \underline{cosine}, L2, IP \\
+        \texttt{Number of Results} & \underline{30}, 60, 90, 120, 150 \\
+        \texttt{Do Question Augmentation} & \underline{False}, True \\
+        \texttt{Do Reranking} & \underline{False}, True \\
+        \texttt{\gls{llm}} & \underline{gpt-4o-mini} \\
+        \texttt{Embedding Model} & \underline{mxbai-embed-large}, text-embedding-3-large, \newline granite-embedding \\
+        \bottomrule
+    \end{tabularx}
+    \caption[Base Configuration and Parameter Space for DiFaR]{The base configuration (\underline{underlined}) and parameter space for \gls{difar}.}
+    \label{tab:difar_tuning_configs}
+\end{table}
+
+
+In \autoref{tab:difar_tuning_configs}, the parameter values for the base configuration and the ranges of tested parameters for \gls{difar} are presented. In the following, we briefly introduce each parameter.
+
+\paragraph{Distance Metric:} The distance metric determines how the similarity score between the embeddings in the vector store and the question is calculated. Three distance metrics are supported: cosine, inner-product, and l2 distance. We tried each of the metrics in the selection process. The cosine distance was used in the base configuration because of its popularity.
+
+\paragraph{Number of Results:} This parameter determines how many triples are obtained from the vector store for the generation of the answers. The more triples are fetched, the more context is available for the \gls{llm} to generate the answer. However, this also increases the cost of the retrieval process and can introduce more noise into the data. We tested the values 30, 60, 90, 120, and 150 to see how the number of triples affects the performance. For the base configuration we set the value to 30.
+
+\paragraph{Do Question Augmentation:} This parameter determines whether the question is augmented before it is sent to \gls{difar}. As such, it is not part of the approach itself but rather a pre-retrieval step. We have disabled it in the base configuration and assessed its impact on the results when enabling it during testing.
+
+\paragraph{Do Reranking:} The reranking process is also not part of the approach but a post-retrieval step that is applied to the list of contexts returned by the approach. We also disabled it in the base configuration but ran a configuration where it was enabled.
+
+\paragraph{\gls{llm}:} The \gls{llm} is used to generate the final answer based on the retrieved contexts. Because it is not part of the retrieval process itself, it has no impact on the Recall and Hit@10 metrics, which is why we set the \gls{llm} to the \emph{gpt-4o-mini} model, which is cost effective and fast. 
+
+\paragraph{Embedding Model:} The embedding model, on the other hand, influences the retrieval process as it is used to generate the embeddings of the question and the triples. The embedding models were already introduced in Section~\ref{sec:selection_planning_llms}. For the base configuration, we used the model \emph{mxbai‑embed‑large} because it is cost effective and fast.
+
+\subsection{Parameter Selection}
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{llll}
+        \toprule
+        \textbf{Parameter} & \textbf{Config} & \textbf{Recall} & \textbf{Hits@10} \\
+        \midrule
+        \multirow{5}{*}{Number of Results}
+            & \underline{30} & 0.300 & 0.272 \\
+            & 60  & 0.310 (+3.4\%)  & 0.272 (+0.0\%) \\
+            & 90  & 0.312 (+4.2\%)  & 0.272 (+0.0\%) \\
+            & 120 & 0.322 (+7.4\%) & 0.272 (+0.0\%) \\
+            & 150 & \textbf{0.366 (+22.1\%)} & \textbf{0.288 (+5.6\%)} \\
+        \midrule
+        \multirow{3}{*}{Embedding Model}
+            & \underline{mxbai-embed-large} & \textbf{0.300} & \textbf{0.272} \\
+            & granite-embedding & 0.276 (-7.8\%) & 0.254 (-6.8\%) \\
+            & text-embedding-3-large & 0.238 (-20.5\%) & 0.194 (-28.8\%) \\
+        \midrule
+        \multirow{3}{*}{Distance Metric}
+            & \underline{cosine} & 0.300 & 0.272 \\
+            & IP & 0.300 (+0.0\%) & 0.272 (+0.0\%) \\
+            & L2 & 0.300 (+0.0\%) & 0.272 (+0.0\%) \\
+        \midrule
+        \multirow{2}{*}{Do Reranking}
+            & \underline{False} & 0.300 & 0.272 \\
+            & True & 0.300 (+0.0\%) & 0.278 (+2.2\%) \\
+        \midrule
+        \multirow{2}{*}{Do Question Augmentation}
+            & \underline{False} & \textbf{0.300} & \textbf{0.272} \\
+            & True & 0.248 (-17.4\%) & 0.196 (-28.1\%) \\
+        \bottomrule
+    \end{tabular}
+    \caption[Results of the Parameter Selection Process for DiFaR]{The results for the parameter selection process for the \gls{difar} approach. Here, the base configuration parameter is \underline{underlined}, and the highest metric score per parameter is \textbf{bold}.}
+    \label{tab:difar_parameter_selection}
+\end{table}
+
+In \autoref{tab:difar_parameter_selection} the results of 11 different configurations of the \gls{difar} approach are shown. In the following, we discuss the results and determine which parameters to use for the final configuration. The final configuration for the \gls{difar} approach is shown in \autoref{tab:difar_final_config}.
+
+\paragraph{Number of Results:} 
+As expected, increasing the number of retrieved contexts generally improves the probability of capturing the information sought after, leading to a higher Recall. Our results confirm this trend, with Recall steadily increasing from 0.300 at 30 results to 0.366 (+22.1\%) at 150 results. Interestingly, the Hits@10 metric remained constant at 0.272 for 30, 60, 90, and 120 results and even saw a minor improvement to 0.288 (+5.6\%) when retrieving 150 results. We set the value to 150 for the final configuration.
+
+\paragraph{Large Language Model:}
+As mentioned above, the \gls{llm} has no impact on retrieval performance, as it is only used to generate the answer after the contexts have been retrieved. We have set the number of retrieved triples to 150, which benefits Recall and eventually Hits@10, but also increases the amount of context fed into the answer generation component. This needs a strong model to successfully extract the necessary information. We therefore selected the model\emph{gpt-o3-mini} for the final configuration, which we expect to be large enough to handle the context window and to provide good performance in extracting contexts due to its reasoning capabilities.
+
+\paragraph{Embedding Model:} 
+The choice of the embedding model is critical for \gls{difar}, as the approach relies on a \gls{ann} search. The baseline model \emph{text-embedding-3-large} achieved the best performance with Recall 0.300 and Hits@10 0.272. Interestingly, \emph{text-embedding-3-large}, which performed strongly in other parts of our study, scored significantly lower here. The Recall is 0.238 (-20.5\%) and Hits@10 is 0.194 (-28.8\%). The \emph{granite-embedding} model also underperformed compared to the baseline with with Recall 0.276 (-7.8\%) and Hits@10 0.254 (-6.8\%). Based on these results, we selected the model \textbf{\emph{mxbai-embed-large}} for the final \gls{difar} configuration.
+
+\paragraph{Distance Metric:} 
+We tested three common distance metrics for vector similarity: \emph{Cosine}, \emph{Inner Product (IP)}, and \emph{Euclidean (L2)}. The results do not indicate any difference in performance. All three metrics yielded identical Recall (0.300) and Hits@10 (0.272) scores. Given that no difference was observed, we retained the default distance metric \textbf{\emph{cosine}} for the final configuration.
+
+\paragraph{Do Reranking:} 
+Reranking the contexts after retrieval should not affect the Recall metric, which is also reflected in the results (0.300). However, in theory, it should improve the Hits@10 score if the approach returns the context without ranking by relevance. \gls{difar} inherently ranks results based on vector similarity to the query embedding. Theoretically, an additional reranking step could refine this order to further improve Hits@10. Our results show that enabling reranking led to a negligible increase in Hits@10 to 0.278 (+2.2\%) compared to the baseline score of 0.272. Although this represents a small improvement, considering the added computational cost and complexity of a reranking step, we deem this gain insufficient to warrant its inclusion. Therefore, we decided to \textbf{disable} reranking in the final configuration.
+
+\paragraph{Do Question Augmentation:} 
+Similar to our findings with HubLink, enabling question augmentation before querying the \gls{difar} approach significantly worsened performance compared to the baseline without augmentation. Both Recall (0.248, -17.4\%) and Hits@10 (0.196, -28.1\%) dropped significantly. This suggests that modifications introduced by the augmentation process might add noise or irrelevant terms that mislead the nearest-neighbor search in the embedding space. Consequently, we \textbf{disabled} the augmentation for the final \gls{difar} configuration.
+
+\begin{table}[t]
+    \centering
+    \begin{tabular}{l l}   
+        \toprule
+        \textbf{Parameter} & \textbf{Value} \\
+        \midrule
+        \texttt{Number of Results} & 150 \\
+        \texttt{Distance Metric} & Cosine \\
+        \texttt{LLM} & gpt-o3-mini \\
+        \texttt{Embedding Model} & mxbai-embed-large \\ 
+        \texttt{Do Question Augmentation} & False \\
+        \texttt{Do Reranking} & False \\
+        \bottomrule
+    \end{tabular}
+    \caption[Final Configuration for DiFaR]{The final configuration used for subsequent experiments for the \gls{difar} \gls{kgqa} baseline approach.}
+    \label{tab:difar_final_config}
+\end{table}

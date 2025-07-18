@@ -1,0 +1,342 @@
+
+\section{Taxonomy Construction and Refinement}
+\label{sec:taxonomy_design_construction}
+
+This section documents the \textsc{Taxonomy Construction and Refinement} phase of the taxonomy construction approach. The first increment of the taxonomy was initialized based on the relevant categories from Section~\ref{sec:relevance_of_clusters_analysis}. We then identified several shortcomings of the taxonomy, which led to two more refinement steps until we were satisfied with the result. In the following sections, we describe each of the three increments that led to the final \gls{kgqa} retrieval taxonomy.
+
+\subsection{First Taxonomy Increment}
+
+The following sections will introduce the construction and validation of the first taxonomy increment.
+
+\begin{table}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|lll|}
+\hline
+\textbf{Category} & \multicolumn{3}{l|}{\textbf{Classes}} \\
+\hline
+\begin{tabular}[c]{@{}l@{}}Graph \\ Representation\end{tabular} & \multicolumn{2}{l|}{Single Fact} & Multi Fact \\
+\hline
+\multirow{11}{*}{Answer Type} & \multicolumn{1}{l|}{Undefined} & \multicolumn{1}{l|}{Date} & Tool/Notation \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Definition} & \multicolumn{2}{l|}{Theoretical Framework} \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Abbreviation} & \multicolumn{1}{l|}{Instructional} & \multicolumn{1}{l|}{Actor} \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Boolean} & \multicolumn{1}{l|}{Entity} & Human/Person \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Quantitative} & \multicolumn{1}{l|}{Solution} & Time \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Title} & \multicolumn{1}{l|}{Monetary} & Name \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Properties} & \multicolumn{1}{l|}{Description} & Organization \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Technology} & \multicolumn{1}{l|}{Software System} & Duration \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Location} & \multicolumn{2}{l|}{Distance Measurement} \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Other} & \multicolumn{2}{l|}{Bibliometric Numbers} \\ \cline{2-4} 
+ & \multicolumn{3}{l|}{Procedure/Technique}  \\ 
+ \hline
+\multirow{4}{*}{Question Type} & \multicolumn{1}{l|}{Negation} & \multicolumn{1}{l|}{Dependency} & Contingency \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Superlative} & \multicolumn{1}{l|}{Comparison} & Listing \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Ranking} & \multicolumn{1}{l|}{Multiple Intentions} & Temporal \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Relationship} & \multicolumn{1}{l|}{Counting} & Aggregation \\ 
+ \hline
+\multirow{2}{*}{Research Focus} & \multicolumn{1}{l|}{Development Methods} & \multicolumn{1}{l|}{Qualitative Modeling} & Analytical Methods \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Generalization} & \multicolumn{1}{l|}{Analytic Modeling} & Empirical Modeling \\
+ \hline
+\multirow{3}{*}{Question Goal} & \multicolumn{1}{l|}{Exploratory} & \multicolumn{1}{l|}{Reasoning} & Gap Spotting \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Problematization} & \multicolumn{2}{l|}{Method Improvement} \\ \cline{2-4} 
+ & \multicolumn{3}{l|}{Problem Solving} \\
+ \hline
+\multirow{2}{*}{Answer Credibility} & \multicolumn{1}{l|}{Factual} & \multicolumn{1}{l|}{Debate} & Conversational \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Predictive} & \multicolumn{2}{l|}{Opinion}  \\ 
+ \hline
+\end{tabular}%
+}
+\caption[Categories and Classes of the First Taxonomy Increment]{The categories and classes of the first taxonomy increment $\mathcal{T}_1$}
+\label{tab:taxonomy_iteration_1}
+\end{table}
+
+\subsubsection{Construction of the First Taxonomy Increment}
+According to the applied construction approach, the first increment of the taxonomy should be created solely using the categories classified as relevant in the \textsc{Relevance Assessment} phase. As such, the first increment of the taxonomy $\mathcal{T}_1$ is initialized with the categories that we consider relevant based on the consideration of relevance in Section~\ref{sec:relevance_of_clusters_analysis}. The first increment of the taxonomy is illustrated in \autoref{tab:taxonomy_iteration_1} and consists of six categories and 58 classes.
+
+% \emph{Knowledge Representation}, \emph{Answer Type}, \emph{Question Type}, \emph{Research Focus}, \emph{Answer Credibility}, and \emph{Question Goal}. 
+
+\subsubsection{Validation of the First Taxonomy Increment} 
+
+\begin{sloppypar}
+The validation is guided by the questions \hyperref[tab:gqm_taxonomy_validation]{\textbf{Q1-5}} which are presented in the \gls{gqm} plan shown in \autoref{tab:gqm_taxonomy_validation}. We indicate the taxonomy as $\mathcal{T}_1$, the classes of the taxonomy as $\mathcal{C}_{\mathcal{T}_1}$, and the objects under study as $\mathcal{C}$, which are the classes that were extracted from the literature survey. The generality (\hyperref[tab:gqm_taxonomy_validation]{\textbf{Q1.1}}) concerns whether the taxonomy is general enough, measured using \emph{laconicity} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.1.1}}) and \emph{lucidity} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.1.2}}). The laconicity measures $laconicity(\mathcal{T}_1, \mathcal{C}) = \frac{227}{227} = 1.00$, which is the maximum score that can be reached. Therefore, this indicates that no two classes from the literature appear more than once in the taxonomy, suggesting that there is no redundancy. This is to be expected given the cluster-based approach that was applied to initialize the taxonomy because each cluster was derived directly from classes extracted in the literature and no literature class is included in more than one cluster. Only the presence of such an overlap would reduce the laconicity score. Regarding the lucidity with the given $\mathcal{C}_{\mathcal{T}_1}$ and $\mathcal{C}$, we measure $lucidity(\mathcal{C}_{\mathcal{T}_1}, \mathcal{C}) = \frac{28}{58} = 0.48$. Based on this result, we can see that approximately half of the classes in the taxonomy are referenced by more than one literature source. Even though the interpretation of the metric would indicate a bad generality, we argue that in our case, this is a positive indication as it demonstrates that a significant portion of the taxonomy is supported by multiple sources. 
+\end{sloppypar}
+
+\begin{sloppypar}
+The next question \hyperref[tab:gqm_taxonomy_validation]{\textbf{Q1.2}} is about the appropriateness of the taxonomy. We measure the \emph{completeness} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.2.1}}) score as $completeness(\mathcal{C}_{\mathcal{T}_1}, \mathcal{C}) = \frac{135}{227} = 0.59$. The score indicates that more than half of the types that we extracted from the literature have been included in some way in the taxonomy. The remaining types are not relevant to our taxonomy and, as such, are excluded from the taxonomy. For the \emph{soundness} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.2.2}}), we measure $soundness(\mathcal{C}_{\mathcal{T}_1}, \mathcal{C}) = \frac{58}{58} = 1.00$. The score is maximal, which is to be expected, as only in cases where a class from the taxonomy would not map to a class from the literature the soundness metric would be negatively affected and this does not happen because of the clustering approach.
+\end{sloppypar}
+\begin{sloppypar}
+Question \hyperref[tab:gqm_taxonomy_validation]{\textbf{Q1.3}} addresses the concept of \emph{orthogonality}, which quantifies the number of overlapping classes within the taxonomy. We assess \emph{orthogonality} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.3.1}}) using an orthogonality matrix, calculated as $orthogonality(\mathcal{C}_{\mathcal{T}_1}, \mathcal{C}) = \frac{3176}{3306} = 0.96$, where the numerator represents orthogonal classes without overlap. Out of 3306 cases, 130 instances are identified as overlapping. We identified a total of 10 overlaps between the \emph{Question Type} category and the \emph{Multi Fact} class. These overlaps arise because certain operations, such as \emph{Dependency}, \emph{Listing}, or \emph{Aggregation}, require multiple facts from the graph. We acknowledge these overlaps but consider them acceptable, as the categories capture distinct but relevant dimensions of question classification in the context of \gls{kgqa}. Within the category \emph{Question Type} itself, additional overlaps were observed. Specifically, both \emph{Contingency} and \emph{Dependency} imply the presence of \emph{Relationship}, making this classification redundant. Therefore, a refinement for these classes is needed. There is also overlap between the classes \emph{Superlative}, \emph{Ranking}, and \emph{Counting}. All of these classes are based on the counting operation. However, they differ in terms of complexity and retrieval intent. Therefore, while they share underlying operations, each class represents a distinct capability in the retrieval process. Therefore, we argue in favor of maintaining their separation despite functional similarities.
+\end{sloppypar}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Question} & \textbf{Metric} & \textbf{Result}\\ 
+    \midrule
+    \multirow{2}{*}{\textbf{Q1.1} Generality} & \textbf{M1.1.1} Laconicity & $1.00$ \\
+    & \textbf{M1.1.2} Lucidity & $0.48$ \\ 
+    
+    \multirow{2}{*}{\textbf{Q1.2} Appropriateness} & \textbf{M1.2.1} Completeness & $0.59$ \\
+    & \textbf{M1.2.2} Soundness & $1.00$ \\ 
+    
+    \textbf{Q1.3} Orthogonality & \textbf{M1.3.1} Orthogonality Matrix & $0.96$\\
+
+    \textbf{Q2.1} Relevance & \textbf{M2.1.1} Fraction of Relevance & $1.00$ \\
+    
+    \multirow{2}{*}{\textbf{Q2.2} Novelty} & \textbf{M2.2.1} Innovation & $0.00$\\
+    & \textbf{M2.2.2} Adaption & $1.00$\\
+    \bottomrule
+\end{tabular}%
+\caption[Validation Results of the first Taxonomy Increment]{Results of the validation for $\mathcal{T}_1$}
+\label{tab:validation_t1}
+\end{table}
+
+Moreover, we identify a high degree of overlap involving the classes \emph{Entity} and \emph{Name}. These classes are intended to classify questions that inquire about a specific entity. Given that we assume that an entity always has a name, the expected answer to the question involves naming this entity, which is why the number of overlaps is high. These overlaps include 13 classes from the \emph{Answer Type} category, including \emph{Technology}, \emph{Human/Person}, \emph{Software System}, or \emph{Location}. Additionally, all classes in the \emph{Research Focus} category overlap with \emph{Entity} and \emph{Name}. These observations highlight the need to refine both categories to reduce redundancy. Overlaps are also found in the \emph{Answer Credibility} category. First, \emph{Debate} is about the provocation of discussion or argumentation rather than providing a factual answer. This naturally aligns it with the \emph{Opinion} class. Second, the \emph{Predictive} class can be based on facts or opinions, which makes the class redundant to the \emph{Factual} and \emph{Opinion} classes. In addition, predictions can represent the goal of a question rather than a type of answer credibility. For these reasons, we suggest relocating \emph{Predictive} to the \emph{Question Goal} category. In the category \emph{Question Goal}, we identify redundancies for the classes \emph{Gap Spotting} and \emph{Problematization}, as both seek to identify shortcomings or problems in the existing literature. Therefore, we see the need to combine these classes. Furthermore, we identify 36 overlaps with the \emph{Exploratory} class, which can be attributed to its broad definition. Given the nature of many \gls{kgqa} questions, one could argue that their primary purpose is to explore the \gls{kg} in order to retrieve answers. We therefore argue that the \emph{Exploratory} class should be removed due to its overly general nature.
+
+\begin{sloppypar}
+The next question \hyperref[tab:gqm_taxonomy_validation]{\textbf{Q1.4}} is about the \emph{relevance} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M2.1.1}}) of the taxonomy. Because we initialized the taxonomy based on a relevance analysis, we argue that all classes in the taxonomy are relevant to our cause. Therefore, we measure $relevance(\mathcal{C}_{\mathcal{T}_1}, \mathcal{C}) = \frac{58}{58} = 1.00$, which is the maximal score.
+\end{sloppypar}
+
+\begin{sloppypar}
+Whether the taxonomy reached an appropriate novelty (\hyperref[tab:gqm_taxonomy_validation]{\textbf{Q1.5}}) is measured with the innovation and adaptation metrics. Concerning \emph{innovation} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M2.2.1}}), we measure $innovation(\mathcal{C}_{\mathcal{T}_1}, \mathcal{C}) = \frac{0}{58} = 0.00$, the lowest possible value. With regard to \emph{adaption} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M2.2.2}}), we measure $adaptation(\mathcal{C}_{\mathcal{T}_1}, \mathcal{C}) = \frac{58}{58} = 1.00$, the highest possible value. This means that the taxonomy does not provide innovation and is fully adapted from the literature. This is an expected outcome, as the first increment of the taxonomy consists only of categories and classes from the literature.
+\end{sloppypar}
+
+
+\subsection{Second Taxonomy Increment}
+
+When validating the first taxonomy increment $\mathcal{T}_1$, we found that there are issues with orthogonality. Some of the classes have overlaps, leading to redundancies and difficulties in the application. To solve these problems, we create the second increment $\mathcal{T}_2$ of the taxonomy, which is shown in \autoref{tab:taxonomy_t2}. In the following, we discuss the changes and validate the result.
+
+\begin{table}[t]
+\centering
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|lll|}
+\hline
+\textbf{Category} & \multicolumn{3}{l|}{\textbf{Classes}} \\ \hline
+
+\begin{tabular}[c]{@{}l@{}}Graph \\ Representation\end{tabular} & \multicolumn{2}{l|}{Single Fact} & Multi Fact \\ \hline
+
+\multirow{2}{*}{Answer Type} & \multicolumn{1}{l|}{Named Entity} & \multicolumn{1}{l|}{Description} & Temporal \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Quantitative} & \multicolumn{1}{l|}{Boolean} & Other Type \\ \cline{2-4} 
+ \hline
+ 
+\multirow{2}{*}{Answer Format} & \multicolumn{1}{l|}{Simple} & \multicolumn{1}{l|}{Enumerative} & Other Format \\ \cline{2-4} 
+& \multicolumn{3}{l|}{Explanatory} \\ \hline
+ 
+\multirow{3}{*}{Question Type} & \multicolumn{1}{l|}{Negation} & \multicolumn{1}{l|}{Counting} & Aggregation  \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Superlative} & \multicolumn{1}{l|}{Comparison} & Relationship \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Multiple Intentions} & \multicolumn{1}{l|}{Ranking} & Temporal \\
+ 
+% \multirow{3}{*}{Research Focus} & \multicolumn{2}{l|}{Methodological Approaches} & Other \\ \cline{2-4} 
+%  & \multicolumn{3}{l|}{Modeling Approaches} \\ \cline{2-4} 
+%  & \multicolumn{3}{l|}{Conceptual Foundations} \\ 
+\hline
+ 
+\multirow{2}{*}{Question Goal} & \multicolumn{1}{l|}{Problem Solving} & \multicolumn{1}{l|}{Reasoning} & Improvement \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Prediction} & \multicolumn{2}{l|}{Problematization} \\ 
+ \hline
+ 
+Answer Credibility & \multicolumn{1}{l|}{Subjective} & \multicolumn{2}{l|}{Objective}  \\ 
+ \hline
+\end{tabular}%
+% }
+\caption[Categories and Classes of the Second Taxonomy Increment]{The categories and classes of the second taxonomy increment $\mathcal{T}_2$}
+\label{tab:taxonomy_t2}
+\end{table}
+
+\subsubsection{Construction of the Second Taxonomy Increment}
+The construction of the second taxonomy increment $\mathcal{T}_2$ is based on a refinement of the issues identified in the first increment $\mathcal{T}_1$. In the following, we discuss the changes that were applied.
+
+\paragraph{Consolidation of Entity-Related Classes}
+
+In the first increment of the taxonomy ($\mathcal{T}_1$), it became evident that the classes \emph{Entity} and \emph{Name} exhibit a significant overlap within the taxonomy. This can be attributed to the fact that both classes are defined in a highly generic manner, and many more specific classes ultimately involve identifying the name of an entity. For example, questions concerning a software tool, an organization, or a scientific paper can all be interpreted as inquiries about nameable entities.
+
+To address this in the second increment ($\mathcal{T}_2$), we consolidated these overlapping classes under a new, higher-level class: \emph{Named Entity}. This decision was guided by the goal of the \emph{Answer Type} category, which is to classify questions based on the type of information expected in the answer. Questions such as \enquote{Which software is used for X?} or \enquote{What is the title of the paper from Y?} illustrate different entities but share the commonality of seeking a name. Furthermore, highly granular classes like \emph{Software Tool}, \emph{Organization}, or \emph{Paper} reduce the generalizability of the taxonomy, as this abstraction level makes it difficult to reach a state of completeness. Moreover, such fine distinctions do not meaningfully impact the retrieval process, as the central objective remains the identification of the name of an entity. Consequently, we argue that the specific semantic content of the name is irrelevant to the underlying retrieval mechanics.
+
+The consolidation into the \emph{Named Entity} class encompasses a total of 18 classes. This includes all classes from the \emph{Research Focus} category and 11 classes from \emph{Answer Type}. We also merged the \emph{Date}, \emph{Time}, and \emph{Duration} classes into a single class \emph{Temporal}, as all of them classify by a specific point or range in time. Moreover, we merged all quantification classes into the \emph{Quantitative} class to reduce redundancy and keep the same level of abstraction across the category. Lastly, we consolidated the classes \emph{Theoretical Framework}, \emph{Tool/Notation}, \emph{Description}, and \emph{Definition} into a single class named \emph{Description}. This new type should capture those answers that are descriptive in nature, meaning that their goal is to describe or explain something using one or more comprehensive natural language sentences. 
+
+The classes in the \emph{Answer Type} category are now \emph{Named Entity}, \emph{Description}, \emph{Temporal}, \emph{Quantitative}, \emph{Boolean}, and \emph{Other Type}. We consider these classes to be orthogonal to each other and argue that each represents different complexities in the \gls{kgqa} retrieval process. This allows for the classification of questions according to whether they seek a name, a description, a date or time span, quantitative data, Boolean data, or another type of information..
+
+\paragraph{Introduction of the Answer Format Category}
+The second increment of the taxonomy ($\mathcal{T}_2$) introduces a new category, which we refer to as \emph{Answer Format}. This category classifies questions according to their expected format or structure of the answer. It emerged from the observation that three classes in $\mathcal{T}_1$ described the format of the answer rather than its content, making their original categorization semantically inconsistent. This applies to the class \emph{Instructional}, which classifies whether an answer is expected to be a step-by-step sequence of instructions. Furthermore, it concerns the classes \emph{Properties} and \emph{Listing}, both of which expect an answer in the form of an enumeration. These three are therefore combined into a new class called \emph{Enumerative}.
+
+To increase the completeness of the new category, we introduce three additional classes: \emph{Simple}, \emph{Explanatory}, and \emph{Other Format}. The class \emph{Simple} classifies questions that expect a direct, brief, and minimalistic answer. These are typically answers consisting of a single sentence that conveys a factual statement without further explanation. The class \emph{Explanatory} classifies questions for which the expected answer is a textual explanation of a phenomenon or an entity. Finally, we introduce the new class \emph{Other Format} to cover all answer formats that have not been considered in the category thus far.
+
+\paragraph{Refinement of Answer Credibility}
+In the second increment $\mathcal{T}_2$, we refine the \emph{Answer Credibility} dimension by reducing it to the classes \emph{Subjective} and \emph{Objective}. The classes \emph{Debate} and \emph{Opinion} were merged into \emph{Subjective}, while \emph{Factual} was renamed to \emph{Objective} to clearly contrast with subjective responses. This change aims to improve clarity by emphasizing the binary nature of the perceived credibility of the answer.
+
+\paragraph{Adjustments to Question Goal}
+During the validation of the first taxonomy increment ($\mathcal{T}_1$), the \emph{Exploratory} class was found to be overly broad, leading to significant overlaps with other classes. As most research questions are exploratory to some degree, we argue that the class lacks discriminative power, which is why we removed it.
+
+Furthermore, the classes \emph{Problematization} and \emph{Gap Spotting} were merged, as both aim to identify shortcomings or gaps in existing literature. Moreover, to resolve inconsistencies in the abstraction levels in the category, we renamed \emph{Method Improvement} to \emph{Improvement}, aligning it with the general abstraction level used in the category.
+
+Lastly, the \emph{Prediction} class, originally part of \emph{Answer Credibility}, was moved to \emph{Question Goal}. This shift reflects its stronger alignment with the intent of the question rather than the credibility of the answer and helps to complete the conceptual space covered by \emph{Question Goal}.
+
+\subsubsection{Validation of the Second Taxonomy Increment}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Question} & \textbf{Metric} & \textbf{Result}\\ 
+    \midrule
+    \multirow{2}{*}{\textbf{Q1.1} Generality} & \textbf{M1.1.1} Laconicity & $1.00$ \\
+    & \textbf{M1.1.2} Lucidity & $0.25$ \\ 
+    
+    \multirow{2}{*}{\textbf{Q1.2} Appropriateness} & \textbf{M1.2.1} Completeness & $0.57$ \\
+    & \textbf{M1.2.2} Soundness & $0.89$ \\ 
+    
+    \textbf{Q1.3} Orthogonality & \textbf{M1.3.1} Orthogonality Matrix & $0.98$\\
+
+    \textbf{Q2.1} Relevance & \textbf{M2.1.1} Fraction of Relevance & $1.00$ \\
+    
+    \multirow{2}{*}{\textbf{Q2.2} Novelty} & \textbf{M2.2.1} Innovation & $0.11$\\
+    & \textbf{M2.2.2} Adaption & $0.89$\\
+    \bottomrule
+\end{tabular}%
+\caption[Validation Results of the Second Taxonomy Increment]{Results of the validation for $\mathcal{T}_2$}
+\label{tab:validation_t2}
+\end{table}
+
+\begin{sloppypar}
+    Guided by the questions \hyperref[tab:gqm_taxonomy_validation]{\textbf{Q1-5}} from the \gls{gqm} plan shown in \autoref{tab:gqm_taxonomy_validation}, we are discussing the validation of the second increment of the taxonomy ($\mathcal{T}_2$). Regarding the \emph{lucidity} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.1.2}}), the new increment measures $lucidity(\mathcal{C}_{\mathcal{T}_2}, \mathcal{C}) = \frac{7}{28} = 0.25$, which is $0.23$ less than in the first increment. This drop in score is the result of the merges of classes, as 21 out of 28 classes in the taxonomy can be mapped to more than one class from the literature. Still, we consider these merges to be justified because we were able to reduce a large number of redundancies, making the taxonomy more interpretable and usable. Moreover, as we argued before, we consider a low \emph{lucidity} to be good in our case, as this indicates that a high number of classes in our taxonomy are supported by multiple sources in the literature. The \emph{laconicity} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.1.1}}), on the other hand, stays the same as in the first increment $\mathcal{T}_1$. 
+
+    We argue that regarding the \emph{generality} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{Q1.1}}) of the taxonomy, we reached an appropriate level. By applying the merges to the classes, we were also able to reduce the number of classes from 58 to 28 classes, an overall reduction of approximately $52\%$. We assert that the remaining classes provide a high level of generality, making it less likely that classes are present that are never used during application.
+\end{sloppypar}
+
+\begin{sloppypar}
+    With regard to the \emph{appropriateness} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{Q1.2}}), we measure \emph{completeness} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.2.1}}) $completeness(\mathcal{C}_{\mathcal{T}_2}, \mathcal{C}) = \frac{130}{227} = 0.57$. This is a reduction of $0.02$ compared to the first increment $\mathcal{T}_1$, which is the result of the removal of the \emph{Exploratory} class, as this class corresponds to five classes from the literature. However, we see this removal as justified, as it reduces the overall amount of dependencies, which improves the orthogonality of the taxonomy. 
+
+    Furthermore, for the \emph{soundness} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.2.2}}) we measure $soundness(\mathcal{C}_{\mathcal{T}_2}, \mathcal{C}) = \frac{25}{28} = 0.89$, which is a reduction of $0.11$ in comparison to the first increment $\mathcal{T}_1$. This is the result of introducing three new classes: \emph{Simple}, \emph{Explanatory} and \emph{Other Format} to the taxonomy, which are not covered by the literature. We argue that the additions improve the overall generality of the taxonomy, making it more reliably applicable. 
+\end{sloppypar}
+
+\begin{sloppypar}
+    We measure \emph{orthogonality} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.3.1}}) using the orthogonality matrix as $orthogonality(\mathcal{C}_{\mathcal{T}_2}, \mathcal{C}) = \frac{745}{756} = 0.98$. We observe that 11 classes have overlaps, which is a significant reduction from the previous 130 overlaps identified in the first increment $\mathcal{T}_1$. The remaining overlaps concern classes from the \emph{Question Type} category with the \emph{Multi Fact} class and within the \emph{Question Type} category itself. As we argued before, we think that this overlap is justified because of the differences in complexity that they impose on the retrieval.
+\end{sloppypar}
+
+\begin{sloppypar}
+    Regarding \emph{relevance} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M2.1.1}}), we argue that the relevance of previous classes remains the same. Furthermore, we identify the three new classes that have been added in this increment as relevant for \gls{kgqa} retrieval, as they assess the ability of the retriever to present the answers in different ways. Therefore, we measure the $relevance(\mathcal{C}_{\mathcal{T}_2}, \mathcal{C}) = \frac{28}{28} = 1.00$.
+\end{sloppypar}
+
+\begin{sloppypar}
+    The addition of three new classes increased the \emph{innovation} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M2.2.1}}) of the taxonomy which we measure as $innovation(\mathcal{C}_{\mathcal{T}_2}, \mathcal{C}) = \frac{3}{28} = 0.11$. Consequently, it reduced \emph{adaptation} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M2.2.2}}) by $0.11$, which we measure as $adaptation(\mathcal{C}_{\mathcal{T}_2}, \mathcal{C}) = \frac{25}{28} = 0.89$.
+\end{sloppypar}
+
+In summary, scores with respect to \emph{generality}, \emph{appropriateness} and \emph{orthogonality} reached a satisfactory point. However, regarding the novelty of the taxonomy, we observe that there is a need to add some missing classes to improve the applicability of the taxonomy. Furthermore, we identify that the \emph{Question Type} dimension contains multiple intentions and may be subject to a name change. As such, we conduct a third increment to improve these areas of the taxonomy.
+
+\subsection{Third Taxonomy Increment}
+
+In the third increment of the taxonomy, two new categories are introduced: \emph{Condition Constraint} and \emph{Intention Count}. In addition, four new classes are added: \emph{Basic}, \emph{Other Goal}, \emph{Information Lookup} \emph{Normative} and \emph{Single Intention}. Furthermore, the \emph{Question Type} category has been renamed to \emph{Retrieval Operation}. We discuss these changes in the following.
+
+\begin{table}[t]
+\centering
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|lll|}
+\hline
+\textbf{Category} & \multicolumn{3}{l|}{\textbf{Classes}} \\ \hline
+
+\begin{tabular}[c]{@{}l@{}}Graph \\ Representation\end{tabular} & \multicolumn{2}{l|}{Single Fact} & Multi Fact \\ \hline
+
+\multirow{2}{*}{Answer Type} & \multicolumn{1}{l|}{Named Entity} & \multicolumn{1}{l|}{Description} & Temporal\\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Quantitative} & \multicolumn{1}{l|}{Boolean} & Other Type  \\ \cline{2-4} 
+ \hline
+
+ \multirow{2}{*}{Condition Type} & \multicolumn{1}{l|}{Named Entity} & \multicolumn{1}{l|}{Description} & Temporal\\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Quantitative} & \multicolumn{2}{l|}{Other Type} \\ \cline{2-4} 
+ \hline
+ 
+\multirow{2}{*}{Answer Format} & \multicolumn{1}{l|}{Simple} & \multicolumn{1}{l|}{Enumerative} & Other Format \\ \cline{2-4} 
+& \multicolumn{3}{l|}{Explanatory} \\ \hline
+ 
+\multirow{3}{*}{Retrieval Operation} & \multicolumn{1}{l|}{Basic} & \multicolumn{1}{l|}{Counting} & Aggregation  \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Superlative} & \multicolumn{1}{l|}{Comparison} & Relationship \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Negation} & \multicolumn{2}{l|}{Ranking} \\
+\hline
+
+\multirow{1}{*}{Intention Count} & \multicolumn{1}{l|}{Single Intention} & \multicolumn{2}{l|}{Multiple Intentions} \\ 
+ \hline
+ 
+\multirow{3}{*}{Question Goal} & \multicolumn{1}{l|}{Problem Solving} & \multicolumn{1}{l|}{Reasoning} & Improvement \\ \cline{2-4} 
+ & \multicolumn{1}{l|}{Prediction} & \multicolumn{1}{l|}{Problematization} & \multicolumn{1}{l|}{Information Lookup} \\ \cline{2-4} 
+ & \multicolumn{3}{l|}{Other Goal} \\
+ \hline
+ 
+Answer Credibility & \multicolumn{1}{l|}{Subjective} & \multicolumn{1}{l|}{Objective} & \multicolumn{1}{l|}{Normative}  \\ 
+ \hline
+\end{tabular}%
+% }
+\caption[Categories and Classes of the Third Taxonomy Increment]{The categories and classes of the third taxonomy increment $\mathcal{T}_3$}
+\label{tab:taxonomy_t3}
+\end{table}
+
+\subsubsection{Construction of the Third Taxonomy Increment}
+
+The construction of the third taxonomy increment $\mathcal{T}_3$ is based on a refinement of the issues identified in the second increment $\mathcal{T}_2$. In the following, we discuss the changes that were applied.
+
+\paragraph{Introduction of the Condition Type Category}
+We have identified a gap in the existing classification scheme: currently there is no category that captures the types of conditions that an answer must satisfy. These constraints are important because they can significantly affect the complexity of answering a question. In particular, they offer insight into how well a \gls{kgqa} approach handles multiple or diverse types of conditions.
+
+To address this, we introduce a new dimension called \emph{Condition Type}, which classifies questions based on the types of conditions or constraints that the expected answer must meet. We hypothesize that these condition types mirror those found in the \emph{Answer Type} dimension, since both describe similar categories of information. However, we make an exception for the \emph{Boolean} class, as we argue that a condition by nature is Boolean, so this class does not fit into the new category. Therefore, we initialize the new category \emph{Condition Type} with the same set of classes as \emph{Answer Type} except for \emph{Boolean}.
+
+\paragraph{Renaming of the Question Type Category}
+We observed that the previous \emph{Question Type} category consists mostly of operations. We have therefore decided to rename the category to \emph{Retrieval Operation}. With this renaming, we want to make it clear to the reader directly from the name what this category is trying to achieve. We believe that the previous name was too abstract to achieve this goal. Furthermore, we argue that the \emph{Temporal} class in the category is not an operation but a constraint. We have therefore merged the class into the \emph{Temporal} class of the condition type category.
+
+\paragraph{Introduction of the Intention Count Category}
+We determined that the \emph{Multiple Intentions} class does not perform an operational function. Rather, it reflects the structural complexity of a question. Since it no longer aligns with the \emph{Retrieval Operation} category, we introduce the \emph{Intention Count} category. This new category classifies questions according to the number of distinct intentions they express. If a question contains a single, unified query that cannot be decomposed into separate independent questions without altering its context, it is classified as \emph{Single Intention}. In contrast, if a question can be split into two or more independent queries, it falls under \emph{Multiple Intentions}.
+
+\paragraph{Adding Missing Classes}
+We identified four missing classes in our taxonomy and introduced them in this increment. First, \emph{Basic} was added to the \emph{Retrieval Operation} category to capture questions in which the retriever should simply extract one or more factual items from the graph, without requiring further processing. Second, we introduced \emph{Normative} into the category \emph{Answer Credibility} to classify questions based on ethical, normative, or political values. Third, we added \emph{Information Lookup} to classify questions whose objective is simply to retrieve specific data from the \gls{kg} into the \emph{Question Goal} category. Finally, \emph{Other Goal} was included to accommodate questions that do not fit any other defined goal class, ensuring that all questions can be properly classified.
+
+\subsubsection{Validation of the Third Taxonomy Increment}
+
+\begin{table}[t]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Question} & \textbf{Metric} & \textbf{Result}\\ 
+    \midrule
+    \multirow{2}{*}{\textbf{Q1.1} Generality} & \textbf{M1.1.1} Laconicity & $0.70$ \\
+    & \textbf{M1.1.2} Lucidity & $0.32$ \\ 
+    
+    \multirow{2}{*}{\textbf{Q1.2} Appropriateness} & \textbf{M1.2.1} Completeness & $0.57$ \\
+    & \textbf{M1.2.2} Soundness & $0.78$ \\ 
+    
+    \textbf{Q1.3} Orthogonality & \textbf{M1.3.1} Orthogonality Matrix & $0.99$\\
+
+    \textbf{Q2.1} Relevance & \textbf{M2.1.1} Fraction of Relevance & $1.00$ \\
+    
+    \multirow{2}{*}{\textbf{Q2.2} Novelty} & \textbf{M2.2.1} Innovation & $0.22$\\
+    & \textbf{M2.2.2} Adaption & $0.78$\\
+    \bottomrule
+\end{tabular}%
+\caption[Validation Results of the Third Taxonomy Increment]{Results of the validation for $\mathcal{T}_3$}
+\label{tab:validation_t3}
+\end{table}
+
+\begin{sloppypar}
+    With regard to \emph{laconicity} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.1.1}}), we measure the following $laconicity(\mathcal{C}_{\mathcal{T}_3}, \mathcal{C}) = \frac{160}{227} = 0.70$, which represents a decrease of $0.30$ compared to $\mathcal{T}_2$. The reason for this reduction lies in the fact that, for the new category \emph{Condition Type}, we use the same classes as in the category \emph{Answer Type}. As a result, the metric detects a high degree of redundancy between our taxonomy and the classes from the literature. However, we consider the separation of these two categories to be justified since they address different aspects that are both essential for representing the complexity of a \gls{kgqa} retrieval.
+    
+    For \emph{lucidity} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.1.2}}), we measure $lucidity(\mathcal{C}_{\mathcal{T}_3}, \mathcal{C}) = \frac{12}{37} = 0.32$. This corresponds to an increase of $0.07$ compared to the second increment $\mathcal{T}_2$. The improvement is due to the addition of new classes that are not found in the literature, which positively influences the score. In general, we argue that the low \emph{lucidity} value is actually a positive indication for the taxonomy. This is because a high overlap with the literature indicates that our taxonomy aligns well with existing research.
+    
+    In general, we argue that the \emph{generality} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{Q.1.1}}) has reached an appropriate level. By consolidating the classes, we achieved a consistent level of abstraction within the categories. This enables the taxonomy to be applied in a general way while maintaining enough precision to support the classification of both the capabilities of a \gls{kgqa} retrieval system and the characteristics relevant for scholarly literature search. 
+\end{sloppypar}
+
+\begin{sloppypar}
+    The \emph{completeness} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.2.1}}) is measured as $completeness(\mathcal{C}_{\mathcal{T}_3}, \mathcal{C}) = \frac{130}{227} = 0.57$ and remains unchanged compared to the previous increment $\mathcal{T}_2$. In contrast, \emph{soundness} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.2.2}}) shows a value of $soundness(\mathcal{C}_{\mathcal{T}_3}, \mathcal{C}) = \frac{29}{37} = 0.78$, which represents a decrease of $0.11$ compared to the previous increment. This change can be attributed to the addition of new classes, as these are not mapped to classes from the literature.
+
+    In general, we argue that the \emph{appropriateness} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{Q1.2}}) has reached a satisfactory level. From the set of classes found in the literature, we have filtered out those that are relevant to our taxonomy. A higher level of \emph{completeness} could be achieved by including more classes from the literature in the taxonomy. However, this would negatively affect other metrics since those additional classes are not relevant to our cause. Furthermore, \emph{soundness} correlates with the \emph{novelty} of the taxonomy. This means that removing new classes from the taxonomy would increase the value but at the cost of reducing the applicability and usefulness of the taxonomy.
+\end{sloppypar}
+
+\begin{sloppypar}
+    The amount of overlaps (\hyperref[tab:gqm_taxonomy_validation]{\textbf{Q1.3}}) in the taxonomy is measured with the \emph{orthogonality} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M1.3.1}}), which we measure as $orthogonality(\mathcal{C}_{\mathcal{T}_3}, \mathcal{C}) = \frac{1321}{1332} = 0.99$, amounting to 11 overlaps across the taxonomy. These overlaps are the same as in $\mathcal{T}_2$, where we already argued their appropriateness.
+\end{sloppypar}
+
+\begin{sloppypar}
+    As with previous increments, the \emph{relevance} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M2.1.1}}) measures $relevance(\mathcal{C}_{\mathcal{T}_3}, \mathcal{C}) = \frac{37}{37} = 1.00$. This is because the previous classes in the taxonomy were already determined to be relevant and the new additions were included because they were missing and are relevant to our objectives.
+\end{sloppypar}
+
+\begin{sloppypar}
+    Regarding the \emph{novelty} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{Q2.2}}) of the taxonomy. The \emph{innovation} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M2.2.1}}) measures $innovation(\mathcal{C}_{\mathcal{T}_3}, \mathcal{C}) = \frac{8}{37} = 0.22$, indicating that 8 of the 37 classes are new, not yet considered in the classes from our literature survey. Furthermore, the \emph{adaptation} (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M2.2.2}}) measures $adaptation(\mathcal{C}_{\mathcal{T}_3}, \mathcal{C}) = \frac{29}{37} = 0.78$, which states that 29 of the 37 classes were adapted from the literature.
+
+    Overall, we are satisfied with the \emph{novelty} of the third increment $\mathcal{T}_3$ of the taxonomy. We could try to find more new classes to reach a higher \emph{innovation} score, but this would also introduce the risk of lowering the orthogonality and generality of the taxonomy.
+\end{sloppypar}

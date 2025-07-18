@@ -1,0 +1,143 @@
+
+\section{Evaluating Answer Alignment}
+\label{sec:evaluating_answer_alignment}
+
+In this section, we present the evaluation results that address the generation targets. We begin by analyzing the semantic and factual consistency of the generated answers, which relate to the generation target \hyperref[sec:evaluation_goals_and_metrics]{\textbf{GeT1}}. Then we evaluate the relevance of the generated answers to the question and their alignment with the instructions provided in the question, which relates to \hyperref[sec:evaluation_goals_and_metrics]{\textbf{GeT2}}. Finally, we assess the consistency of the generated answers with the retrieved context, which is relevant to \hyperref[sec:evaluation_goals_and_metrics]{\textbf{GeT3}}. 
+
+\textit{Note that unlike in the retrieval target evaluation, here only the HubLink variant (T) is evaluated. This is because the evaluation of the generated answers uses \gls{llm}-as-a-judge metrics, which incur additional costs for their computation. We have chosen to evaluate the HubLink variant that performed best in the retrieval target evaluation. Moreover, all the following evaluations are based on the graph variant \hyperref[enum:gv1]{\textbf{GV1}}, also due to cost considerations. Finally, as detailed in Section~\ref{sec:prompting_an_llm_for_final_answer_generation}, HubLink includes source citations and a corresponding reference list in the answer. Since these elements are absent from the reference answers, their presence likely penalizes similarity and precision metrics. Therefore, we do not include the reference list in the evaluation of the generated answers.}
+
+
+
+\subsection{Semantical and Factual Consistency of Generated Answers}
+\label{sec:semantical_and_factual_consistency}
+
+\begin{table}[t]
+\centering
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lllllll}
+\toprule
+Approach & FC-Reca. & FC-Prec. & FC-F1 & Bert-Reca. & Bert-Prec. & Bert-F1 \\ 
+\midrule
+HubLink (T) & \textbf{0.543} & \textbf{0.301} & \textbf{0.361} & 0.678 & 0.515 & 0.580 \\ 
+DiFaR & 0.387 & 0.290 & 0.321 & \textbf{0.702} & 0.588 & \textbf{0.635} \\ 
+Mindmap & 0.203 & 0.212 & 0.184 & 0.652 & 0.625 & 0.633 \\ 
+FiDeLiS & 0.131 & 0.201 & 0.154 & 0.516 & \textbf{0.629} & 0.562 \\ 
+\toprule
+Approach & ROG-Reca. & ROG-Prec. & ROG-F1 & Str. Sim. & Sem. Sim. & BLEU \\ 
+\midrule
+HubLink (T) & \textbf{0.757} & 0.298 & 0.373 & 0.261 & 0.761 & 0.105 \\ 
+DiFaR & 0.674 & 0.374 & \textbf{0.448} & \textbf{0.338} & \textbf{0.772} & \textbf{0.160} \\ 
+Mindmap & 0.487 & 0.432 & 0.397 & 0.296 & 0.682 & 0.105 \\ 
+FiDeLiS & 0.195 & \textbf{0.503} & 0.251 & 0.202 & 0.499 & 0.046 \\ 
+\bottomrule
+\end{tabular}%
+% }
+\caption[Results for Semantical and Factual Answer Consistency]{Evaluation results for assessing the semantic and factual consistency of generated answers. The table includes various abbreviations: FC-Reca. (Factual Correctness Recall); FC-Prec. (Factual Correctness Precision); FC-F1 (Factual Correctness F1); Bert-Prec. (BERTScore Precision); Bert-Reca. (BERTScore Recall); Bert-F1 (BERTScore F1); ROG-Reca. (ROG-1 Recall); ROG-Prec. (ROG-1 Precision); ROG-F1 (ROG-1 F1); Str. Sim. (String Similarity); Sem. Sim. (Semantic Similarity). All metrics have been macro-averaged.}
+\label{tab:evaluation_correctness_of_answer}
+\end{table}
+
+Building upon the observation from \autoref{tab:q11:relevance_and_accuracy} that HubLink demonstrates superior performance in retrieving relevant triples compared to baseline \gls{kgqa} approaches, this section evaluates the semantic and factual consistency of the answers generated based on these retrieved triples. In the following, we assess the evaluation results presented in \autoref{tab:evaluation_correctness_of_answer}. We begin by analyzing the Recall and similarity metrics, followed by an examination of the precision metrics. 
+
+\subsubsection{Assessment of Recall and Similarity}
+
+The results in \autoref{tab:evaluation_correctness_of_answer} illustrate a notable divergence from the retrieval performance assessment. Regarding Recall for factual correctness, HubLink achieves the highest value (0.543), although the advantage over competitors is less pronounced than observed in retrieval performance. Furthermore, compared to the retrieval Recall (0.754), the factual correctness Recall of HubLink is approximately 39\% lower. This suggests limitations in preserving all retrieved facts during the answer generation process. However, this observation is contradicted by the particularly high ROUGE-1 Recall of 0.757, indicating that a substantial majority of the lexical items present in the reference answers are captured within the generated responses. Nevertheless, this does not necessarily imply that the generated answers include all the relevant facts from the retrieved triples. For example, if the generated answer includes many of the words also present in the reference answer, the ROGUE-1 Recall is high, even if the provided facts are wrong. Consequently, we conclude that HubLink does not fully retain all relevant information during answer generation.
+
+In contrast, the baseline methods all achieved similar or higher factual correctness Recall values than their retrieval Recall. For instance, \gls{difar} achieved a factual correctness Recall value of 0.387, which closely aligns with its retrieval Recall (0.352), suggesting effective information transfer to the generation stage. Notably, Mindmap exhibits a factual correctness Recall of 0.203, largely exceeding its retrieval Recall (0.119). The same can be said for ROUGE-1 Recall, where all baseline methods achieved higher values than their retrieval Recall. 
+
+Regarding the BERTScore Recall, the results present a different pattern. \gls{difar} leads (0.702) with a slight edge over HubLink (0.678), followed by Mindmap (0.652) and FiDeLiS (0.516). A similar trend can be observed with BLEU scores, as well as the \emph{String Similarity} and \emph{Semantic Similarity} metrics, albeit with lower absolute values for BLEU. From the results, we can observe that \gls{difar} provides answers that are most similar to the expectation. Although HubLink does provide answers that are semantically related, the lower values in string similarity suggest that the generated answers tend to diverge, possibly because of the more comprehensive answers provided by the method.
+
+\textit{Note that the lower absolute values for BLEU likely arise because the golden answers in the \gls{kgqa} dataset were designed to be concise, only stating the facts asked for. Because BLEU measures exact n-gram overlap \cite{papineni_bleu_2001}, this heavily penalizes any deviation in phrasing, structure, or additional information present. Since the scores are low, the \glspl{llm} seem to create more verbose answers.}
+
+\subsubsection{Assessment of Precision}
+
+Analyzing precision for factual correctness, the score for HubLink (0.301) increased slightly over the retrieval precision (0.246). In stark contrast, baseline methods exhibit significantly higher factual correctness precision compared to their respective retrieval precision values. \gls{difar} achieves the highest factual correctness precision (0.290), surpassing HubLink despite having a very low retrieval precision (0.011). Mindmap (0.212 vs. 0.030) and FiDeLiS (0.201 vs. 0.052) show similar substantial increases from generation to retrieval precision.
+
+However, for ROUGE-1 and BERTScore precision, HubLink records the lowest values among the evaluated methods (0.166 for ROG-Prec and 0.405 for Bert-Prec, respectively). This further highlights the structural and lexical differences between its generated answers and the reference targets.
+
+\subsubsection{Discussion on Results:} 
+
+Several key observations arise from the evaluation of \autoref{tab:evaluation_correctness_of_answer}. First, the finding that factual correctness sometimes exceeds observations from the retrieval metrics warrants explanation, as generated answers should ideally be constrained by retrieved information. We attribute this to the implementation of the factual correctness metric within the RAGAS evaluation framework, which appears to assign partial credit based on the granularity of the answer. An answer deemed factually incomplete might still receive a positive evaluation if some parts are correct. For example, if the answer acknowledges the existence of a publication without providing specific requested details, this contributes positively to the metric. This characteristic could contribute to higher scores of factual correctness for baseline methods relative to their retrieval performance.
+
+Despite these limitations, valuable insights emerge. The collective results suggest that HubLink tends to generate more comprehensive, potentially overly elaborate answers compared to the reference targets. This may stem from its synthesis process, where the \gls{llm} integrates information from multiple retrieved sources, possibly leading to less concise outputs. Furthermore, the Recall scores are mediocre, suggesting that not all facts are transferred from the retrieved triples to the answer. Moreover, low precision and similarity scores indicate deviations in structure and the potential inclusion of extraneous details. Therefore, refining the integration of facts, the conciseness, and the focus of the generated answers of HubLink presents a direction for future improvement.
+
+% Q6 How semantically and factually consistent are the generated answers of the proposed approach when compared to answers generated by baseline KGQA approaches?
+\begin{enumerate}[label={}]
+ \item \textbf{Answer to \hyperref[sec:evaluation_gqm_plan]{Q8}:} \textit{Compared to the baseline \gls{kgqa} approaches, the answers generated by HubLink demonstrate limitations. The inclusion of facts from the retrieved triples into the generated answer is mediocre. Furthermore, lower scores in precision and similarity suggest that answers generated by HubLink may include additional, potentially unrequested, information and differ structurally from reference answers. This points to current limitations in the inclusion of facts, semantic consistency, and conciseness of answer generation.}
+\end{enumerate}
+
+
+\subsection{Generation of Relevant Answers}
+
+\begin{table}[t]
+\centering
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lcc}
+\toprule
+Approach & Answer Relevancy & Instruction Following  \\ 
+\midrule
+HubLink (T) & \textbf{0.570} & \textbf{0.653} \\
+DiFaR & 0.203 & 0.312 \\
+Mindmap & 0.545 & 0.388 \\
+FiDeLiS & 0.432 & 0.388 \\
+\bottomrule
+\end{tabular}%
+% }
+\caption[Results of Alignment with Intent and Content of the Question]{Evaluation results assessing the alignment of generated answers with the intent and content of the question. All metrics have been macro-averaged.}
+\label{tab:q21:intent_and_content_alignment}
+\end{table}
+
+A crucial aspect of evaluating answer generation quality is determining whether the response is relevant to the posed question. \autoref{tab:q21:intent_and_content_alignment} presents the results of the \emph{answer relevancy} metric relevant to this aspect.
+
+HubLink achieves the highest score of 0.570 in answer relevancy among the evaluated approaches. Mindmap follows closely with a score of 0.545, suggesting comparable effectiveness between these two methods in aligning generated responses with the intent of the question. FiDeLiS demonstrates moderate performance (0.432), whereas DiFaR shows considerably lower relevancy (0.203).
+
+These findings indicate that although HubLink leads in answer relevancy relative to the baselines, its absolute score suggests that a notable portion (43\%) of its generated answers may not be optimally aligned with the question, highlighting the scope for improvement. However, it is critical to underscore that the Answer Relevancy metric assesses the perceived alignment between the question and the topic or intent of the answer, independent of the factual accuracy. Consequently, a response could be deemed relevant yet contain factual inaccuracies or hallucinations. The factual correctness aspect is specifically addressed in \autoref{tab:evaluation_correctness_of_answer}.
+
+% Q9 To what extent do the answers generated by HubLink reflect the semantic intent of scholarly questions when compared to baseline KGQA approaches?
+\begin{enumerate}[label={}]
+ \item \textbf{Answer to \hyperref[sec:evaluation_gqm_plan]{Q9}:} \textit{HubLink demonstrates the strongest performance among the evaluated methods in generating answers that align with the semantic intent of scholarly questions, as measured by answer relevancy. However, its absolute performance indicates limitations, suggesting that further refinement is necessary to consistently ensure optimal semantic alignment between questions and generated answers.}
+\end{enumerate}
+
+\subsection{Following the Instructions provided in the Question}
+
+Beyond requesting specific information, questions may include explicit instructions regarding the desired answer format or structure. The \gls{kgqa} dataset that has been used incorporates such questions derived from complex retrieval operations. This requires the retriever, for instance, to present results in a specific order or perform aggregations. The ability of each approach to comply with these requirements is evaluated using the \emph{Instruction Following} metric, with results presented in \autoref{tab:q21:intent_and_content_alignment}.
+
+The results in \autoref{tab:q21:intent_and_content_alignment} indicate that HubLink substantially outperforms the baseline \gls{kgqa} approaches in adhering to question instructions by achieving a score of 0.653, which is approximately 68\% higher than the scores of the next-best-performing methods, Mindmap and FiDeLiS (both 0.388). DiFaR demonstrated lower performance on this metric (0.312).
+
+Despite its relative advantage, the absolute performance of HubLink reveals limitations, as the score of 0.653 implies that the system did not fully adhere to instructions in approximately one third (34\%) of the cases. This indicates that while HubLink demonstrates a significantly stronger capability for instruction following compared to the baselines, further refinement of its generation process is warranted to improve reliability in this aspect.
+
+% Q10 To what extent do the generated answers follow the instructional expectations of scholarly questions when compared to baseline KGQA approaches?
+\begin{enumerate}[label={}] 
+ \item \textbf{Answer to \hyperref[sec:evaluation_gqm_plan]{Q10}:} \textit{HubLink exhibits a significantly superior ability to follow specific instructions embedded within scholarly questions compared to the baseline \gls{kgqa} approaches evaluated. Nonetheless, its absolute performance indicates that adherence to instructions is not fully consistent, highlighting the need for further enhancements in the answer generation mechanism to ensure instructions are followed more reliably.} 
+\end{enumerate}
+
+\subsection{Consistency of the Generated Answers to the Retrieved Context}
+
+\begin{table}[t]
+\centering
+% \resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}lc}
+\toprule
+Approach & Faithfulness  \\ 
+\midrule
+HubLink (T) & 0.445 \\
+DiFaR & \textbf{0.645} \\
+Mindmap & 0.396 \\
+FiDeLiS & 0.112 \\
+
+\bottomrule
+\end{tabular}%
+% }
+\caption[Results on Answer to Context Consistency]{Evaluation results assessing how consistent the generated answer is with the retrieved contexts.}
+\label{tab:evaluation_of_faithfulness}
+\end{table}
+
+A critical requirement for trustworthy answer generation, particularly when using \glspl{llm}, is to ensure that the output is strictly grounded in the retrieved context. The generated answer must refrain from introducing extraneous information, and all presented assertions should be directly verifiable against the source data. \autoref{tab:evaluation_of_faithfulness} presents the evaluation results using the \emph{Faithfulness} metric, designed to measure conformity with the retrieved context.
+
+The data reveals that \gls{difar} achieves the highest faithfulness score (0.645), indicating strong adherence to its retrieved context. The score of HubLink (0.445) is notably lower, comparable to the performance of Mindmap (0.396), while FiDeLiS exhibits substantially lower faithfulness (0.112).
+
+These results suggest that HubLink exhibits notable limitations in constraining its answers solely to the provided context. The lower faithfulness score of HubLink compared to \gls{difar} indicates that the latter is more effective in ensuring that generated answers are strictly grounded in the retrieved context. This confirms findings from previous generation metrics, as it underscores that the current answer generation strategy in HubLink constitutes a limitation and necessitates refinement to enhance strict factual grounding alongside overall answer quality.
+
+% Q9: To what extent are generated answers of HubLink faithful to the retrieved context and free from unsupported claims when compared to baseline KGQA approaches?
+\begin{enumerate}[label={}] 
+ \item \textbf{Answer to \hyperref[sec:evaluation_gqm_plan]{Q11}:} \textit{The generated answers of HubLink demonstrate weaker grounding in the retrieved context compared to the baseline with the highest performance, \gls{difar}. Therefore, improving the faithfulness of responses to the retrieved context and minimizing potentially unsupported claims is an area that requires improvement.} 
+\end{enumerate}

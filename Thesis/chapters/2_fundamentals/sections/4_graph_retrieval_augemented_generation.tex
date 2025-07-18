@@ -1,0 +1,135 @@
+
+
+\section{Graph Retrieval Augmented Generation (GraphRAG)}
+
+ The paradigm of \acrfull{rag} has gained significant traction to mitigate issues with \glspl{llm}, such as hallucination, lack of domain-specific knowledge, and outdated information. The concept behind \gls{rag} is to improve the outputs of an \gls{llm} by providing it with relevant information retrieved from an external knowledge source at the time of inference instead of relying on the potentially outdated or imprecise knowledge internalized during pre-training. \cite{lewis_retrieval-augmented_2021,wu_retrieval-augmented_2024,peng_graph_2024,yang_give_2024}
+
+A typical \gls{rag} system involves a \emph{retriever} component that obtains relevant information from a \gls{kb} and a \emph{generator} component that uses an \gls{llm} to generate a response based on the information retrieved and the question \cite{wu_retrieval-augmented_2024,yu_evaluation_2024}.
+
+\acrfull{grag} represents an instantiation of the \gls{rag} paradigm where instead of retrieving information from unstructured text documents, \gls{grag} specifically targets and retrieves structured knowledge from graph databases such as \glspl{kg} or text-attributed graphs \cite{peng_graph_2024}. Consequently, \gls{grag} is positioned at the intersection of several key areas: traditional \gls{kgqa}, the \gls{rag} paradigm, and the emerging field of unifying \glspl{llm} and \glspl{kg} \cite{pan_unifying_2024,peng_graph_2024}.
+
+A typical workflow of \gls{grag} comprises three main stages \cite{peng_graph_2024}:
+
+\begin{enumerate}
+    \item \textbf{Graph-based Indexing:} This constitutes the initial phase of \gls{grag}, where a pre-existing graph database is selected or constructed to then establish indices upon it to later facilitate efficient retrieval.
+    \item \textbf{Graph-Guided Retrieval:} Given the provided input question, this phase aims to identify and extract a relevant subset of the graph data that is useful to provide an answer to the question.
+    \item \textbf{Graph-Enhanced Generation:} In this final stage, the question and the retrieved graph knowledge are used as input for an \gls{llm} to produce the natural language response.
+\end{enumerate}
+
+
+% Authoren die RAG initial vorgestellt haben: \cite{lewis_retrieval-augmented_2021}
+% Ein gutes Survey für RAG \cite{gao_retrieval-augmented_2024}
+% Since the emergence of \glspl{llm}, a growing number of research has focused on \gls{rag} \cite{gao_retrieval-augmented_2024}.
+
+% According to \textcite{yu_evaluation_2024} a typical \gls{rag} system comprises two main components: \emph{Retrieval} and \emph{Generation}. The purpose of the retrieval component is to extract information from \glspl{kb} that is relevant to a given query. There are two primary phases involved during retrieval: \emph{indexing} and \emph{searching}. 
+
+% The searching phase is responsible for the retrieval of relevant information based on a given query. It can be categorized into three types: \emph{sparse retrieval}, \emph{dense retrieval}, and \emph{web search engine}. Sparse retrievers assess the similarity between the query and documents through weighted term matching and are not trained on specific data distributions. Typical methods are TF-IDF \cite{ramos_using_2003} and BM25 \cite{robertson_probabilistic_2009} which rely on keyword matching and word frequency. Although they excel at lexical matching, they do not recognize synonyms and paraphrases and therefore miss relevant context without keyword overlap. In contrast, dense retrievers evaluate similarity by employing representations learned from supervised QA datasets and leveraging pre-trained language models such as BERT \cite{he_deberta_2021} or GPT-4 \cite{openai_gpt-4_2024}. This capability enables them to identify relevant documents even with minimal keyword overlap, which is essential for complex queries that require contextual understanding. Lastly, retrieval over web search engine allows the retriever to traverse the extensive information in the web using search engines like Google Search\footnote{\url{https://developers.google.com/custom-search/v1/overview} [last accessed on 11.01.2025]} or Bing Search\footnote{\url{https://www.microsoft.com/en-us/bing/apis/bing-web-search-api} [last accessed on 11.01.2025]}. 
+
+% Indexing is a preprocessing step that is performed before the search to organize information in a way that allows efficient retrieval. For sparse retrieval indexing involves the calculation of IDF for each term and storing the values in a database for a quick look-up and scoring when queried. Dense retrieval, on the other hand, encodes the information into dense vectors through the use of a pre-trained language model. The vectors are then indexed using a \gls{ann} search technique \cite{douze_faiss_2024}. For indexing large documents, the technique of chunking is frequently employed. It restricts similarity scores to specific segments instead of the entire text. This approach is particularly beneficial, as semantic embeddings tend to be less accurate for lengthy documents. Moreover, the information requested frequently tends to be brief in nature.
+
+% The contexts retrieved during the search step are then used in the generation component of the \gls{rag} system to generate a final answer to the query. \textcite{yu_evaluation_2024} underscore the significance of prompting as a fundamental aspect upon which the generation process heavily relies. In the process of generation prompting, the query, relevant retrieval contexts, and instructions are combined into one comprehensive input for the \gls{llm} to utilize. The literature suggests various prompting techniques that may be employed to shape the output of the model. \gls{cot} encourages the model to generate a step-by-step reasoning process before arriving at a final answer \cite{wei_chain--thought_2023}. \gls{tot} extends the idea of \gls{cot} by exploring multiple lines of reasoning simultaneously, creating a tree of possible thought processes \cite{besta_graph_2024}. Self-Note involves the model to explicitly think and write down its thoughts \cite{lanchantin_learning_2023}. The \gls{rar} prompting strategy first rephrases and rewrites the user query before formulating a response \cite{deng_rephrase_2024}.
+
+% In addition, after the generation of the final output, a post-processing step may be implemented where the output is formated according to the specific needs of the task or an expected output structure \cite{yu_evaluation_2024}.
+
+% \subsection{Definition of GraphRAG}
+
+% TODO: Transition from RAG to GRAPHRAG
+
+% "From a broad perspective, GraphRAG can be seen as a branch of RAG, which retrieves relevant relational knowledge from graph databases instead of text corpus. However, compared to textbased RAG, GraphRAG takes into account the relationships between texts and incorporates the structural information as additional knowledge beyond text. Furthermore, during the construction of graph data, raw text data may undergo filtering and summarization processes, enhancing the refinement of information within the graph data." \cite{peng_graph_2024}
+
+% \subsection{Categories of GraphRAG Approaches}
+% \label{sec:categories_of_graphrag_approaches}
+
+% \begin{table}[t]
+%     \centering
+%     \renewcommand{\arraystretch}{1.5}
+%     \begin{tabular}{p{3cm}lp{4cm}p{4cm}}
+%         \toprule
+%         \textbf{Category} & \textbf{Type} & \textbf{Strengths} & \textbf{Weaknesses} \\ 
+%         \midrule
+%         \multirow{3}{*}{\textbf{Models}}         
+%             & Non-parametric & Fast, low cost & Low accuracy \\ 
+%             & LM-based & Accurate, handles natural queries & High computational cost\\ 
+%             & GNN-based & Leverages graph structure & Complex to implement\\ 
+%         \midrule
+%         \multirow{3}{*}{\textbf{Paradigms}}      
+%             & Once retrieval & Fast, low complexity & Limited scope \\ 
+%             & Iterative retrieval & Adaptive, high accuracy & Longer runtime\\ 
+%             & Multi-stage retrieval & Task-specific, modular & Requires careful design\\ 
+%         \midrule
+%         \multirow{4}{*}{\textbf{Granularity}}   
+%             & Node-based & Targeted retrieval & Lacks relational context\\ 
+%             & Triplet-based & Handles relationships & Limited to triple scope\\ 
+%             & Path-based & Captures sequences & High computational load\\ 
+%             & Subgraph-based & Comprehensive retrieval & Complex and costly\\
+%         \midrule
+%         \multirow{2}{*}{\textbf{Training Strategy}}   
+%             & Training-Free & Avoiding high training costs & Careful prompt engineering \\ 
+%             & Training-Based & Adaptive to specific tasks & Requires costly training\\ 
+%         \midrule
+%         \multirow{2}{*}{\textbf{Indexing}}   
+%             & Graph Indexing & Preserves graph structure & Long retrieval times \\
+%             & Text Indexing & Simple textual content retrieval & Limited to text-based queries\\
+%             & Vector Indexing & Quick and efficient search & Requires vectorization \\
+%             & Hybrid Indexing & Combines advantages of other methods & Complex to implement \\
+%         \bottomrule
+%     \end{tabular}
+%     \caption{Comparison of GraphRAG categories according to \cite{peng_graph_2024}}
+%     \label{tab:retrieval_comparison}
+% \end{table}
+
+% To better understand the landscape of \gls{grag} approaches proposed by the literature, researchers have proposed different taxonomies to categorize these approaches. In this section, we examine two prominent taxonomies: one proposed by \textcite{peng_graph_2024} that focuses on technical aspects like models and retrieval strategies, and another by \textcite{pan_unifying_2024} that emphasizes the integration between \glspl{llm} and \glspl{kg}.
+
+% \textcite{peng_graph_2024} propose to categorize the approaches based on the underlying \emph{Model}, \emph{Retrieval Paradigm}, \emph{Retrieval Granularity}, \emph{Training Strategy}, and \emph{Indexing}. Table \ref{tab:retrieval_comparison} provides an overview of the categories, highlighting the strengths and weaknesses of each category.
+
+% \paragraph{Model Categorization} Retrievers can be categorized into three types, based on their underlying models. The \emph{Non-parametric} retriever type is based on heuristic rules or traditional graph search algorithms. They often include a linking pre-processing step to identify nodes in the graph before the retrieval. Because these methods are not using deep-learning models, they are able to achieve fast retrieval times with low costs. However, they suffer from inaccurate retrieval. The \emph{LM-based} retriever, on the other hand, shows strong performance in processing and interpreting diverse natural language queries. They are based on pre-trained language models like GPT-4 \cite{openai_gpt-4_2024}, and can be further categorized into two types: discriminative and generative. The discriminative models focus on estimating the conditional probability and are effective in task such as text classification and sentiment analysis. Discriminative models, on the other hand, show great potential in language understanding and in-context learning. While LM-based retrievers offer a higher retrieval accuracy, they require significantly more computational overhead compared to the Non-parametric retrievers. The third type, the \emph{GNN-based} retriever, utilizes a GNN model to understand and leverage complex graph structure. They typically encode the graph data and subsequently score different retrieval granularities based on their similarity to the query.
+
+% \paragraph{Retrieval Paradigm} Additionally, GraphRAG retrievers can be categorized based on the retrieval paradigm they employ. This categorization classifies retrievers according to how frequently they access information in the graph and whether there are phases during which the information is processed. There are three paradigms: once retrieval, iterative retrieval, and multi-stage retrieval.
+% \emph{Once retrieval} refers to retrievers that access the graph with only a single query to obtain all the information required for the retrieval process. Examples of this approach include embedding-based methods or those that use predefined rules or patterns to formulate queries to the graph. The once retrieval paradigm is typically faster as it involves lower complexity.
+% \emph{Iterative retrieval}, on the other hand, refers to retrievers that access the graph multiple times to gather the information needed for the retrieval process. Here, several retrieval steps are executed sequentially, with each subsequent step depending on the results of the previous retrieval step. This approach can be either adaptive, for instance, when models autonomously decide which steps to execute next and when to terminate the retrieval process, or non-adaptive when the steps are predetermined and termination is based on predefined parameters. The iterative paradigm generally has longer runtimes, especially when \glspl{llm} are used, but offers higher accuracy.
+% Lastly, there is the \emph{multi-stage retrieval} paradigm. In this paradigm, the retrieval process is divided into multiple phases, each with a different task. For example, different retrieval methods can be used in different phases, or generation processes can be integrated into the retrieval process.
+
+% \paragraph{Retrieval Granularity} Furthermore, retrievers can be categorized based on the retrieval granularity they use. The retrieval granularity refers to the level of detail at which the retriever retrieves information from the graph. There are four types of granularities proposed by \textcite{peng_graph_2024}: Nodes, Triplets, Paths, and Subgraphs. \emph{Node-based retrievers} retrieve information at the node level, which means that they retrieve information from individual elements in the graph. This is ideal for targeted queries where specific information from the graph should be extracted. \emph{Triplet-based retrievers} retrieve information at the triplet level, which consists of both the nodes and their relationships in the form of subject-predicate-object tuples. This granularity is useful for queries that require information about the relationships between nodes, for example, when contextual relevance between entities is required. When sequences of relationships between entities are required, \emph{Path-based retrievers} are used. However, for comprehensive relational contexts within a graph, a \emph{Subgraph-based retriever} might be required. 
+
+% \paragraph{Training Strategy} In the classification of retrievers based on their training strategy, a distinction is made between Training-Free and Training-Based Retrievers. \emph{Training-Free Retrievers} are retrievers that do not require a training phase and can be applied directly to the graph. Retrievers of this category often rely on carefully defined prompts, as \glspl{llm} like GPT-4 \cite{openai_gpt-4_2024} are frequently used. There are several sub-categories of Training-Free Retrievers. Non-parametric retrievers operate with predefined rules or traditional graph search algorithms and do not use specialized models. On the other hand, there are retrievers that work with pre-trained \glspl{llm}. For example, pre-trained embedding models are used, which are applied to the graph in an indexing step. Additionally, there are approaches that send graph elements such as entities, triples, paths, or subgraphs as part of a prompt to an \gls{llm} to obtain a selection or answer. \emph{Training-Based Retrievers}, on the contrary, require a training or fine-tuning phase in which supervised signals are used. However, these variants are often challenging because they require ground truth data, which is frequently unavailable.
+
+% \paragraph{Indexing} The retrieval approaches can also be categorized based on the indexing strategy they use. There are four types of indexing strategies: Graph Indexing, Text Indexing, Vector Indexing, and Hybrid Indexing. \emph{Graph Indexing} preserves the entire structure of the graph. It is often seen in conjunction with classic graph search algorithms such as BFS and Shortest Path algorithms. \emph{Text Indexing} involves to convert the graph structures to textual representations which are then stored in a corpus. Various sparse and dense retrieval techniques are applied to retrieve the relevant information. \emph{Vector Indexing} directly transforms the structures of the graph into vectors which are then stored in a database. Finally, \emph{Hybrid Indexing} is a combination of the three indexing strategies mentioned above.
+
+% Another taxonomy is proposed by \textcite{pan_unifying_2024}. They focus on the unification of \glspl{llm} with \glspl{kg} to synergize the advantages of both technologies. The taxonomy includes various tasks such as incorporating the \glspl{kg} into the \gls{llm} during pre-training, fine-tuning, and inference. They also consider to use the \gls{llm} to improve the \gls{kg} by enriching the graph representation. In the following we are going to look at the proposed categories for retrieval in a \gls{qa} setting.
+
+% \paragraph{KG-enhanced LLM inference} categorizes research that uses \glspl{kg} during the inference stage of \glspl{llm}. These methods do not require to retrain the model as they add up-to-date information to the \gls{llm} at inference time. A popular method to inject this knowledge is articulated by the authors as \emph{Retrieval-Augmented Knowledge Fusion}. Here, relevant knowledge is retrieved from a large corpus and then fused into the \gls{llm} during inference. Another method is \emph{KGs Prompting}. Here, the structure of the \gls{kg} is added to the prompt during inference to guide the \gls{llm} in generating the answer. The challenge in this category is to carefully design a prompt that converts the structured graph information into text sequences that the \gls{llm} can understand. 
+
+% \paragraph{LLM-augmented KG Embedding} focuses on methods that map each entity and relation into a low-dimensional vector space. By applying this approach, the embeddings contain both the semantic kownloedge and structural information of the \gls{kg}. These embeddings are then used in tasks such as \gls{qa}, reasoning, and recommendation. There are two subcategories in this category: \emph{LLMs as Text Encoders} and \emph{LLMs for Joint Text and KG Embedding}. The former uses a embedding model to encode the textual information of the \gls{kg} into embeddings, while the latter directly encodes both the textual information and the graph structure into embeddings by training the \gls{llm}.
+
+% \paragraph{LLM-augmented KG Question Answering} has the aim to provide answers to natural language questions based on the facts that are stored in the \gls{kg}. There are two subcategories in this category: First \emph{LLMs as Entity/Relation Extractors} has the goal to identify and extract entities and relationships that are mentioned in the natural language question to then retrieve relevant facts from the \gls{kg} based on this extraction. The second subcategory is \emph{LLMs as Answer Reasoners}. In this category, the facts are already retrieved from the graph and the goal is to reason over these facts to generate the answer to the question.
+
+% \paragraph{Synergized Reasoning} includes methods that design synergized models capable of leveraging both the representational power of \glspl{llm} and the structured, relational knowledge of \glspl{kg} to perform complex reasoning. Notably, synergized reasoning often uses carefully designed architectures or joint training objectives to balance the benefits of continuous text-based representations with the discrete relational structures from \glspl{kg}. There are two subcategories in this category: First, \emph{LLM-KG Fusion Reasoning} adopts end-to-end trained \gls{llm} and \gls{kg} encoders to represent the knowledge in a unified space. Then a synergized reasoning module is applied to jointly infer answers. Second, \emph{LLMs as Agents Reasoning} employ the \gls{llm} itself as an active agent to retrieve and reason over graph-based knowledge without requiring additional training costs.
+
+
+
+% To be able to find answers to a given question in a \gls{kg}, the user needs to have a in-depth understanding of the structure of the graph and its query language \cite{tran_comparative_2022}. To ease the access to information in a \gls{kg}, a significant effort has been put into building \gls{qa} systems that allow users to express their questions in natural language and for the system to find the relevant information for the user \cite{tran_comparative_2022}\cite{pang_survey_2022}\cite{bouziane_question_2015}\cite{thambi_towards_2022}\cite{liu_question_2015}.
+
+% A \gls{kg} retriever refers to a methodology that retrieves relevant information from a \gls{kg}. Information is relevant, when it helps to answer a given question. 
+% TODO: Add a bit of history to how the retrieval evolved
+% mathematiccaly describe the problem: https://arxiv.org/pdf/2202.13296
+
+% Warum gerade "LLMs to guide the retreival process". Vor- und Nachteile? Welche Alternativen gibt es hier noch das umzusetzen?
+% In the context of this thesis, we refer to retrievers that retrieve information from a \gls{kg} based on a specified question while using a\gls{llm} to guide the retrieval process, as \gls{kglmqa} retrievers.
+% TODO: Ausformulieren
+
+
+% \begin{definition}[Topic Entity]
+% \label{def:topic_entity}
+% \leftskip=2em
+%     The Topic Entity refers to an entity within the graph that serves as the starting node for the retrieval process. The retriever begins its traversal from this entity to locate relevant information corresponding to a specific query.
+% \end{definition}
+
+% \subsection{Multi-Hop Retrieval issue}
+
+% Queries that require the retriever to reason and retrieve multiple contexts from the \gls{kb} is referred to as \emph{multi-hop} retrieval. This differs from single-hop queries where the answer can be directly derived from a single piece of context \cite{tang_multihop-rag_2024}. 
+
+% Due to the multifaceted nature of such queries, multi-hop retrieval is a challenging task as traditional similarity matching methods like cosine similarity might not yield optimal results \cite{tang_multihop-rag_2024}.
+
+
+
+% As shown in the study by \textcite{yu_decaf_2023}, current \gls{llm} based retrievers on \glspl{kg} struggle with multi-fact retrieval. 

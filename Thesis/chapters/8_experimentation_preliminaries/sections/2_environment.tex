@@ -1,0 +1,13 @@
+
+\section{Software and Hardware Environment}
+\label{sec:exp_prelim_environment}
+
+In this section, we detail the environment in which the experiments for this thesis were executed.
+
+The experiments were performed on the \gls{orkg} in the sandbox environment as detailed in Section ~\ref{sec:implementation_orkg}. However, this does not affect the generality of the results, as the \gls{orkg} serves as a representative example of an \gls{rkg} \cite{verma_scholarly_2023}. Consequently, the broader relevance of the obtained results are not compromised.
+
+Moreover, all experiments were executed within the \gls{sqa} framework, which was developed by the author of the thesis and is detailed in Section~\ref{sec:implementation_sqa_framework}. Both the proposed HubLink retriever and the baseline retrievers were integrated into this framework. To ensure reproducibility, each experiment configuration is specified in a dedicated file using the JSON format. This facilitates straightforward replication of the experimental setup.
+
+With respect to hardware, all experiments were performed in the same consistent hardware and software environment. The system operates on the Linux kernel version \emph{6.1.0-23-amd64}, equipped with a \emph{Intel(R) Xeon(R) Gold 6258R CPU @ 2.70GHz} processor and a \emph{Tesla V100S-PCIE-32GB} graphics processing unit. The implementation relies on a \emph{Python 3.12} environment, with a comprehensive list of software packages and their versions provided in the accompanying replication package \cite{schneider_replication_2025}.
+
+Furthermore, the experimental setup uses both local and remote \glspl{llm}. Local LLMs are managed and executed via the Ollama framework\footnote{\url{https://ollama.com/} [last accessed on 24.02.2025]}. Remote access \glspl{llm} is facilitated through the OpenAI API\footnote{\url{https://platform.openai.com/docs/overview} [last accessed on 24.02.2025]}.

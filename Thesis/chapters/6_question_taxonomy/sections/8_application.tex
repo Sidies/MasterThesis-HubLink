@@ -1,0 +1,130 @@
+
+\section{Application}
+\label{sec:taxonomy_application}
+
+In this section, we document the \textsc{application} phase of the taxonomy construction process. In the following, we first apply the created taxonomy to research questions to demonstrate the applicability of the taxonomy and to evaluate the last question \hyperref[tab:gqm_taxonomy_validation]{\textbf{Q2.3}} from the \gls{gqm} plan in \ref{tab:gqm_taxonomy_validation}. Then, we explain where the taxonomy is intended to be applied. Finally, we present several guidelines for applying the taxonomy.
+
+\subsection[Application on SWA Research Questions]{Application on Software Architecture Research Questions}
+\label{sec:application_on_research_questions}
+
+To validate the practical applicability and descriptive power of the proposed taxonomy, we used research questions extracted from the ICSA/ECSA publication dataset that was used during our evaluation (see Section~\ref{sec:experiments_dataset}). To extract these research questions from the full text of these papers, the \gls{llm}-based extraction component of the \gls{sqa} system (described in Section \ref{sec:sqas_architecture_inputs_outputs}) was used. This process yielded a total of 231 research questions.
+
+For our manual application of the taxonomy, a selection process was performed to reduce the total number of research questions to 20. The selection of a subset of these questions adhered to two primary criteria:
+\begin{enumerate}
+    \item \textbf{Diversity of Origin:} Ensuring questions are sourced from a wide range of publications to capture varied research intentions.
+    \item \textbf{Random Selection:} Employing a random sampling method to minimize selection bias.
+\end{enumerate}
+
+To implement this selection, a script was developed to perform stratified random sampling. This script utilized the classification of the publications according to \cite{konersmann_evaluation_2022} based on their \emph{research level} and \emph{paper class} to establish sampling categories. Publications lacking identifiable research questions were excluded prior to sampling. Subsequently, 20 questions were drawn uniformly across the categories using a random seed. The random seed was set to \emph{2025}, the year of publication of this thesis, to guarantee the reproducibility of the selection process and to avoid introducing selection bias.
+
+Following selection, the 20 research questions were manually classified according to our proposed taxonomy ($\mathcal{T}_3$). To address the validation question \hyperref[tab:gqm_taxonomy_validation]{\textbf{Q2.3}} regarding the significance and added value of the taxonomy, a comparative analysis was necessary against existing classification schemes. To the best of our knowledge, there is no standardized taxonomy for categorizing questions in the \gls{kgqa} field. Therefore, we determined that existing \gls{kgqa} benchmark datasets, which incorporate question classifications, serve as the most appropriate reference. Consequently, the classification schemes from \textsc{DBLP-QuAD} \cite{banerjee_dblp-quad_2023} and \textsc{LC-QuAD 2.0} \cite{dubey_lc-quad_2019} were selected for comparison. Although \textsc{SciQA} represents another potential source, its classification categories were deemed too dataset-specific for general applicability in this context and were therefore excluded.
+
+\paragraph{Assumptions Regarding Underlying Knowledge Graph Structure}
+The application and interpretation of the \gls{kgqa} taxonomies inherently depend on the assumptions about the underlying \gls{kg} structure that a \gls{kgqa} system would query to answer classified questions. To apply the taxonomies, it is essential to understand the structure of the underlying \gls{kg} on which the questions are based. Therefore, we made the following assumptions for the graph that contains the relevant data:
+
+\begin{enumerate} 
+    \item \textbf{Granularity of Representation:} The \gls{kg} is assumed to store information in semantically distinct nodes, facilitating a fine-grained representation. As a result, addressing the majority of questions requires retrieving and possibly integrating information from several nodes unless the question specifically refers to a single piece of atomic data that can be encapsulated within a single node.
+    \item \textbf{Absence of Precomputation:} It is assumed that answers, particularly for complex questions such as aggregation, comparison, or counting, are not precomputed and stored within single nodes. Instead, deriving such answers involves retrieving and integrating information distributed across multiple nodes at query time.
+\end{enumerate}
+
+These assumptions align with common practices in the design of \gls{kg} in which complex facts are decomposed. This implies that the complexity of the question, as captured by the taxonomy, correlates with the complexity of the required graph traversal and data integration operations.
+
+\subsubsection{Validating the Significance}
+\begin{sloppypar}
+    The question \hyperref[tab:gqm_taxonomy_validation]{\textbf{Q2.3}} from the \gls{gqm} plan provided in Section~\ref{tab:gqm_taxonomy_validation}, investigates whether the proposed \gls{kgqa} retrieval taxonomy offers a significant improvement in descriptive precision compared to existing schemes. This is evaluated using the \emph{classification delta} metric (\hyperref[tab:gqm_taxonomy_validation]{\textbf{M2.3.1}}), which quantifies the difference in classification granularity. A manual classification of the 20 selected research questions was performed using our taxonomy ($\mathcal{T}_3$) and the categories provided by \textsc{DBLP-QuAD} \cite{banerjee_dblp-quad_2023} and \textsc{LC-QuAD 2.0} \cite{dubey_lc-quad_2019}. As such, we measure $classification\_delta(\mathcal{T}_3, \{\text{DBLP-QuAD}, \text{LC-QuAD 2.0}\}, \mathcal{C}) = \frac{8}{15} = 0.533$. This indicates that applying $\mathcal{T}_3$ resulted in the use of 15 distinct classifications from our taxonomy to classify the 20 questions. In contrast, applying the classification schemes from \textsc{DBLP-QuAD} and \textsc{LC-QuAD 2.0} to the same set of questions resulted in the use of eight distinct classifications. According to the metric \hyperref[tab:gqm_taxonomy_validation]{\textbf{M2.3.1}}, this demonstrates that our taxonomy $\mathcal{T}_3$ offers substantially higher granularity, enabling a more precise description and differentiation of the research questions based on their \gls{kgqa} retrieval characteristics.
+\end{sloppypar}
+
+Moreover, we found that the classifications from \textsc{DBLP-QuAD} and \textsc{LC-QuAD 2.0} possess a limited number of categories, leading to coarse-grained classifications that often fail to adequately distinguish the varying structural and semantic complexities in the research questions. Furthermore, the lack of clear hierarchical structuring or concern-based categorization within these schemes hinders the systematic analysis of questions.
+
+These quantitative and qualitative findings support the conclusion that the proposed \gls{kgqa} retrieval taxonomy addresses a notable gap. This is because it provides a structured and fine-grained framework for classifying questions intended for \gls{kgqa} systems, with each category addressing distinct retrieval characteristics and potential challenges. We expect such a classification to be valuable not only for understanding the nature of questions but also for assessing the capabilities and limitations of \gls{kgqa} systems.
+
+\subsubsection[Discussion on Applicability on SWA Research Questions]{Discussion on Applicability on Software Architecture Research Questions}
+
+After applying our \gls{kgqa} taxonomy to research questions in the \gls{swa} domain, we discuss our findings here.
+
+To begin with, we were able to apply all proposed categories of the taxonomy to all selected research questions. This was expected, as we ensured during the creation of the taxonomy that it could be generally applied regardless of the underlying domain. However, we observe that all the questions are classified as \emph{objective} in the \emph{Answer Credibility} category. This is presumably because research questions posed in \gls{swa} are predominantly empirical in nature. Consequently, the expressiveness of this particular category for classifying research questions in \gls{swa} is limited.
+
+Furthermore, it is important to note that our taxonomy, due to its chosen high level of abstraction, does not classify the specific semantic content of a question. Instead, it focuses on the type of expected answer and the stated constraints. Therefore, if more detailed content-based classifications are desired, the categories \emph{Answer Type} and \emph{Condition Type} might need to be adjusted to incorporate domain-specific classes. For this purpose, within the context of \gls{swa}, the classifications by \textcite{shaw_writing_2003} and \textcite[287-290]{easterbrook_selecting_2008} prove helpful, as they propose categorizations of research questions specifically for \gls{se}. In the following, we discuss their relationship to our taxonomy.
+
+\textcite{shaw_writing_2003} categorizes \gls{se} research questions by their Type of Questions and Type of Results. The question types proposed by Shaw, such as seeking a \emph{Method or means of development} or aiming for \emph{Generalization or characterization}, generally align with our \emph{Question Goal} category. For example, a question concerning a new development method implies a \emph{Problem Solving} goal in our taxonomy, while a question about generalization or characterization aligns with the \emph{Information Lookup} or \emph{Reasoning} goal. Similarly, the Type of Results dimension by Shaw, such as \emph{Procedure or technique}, \emph{Qualitative or descriptive model}, or \emph{Tool or notation}, correspond to our \emph{Answer Type} category and further inform the expected \emph{Answer Format}. A \emph{Tool or notation} would be classified as a \emph{Named Entity}, while a \emph{Procedure or technique} or a \emph{Qualitative or descriptive model} could be classified as either a \emph{Named Entity} or a \emph{Description}. The answer format would likely be \emph{Explanatory} or \emph{Enumerative}. We recognize that, depending on the use case, extending the \emph{Named Entity} class with further subclasses derived from the work of Shaw could be beneficial. Nevertheless, while Shaw frames research objectives from a \gls{se} perspective, our taxonomy approaches this classification from the viewpoint of an interaction with a \gls{kgqa} system.
+
+\textcite{easterbrook_selecting_2008} focus on the kind of knowledge sought, particularly distinguishing between \emph{Knowledge questions} and \emph{Design questions}. The various \emph{Knowledge questions} identified by Easterbrook et al., such as \emph{Exploratory questions}, \emph{Relationship questions}, and \emph{Causality questions}, find parallels in our taxonomy. For example, \emph{Exploratory questions} that ask for existence often expect a \emph{Boolean} or \emph{Named Entity} \emph{Answer Type}, while those asking for a description map to the \emph{Description} class. Questions that focus on relationships or causality align directly with our \emph{Relationship} class within the \emph{Retrieval Operation} category. In contrast to these knowledge-based questions, Easterbrook et al. also identify \emph{Design Questions}. These align well with our \emph{Problem Solving} or \emph{Improvement} goals, with the expected \emph{Answer Type} typically being a \emph{Description} of a method or strategy.
+
+In the \gls{swa} setting, the primary value of our \gls{kgqa} retrieval taxonomy lies in its distinct focus on the operational aspects of knowledge retrieval from a \gls{kg}. Although \textcite{shaw_writing_2003} and \textcite[287-290]{easterbrook_selecting_2008} define the \emph{kind} of knowledge sought within the research domain, our taxonomy clarifies \emph{how} answers to such questions might be structured and retrieved from the \gls{kg}. This focus, in turn, aids in understanding the complexities involved in the retrieval process. We conclude that our taxonomy maintains a high level of abstraction, ensuring broad applicability. We anticipate that in scenarios where the specific nature of the knowledge is a priority, the categories \emph{Answer Type} and \emph{Condition Type} would need to be specialized to include terms specific to the applied domain.
+
+
+\subsubsection{Illustrative Examples of Research Question Classification}
+This section presents two illustrative examples of the classification of research questions using the proposed taxonomy. Each example includes the question, its classification across the defined categories, and a justification for these classifications. The complete list of the research questions on which we applied the taxonomy is provided in the replication package \cite{schneider_replication_2025}.
+
+\textbf{Question:} \enquote{What is the advantage of Butterfly Space modeling in identifying performance optimization opportunities compared to dynamic profiling?} \cite{zhao_butterfly_2020}
+\begin{itemize}[label={}]
+    \item \textbf{Answer Type:} Description
+    \item \textbf{Condition Type:} Description, Named Entity
+    \item \textbf{Answer Format:} Explanatory
+    \item \textbf{Retrieval Operation:} Comparison
+    \item \textbf{Graph Representation:} Multi Fact
+    \item \textbf{Intention Count:} Single Intention
+    \item \textbf{Question Goal:} Information Lookup
+    \item \textbf{Answer Credibility:} Objective
+\end{itemize}
+
+The question asks, \enquote{What is the advantage...} implying that the answer should explain the benefit of Butterfly Space modeling relative to dynamic profiling in a specific context. Consequently, the \emph{Answer Type} is classified as description, and the corresponding \emph{Answer Format} is explanatory. Furthermore, the question imposes several conditions \enquote{Butterfly Space modeling}, \enquote{dynamic profiling}, and \enquote{identifying performance optimization opportunities}. These elements represent both named entities and descriptive constraints, leading to the classification of the \emph{Condition Type} as description and named entity. The use of \enquote{compared} clearly indicates that the required \emph{Retrieval Operation} involves a comparison.
+
+Based on the previously defined assumptions regarding the knowledge graph structure, the question is classified as multi fact under \emph{Graph Representation}, as answering it requires synthesizing information distributed across multiple graph entities. Moreover, the question possesses a singular, clear objective focused on comparison, which cannot be decomposed into independent subquestions without losing semantic integrity. Therefore, the \emph{Intention Count} is single intention. The \emph{Question Goal} is information lookup, as the inquiry aims to retrieve factual information regarding the specific advantage, seeking knowledge about \enquote{how something is}. Finally, expected answers are anticipated to rely on verifiable data or empirical evidence rather than subjective viewpoints, classifying the \emph{Answer Credibility} as objective.
+
+
+\textbf{Question:} \enquote{What dimensions impact how interfaces in agile automotive contexts are changed and how are the dimensions related?} \cite{wohlrab_interfaces_2019}
+\begin{itemize}[label={}]
+    \item \textbf{Answer Type:} Description, Named Entity
+    \item \textbf{Condition Type:} Description
+    \item \textbf{Answer Format:} Enumerative, Explanatory
+    \item \textbf{Retrieval Operation:} Aggregation, Relationship
+    \item \textbf{Graph Representation:} Multi Fact
+    \item \textbf{Intention Count:} Multiple Intentions
+    \item \textbf{Question Goal:} Information Lookup
+    \item \textbf{Answer Credibility:} Objective
+\end{itemize}
+
+The question includes two types of intentions since it asks both for \enquote{What dimensions...} and \enquote{how are the dimensions related?}. This structure signifies multiple underlying objectives, classifying \emph{Intention Count} as multiple intentions. For \emph{Answer Type}, the request for \enquote{What dimensions ...} points to the type of named entities that represent identifiable factors. The subsequent request for \emph{how} these dimensions relate requires a descriptive explanation in natural language. Therefore, the classification includes both the description and the named entity. The specified condition \enquote{agile automotive contexts} is descriptive rather than a named entity, as it requires the retriever to understand whether an interface resides in the given context. Therefore, \emph{Condition Type} is a description.
+
+The \emph{Answer Format} combines enumerative and explanatory aspects. An enumerative format is required to list the identified dimensions, while an explanatory format is needed to detail the relationships between them. Correspondingly, the \emph{Retrieval Operation} involves both aggregation to collect the dimensions and relationship analysis to understand their connections. Consequently, the \emph{Graph Representation} requires multiple facts.
+
+The \emph{Question Goal} is classified as information lookup because the question focuses on identifying and understanding existing knowledge. Lastly, the expected answer necessitates grounding in research findings or empirical evidence, distinguishing it from subjective opinion. Consequently, the \emph{Answer Credibility} is classified as objective.
+
+
+
+\subsection{Potential Applications of the Taxonomy}
+\label{sec:where_to_apply_the_taxonomy}
+
+The proposed taxonomy offers a structured framework that is applicable to several contexts related to the formulation of questions, the retrieval of information and the design of the system, particularly in the domain of \gls{kgqa} and the search for scholarly information. We consider the taxonomy to be helpful in various activities:
+
+\begin{itemize}
+    \item \textbf{Design and Development of \gls{kgqa} Approaches:} The taxonomy provides a detailed characterization of the question types that a \gls{kgqa} system encounters. Therefore, the application of the taxonomy can help guide the architectural design, selection of appropriate retrieval algorithms, and implementation of specific functionalities to handle diverse questions effectively.
+    
+    \item \textbf{Evaluation of \gls{kgqa} Approaches:} The taxonomy allows the creation of standardized evaluation datasets. By classifying questions according to the categories provided it allows for comparing the performance across different types and complexities of the questions to understand the capabilities and limitations of a \gls{kgqa} system.
+
+    \item \textbf{Knowledge Graph Engineering:} Applying the taxonomy to questions frequently posed against a \gls{kg} can provide valuable feedback for \gls{kg} design and optimization. This is because the taxonomy can highlight the need for specific schema structures, precomputation of certain relationships or aggregations, or adjustments to data granularity to better support common query patterns posed to \gls{kgqa} retrieval systems.
+
+    \item \textbf{Guiding Question Formulation:} The taxonomy may also be helpful in the creation of question formulations that address various aspects of \gls{kgqa}. Awareness of the categories provided by the taxonomy can be used to improve the precision and effectiveness of the questions for successful and targeted information retrieval.
+\end{itemize}
+
+
+\subsection{Guidelines for Applying the Taxonomy}
+\label{sec:guidelines_for_the_application}
+
+To ensure a consistent, accurate, and meaningful application of the taxonomy, we provide the following guidelines:
+
+\begin{itemize}
+    \item \textbf{Systematic Category Evaluation:} Each of the categories provided should be systematically addressed one by one. 
+    
+    \item \textbf{Knowledge Graph Structure Awareness:} Accurate classification of questions within the \emph{Graph Representation} and \emph{Retrieval Operation} categories necessitates familiarity with the underlying structure of the graph. It is therefore crucial to determine whether required information corresponds to single or multiple triples and whether complex operations are precomputed within the graph or must be performed at query time.
+
+    \item \textbf{Anticipation of Expected Answers:} For the classification of the \emph{Answer Type} and \emph{Answer Format} categories it is helpful to formulate an expected answer. The inherent types and structure of this answer can then be used to determine the appropriate classes.
+
+    \item \textbf{Distinguish Conditions from Answers:} When classifying according to the \emph{Condition Type} category, it is important to focus on the constraints explicitly stated within the provided question itself. This differs from the characteristics of the expected answer, which are covered by \emph{Answer Type}.
+
+    \item \textbf{Specificity in Retrieval Operation:} The category \emph{Retrieval Operation} includes some classes that subsume others. For example, \emph{Superlative} or \emph{Ranking} may involve counting or aggregation. For a consistent classification, assign the class that represents the most complex or defining operation required to answer the question.
+
+    \item \textbf{Intention Count Criterion:} To understand whether a question should be classified as having multiple intentions, a \emph{splitting} test can be helpful. Here, it should be determined whether the question can be broken down into distinct and independently meaningful subquestions without losing the original overall meaning.
+\end{itemize}
+
