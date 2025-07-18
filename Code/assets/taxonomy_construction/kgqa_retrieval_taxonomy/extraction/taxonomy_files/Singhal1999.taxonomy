@@ -1,0 +1,23 @@
+/* Key: Singhal1999
+ * Authors: Singhal, Amit and Abney, Steve and Bacchiani, Michiel and Collins, Michael and Hindle, Donald and Pereira, Fernando
+ * Title: "AT&T at TREC-8" 
+ * Venue: COLING 2002: The 19th International Conference on Computational Linguistics. 2002.
+ * Classification Type:
+ * DOI:-- 
+ * References: /
+ * Citations:
+ * Li2002 https://aclanthology.org/C02-1150 Learning question classifiers
+ * Auer2023 10.1038/s41598-023-33607-z The sciqa scientific question answering benchmark for scholarly knowledge
+ * Li2006 10.1017/S1351324905003955 Learning question classifiers: the role of semantic information
+ */
+
+ Person
+ Location
+ Date
+ Quantity
+ Other Named Entity
+ Miscellaneous
+ Linear Measure
+ Monetary Amount 
+ Organization 
+ Duration

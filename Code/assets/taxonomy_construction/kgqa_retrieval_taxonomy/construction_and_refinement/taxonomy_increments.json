@@ -1,0 +1,1043 @@
+[
+    {
+        "iteration": 1,
+        "taxonomy": [
+            {
+                "name": "Graph Representation",
+                "description": "Classifies questions based on how the information that is required to answer the question is organized in the Knowledge Graph.",
+                "based_on_clusters": [
+                    1000
+                ],
+                "categories": [
+                    {
+                        "name": "Single Fact",
+                        "description": "To fully answer the question, only a single fact has to be retrieved from the Knowledge Graph.",
+                        "based_on_clusters": [
+                            1
+                        ]
+                    },
+                    {
+                        "name": "Multi Fact",
+                        "description": "To fully answer the question, multiple facts have to be retrieved from the Knowledge Graph.",
+                        "based_on_clusters": [
+                            2
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Answer Type",
+                "description": "Classifies the question by the expected answer format or data type. As such it classifies what the question excepts to be in the answer.",
+                "based_on_clusters": [
+                    1001
+                ],
+                "categories": [
+                    {
+                        "name": "Undefined",
+                        "description": "Groups questions for which the expected answer type is unclear or cannot be determined by standard classification rules.",
+                        "based_on_clusters": [
+                            4
+                        ]
+                    },
+                    {
+                        "name": "Other",
+                        "description": "Classifies those questions that expect an answer type that does not fit in any of the other categories.",
+                        "based_on_clusters": [
+                            6
+                        ]
+                    },
+                    {
+                        "name": "Date",
+                        "description": "Classifies those questions where the expected answer is a date.",
+                        "based_on_clusters": [
+                            5
+                        ]
+                    },
+                    {
+                        "name": "Distance Measurement",
+                        "description": "Classifies those questions where the expected answer is a linear measure such as distance or length.",
+                        "based_on_clusters": [
+                            7
+                        ]
+                    },
+                    {
+                        "name": "Actor",
+                        "description": "Classifies those questions where the expected answer is an actor in a certain action which can be a individual, team, project, organization, or industry.",
+                        "based_on_clusters": [
+                            8
+                        ]
+                    },
+                    {
+                        "name": "Technology",
+                        "description": "Classifies those questions where the expected answer should be a technology which can be a process model, method, technique, tool, or language that is applied on the software system.",
+                        "based_on_clusters": [
+                            9
+                        ]
+                    },
+                    {
+                        "name": "Definition",
+                        "description": "Classifies those questions where the expected answer is a definition of a term, concept, or technology.",
+                        "based_on_clusters": [
+                            12
+                        ]
+                    },
+                    {
+                        "name": "Time",
+                        "description": "Classifies those questions where the expected answer is a time.",
+                        "based_on_clusters": [
+                            13
+                        ]
+                    },
+                    {
+                        "name": "Name",
+                        "description": "Classifies those questions where the expected answer is a name.",
+                        "based_on_clusters": [
+                            14
+                        ]
+                    },
+                    {
+                        "name": "Title",
+                        "description": "Classifies those questions where the expected answer is a title such as the title of a publication.",
+                        "based_on_clusters": [
+                            15
+                        ]
+                    },
+                    {
+                        "name": "Bibliometric Numbers",
+                        "description": "Classifies those questions where the expected answer is a bibliometric number such as publication counts, citation numbers, h-index, or i10-index.",
+                        "based_on_clusters": [
+                            16
+                        ]
+                    },
+                    {
+                        "name": "Software System",
+                        "description": "Classifies those questions where the expected answer describes the features of a software system such as its size, complexity, or application domain",
+                        "based_on_clusters": [
+                            18
+                        ]
+                    },
+                    {
+                        "name": "Monetary",
+                        "description": "Classifies those questions where the expected answer is a monetary value.",
+                        "based_on_clusters": [
+                            19
+                        ]
+                    },
+                    {
+                        "name": "Abbreviation",
+                        "description": "Classifies question where the expeceted answer is a long or short form of an abbreviation.",
+                        "based_on_clusters": [
+                            20
+                        ]
+                    },
+                    {
+                        "name": "Instructional",
+                        "description": "Classifies those questions where the expected answer is a step-by-step procedure or instruction to achieve a specified task.",
+                        "based_on_clusters": [
+                            21
+                        ]
+                    },
+                    {
+                        "name": "Procedure/Technique",
+                        "description": "Given a question, the expected result is a concept for implementation, representation, management, or analysis.",
+                        "based_on_clusters": [
+                            97
+                        ]
+                    },
+                    {
+                        "name": "Organization",
+                        "description": "Classifies those questions where the expected answer is an organization such as universities, research centers, laboratories, or other entities.",
+                        "based_on_clusters": [
+                            22
+                        ]
+                    },
+                    {
+                        "name": "Duration",
+                        "description": "Classifies those questions where the expected answer is a time duration such as 'three years' or 'few hours'.",
+                        "based_on_clusters": [
+                            23
+                        ]
+                    },
+                    {
+                        "name": "Boolean",
+                        "description": "Classifies those questions where the expected answer is an affirmative or negative response.",
+                        "based_on_clusters": [
+                            24
+                        ]
+                    },
+                    {
+                        "name": "Entity",
+                        "description": "Classifies those questions where the expected answer is expected to name one or more entities or objects.",
+                        "based_on_clusters": [
+                            25
+                        ]
+                    },
+                    {
+                        "name": "Description",
+                        "description": "Classifies those questions where the expected answer is a description.",
+                        "based_on_clusters": [
+                            26
+                        ]
+                    },
+                    {
+                        "name": "Properties",
+                        "description": "Classifies those questions where the expected answer is expected to list or detail the properties or characteristics inherent to a phenomenon, object, or entity.",
+                        "based_on_clusters": [
+                            27
+                        ]
+                    },
+                    {
+                        "name": "Human/Person",
+                        "description": "Classifies those questions where the expected answer is a human or person.",
+                        "based_on_clusters": [
+                            28
+                        ]
+                    },
+                    {
+                        "name": "Location",
+                        "description": "Classifies those questions where the expected answer is a location which are geographic in nature.",
+                        "based_on_clusters": [
+                            29
+                        ]
+                    },
+                    {
+                        "name": "Quantitative",
+                        "description": "Classifies those questions where the expected answer is a numerical information, counts, or quantitative measure",
+                        "based_on_clusters": [
+                            30
+                        ]
+                    },
+                    {
+                        "name": "Tool/Notation",
+                        "description": "Classifies those questions where the expected answer is a specific software tool that embodies a technique or formal language that should have a calculus, semantics, or other basis for computing or inference.",
+                        "based_on_clusters": [
+                            31
+                        ]
+                    },
+                    {
+                        "name": "Solution",
+                        "description": "Classifies those questions where the expected answer is a specific solution, design prototype, or evaluative judgment based on established software engineering principles.",
+                        "based_on_clusters": [
+                            32
+                        ]
+                    },
+                    {
+                        "name": "Theoretical Framework",
+                        "description": "Classifies those questions where the expected answer is expected to be theoretical statements that support a research. These are categorized into no specific theory, kernel theory, formal theory, or testable theory.",
+                        "based_on_clusters": [
+                            35
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Question Type",
+                "description": "Classifies questions by their actions that are to be performed on the information to answer the question.",
+                "based_on_clusters": [
+                    1003
+                ],
+                "categories": [
+                    {
+                        "name": "Negation",
+                        "description": "Classifies those questions where the retriever is required to negate the information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            38
+                        ]
+                    },
+                    {
+                        "name": "Dependency",
+                        "description": "Classifies those questions where the retriever is required to identify a dependency of the information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            39
+                        ]
+                    },
+                    {
+                        "name": "Contingency",
+                        "description": "Classifies those questions where the retriever is required to identify a contingency of the information in the Knowledge Graph to answer the question. This involves identifying cause effect relationships but also correlations.",
+                        "based_on_clusters": [
+                            40
+                        ]
+                    },
+                    {
+                        "name": "Counting",
+                        "description": "Classifies those questions where the retriever is required to count the number of occurrences of a certain information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            42
+                        ]
+                    },
+                    {
+                        "name": "Superlative",
+                        "description": "Classifies those questions where the retriever is required to identify the most or least of a certain information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            44
+                        ]
+                    },
+                    {
+                        "name": "Comparison",
+                        "description": "Classifies those questions where the retriever is required to compare two or more pieces of information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            45
+                        ]
+                    },
+                    {
+                        "name": "Listing",
+                        "description": "Classifies those questions where the retriever is required to list the information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            46
+                        ]
+                    },
+                    {
+                        "name": "Multiple Intentions",
+                        "description": "Classifies those questions that contain multiple intentions which could be broken up into multiple different questions.",
+                        "based_on_clusters": [
+                            48
+                        ]
+                    },
+                    {
+                        "name": "Ranking",
+                        "description": "Classifies those questions where the retriever is required to rank the information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            50
+                        ]
+                    },
+                    {
+                        "name": "Temporal",
+                        "description": "Classifies those questions where the retriever is required to consider time series or trends over time to answer the question.",
+                        "based_on_clusters": [
+                            51
+                        ]
+                    },
+                    {
+                        "name": "Aggregation",
+                        "description": "Classifies those questions where the retriever is required to quantitatively or qualitatively aggregate the information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            52
+                        ]
+                    },
+                    {
+                        "name": "Relationship",
+                        "description": "Classifies those questions where the retriever is required to identify a relationship between two or more pieces of information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            53
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Research Focus",
+                "description": "Classifies questions by their goal towards the literature research process.",
+                "based_on_clusters": [
+                    1006
+                ],
+                "categories": [
+                    {
+                        "name": "Development Methods",
+                        "description": "Classifies questions that request details on the methods, processes, or procedures used during the development of software solutions including aspects such as design patterns, best practices, and algorithmic strategies.",
+                        "based_on_clusters": [
+                            66
+                        ]
+                    },
+                    {
+                        "name": "Analytical Methods",
+                        "description": "Classifies questions that request details on strategies, techniques, or frameworks used for analyzing or evaluating software tools, technologies, or approaches.",
+                        "based_on_clusters": [
+                            67
+                        ]
+                    },
+                    {
+                        "name": "Generalization",
+                        "description": "Classifies questions that seek broad concepts, taxonomies, or general principles in software engineering.",
+                        "based_on_clusters": [
+                            69
+                        ]
+                    },
+                    {
+                        "name": "Qualitative Modeling",
+                        "description": "Classifies questions that expect qualitative models which cover a wide variety of different types of models, including structures or taxonomies, architecture designs, frameworks, design patterns, and other non quantitative models.",
+                        "based_on_clusters": [
+                            70
+                        ]
+                    },
+                    {
+                        "name": "Empirical Modeling",
+                        "description": "Classifies questions that expect empirical models which are predictive models that are based on data.",
+                        "based_on_clusters": [
+                            71
+                        ]
+                    },
+                    {
+                        "name": "Analytic Modeling",
+                        "description": "Classifies questions that expect analytic models which are models that are based on mathematical equations.",
+                        "based_on_clusters": [
+                            72
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Answer Credibility",
+                "description": "Classifies questions by the credibility of the answer that is expected.",
+                "based_on_clusters": [
+                    1007
+                ],
+                "categories": [
+                    {
+                        "name": "Factual",
+                        "description": "Classifies those questions where the expected answer is expected to evidence-based.",
+                        "based_on_clusters": [
+                            73
+                        ]
+                    },
+                    {
+                        "name": "Opinion",
+                        "description": "Classifies those questions where the expected answer is expected to be based on personal opinions.",
+                        "based_on_clusters": [
+                            74
+                        ]
+                    },
+                    {
+                        "name": "Debate",
+                        "description": "Classifies those questions where the expected answer is intended to provoke discussion or argumentation rather than factual evidence.",
+                        "based_on_clusters": [
+                            75
+                        ]
+                    },
+                    {
+                        "name": "Predictive",
+                        "description": "Classifies those questions where the expected answer is expected to be a prediction.",
+                        "based_on_clusters": [
+                            77
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Question Goal",
+                "description": "Classifies questions by their goal towards the literature research process.",
+                "based_on_clusters": [
+                    1008
+                ],
+                "categories": [
+                    {
+                        "name": "Exploratory",
+                        "description": "Classifies questions that are exploratory in nature and aim to discover new information or insights.",
+                        "based_on_clusters": [
+                            78
+                        ]
+                    },
+                    {
+                        "name": "Reasoning",
+                        "description": "Classifies questions that seek reasons or causes for a certain phenomenon.",
+                        "based_on_clusters": [
+                            79
+                        ]
+                    },
+                    {
+                        "name": "Problem Solving",
+                        "description": "Classifies questions that seek to find solutions to a specific issue.",
+                        "based_on_clusters": [
+                            80
+                        ]
+                    },
+                    {
+                        "name": "Gap Spotting",
+                        "description": "Classifies questions that aim to identify gaps in existing literature or research, thereby highlighting areas needing further investigation.",
+                        "based_on_clusters": [
+                            81
+                        ]
+                    },
+                    {
+                        "name": "Problematization",
+                        "description": "Classifies questions that aim to articulate deficiencies or problems in current theories or practices suggesting a need for additional research.",
+                        "based_on_clusters": [
+                            82
+                        ]
+                    },
+                    {
+                        "name": "Method Improvement",
+                        "description": "Classifies questions that aim to discover improved methods for software improvement and design.",
+                        "based_on_clusters": [
+                            84
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "iteration": 2,
+        "taxonomy": [
+            {
+                "name": "Graph Representation",
+                "description": "Classifies questions based on how the information that is required to answer the question is organized in the Knowledge Graph.",
+                "changes": "There are no changes to the previous iteration.",
+                "based_on_clusters": [
+                    1000
+                ],
+                "categories": [
+                    {
+                        "name": "Single Fact",
+                        "description": "To fully answer the question, only a single fact has to be retrieved from the Knowledge Graph.",
+                        "based_on_clusters": [
+                            1
+                        ]
+                    },
+                    {
+                        "name": "Multi Fact",
+                        "description": "To fully answer the question, multiple facts have to be retrieved from the Knowledge Graph.",
+                        "based_on_clusters": [
+                            2
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Answer Type",
+                "description": "Classifies the question by the types that the terms inside of the answer are expected to have.",
+                "changes": "We identified that this category was too broad which hinders the applicability as many types are likely to be never used. Furthermore, the previous abstraction level would make it hard to reach a level of completness. Therefore, we merged semantic similar types to reduce the overall amount of classes in this dimension.",
+                "based_on_clusters": [
+                    1001
+                ],
+                "categories": [
+                    {
+                        "name": "Named Entity",
+                        "description": "Classifies questions where the expected answer is a specific named entity. This includes people, organizations, locations, systems, technologies, and other concrete subjects or objects that are usually capitalized.",
+                        "changes": "This category has been created based on the previous Entity, Human/Person, Actor, Organization, Location, Name, Technology, Software System, Solution, and Title classes",
+                        "based_on_clusters": [
+                            14, 15, 25, 20, 28, 29, 8, 9, 22, 18, 32, 66, 67, 68, 69, 70, 71, 72, 97
+                        ]
+                    },
+                    {
+                        "name": "Description",
+                        "description": "Classifies questions where the expected answer provides an explanation, definition, theoretical construct, or conceptual overview. These answers typically describe what something is or how it works.",
+                        "changes": "This category has been created based on the previous Definition, Tool/Notation, Theoretical Framework and Description classes",
+                        "based_on_clusters": [
+                            26, 12, 31, 35
+                        ]
+                    },
+                    {
+                        "name": "Temporal",
+                        "description": "Classifies questions where the expected answer refers to a specific point or range in time. This includes dates, timestamps, or general time expressions.",
+                        "changes": "This category has been added by merging the previous date and time classes.",
+                        "based_on_clusters": [5, 23, 13]
+                    },
+                    {
+                        "name": "Quantitative",
+                        "description": "Classifies questions where the expected answer is a numerical value, metric, or measurable quantity. This includes units of measurement, monetary values, bibliometric indicators, durations, and general counts.",
+                        "based_on_clusters": [7, 19, 30, 16],
+                        "changes": "This category has been created based on the previous Distance Measurement, Monetary, Duration, Bibliometric Numbers, and Quantitative classes."
+                    },
+                    {
+                        "name": "Boolean",
+                        "description": "Classifies questions where the expected answer is a binary affirmation or negation.",
+                        "based_on_clusters": [
+                            24
+                        ]
+                    },
+                    {
+                        "name": "Other Type",
+                        "description": "Classifies questions where the expected answer type does not fit within any of the other defined categories.",
+                        "changes": "Renamed for consistency",
+                        "based_on_clusters": [4, 6]
+                    }
+                ]
+            },
+            {
+                "name": "Answer Format",
+                "description": "Classifies the question by the expected format of the answer.",
+                "based_on_clusters": [],
+                "categories": [
+                    {
+                        "name": "Simple",
+                        "description": "Classifies those questions where the expected answer is brief, straightforward, and minimalistic, often consisting of a one-sentence response, a yes/no answer, or a direct factual statement without additional elaboration.",
+                        "changes": "Added new category",
+                        "based_on_clusters": []
+                    },
+                    {
+                        "name": "Explanatory",
+                        "description": "Classifies those questions where the expected answer is expected to provide a textual explanation about a certain phenomenon, object, or entity.",
+                        "changes": "Added new category",
+                        "based_on_clusters": []
+                    },
+                    {
+                        "name": "Enumerative",
+                        "description": "Classifies those questions where the expected answer is expected to list or detail the properties or characteristics inherent to a phenomenon, object, or entity.",
+                        "changes": "We renamed the previous 'Properties' category to 'Enumerative' to make it clearer what the category is about and moved it from the answer type to the answer format dimension. Furhtermore, we merged the `Listing` category which was previously in the question types dimension into this category, as we identified that it is more about the format of the answer than the action that needs to be performed.",
+                        "based_on_clusters": [
+                            27, 46, 21
+                        ]
+                    },
+                    {
+                        "name": "Other Format",
+                        "description": "Classifies those questions where the expected answer format does not fit into any of the other categories.",
+                        "changes": "We added this category as a catch-all for all other formats that do not fit into the other categories.",
+                        "based_on_clusters": []
+                    }
+                ]
+            },
+            {
+                "name": "Question Type",
+                "description": "Classifies questions by their actions that are to be performed on the information to answer the question.",
+                "changes": "We merged the 'Dependency', 'Contingency', and 'Relationship' categories into a single category.",
+                "based_on_clusters": [
+                    1003
+                ],
+                "categories": [
+                    {
+                        "name": "Negation",
+                        "description": "Classifies those questions where the retriever is required to negate the information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            38
+                        ]
+                    },
+                    {
+                        "name": "Relationship",
+                        "description": "Classifies questions where the retriever must identify any type of interconnection or reliance between pieces of information in the Knowledge Graph. Essentially, it captures all scenarios where one piece of data is influenced by, contingent upon, or systematically linked to another.",
+                        "changes": "We decided to merge the 'Dependency', 'Contingency', and 'Relationship' categories into a single category as wWe identified, that the categories want to achieve a similar goal.",
+                        "based_on_clusters": [
+                            39,
+                            40,
+                            53
+                        ]
+                    },
+                    {
+                        "name": "Superlative",
+                        "description": "Classifies those questions where the retriever is required to identify the most or least of a certain information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            44
+                        ]
+                    },
+                    {
+                        "name": "Counting",
+                        "description": "Classifies those questions where the retriever is required to count the number of occurrences of a certain information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            42
+                        ]
+                    },
+                    {
+                        "name": "Ranking",
+                        "description": "Classifies those questions where the retriever is required to rank the information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            50
+                        ]
+                    },
+                    {
+                        "name": "Comparison",
+                        "description": "Classifies those questions where the retriever is required to compare two or more pieces of information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            45
+                        ]
+                    },
+                    {
+                        "name": "Multiple Intentions",
+                        "description": "Classifies those questions that contain multiple intentions which could be broken up into multiple different questions.",
+                        "based_on_clusters": [
+                            48
+                        ]
+                    },
+                    {
+                        "name": "Temporal",
+                        "description": "Classifies those questions where the retriever is required to consider time series or trends over time to answer the question.",
+                        "based_on_clusters": [
+                            51
+                        ]
+                    },
+                    {
+                        "name": "Aggregation",
+                        "description": "Classifies those questions where the retriever is required to quantitatively or qualitatively aggregate the information in the Knowledge Graph to answer the question.",
+                        "based_on_clusters": [
+                            52
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Answer Credibility",
+                "description": "Classifies questions by the credibility of the answer that is expected.",
+                "based_on_clusters": [
+                    1007
+                ],
+                "categories": [
+                    {
+                        "name": "Objective",
+                        "description": "Classifies those questions where the expected answer is expected to evidence-based.",
+                        "changes": "Renamed 'Factual' to 'Objective' which works well in conjunction with the `Subjective` category to make the overall intention clear.",
+                        "based_on_clusters": [
+                            73
+                        ]
+                    },  
+                    {
+                        "name": "Subjective",
+                        "description": "Answers that are based on personal views or constructed to persuade or provoke discussion.",
+                        "changes": "Merged the previous 'Opinion' and 'Debate' categories into a single category.",
+                        "based_on_clusters": [74, 75]
+                    }
+                ]
+            },
+            {
+                "name": "Question Goal",
+                "description": "Classifies questions by their goal towards the literature research process.",
+                "based_on_clusters": [
+                    1008
+                ],
+                "categories": [
+                    {
+                        "name": "Reasoning",
+                        "description": "Classifies questions that seek reasons or causes for a certain phenomenon.",
+                        "based_on_clusters": [
+                            79
+                        ]
+                    },
+                    {
+                        "name": "Problem Solving",
+                        "description": "Classifies questions that seek to find solutions to a specific issue.",
+                        "based_on_clusters": [
+                            80
+                        ]
+                    },
+                    {
+                        "name": "Problematization",
+                        "description": "Classifies questions that aim to articulate deficiencies or problems in current theories or practices suggesting a need for additional research.",
+                        "based_on_clusters": [
+                            82, 81
+                        ],
+                        "changes": "We merged the Gap Spotting category into this category as we identified that both categories are very similar."
+                    },
+                    {
+                        "name": "Improvement",
+                        "description": "Classifies questions that aim to discover improved methods for software improvement and design.",
+                        "based_on_clusters": [
+                            84
+                        ],
+                        "changes": "We removed the method suffix from the previous 'Method Improvement' category as we want to broaden the scope of this class to have the whole category on an equal abstraction level."
+                    },
+                    {
+                        "name": "Prediction",
+                        "description": "Classifies those questions where the expected answer is expected to be a prediction.",
+                        "based_on_clusters": [
+                            77
+                        ],
+                        "changes": "Changed name for consistency with the other categories and moved it to the question goal dimension from the previous answer credibility dimension."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "iteration": 3,
+        "taxonomy": [
+            {
+                "name": "Graph Representation",
+                "description": "Classifies questions based on how the information that is required to answer the question is organized in the Knowledge Graph.",
+                "changes": "There are no changes to the previous iteration.",
+                "based_on_clusters": [
+                    1000
+                ],
+                "categories": [
+                    {
+                        "name": "Single Fact",
+                        "description": "To fully answer the question, only a single fact has to be retrieved from the Knowledge Graph.",
+                        "based_on_clusters": [
+                            1
+                        ]
+                    },
+                    {
+                        "name": "Multi Fact",
+                        "description": "To fully answer the question, multiple facts have to be retrieved from the Knowledge Graph.",
+                        "based_on_clusters": [
+                            2
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Answer Type",
+                "description": "Classifies the question by the types that the terms inside of the answer are expected to have.",
+                "based_on_clusters": [
+                    1001
+                ],
+                "categories": [
+                    {
+                        "name": "Named Entity",
+                        "description": "Classifies questions where the expected answer is a specific named entity. This includes people, organizations, locations, systems, technologies, and other concrete subjects or objects that are usually capitalized.",
+                        "based_on_clusters": [
+                            14, 25, 20, 28, 29, 8, 9, 22, 18, 32, 66, 67, 68, 69, 70, 71, 72, 97
+                        ]
+                    },
+                    {
+                        "name": "Description",
+                        "description": "Classifies questions where the expected answer provides an explanation, definition, theoretical construct, or conceptual overview. These answers typically describe what something is or how it works.",
+                        "based_on_clusters": [
+                            26, 12, 31
+                        ]
+                    },
+                    {
+                        "name": "Temporal",
+                        "description": "Classifies questions where the expected answer refers to a specific point or range in time. This includes dates, timestamps, or general time expressions.",
+                        "based_on_clusters": [5, 23, 13]
+                    },
+                    {
+                        "name": "Quantitative",
+                        "description": "Classifies questions where the expected answer is a numerical value, metric, or measurable quantity. This includes units of measurement, monetary values, bibliometric indicators, durations, and general counts.",
+                        "based_on_clusters": [7, 19, 30, 16]
+                    },
+                    {
+                        "name": "Boolean",
+                        "description": "Classifies questions where the expected answer is a binary true/false value. These questions are typically framed to elicit confirmation, denial, or the presence or absence of a condition.",
+                        "based_on_clusters": [
+                            24
+                        ]
+                    },
+                    {
+                        "name": "Other Type",
+                        "description": "Classifies questions where the expected answer type does not fit within any of the other defined categories.",
+                        "based_on_clusters": [4, 6]
+                    }
+                ]
+            },
+            {
+                "name": "Condition Type",
+                "description": "Classifies the question by the constraints that are provided in the question that need to be fulfilled to answer the question.",
+                "based_on_clusters": [
+                    1001
+                ],
+                "categories": [
+                    {
+                        "name": "Named Entity",
+                        "description": "Classifies questions where the expected answer is constrained by a specific name of an entity. This includes people, organizations, locations, systems, technologies, and other concrete subjects or objects that are usually capitalized.",
+                        "based_on_clusters": [
+                            14, 15, 25, 20, 28, 29, 8, 9, 22, 18, 32, 66, 67, 68, 69, 70, 71, 72, 97
+                        ]
+                    },
+                    {
+                        "name": "Description",
+                        "description": "Classifies questions where the expected answer is constraint by an explanation, definition, theoretical construct, or conceptual overview.",
+                        "based_on_clusters": [
+                            26, 12, 31, 35
+                        ]
+                    },
+                    {
+                        "name": "Temporal",
+                        "description": "Classifies questions where the expected answer is constrained by a specific point or range in time. This includes dates, timestamps, or general time expressions.",
+                        "based_on_clusters": [5, 23, 13, 51]
+                    },
+                    {
+                        "name": "Quantitative",
+                        "description": "Classifies questions where the expected answer is constrained by a numerical value, metric, or measurable quantity. This includes units of measurement, monetary values, bibliometric indicators, durations, and general counts.",
+                        "based_on_clusters": [7, 19, 30, 16]
+                    },
+                    {
+                        "name": "Other Type",
+                        "description": "Classifies questions where the expected constraint on the answer does not fit within any of the other defined categories.",
+                        "based_on_clusters": [4, 6]
+                    }
+                ]
+            },
+            {
+                "name": "Answer Format",
+                "description": "Classifies the question by the expected format of the answer.",
+                "based_on_clusters": [
+                    1001
+                ],
+                "categories": [
+                    {
+                        "name": "Simple",
+                        "description": "Classifies those questions where the expected answer is brief, straightforward, and minimalistic, often consisting of a one-sentence response, a yes/no answer, or a direct factual statement without additional elaboration.",
+                        "based_on_clusters": []
+                    },
+                    {
+                        "name": "Explanatory",
+                        "description": "Classifies those questions where the expected answer is expected to provide a textual explanation about a certain phenomenon, object, or entity.",
+                        "based_on_clusters": []
+                    },
+                    {
+                        "name": "Enumerative",
+                        "description": "Classifies those questions where the expected answer is expected to list or detail the properties or characteristics inherent to a phenomenon, object, or entity.",
+                        "based_on_clusters": [
+                            27, 46, 21
+                        ]
+                    },
+                    {
+                        "name": "Other Format",
+                        "description": "Classifies those questions where the expected answer format does not fit into any of the other categories.",
+                        "based_on_clusters": []
+                    }
+                ]
+            },
+            {
+                "name": "Retrieval Operation",
+                "description": "Classifies questions by their actions that are to be performed on the retrieved information to answer the question.",
+                "changes": "The dimension was renamed from 'Question Type'.",
+                "based_on_clusters": [
+                    1003
+                ],
+                "categories": [
+                    {
+                        "name": "Basic",
+                        "description": "The answer can be retrieved directly without applying additional operations.",
+                        "changes": "Added new category",
+                        "based_on_clusters": []
+                    },
+                    {
+                        "name": "Negation",
+                        "description": "Requires identifying where a condition does not hold, based on explicit negation or missing information.",
+                        "based_on_clusters": [
+                            38
+                        ]
+                    },
+                    {
+                        "name": "Relationship",
+                        "description": "Requires identifying a connection or dependency between pieces of information, such as causalities or correlations.",
+                        "based_on_clusters": [
+                            39,
+                            40,
+                            53
+                        ]
+                    },
+                    {
+                        "name": "Superlative",
+                        "description": "Requires identifying the most or least of a certain information.",
+                        "based_on_clusters": [
+                            44
+                        ]
+                    },
+                    {
+                        "name": "Counting",
+                        "description": "Requires counting the number of relevant instances in the data.",
+                        "based_on_clusters": [
+                            42
+                        ]
+                    },
+                    {
+                        "name": "Ranking",
+                        "description": "Requires ordering information based on a specific criterion.",
+                        "based_on_clusters": [
+                            50
+                        ]
+                    },
+                    {
+                        "name": "Comparison",
+                        "description": "Requires comparing two or more pieces of information based on common attributes.",
+                        "based_on_clusters": [
+                            45
+                        ]
+                    },
+                    {
+                        "name": "Aggregation",
+                        "description": "Requires aggregating multiple pieces of information into a single answer.",
+                        "based_on_clusters": [
+                            52
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Intention Count",
+                "description": "This dimension classifies questions by how many different intentions are contained in the question.",
+                "changes": "Added new dimension.",
+                "based_on_clusters": [],
+                "categories": [
+                    {
+                        "name": "Single Intention",
+                        "description": "Classifies those questions that focus on one objective or query. They cannot be meaningfully divided into separate, independent questions without losing their original context.",
+                        "changes": "Added new category",
+                        "based_on_clusters": []
+                    },
+                    {
+                        "name": "Multiple Intentions",
+                        "description": "Classifies those questions that embed several distinct objectives or queries. Such questions can be broken down into separate components or questions, each addressing a different aspect.",
+                        "changes": "Moved to new dimension",
+                        "based_on_clusters": [
+                            48
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Answer Credibility",
+                "description": "Classifies questions by the credibility of the answer that is expected.",
+                "based_on_clusters": [
+                    1007
+                ],
+                "categories": [
+                    {
+                        "name": "Normative",
+                        "description": "This category applies to questions where the answer is expected to provide value-based judgments, recommendations, or ethical prescriptions. In these cases, the answer is about how things ought to be based on norms, ethics, or policies.",
+                        "based_on_clusters": [],
+                        "changes": "We added the normative category as we identified it to be missing in the taxonomy."
+                    },
+                    {
+                        "name": "Objective",
+                        "description": "This category covers questions where answers are expected to be grounded in verified data, facts, or empirical evidence. The focus is on reporting measurable, observable, or documented information without interpretation or personal bias.",
+                        "changes": "Renamed 'Factual' to 'Objective' which works well in conjunction with the `Subjective` category to make the overall intention clear.",
+                        "based_on_clusters": [
+                            73
+                        ]
+                    },  
+                    {
+                        "name": "Subjective",
+                        "description": "This category includes questions where the answer is influenced by personal experience, preferences, or interpretation. Answers here are not strictly bound by objective evidence, as they are often intended to share opinions, interpretations, or subjective assessments.",
+                        "changes": "Merged the previous 'Opinion' and 'Debate' categories into a single category.",
+                        "based_on_clusters": [74, 75]
+                    }
+                ]
+            },
+            {
+                "name": "Question Goal",
+                "description": "Classifies questions by their goal towards the literature research process.",
+                "based_on_clusters": [
+                    1008
+                ],
+                "categories": [
+                    {
+                        "name": "Information Lookup",
+                        "description": "Questions that seek to know how something is.",
+                        "based_on_clusters": [],
+                        "changes": "Added new category to capture questions that are primarily focused on retrieving specific information."
+                    },
+                    {
+                        "name": "Reasoning",
+                        "description": "Classifies questions aimed at uncovering underlying causes, mechanisms, or explanations for observed phenomena. These questions seek to understand why something occurs, not necessarily how to fix it.",
+                        "based_on_clusters": [
+                            79
+                        ]
+                    },
+                    {
+                        "name": "Problem Solving",
+                        "description": "Classifies questions that aim to identify practical solutions, strategies, or methods to overcome a challenge or limitation.",
+                        "based_on_clusters": [
+                            80
+                        ]
+                    },
+                    {
+                        "name": "Problematization",
+                        "description": "Classifies questions that aim to articulate deficiencies or problems in current theories or practices suggesting a need for additional research.",
+                        "based_on_clusters": [
+                            82, 81
+                        ]
+                    },
+                    {
+                        "name": "Improvement",
+                        "description": "Classifies questions focused on enhancing existing tools, methods, or practices. These questions often seek refinement, efficiency, or effectiveness improvements.",
+                        "based_on_clusters": [
+                            84
+                        ]
+                    },
+                    {
+                        "name": "Other Goal",
+                        "description": "Classifies questions that have a goal, that does not fit into any of the other categories.",
+                        "changes": "Added this category to capture questions that do not fit into the other categories.",
+                        "based_on_clusters": []
+                    },
+                    {
+                        "name": "Prediction",
+                        "description": "Classifies questions that aim to anticipate future developments, outcomes, or trends based on current knowledge or evidence.",
+                        "based_on_clusters": [
+                            77
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

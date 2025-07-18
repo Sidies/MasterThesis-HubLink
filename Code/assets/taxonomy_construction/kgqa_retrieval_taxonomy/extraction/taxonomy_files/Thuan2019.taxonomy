@@ -1,0 +1,88 @@
+/* Key: Thuan2019
+ * Authors: Nguyen Hoang Thuan, Andreas Drechsler, Pedro Antunes
+ * Title: "Construction of Design Science Research Questions"
+ * Venue: Communications of the Association for Information Systems 
+ * Classification Type: Research Questions (Design science research (DSR) paradigm)
+ * DOI: 10.17705/1CAIS.04420
+ * URL: https://aisel.aisnet.org/cais/vol44/iss1/20/
+ * References: /
+ * Citations: /
+ */
+
+Construction {
+	Motivation { /* Sandberg and Alvesson, 2011 */
+		Gap-spotting,
+		Promblematization,
+		Problem-solving
+	},
+
+	Problem statement {
+		Research problem,
+		Research gap,
+		Research challenge,
+		Research opportunity,
+		Requirement
+	}
+},
+
+Formulation {
+	Research questions {
+		knowledge, /* What is? */
+		Design process, /* How? */
+		Design artifact, /* Which? */
+		Other
+	}
+},
+
+Answer {
+	Research approach {
+		Theory in use {
+			Testable theory,
+			Formal theory,
+			Kernel theory
+		},
+		Knowledge Goal { /* Gregor & Hevner 2013 */
+			Descriptive,
+			Explanatory,
+			Prescriptive,
+			Constructive
+		}
+	
+	},
+
+	Research activities {
+		Purpose { /* Hevner et al. 2004 */
+			Build,
+			Evaluate
+		},
+		Type of inquiry { /* Nunamaker et al. 1990 */
+			Quantitative,
+			Qualitative,
+			Mixed,
+			Evluative,
+			Developmental
+		}	
+	},
+	
+	Artifacts {
+		Nature of artifact { /* Gregor & Hevner 2013 */
+			Material,
+			Abstract
+		},
+		Type of purpose { /* Hevner et al. 2004 */
+			Experiment,
+			Innovation
+		},
+		Type of output { /* Hevner et al. 2004 */
+			Construct,
+			Model,
+			Method,
+			Instantiation
+		}	
+	}
+}
+
+
+
+
+

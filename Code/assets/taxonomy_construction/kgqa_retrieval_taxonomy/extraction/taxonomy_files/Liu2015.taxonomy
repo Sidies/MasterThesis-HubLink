@@ -1,0 +1,15 @@
+/* Key: Liu2015
+ * Authors: Liu, Zhe and Jansen, Bernard J.
+ * Title: A Taxonomy for Classifying Questions Asked in Social Question and Answering
+ * Classification Type: Question Classification
+ * DOI: 10.1145/2702613.2732928
+ * URL: https://dl.acm.org/doi/10.1145/2702613.2732928
+ * Publisher: Association for Computing Machinery
+ * References:
+ * Citations: 
+ */ 
+
+Accuracy,
+Social,
+Knowledge,
+Conversational

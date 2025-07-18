@@ -1,0 +1,21 @@
+/* Key: Karras2023
+ * Authors: Oliver Karras, Felix Wernlein, Jil Klünder, Sören Auer
+ * Title: Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering
+ * Venue: 
+ * Classification Type: Research Questions (Software Engineering)
+ * DOI: 10.1109/ESEM56168.2023.10304795
+ * URL: https://ieeexplore.ieee.org/document/10304795
+ * Repo: https://github.com/okarras/EmpiRE-Analysis/blob/master/Supplementary%20materials/Detailed%20list%20of%20all%2077%20competency%20questions.xlsx
+ * References: 
+ * Grueninger1995 978-0-387-34847-6 The Role of Competency Questions in Enterprise Engineering
+ * Sjoberg2007 10.1109/FOSE.2007.30 The Future of Empirical Methods in Software Engineering Research 
+ * Auer2023 10.1038/s41598-023-33607-z The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge
+ * Jaradeh2020 10.48550/arXiv.2006.01527 Question Answering on Scholarly Knowledge Graphs
+ * Citations: 
+ * Pan2024 arXiv:2409.08820 A RAG Approach for Generating Competency Questions in Ontology Engineering
+ */
+
+
+Trends over Time,
+Factual Questions, 
+Quantification Questions

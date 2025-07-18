@@ -1,0 +1,66 @@
+11%|█▏        | 5/44 [00:04<00:38,  1.02it/s]Line: 4, found template issues in the question
+Original Question Template: In which publication year was the paper with the title '[paper title]' been published in comparison to the publication year of the paper with the title '[paper title]'?
+Corrected Question Template: In which publication year was the paper with the title '[paper title]' published in comparison to the publication year of the paper with the title '[paper title]'?
+Difference: []
+
+ 25%|██▌       | 11/44 [00:10<00:36,  1.09s/it]Line: 10, found template issues in the question
+Original Question Template: What are the evaluation methods used by the paper with the title '[paper title]' compared to the methods applied in the paper with the title '[paper title]'?
+Corrected Question Template: What are the evaluation methods used by the paper with the title '[paper title]' compared to the evaluation methods applied in the paper with the title '[paper title]'?
+Difference: []
+
+ 41%|████      | 18/44 [00:15<00:22,  1.15it/s]Line: 17, found template issues in the question
+Original Question Template: Which papers investigate the research object with the name [research object name] and indicate that no input data was used in their work?
+Corrected Question Template: Which papers investigate the research object [research object name] and indicate that no input data was used?
+Difference: ['used?']
+
+ 45%|████▌     | 20/44 [00:16<00:18,  1.27it/s]Line: 20, found template issues in the question
+Original Question Template: What are the research objects that are investigated in papers of the paper class [paper class name]?
+Corrected Question Template: What are the research objects investigated in papers of the paper class [paper class name]?
+Difference: []
+
+ 52%|█████▏    | 23/44 [00:17<00:10,  1.98it/s]Line: 22, found template issues in the question
+Original Question Template: How many evaluation methods are used to evaluate the property [property]?
+Corrected Question Template: How many different evaluation methods are used to evaluate the property [property]?
+Difference: ['different']
+
+ 59%|█████▉    | 26/44 [00:20<00:14,  1.21it/s]Line: 25, found template issues in the question
+Original Question Template: What are the evaluation properties that are evaluated in papers that investigate the research object [research object name] without adhering to an evaluation guideline?
+Corrected Question Template: What are the properties that are evaluated in papers that investigate the research object [research object name] without adhering to an evaluation guideline?
+Difference: []
+
+ 61%|██████▏   | 27/44 [00:21<00:14,  1.14it/s]Line: 26, found template issues in the question
+Original Question Template: What is the evaluation method that has been applied the most in papers that investigate the research object [research object name]?
+Corrected Question Template: What is the evaluation method that has been applied the most in papers investigating the research object [research object name]?
+Difference: ['investigating']
+
+ 64%|██████▎   | 28/44 [00:22<00:14,  1.09it/s]Line: 27, found template issues in the question
+Original Question Template: How frequently per publication year is the research object [research object name] investigated?
+Corrected Question Template: How frequently is the research object [research object name] investigated per publication year?
+Difference: ['investigated', 'year?']
+
+ 70%|███████   | 31/44 [00:25<00:12,  1.05it/s]Line: 30, found template issues in the question
+Original Question Template: How many different evaluation methods did the author [author name] use in papers that evaluate the property [property]?
+Corrected Question Template: How many different evaluation methods did the author [author name] apply in papers that evaluate the property [property]?
+Difference: ['apply']
+
+ 73%|███████▎  | 32/44 [00:26<00:12,  1.06s/it]Line: 31, found template issues in the question
+Original Question Template: What are the evaluation methods that the author [author name] applied in papers that investigate the research object [research object name]? Rank the evaluation methods in descending alphabetical order.
+Corrected Question Template: What are the evaluation methods that the author [author name] applied in papers investigating the research object [research object name]? Rank the evaluation methods in descending alphabetical order.
+Difference: ['investigating']
+
+ 75%|███████▌  | 33/44 [00:28<00:13,  1.20s/it]Line: 32, found template issues in the question
+Original Question Template: How many research objects with the name [research object name] have been investigated in papers published in the publication year [year] in comparison to the publication year [year]?
+Corrected Question Template: How many research objects with the name [research object name] have been investigated in papers in the publication year [year] in comparison to the publication year [year]?
+Difference: []
+
+ 95%|█████████▌| 42/44 [00:35<00:01,  1.30it/s]Line: 41, found template issues in the question
+Original Question Template: Which papers published in the publication year [year] investigate the research object [research object name] and have not used input data in their work?
+Corrected Question Template: Which papers published in the publication year [year] investigate the research object [research object name] and have not used input data?
+Difference: ['data?']
+
+ 98%|█████████▊| 43/44 [00:36<00:00,  1.12it/s]Line: 42, found template issues in the question
+Original Question Template: Among papers that apply the evaluation method [evaluation method name], what is the paper class that is applied the most to papers that are published in the publication year [year]?
+Corrected Question Template: Among papers that apply the evaluation method [evaluation method name], which paper class is most frequently applied to papers published in the publication year [year]?
+Difference: ['frequently', 'which']
+
+100%|██████████| 44/44 [00:36<00:00,  1.19it/s]

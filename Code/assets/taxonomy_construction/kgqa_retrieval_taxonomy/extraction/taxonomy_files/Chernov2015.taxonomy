@@ -1,0 +1,26 @@
+/* Key: Chernov2015
+ * Authors: Alexandr Chernov, Volha Petukhova, Dietrich Klakow
+ * Title: Linguistically Motivated Question Classification
+ * Venue: NoDaLiDa
+ * Classification Type: Question Classification
+ * DOI:
+ * URL: https://aclanthology.org/W15-1809
+ * References: 
+ * Lehnert1986 10.5555/21922.24361 A conceptual theory of question answering.
+ * Singhal1999 https://trec.nist.gov/pubs/trec8/papers/att-trec8.pdf AT&T at TREC-8
+ * Li2002 10.1017/S1351324905003955 Learning question classifiers.  
+ * Moldovan2000 10.3115/1075218.1075289 The Structure and Performance of an Open-Domain Question Answering System
+ * Mikhailan2019 https://aclanthology.org/P09-2082/ Learning foci for Question Answering over Topic Maps
+ * Ferret2002 https://www.researchgate.net/publication/2554252_Finding_an_Answer_Based_on_the_Recognition_of_the_Question_Focus Finding an Answer Based on the Recognition of the Question Focus
+ * Citations: /
+ */
+ 
+Entities
+Human Description
+Human Groups
+Time
+Location
+Human Relations
+Description
+Multilabel
+ 

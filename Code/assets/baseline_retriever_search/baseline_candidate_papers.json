@@ -1,0 +1,844 @@
+[
+    {
+        "title": "Improving Multi-hop Question Answering over Knowledge Graphs using Knowledge Base Embeddings",
+        "doi": "10.18653/v1/2020.acl-main.412",
+        "url": "https://aclanthology.org/2020.acl-main.412/",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "While the overall idea of the paper is similar to ours. As in they are embedding the KG in a preliminary step and then apply a similarity search to the question at query time. However, the approach requires to train KG embeddings using the COmplEx model. Furthermore, they fine tune the RoBERTa with several fully connected layers to project the question embeddings into the same complex vector space as the KG embeddings. Finally, the answer selection module requires training for its relation matching mechanism.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "An Empirical Study of Pre-trained Language Models in Simple Knowledge Graph Question Answering",
+        "doi": "arXiv:2303.10368",
+        "url": "https://arxiv.org/abs/2303.10368",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires training and as such does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Large-Scale Relation Learning for Question Answering over Knowledge Bases with Pre-trained Language Models",
+        "doi": "10.18653/v1/2021.emnlp-main.296",
+        "url": "https://aclanthology.org/2021.emnlp-main.296/",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related":false,
+        "rationale": "The abstract already mentions that their approach needs relation-augmentation training. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Fusing Context Into Knowledge Graph for Commonsense Question Answering",
+        "doi": "arXiv:2012.04808",
+        "url": "https://arxiv.org/abs/2012.04808",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The approach relies on additional training or fine-tuning on question answering datasets to adjust the model parameters for the specific KGQA tasks.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Pretrained Transformers for Simple Question Answering over Knowledge Graphs",
+        "doi": "arXiv:2001.11985",
+        "url": "https://arxiv.org/abs/2001.11985",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires fine-tuning the BERT model. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "QAGNN: Reasoning with language models and knowledge graphs for question answering",
+        "doi": "arXiv:2104.06378",
+        "url": "https://arxiv.org/abs/2104.06378",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap",
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires to train a GNN model on the knowledge graph. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "A BERT-based Approach with Relation-aware Attention for Knowledge Base Question Answering",
+        "doi": "10.1109/IJCNN48605.2020.9207186",
+        "url": "https://ieeexplore.ieee.org/document/9207186",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "They require to learn a relation-aware attention network. This does not conform to the criteria we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Subgraph Retrieval Enhanced Model for Multi-hop Knowledge Base Question Answering",
+        "doi": "arXiv:2202.13296",
+        "url": "https://arxiv.org/abs/2202.13296",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap",
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The abstract already mentions that their approach is a training based subgraph retriever. As the approach requires training, this does not conform to our criteria.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "DRLK: Dynamic Hierarchical Reasoning with Language Model and Knowledge Graph for Question Answering",
+        "doi": "10.18653/v1/2022.emnlp-main.342",
+        "url": "https://aclanthology.org/2022.emnlp-main.342/",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The model proposed by the authors requires training, which does not conform to the criteria we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Large-Scale Relation Learning for Question Answering over Knowledge Bases with Pre-trained Language Models",
+        "doi": "10.18653/v1/2021.emnlp-main.296",
+        "url": "https://aclanthology.org/2021.emnlp-main.296/",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The paper already mentions in the abstract that their model requires a relation-augmented training. This does not conform to the criteria we are looking for.",
+        "excluded_because": "requires training or fine-tuning"        
+    },
+    {
+        "title": "Empowering Language Models with Knowledge Graph Reasoning for Question Answering",
+        "doi": "arXiv:2211.08380",
+        "url": "https://arxiv.org/abs/2211.08380",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "Their approach requires extensive training on the knowledge graph. This does not conform to the criteria we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "GreaseLM: Graph REASoning Enhanced Language Models for Question Answering",
+        "doi": "arXiv:2201.08860",
+        "url": "https://arxiv.org/abs/2201.08860",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires additional task-specific training beyond simply deploying a pre-trained language model. This does not conform to the criteria we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "UniKGQA: Unified Retrieval and Reasoning for Solving Multi-hop Question Answering Over Knowledge Graph",
+        "doi": "arXiv:2212.00959",
+        "url": "https://arxiv.org/abs/2212.00959",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The abstract already mentions several aspects not conforming to our criteria. First of, they design a design a shared pre-training task based on question relation matching for both retrieval and reasoning models. Second, they propose retrieval-and reasoning oriented fine-tuning strategies. Both of these aspects require training. ",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "ReLMKG: reasoning with pre-trained language models and knowledge graphs for complex question answering",
+        "doi": "10.1007/s10489-022-04123-w",
+        "url": "https://link.springer.com/article/10.1007/s10489-022-04123-w",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The approach includes a path-based Graph Attention Network (GAT) and a multihead attention-based interaction mechanism—that that are both trained on the KGQA task. Thus the approach does not operate in a zero shot fashion with the pre-trained LLM only. Therefore, this does not conform to the criteria we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "StructGPT: A General Framework for Large Language Model to Reason over Structured Data",
+        "doi": "arXiv:2305.09645",
+        "url": "https://arxiv.org/abs/2305.09645",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap",
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": true,
+        "rationale": "The proposed method conforms to each of our criteria. First, it uses a pre-trained LLM. Second, the approach is specifically for KGQA. Third, the approach requires no additional training.",
+        "source_url": "https://github.com/RUCAIBox/StructGPT"
+    },
+    {
+        "title": "Improving Natural Language Inference Using External Knowledge in the Science Questions Domain",
+        "doi": "arXiv:1809.05724",
+        "url": "https://arxiv.org/abs/1809.05724",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires training a model on the NLI task. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "KagNet: Knowledge-Aware Graph Networks for Commonsense Reasoning",
+        "doi": "arXiv:1909.02151",
+        "url": "https://arxiv.org/abs/1909.02151",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires training GCN layers for the specific task. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Scalable Multi-Hop Relational Reasoning for Knowledge-Aware Question Answering",
+        "doi": "arXiv:2005.00646",
+        "url": "https://arxiv.org/abs/2005.00646",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires training a structured relational attention mechanism. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "JointLK: Joint Reasoning with Language Models and Knowledge Graphs for Commonsense Question Answering",
+        "doi": "arXiv:2112.02732",
+        "url": "https://arxiv.org/abs/2112.02732",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The approach is based on GNNs and therefore requires training. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "ERNIE: Enhanced Language Representation with Informative Entities",
+        "doi": "arXiv:1905.07129",
+        "url": "https://arxiv.org/abs/1905.07129",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The abstract already mentions that the approach requires to train an enhanced language representation model (ERNIE). This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Agentbench: Evaluating llms as agents",
+        "doi": "arXiv:2308.03688",
+        "url": "https://arxiv.org/abs/2308.03688",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The paper does not include a KGQA approach.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "Knowledge Graph Prompting for Multi-Document Question Answering",
+        "doi": "arXiv:2308.11730",
+        "url": "https://arxiv.org/abs/2308.11730",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "In their approach they instruction fine-tune the LLM by predicting the next supporting facts based on the previous supporting facts. This requires training and does not conform to the criteria we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Knowledge Solver: Teaching LLMs to Search for Domain Knowledge from Knowledge Graphs",
+        "doi": "arXiv:2309.03118",
+        "url": "https://arxiv.org/abs/2309.03118",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap",
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": true,
+        "rationale": "The proposed method conforms to each of our criteria. First, it uses a pre-trained LLM. Second, the approach is specifically for KGQA. Third, the approach requires no additional training.",
+        "source_url": null
+    },
+    {
+        "title": "Think-on-graph: Deep and responsible reasoning of large language model with knowledge graph",
+        "doi": "arXiv:2307.07697",
+        "url": "https://arxiv.org/abs/2307.07697",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap",
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": true,
+        "rationale": "The proposed method conforms to each of our criteria. First, it uses a pre-trained LLM. Second, the approach is specifically for KGQA. Third, the approach requires no additional training.",
+        "source_url": "https://github.com/IDEA-FinAI/ToG"
+    },
+    {
+        "title": "AgentTuning: Enabling Generalized Agent Abilities for LLMs",
+        "doi": "arXiv:2310.12823",
+        "url": "https://arxiv.org/abs/2310.12823",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "The paper aready mentions in their abstract that they provide a instruction-tuning strategy which is not conforming to our criteria.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+        "doi": "arXiv:2005.11401",
+        "url": "https://arxiv.org/abs/2005.11401",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "They do not propose a KGQA approach.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "Memory and Knowledge Augmented Language Models for Inferring Salience in Long-Form Stories",
+        "doi": "arXiv:2109.03754",
+        "url": "https://arxiv.org/abs/2109.03754",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "They do not propose a KGQA approach.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "An Efficient Memory-Augmented Transformer for Knowledge-Intensive NLP Tasks",
+        "doi": "arXiv:2210.16773",
+        "url": "https://arxiv.org/abs/2210.16773",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "They do not propose a KGQA approach.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "Realm: Retrieval-augmented language model pre-training",
+        "doi": "arXiv:2002.08909",
+        "url": "https://arxiv.org/abs/2002.08909",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "They do not propose a KGQA approach.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "Barack's Wife Hillary: Using Knowledge-Graphs for Fact-Aware Language Modeling",
+        "doi": "arXiv:1906.07241",
+        "url": "https://arxiv.org/abs/1906.07241",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "They do not propose a KGQA approach and they also require training.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "Graph Reasoning for Question Answering with Triplet Retrieval",
+        "doi": "arXiv:2305.18742",
+        "url": "https://arxiv.org/abs/2305.18742",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap",
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The proposed method fine-tunes the LLM. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "MindMap: Knowledge Graph Prompting Sparks Graph of Thoughts in Large Language Models",
+        "doi": "arXiv:2308.09729",
+        "url": "https://arxiv.org/abs/2308.09729",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap",
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": true,
+        "rationale": "The proposed method conforms to each of our criteria. First, it uses a pre-trained LLM. Second, the approach is specifically for KGQA. Third, the approach requires no additional training.",
+        "source_url": "https://github.com/wyl-willing/MindMap"
+    },
+    {
+        "title": "ChatRule: Mining Logical Rules with Large Language Models for Knowledge Graph Reasoning",
+        "doi": "arXiv:2309.01538",
+        "url": "https://arxiv.org/abs/2309.01538",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "While the proposed method looks promising on the first sight, we identified that the method is not for natural language question answering. Therefore, while it technically is a KGQA approach, it is not a KGQA approach in the sense that we are looking for.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "Boosting Language Models Reasoning with Chain-of-Knowledge Prompting",
+        "doi": "arXiv:2306.06427",
+        "url": "https://arxiv.org/abs/2306.06427",
+        "appears_in": [
+            "Unifying Large Language Models and Knowledge Graphs: A Roadmap"
+        ],
+        "is_related": false,
+        "rationale": "They do not propose a KGQA approach.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "HyKGE: A Hypothesis Knowledge Graph Enhanced Framework for Accurate and Reliable Medical LLMs Responses",
+        "doi": "arXiv:2312.15883",
+        "url": "https://arxiv.org/abs/2312.15883",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires training a reranker model. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Graph Chain-of-Thought: Augmenting Large Language Models by Reasoning on Graphs",
+        "doi": "arXiv:2404.07103",
+        "url": "https://arxiv.org/abs/2404.07103",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": true,
+        "rationale": "The proposed method conforms to each of our criteria. First, it uses a pre-trained LLM. Second, the approach is specifically for KGQA. Third, the approach requires no additional training.",
+        "source_url": "https://github.com/PeterGriffinJin/Graph-CoT"
+    },
+    {
+        "title": "Think-on-Graph 2.0: Deep and Faithful Large Language Model Reasoning with Knowledge-guided Retrieval Augmented Generation",
+        "doi": "arXiv:2407.10805v7",
+        "url": "https://arxiv.org/abs/2407.10805v7",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": true,
+        "rationale": "The proposed method conforms to each of our criteria. First, it uses a pre-trained LLM. Second, the approach is specifically for KGQA. Third, the approach requires no additional training.",
+        "source_url": "https://github.com/IDEA-FinAI/ToG-2"
+    },
+    {
+        "title": "MVP-Tuning: Multi-View Knowledge Retrieval with Prompt Tuning for Commonsense Reasoning",
+        "doi": "10.18653/v1/2023.acl-long.750",
+        "url": "https://aclanthology.org/2023.acl-long.750/",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires training a prompt tuning model. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "UniOQA: A Unified Framework for Knowledge Graph Question Answering with Large Language Models",
+        "doi": "arXiv:2406.02110",
+        "url": "https://arxiv.org/abs/2406.02110",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach performs fine-tuning to pre-trained LLMs to improve semantic understanding and alleviate hallucinations. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "From Local to Global: A Graph RAG Approach to Query-Focused Summarization",
+        "doi": "arXiv:2404.16130",
+        "url": "https://arxiv.org/abs/2404.16130",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach is focused on document based retrieval and does not specifically work on any KG. The approach only creates a supportive KG for the document retrieval task. Therefore, it does not conform to our criteria.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "GRAG: Graph Retrieval-Augmented Generation",
+        "doi": "arXiv:2405.16506",
+        "url": "https://arxiv.org/abs/2405.16506",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires training data to train the soft pruning module, GNN and the alignment layer. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "HybridRAG: Integrating Knowledge Graphs and Vector Retrieval Augmented Generation for Efficient Information Extraction",
+        "doi": "arXiv:2408.04948",
+        "url": "https://arxiv.org/abs/2408.04948",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "Their approach is focused on document based retrieval. As such their approach does not generalize to other KGs. Therefore, it does not conform to our criteria.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "EWEK-QA: Enhanced Web and Efficient Knowledge Graph Retrieval for Citation-based Question Answering Systems",
+        "doi": "arXiv:2406.10393",
+        "url": "https://arxiv.org/abs/2406.10393",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "In their approach they are not working with a LLM during the retrieval. Furthermore, the web-based component is outside of the scope of our thesis. Therefore, it does not conform to our criteria.",
+        "excluded_because": "does not use LLMs"
+    },
+    {
+        "title": "KG-GPT: A General Framework for Reasoning on Knowledge Graphs Using Large Language Models",
+        "doi": "arXiv:2310.11220",
+        "url": "https://arxiv.org/abs/2310.11220",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": true,
+        "rationale": "The proposed method conforms to each of our criteria. First, it uses a pre-trained LLM. Second, the approach is specifically for KGQA. Third, the approach requires no additional training.",
+        "source_url": "https://github.com/jiho283/KG-GPT"
+    },
+    {
+        "title": "Text-To-KG Alignment: Comparing Current Methods on Classification Tasks",
+        "doi": "arXiv:2306.02871",
+        "url": "https://arxiv.org/abs/2306.02871",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The paper is not about KGQA.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "Two-stage Generative Question Answering on Temporal Knowledge Graph Using Large Language Models",
+        "doi": "arXiv:2402.16568",
+        "url": "https://arxiv.org/abs/2402.16568",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The paper details an instruction tuning procedure where the open-source LLM is fine-tuned. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "HippoRAG: Neurobiologically Inspired Long-Term Memory for Large Language Models",
+        "doi": "arXiv:2405.14831",
+        "url": "https://arxiv.org/abs/2405.14831",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "Their approach is designed to retrieve on document based data and not on KGs. Specifically, it constructs an KG based on input documents and uses the KG to retrieve relevant documents. Therefore, it does not conform to our criteria.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "DALK: Dynamic Co-Augmentation of LLMs and KG to answer Alzheimer's Disease Questions with Scientific Literature",
+        "doi": "arXiv:2405.04819",
+        "url": "https://arxiv.org/abs/2405.04819",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "Their approach is designed to retrieve on document based data and not on KGs. Specifically, it constructs an KG based on input documents and uses the KG to retrieve relevant documents. Therefore, it does not conform to our criteria.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "A Graph-Guided Reasoning Approach for Open-ended Commonsense Question Answering",
+        "doi": "arXiv:2303.10395",
+        "url": "https://arxiv.org/abs/2303.10395",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach is not for the KGQA setting as it does not receive a graph as input. Instead it generates a graph based on the input text. Therefore, it does not conform to our criteria.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "KG-Agent: An Efficient Autonomous Agent Framework for Complex Reasoning over Knowledge Graph",
+        "doi": "arXiv:2402.11163",
+        "url": "https://arxiv.org/abs/2402.11163",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires fine tuing the LLM with synthesized instruction-tuning samples. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "KnowledGPT: Enhancing Large Language Models with Retrieval and Storage Access on Knowledge Bases",
+        "doi": "arXiv:2308.11761",
+        "url": "https://arxiv.org/abs/2308.11761",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": true,
+        "rationale": "The proposed method conforms to each of our criteria. First, it uses a pre-trained LLM. Second, the approach is specifically for KGQA. Third, the approach requires no additional training."
+    },
+    {
+        "title": "ODA: Observation-Driven Agent for integrating LLMs and Knowledge Graphs",
+        "doi": "arXiv:2404.07677",
+        "url": "https://arxiv.org/abs/2404.07677",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": true,
+        "rationale": "The proposed method conforms to each of our criteria. First, it uses a pre-trained LLM. Second, the approach is specifically for KGQA. Third, the approach requires no additional training.",
+        "source_url": "https://github.com/lanjiuqing64/kgdata"
+    },
+    {
+        "title": "Multi-hop Question Answering under Temporal Knowledge Editing",
+        "doi": "arXiv:2404.00492",
+        "url": "https://arxiv.org/abs/2404.00492",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The method is focused on temporal based questions only. Because we are interested in approaches that apply generally to any question for any KG this approach does not generalize to our cause.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "Golden-Retriever: High-Fidelity Agentic Retrieval Augmented Generation for Industrial Knowledge Base",
+        "doi": "arXiv:2408.00798",
+        "url": "https://arxiv.org/abs/2408.00798",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "Their approach is not an KGQA approach. Therefore it does not conform to our criteria.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "Complex Logical Reasoning over Knowledge Graphs using Large Language Models",
+        "doi": "arXiv:2305.01157",
+        "url": "https://arxiv.org/abs/2305.01157",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "Upon looking into the data, we found that they are not working on a KGQA system with natural language questions but rather logical queries. Their approach is more aligned with formal logical reasoning over KGs which is not what we are looking for.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "Knowledge Graph-Enhanced Large Language Models via Path Selection",
+        "doi": "arXiv:2406.13862",
+        "url": "https://arxiv.org/abs/2406.13862",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires training an encoder. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Reasoning on Efficient Knowledge Paths:Knowledge Graph Guides Large Language Model for Domain Question Answering",
+        "doi": "arXiv:2404.10384",
+        "url": "https://arxiv.org/abs/2404.10384",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": true,
+        "rationale": "The proposed method conforms to each of our criteria. First, it uses a pre-trained LLM. Second, the approach is specifically for KGQA. Third, the approach requires no additional training.",
+        "source_url": null
+    },
+    {
+        "title": "Improving Complex Knowledge Base Question Answering via Question-to-Action and Question-to-Question Alignment",
+        "doi": "arXiv:2212.13036",
+        "url": "https://arxiv.org/abs/2212.13036",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The abstract already mentions that the approach requires training a question rewriting model to align the question to each action. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Graph-augmented Learning to Rank for Querying Large-scale Knowledge Graph",
+        "doi": "arXiv:2111.10541",
+        "url": "https://arxiv.org/abs/2111.10541",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach involves training a ranking model and fine-tuning GGNNs and EBiMPM components. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "ATLANTIC: Structure-Aware Retrieval-Augmented Language Model for Interdisciplinary Science",
+        "doi": "arXiv:2311.12289",
+        "url": "https://arxiv.org/abs/2311.12289",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach is not a KGQA task but a graph based QA over a document corpus. Therefore, it does not conform to our criteria.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "GraphText: Graph Reasoning in Text Space",
+        "doi": "arXiv:2310.01089",
+        "url": "https://arxiv.org/abs/2310.01089",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The paper does not propose a KGQA method but rather it introduces a novel graph reasoning technique that could be applied to a KGQA task. However, we are looking for complete, applicable KGQA methods. Therefore, it does not conform to our criteria.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "LLaGA: Large Language and Graph Assistant",
+        "doi": "arXiv:2402.08170",
+        "url": "https://arxiv.org/abs/2402.08170",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires training a model on the KGQA task. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering",
+        "doi": "arXiv:2007.01282",
+        "url": "https://arxiv.org/abs/2007.01282",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "They do not propose a KGQA approach.",
+        "excluded_because": "not a NLP based KGQA approach"
+    },
+    {
+        "title": "KG-FiD: Infusing Knowledge Graph in Fusion-in-Decoder for Open-Domain Question Answering",
+        "doi": "arXiv:2110.04330",
+        "url": "https://arxiv.org/abs/2110.04330",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires training a model on the KGQA task. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Bridging the KB-Text Gap: Leveraging Structured Knowledge-aware Pre-training for KBQA",
+        "doi": "arXiv:2308.14436",
+        "url": "https://arxiv.org/abs/2308.14436",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires training a model on the KGQA task. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "REANO: Optimising Retrieval-Augmented Reader Models through Knowledge Graph Generation",
+        "doi": "10.18653/v1/2024.acl-long.115",
+        "url": "https://aclanthology.org/2024.acl-long.115/",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires to train a reader model. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "DecAF: Joint Decoding of Answers and Logical Forms for Question Answering over Knowledge Bases",
+        "doi": "arXiv:2210.00063",
+        "url": "https://arxiv.org/abs/2210.00063",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires training the FiD model. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "GNN-RAG: Graph Neural Retrieval for Large Language Model Reasoning",
+        "doi": "arXiv:2405.20139",
+        "url": "https://arxiv.org/abs/2405.20139",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires training a GNN model. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "keqing: knowledge-based question answering is a nature chain-of-thought mentor of LLM",
+        "doi": "arXiv:2401.00426",
+        "url": "https://arxiv.org/abs/2401.00426",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": false,
+        "rationale": "Their approach fine tunes a LLama model. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Direct Fact Retrieval from Knowledge Graphs without Entity Linking",
+        "doi": "arXiv:2305.12416",
+        "url": "https://arxiv.org/abs/2305.12416",
+        "appears_in": [
+            "Graph Retrieval-Augmented Generation: A Survey"
+        ],
+        "is_related": true,
+        "rationale": "The proposed method conforms to each of our criteria. First, it uses a pre-trained LLM. Second, the approach is specifically for KGQA. Third, the approach requires no additional training.",
+        "source_url": null
+    },
+    {
+        "title": "Question-guided Knowledge Graph Re-scoring and Injection for Knowledge Graph Question Answering",
+        "doi": "arXiv:2410.01401",
+        "url": "https://arxiv.org/abs/2410.01401",
+        "appears_in": [
+            "Google Scholar Search: Knowledge Graph Question Answering"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires to train an edge rescorer model. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Generate-on-Graph: Treat LLM as both Agent and KG for Incomplete Knowledge Graph Question Answering",
+        "doi": "arXiv:2404.14741",
+        "url": "https://arxiv.org/abs/2404.14741",
+        "appears_in": [
+            "Google Scholar Search: Knowledge Graph Question Answering"
+        ],
+        "is_related": true,
+        "rationale": "The proposed method conforms to each of our criteria. First, it uses a pre-trained LLM. Second, the approach is specifically for KGQA. Third, the approach requires no additional training.",
+        "source_url": "https://github.com/YaooXu/GoG"
+    },
+    {
+        "title": "FiDeLiS: Faithful Reasoning in Large Language Model for Knowledge Graph Question Answering",
+        "doi": "arXiv:2405.13873",
+        "url": "https://arxiv.org/abs/2405.13873",
+        "appears_in": [
+            "Google Scholar Search: Knowledge Graph Question Answering"
+        ],
+        "is_related": true,
+        "rationale": "The proposed method conforms to each of our criteria. First, it uses a pre-trained LLM. Second, the approach is specifically for KGQA. Third, the approach requires no additional training.",
+        "source_url": "https://anonymous.4open.science/r/FiDELIS-E7FC/README.md"
+    },
+    {
+        "title": "CoTKR: Chain-of-Thought Enhanced Knowledge Rewriting for Complex Knowledge Graph Question Answering",
+        "doi": "arXiv:2409.19753",
+        "url": "https://arxiv.org/abs/2409.19753",
+        "appears_in": [
+            "Google Scholar Search: Knowledge Graph Question Answering"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires to train a model on the KGQA task. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "TransKGQA: Enhanced Knowledge Graph Question Answering With Sentence Transformers",
+        "doi": "10.1109/ACCESS.2024.3405583",
+        "url": "https://ieeexplore.ieee.org/abstract/document/10539104",
+        "appears_in": [
+            "Google Scholar Search: Knowledge Graph Question Answering"
+        ],
+        "is_related": false,
+        "rationale": "The approach requires fine-tuning of the Sentence Transformer models on an augmented dataset of QA pairs generated from university website data. This does not conform to the criteria that we are looking for.",
+        "excluded_because": "requires training or fine-tuning"
+    },
+    {
+        "title": "Self-Improvement Programming for Temporal Knowledge Graph Question Answering",
+        "doi": "arXiv:2404.01720",
+        "url": "https://arxiv.org/abs/2404.01720",
+        "appears_in": [
+            "Google Scholar Search: Knowledge Graph Question Answering"
+        ],
+        "is_related": false,
+        "rationale": "The method is focused on temporal based questions only. Because we are interested in approaches that apply generally to any question for any KG this approach does not generalize to our cause.",
+        "excluded_because": "not a NLP based KGQA approach"
+    }
+]

@@ -1,0 +1,2 @@
+innovation: 0.00 (0/58)
+adaptation: 1.00 (58/58)

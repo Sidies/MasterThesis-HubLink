@@ -1,0 +1,73 @@
+18%|█▊        | 8/44 [00:06<00:28,  1.24it/s]Line: 9, found template issues in the question
+Original Question Template: What are the evaluation methods used in the paper with the title '[paper title]'?
+Corrected Question Template: What are the evaluation methods applied in the paper with the title '[paper title]'?
+Difference Question Template Corrected: ['applied']
+Difference Question Template Original: ['used']
+
+ 25%|██▌       | 11/44 [00:08<00:28,  1.18it/s]Line: 12, found template issues in the question
+Original Question Template: What are the evaluation methods used by the paper with the title '[paper title]' compared to the methods applied in the paper with the title '[paper title]'?
+Corrected Question Template: What are the evaluation methods used by the paper with the title '[paper title]' compared to the evaluation methods applied in the paper with the title '[paper title]'?
+Difference Question Template Corrected: []
+Difference Question Template Original: []
+
+ 30%|██▉       | 13/44 [00:09<00:22,  1.35it/s]Line: 14, found template issues in the question
+Original Question Template: Which paper investigates the property [property name]?
+Corrected Question Template: Which paper investigates the property [property]?
+Difference Question Template Corrected: ['[property]?']
+Difference Question Template Original: ['[property', 'name]?']
+
+ 41%|████      | 18/44 [00:14<00:23,  1.12it/s]Line: 19, found template issues in the question
+Original Question Template: Which papers investigate the research object with the name [research object name] and indicate that no input data was used in their work?
+Corrected Question Template: Which papers investigate the research object [research object name] and indicate that no input data was used?
+Difference Question Template Corrected: ['used?']
+Difference Question Template Original: ['their', 'used', 'name', 'work?', 'with', 'in']
+
+ 48%|████▊     | 21/44 [00:16<00:20,  1.14it/s]Line: 22, found template issues in the question
+Original Question Template: What are the research objects that are investigated in papers of the paper class [paper class]?
+Corrected Question Template: What are the research objects investigated in papers of the paper class [paper class]?
+Difference Question Template Corrected: []
+Difference Question Template Original: ['that']
+
+ 52%|█████▏    | 23/44 [00:17<00:16,  1.29it/s]Line: 24, found template issues in the question
+Original Question Template: How many evaluation methods are used to evaluate the property [property name]?
+Corrected Question Template: How many different evaluation methods are used to evaluate the property [property name]?
+Difference Question Template Corrected: ['different']
+Difference Question Template Original: []
+
+ 55%|█████▍    | 24/44 [00:18<00:16,  1.22it/s]Line: 25, found template issues in the question
+Original Question Template: Among those papers that evaluate the property [property name], what the evaluation methods that have been applied? Rank the evaluation methods in descending alphabetical order.
+Corrected Question Template: Among those papers that evaluate the property [property name], what are the evaluation methods that have been applied? Rank the evaluation methods in descending alphabetical order.
+Difference Question Template Corrected: ['are']
+Difference Question Template Original: []
+
+ 57%|█████▋    | 25/44 [00:19<00:17,  1.10it/s]Line: 26, found template issues in the question
+Original Question Template: How frequently is the property [property name] evaluated compared to the property [property name] in papers that investigate the research object [research object name]?
+Corrected Question Template: How frequently is the property [property 1] evaluated compared to the property [property 2] in papers that investigate the research object [research object name]?
+Difference Question Template Corrected: ['1]', '2]']
+Difference Question Template Original: ['name]']
+
+ 59%|█████▉    | 26/44 [00:21<00:18,  1.00s/it]Line: 27, found template issues in the question
+Original Question Template: What are the evaluation properties that are evaluated in papers that investigate the research object [research object name] without adhering to a evaluation guideline?
+Corrected Question Template: What are the properties that are evaluated in papers that investigate the research object [research object name] without adhering to an evaluation guideline?
+Difference Question Template Corrected: ['an']
+Difference Question Template Original: ['a']
+
+ 64%|██████▎   | 28/44 [00:22<00:13,  1.21it/s]Line: 29, found template issues in the question
+Original Question Template: How frequently is the research object [research object name] investigated per publication year??
+Corrected Question Template: How frequently is the research object [research object name] investigated per publication year?
+Difference Question Template Corrected: ['year?']
+Difference Question Template Original: ['year??']
+
+ 70%|███████   | 31/44 [00:24<00:10,  1.28it/s]Line: 32, found template issues in the question
+Original Question Template: How many different evaluation methods did the author [author name] use in papers that evaluate the property [property name]?
+Corrected Question Template: How many different evaluation methods did the author [author name] apply in papers that evaluate the property [property name]?
+Difference Question Template Corrected: ['apply']
+Difference Question Template Original: ['use']
+
+ 95%|█████████▌| 42/44 [00:32<00:01,  1.41it/s]Line: 43, found template issues in the question
+Original Question Template: Which papers published in the publication year [year] investigate the research object [research object name] and have not used input data in their work?
+Corrected Question Template: Which papers published in the publication year [year] investigate the research object [research object name] and have not used input data?
+Difference Question Template Corrected: ['data?']
+Difference Question Template Original: ['their', 'work?', 'data']
+
+100%|██████████| 44/44 [00:33<00:00,  1.31it/s]

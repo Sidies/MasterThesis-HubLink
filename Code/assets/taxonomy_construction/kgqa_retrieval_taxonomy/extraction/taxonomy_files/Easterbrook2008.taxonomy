@@ -1,0 +1,57 @@
+/* Key: Easterbrook2008
+ * Authors: Steve Easterbrook, Janice Singer, Margaret-Anne Storey, Daniela Damian
+ * Title: "Selecting Empirical Methods for Software Engineering Research"
+ * Venue: (book)  Guide to Advanced Empirical Software Engineering, pp 285–311
+ * Classification Type: Research Questions (Software Engineering)
+ * DOI: 10.1007/978-1-84800-044-5_11
+ * URL: https://doi.org/10.1007/978-1-84800-044-5_11
+ * References: /
+ * Citations: 
+ * Stol2018 10.1145/3241743 The ABC of Software Engineering Research
+ */
+
+Kind of Research Question {
+	Knowledge Question {
+		Exporatory Questions {
+			Existence questions, /* “Does X exist?”  */
+			Description and Classification questions, /* “What is X like?”, “What are its properties?”, “How can it be categorized?”, “How can we measure it?”,
+			* “What is its purpose?”, “What are its components?”, “How do the components relate to one another?”, and “What are all the types of X?” */
+			Descriptive-Comparative questions /* “How does X differ from Y?” */
+		},	
+		Base-rate questions {
+			Frequency and distribution questions, /* “How often does X occur?” and, “What is an average amount of X?” 
+			 * Often, these questions can be answered in terms of a standard distribution of a characteristic within a well-defined population. */
+			Descriptive-Process questions /*  “How does X normally work?”, “What is the process by which X happens?”, “In what sequence do the events of X occur?”, 
+			 * “What are the steps X goes through as it evolves?”, “How does X achieve its purpose?”. */
+		},
+		Relationship {
+			Relationship questions /* “Are X and Y related?” and, “Do occurrences of X correlate with the occurrences of Y?” */
+		},
+		Causality {
+			Causality questions, /* “Does X cause Y?” and “Does X prevent Y?” Plus the more general forms: “What causes Y?”, “What are all the factors that cause Y?”, 
+			 * “What effect does X have on Y?” 
+			 * In software engineering we often ask whether using a particular tool or technique causes an improvement in quality, speed, and so on. */
+			Causality-Comparative questions, /* “Does X cause more Y than does Z?” or, “Is X better at preventing Y than is Z?” */
+			Causality-Comparative Interaction  /* “Does X or Z cause more Y under one condition but not others?”  */
+		}		
+	},
+	Design Questions {
+		Design questions /* “What’s an effective way to achieve X?” or, “What strategies help to achieve X?” */
+	}
+},
+
+Valid Answer {
+	Positivitism {
+		
+	},
+	Constructivism { /* interpretivism */
+		
+	},
+	Critical Theory {
+		
+	},
+	Pragmatism {
+		
+	}
+	
+}

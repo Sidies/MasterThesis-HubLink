@@ -1,0 +1,58 @@
+Graph Representation - Single Fact
+Graph Representation - Multi Fact
+Answer Type - Undefined
+Answer Type - Other
+Answer Type - Date
+Answer Type - Distance Measurement
+Answer Type - Actor
+Answer Type - Technology
+Answer Type - Definition
+Answer Type - Time
+Answer Type - Name
+Answer Type - Title
+Answer Type - Bibliometric Numbers
+Answer Type - Software System
+Answer Type - Monetary
+Answer Type - Abbreviation
+Answer Type - Instructional
+Answer Type - Procedure/Technique
+Answer Type - Organization
+Answer Type - Duration
+Answer Type - Boolean
+Answer Type - Entity
+Answer Type - Description
+Answer Type - Properties
+Answer Type - Human/Person
+Answer Type - Location
+Answer Type - Quantitative
+Answer Type - Tool/Notation
+Answer Type - Solution
+Answer Type - Theoretical Framework
+Question Type - Negation
+Question Type - Dependency
+Question Type - Contingency
+Question Type - Counting
+Question Type - Superlative
+Question Type - Comparison
+Question Type - Listing
+Question Type - Multiple Intentions
+Question Type - Ranking
+Question Type - Temporal
+Question Type - Aggregation
+Question Type - Relationship
+Research Focus - Development Methods
+Research Focus - Analytical Methods
+Research Focus - Generalization
+Research Focus - Qualitative Modeling
+Research Focus - Empirical Modeling
+Research Focus - Analytic Modeling
+Answer Credibility - Factual
+Answer Credibility - Opinion
+Answer Credibility - Debate
+Answer Credibility - Predictive
+Question Goal - Exploratory
+Question Goal - Reasoning
+Question Goal - Problem Solving
+Question Goal - Gap Spotting
+Question Goal - Problematization
+Question Goal - Method Improvement

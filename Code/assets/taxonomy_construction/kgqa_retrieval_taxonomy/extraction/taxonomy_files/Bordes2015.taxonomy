@@ -1,0 +1,16 @@
+/* Key: Bordes2015
+ * Authors: Antoine Bordes, Nicolas Usunier, Sumit Chopra, Jason Weston
+ * Title: Large-scale Simple Question Answering with Memory Networks
+ * Venue:
+ * Classification Type: KGQA
+ * DOI: arXiv:1506.02075
+ * URL: https://arxiv.org/pdf/1506.02075
+ * References: 
+ * Unger2012 10.1145/2187836.2187923 Template-based question answering over RDF data
+ * Citations:
+ * Dubey2019 10.1007/978-3-030-30796-7_5 Lc-quad 2.0: A large dataset for complex question answering over wikidata and dbpedia
+ */
+
+Single Fact,
+List Questions,
+Entity-relationship Questions

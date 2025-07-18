@@ -1,0 +1,4 @@
+laconicity: 1.00 (227/227)
+lucidity: 0.48 (28/58)
+completeness: 0.59 (135/227)
+soundness: 1.00 (58/58)

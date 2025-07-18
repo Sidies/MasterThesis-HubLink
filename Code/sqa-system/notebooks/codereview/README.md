@@ -1,0 +1,1 @@
+This folder contains Notebooks that were distributed to the Participants of the Codereview to understand the SQA System and how the experimentation works.

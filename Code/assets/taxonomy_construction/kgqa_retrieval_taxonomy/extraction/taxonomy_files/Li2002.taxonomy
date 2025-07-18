@@ -1,0 +1,83 @@
+/* Key: Li2002
+ * Authors: Li, Xin, and Dan Roth. 
+ * Title: "Learning question classifiers." 
+ * DOI:-- 
+ * URL: https://aclanthology.org/C02-1150
+ * # Wendy Lehnert’s conceptual taxonomy (Lehnert, 1986)
+ * W. G. Lehnert. 1986. A conceptual theory of question answering. 
+ * In B. J. Grosz, K. Sparck Jones, and B. L. Webber, editors, 
+ * Natural Language Processing, pages 651–657. Kaufmann, Los Altos, CA
+ * # TREC (Singhal et al., 2000; Hovy et al., 2001; Harabagiu et al., 2001; Ittycheriah et al., 2001).
+ * References:
+ * Hermjakob2001 https://aclanthology.org/W01-1203/ Parsing and Question Classification for Question Answering
+ * Lehnert1977 10.5555/1624435.1624467 A conceptual theory of question answering
+ * Citations: /
+ */
+
+Abbreviation {
+	abb,
+	exp
+},
+
+Entity {
+	animal, 
+	body, 
+	color, 
+	creative, 
+	currency, 
+	dis med,
+	event, 
+	food, 
+	instrument,
+	lang,
+	letter,
+	other, 
+	plant, 
+	product, 
+	religion, 
+	sport, 
+	substance, 
+	symbol, 
+	technique, 
+	term,  
+	vehicle, 
+	word 
+},
+
+Description {
+	definition, 
+	description,
+	manner,
+	reason	
+},
+
+Human {
+	group,
+	individual,
+	title,
+	description	
+},
+
+Location {
+	city, 
+	country,
+	mountain,
+	other,
+	state
+},
+
+Numeric Value {
+	code,
+	count,
+	date,
+	distance,
+	money,
+	order,
+	other,
+	period,
+	percent,
+	speed,
+	temp,
+	size,
+	weight	
+}

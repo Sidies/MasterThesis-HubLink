@@ -1,0 +1,40 @@
+[
+    {
+        "title": "[Title of the Paper]",
+        "doi": "[DOI of the Paper], below is the year of publication",
+        "year": 99999,
+        "authors": "[Authors of the Paper]",
+        "category": "[Category of the Paper]",
+        "domain": "[Domain of the Paper], below is the literature survey iteration in which the paper has been added",
+        "iteration": 1,
+        "types": [
+            {
+                "type": "[The extracted type]",
+                "description": "[The description of the type as given in the paper]"
+            },
+            {
+                "type": "[The extracted type]",
+                "description": "[The description of the type as given in the paper]"
+            }
+        ]
+    },
+    {
+        "title": "[Title of the Paper]",
+        "doi": "[DOI of the Paper], below is the year of publication",
+        "year": 99999,
+        "authors": "[Authors of the Paper]",
+        "category": "[Category of the Paper]",
+        "domain": "[Domain of the Paper], below is the literature survey iteration in which the paper has been added",
+        "iteration": 1,
+        "types": [
+            {
+                "type": "[The extracted type]",
+                "description": "[The description of the type as given in the paper]"
+            },
+            {
+                "type": "[The extracted type]",
+                "description": "[The description of the type as given in the paper]"
+            }
+        ]
+    }
+]

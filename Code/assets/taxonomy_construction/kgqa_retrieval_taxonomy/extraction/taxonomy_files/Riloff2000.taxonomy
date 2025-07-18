@@ -1,0 +1,29 @@
+/* Key: Riloff2000
+ * Authors: Riloff, Ellen and Thelen, Michael
+ * Title: A Rule-based Question Answering System for Reading Comprehension Tests
+ * Venue: ANLP-NAACL 2000 workshop
+ * Classification Type: Question Classification
+ * DOI: 10.3115/1117595.1117598
+ * URL: https://aclanthology.org/W00-0603/
+ * References: /
+ * Citations: 
+ * Mishra2016 10.1016/j.jksuci.2014.10.007 A survey on question answering systems with classification
+ * Auer2023 10.1038/s41598-023-33607-z The sciqa scientific question answering benchmark for scholarly knowledge
+ */
+ 
+ 
+Question Types {
+	WHO,
+	WHAT,
+	WHEN,
+	WHERE,
+	WHY
+
+},
+
+Semantic Classes used by Quarc {	
+	HUMAN, 
+	LOCATION, 
+	MONTH, 
+	TIME 
+}

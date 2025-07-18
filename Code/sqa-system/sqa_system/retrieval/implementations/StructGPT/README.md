@@ -1,0 +1,18 @@
+
+# StructGPT
+
+> This retriever has not been used in our experiments because it showed that it is unable to retrieve our experimental data in the parameter selection process
+
+## Overview
+
+StructGPT is a KGQA retriever proposed by Jiang etal. [Jiang2023](https://arxiv.org/pdf/2305.09645). The corresponding repository with the original code is provided [here](https://github.com/RUCAIBox/StructGPT/tree/main?tab=readme-ov-file).
+
+
+## Approach Explanation
+
+The retriever starts with a topic entity which acts as an entry point into the knowledge graph. It then collects all relations associated with this entity, ensuring that there are no duplicates. The relations are preprocessed to filter out unnecessary ones and to linearize them into a simple string format suitable for input to a large language model (LLM). The LLM is then tasked with selecting a relation from the list of relations. In the first iteration, the LLM selects one relation that it deems relevant to answering the question. For subsequent iterations, the LLM is provided with the history of relations taken so far, but it still selects only one relation. Then, all entities in the graph that are connected to the current topic entity through the selected relation are retrieved. These triples are then classified based on their type, however we found this classification to be only relevant for the Freebase graph which we are not using in our project. Next, the LLM is given the triples to determine whether the information is sufficient to answer the question. During this step, the amount of triples is reduced to a predetermined size to not query too much context at once. If the LLM determines that the information is sufficient, it generates an answer. If not, the process continues with the next iteration, where the LLM selects another relation and retrieves more triples. This process continues until either an answer is generated or a maximum number of iterations is reached. 
+
+## Implementation
+We adapted the original code with minimal modifications necessary to ensure compatibility with the interface of the SQA system. During the implementation phase, we observed that the traversal mechanism did not operate as expected. Specifically, the main loop in the original implementation was terminated prematurely via an unconditional break statement after the first iteration. Given that both the description of the retrieval process and the surrounding code suggest that the loop should continue, we removed the break statement, thereby allowing the loop to execute up to the specified maximum number of iterations.
+
+Additional modifications were required. Initially, we observed that the runtime for the retriever was excessively long. Consequently, we implemented parallelization for the retrieval and processing of relations for each entity. Furthermore, the original implementation was incapable of performing graph traversal against the natural direction of the graph, effectively impairing the retriever to provide answers to many questions in our label-based KGQA dataset. To address this issue, we added a functionality for bidirectional retrieval, which can be enabled through configuration settings. Lastly, the original implementation only returns the generated answer and not the retrieved triples from the graph. Therefore, we also extended the output to include the retrieved triples. For this to work, we needed to add a LLM based filtering of the triples as the total number of triples from which the answer is generated is very large.

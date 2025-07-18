@@ -1,0 +1,76 @@
+{
+    "name": "DocumentEmbed_PipelineConfig",
+    "additional_params": {},
+    "pipes": [
+        {
+            "name": "documentembed_merged_ecsa_icsa.json_jsonpublicationloader_limit-1",
+            "additional_params": {
+                "n_results": 15,
+                "vector_store_config": {
+                    "name": "chroma_recursivecharacterchunkingstrategy_csize500_coverlap0_openai_text-embedding-3-small_merged_ecsa_icsa",
+                    "additional_params": {
+                        "distance_metric": "l2"
+                    },
+                    "vector_store_type": "chroma",
+                    "chunking_strategy_config": {
+                        "name": "recursivecharacterchunkingstrategy_csize500_coverlap0",
+                        "additional_params": {},
+                        "chunking_strategy_type": "RecursiveCharacterChunkingStrategy",
+                        "chunk_size": 500,
+                        "chunk_overlap": 0
+                    },
+                    "embedding_config": {
+                        "name": "huggingface_mixedbread-ai/mxbai-embed-large-v1",
+                        "additional_params": {},
+                        "endpoint": "HuggingFace",
+                        "name_model": "mixedbread-ai/mxbai-embed-large-v1"
+                    },
+                    "dataset_config": {
+                        "name": "merged_ecsa_icsa",
+                        "additional_params": {},
+                        "file_name": "merged_ecsa_icsa.json",
+                        "loader": "JsonPublicationLoader",
+                        "loader_limit": -1
+                    }
+                }
+            },
+            "type": "document_retrieval",
+            "retriever_type": "documentembed",
+            "dataset_config": {
+                "name": "merged_ecsa_icsa",
+                "additional_params": {},
+                "file_name": "merged_ecsa_icsa.json",
+                "loader": "JsonPublicationLoader",
+                "loader_limit": 30
+            },
+            "vector_store_config": null
+        },
+        {
+            "name": "post_retrieval_processing_reranking_openai_gpt-4o-mini_tmp0.0_maxt-1",
+            "additional_params": {},
+            "type": "post_retrieval_processing",
+            "post_technique": "reranking",
+            "llm_config": {
+                "name": "ollama_mistral_tmp0.1_maxt4096",
+                "additional_params": {},
+                "endpoint": "Ollama",
+                "name_model": "mistral",
+                "temperature": 0.1,
+                "max_tokens": 4096
+            }
+        },
+        {
+            "name": "generation_openai_gpt-4o-mini_tmp0.0_maxt-1",
+            "additional_params": {},
+            "type": "generation",
+            "llm_config": {
+                "name": "ollama_mistral_tmp0.1_maxt4096",
+                "additional_params": {},
+                "endpoint": "Ollama",
+                "name_model": "mistral",
+                "temperature": 0.1,
+                "max_tokens": 4096
+            }
+        }
+    ]
+}

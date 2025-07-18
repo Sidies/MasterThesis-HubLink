@@ -1,0 +1,1 @@
+Note: We reduced the depth of the FiDeLiS retriever to 3 for the "Flat" graph variants, because their maximum required amount of hops is 3.

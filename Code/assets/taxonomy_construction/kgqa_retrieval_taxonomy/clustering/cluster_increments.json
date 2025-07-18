@@ -1,0 +1,2950 @@
+[
+    {
+        "iteration": 1,
+        "iteration_info": "The goal of the first iteration was to built a initial clustering of the extracted question types. The clustering was done manually by processing the extracted types from each paper and trying to group them into similar clusters by the semantic meaning of the name and description of the types. For this, for each type it was manually determined whether it would fit any of the existing clusters. If so, the type was added to this cluster. If not, a new cluster was built.",
+        "clusters": [
+            {
+                "types": [
+                    {
+                        "name": "Single Fact",
+                        "source": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                    },
+                    {
+                        "name": "Question Content - Factoid",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "single fact",
+                        "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                    },
+                    {
+                        "name": "Single Fact with Type",
+                        "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                    },
+                    {
+                        "name": "Normal",
+                        "source": "Question Answering on Scholarly Knowledge Graphs"
+                    },
+                    {
+                        "name": "Single Fact",
+                        "source": "Large-scale Simple Question Answering with Memory Networks"
+                    },
+                    {
+                        "name": "Normal",
+                        "source": "Ripple Down Rules for question answering"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Multi Facts",
+                        "source": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                    },
+                    {
+                        "name": "Question Content - Non-Factoid - sequence of facts",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "Multi Fact",
+                        "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                    },
+                    {
+                        "name": "Combining",
+                        "source": "Question Answering on Scholarly Knowledge Graphs"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Boolean",
+                        "source": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                    },
+                    {
+                        "name": "Boolean",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "Boolean",
+                        "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                    },
+                    {
+                        "name": "Ask",
+                        "source": "Question Answering on Scholarly Knowledge Graphs"
+                    },
+                    {
+                        "name": "Yes/No",
+                        "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                    },
+                    {
+                        "name": "Affirm_MoreTuples",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "Affirm",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "Affirm_3Term",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "YesNo",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "Boolean",
+                        "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Negation",
+                        "source": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                    },
+                    {
+                        "name": "Question Content - Non-Factoid - Negation",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Double Negation",
+                        "source": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Count",
+                        "source": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                    },
+                    {
+                        "name": "Question Content - Non-Factoid - counting",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "Base-Rate - Frequency and Distribution",
+                        "source": "Selecting Empirical Methods for Software Engineering Research"
+                    },
+                    {
+                        "name": "Count",
+                        "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                    },
+                    {
+                        "name": "Count based",
+                        "source": "10th Question Answering over Linked Data (QALD) Challenge"
+                    },
+                    {
+                        "name": "Number Count",
+                        "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Superlative/Comparative",
+                        "source": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                    },
+                    {
+                        "name": "Question Content - Non-Factoid - Superlatives",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "Superlatives",
+                        "source": "10th Question Answering over Linked Data (QALD) Challenge"
+                    },
+                    {
+                        "name": "Question Content - Non-Factoid - Minimum or Maximum",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Union",
+                        "source":"DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                    },
+                    {
+                        "name": "Listing",
+                        "source": "Question Answering on Scholarly Knowledge Graphs"
+                    },
+                    {
+                        "name": "List Questions",
+                        "source": "Large-scale Simple Question Answering with Memory Networks"
+                    },
+                    {
+                        "name": "List",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "Resource List Typed",
+                        "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                    },
+                    {
+                        "name": "Resource List Untyped",
+                        "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Double Intent",
+                        "source":"DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                    },
+                    {
+                        "name": "Two Intention",
+                        "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                    },
+                    {
+                        "name": "Composition",
+                        "source": "Formulation of Research Question - Stepwise Approach"
+                    },
+                    {
+                        "name": "And/Or",
+                        "source": "Ripple Down Rules for question answering"
+                    }
+                ]
+            },
+            {
+                "types":[
+                    {
+                        "name": "Disambiguation",
+                        "source":"DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                    },
+                    {
+                        "name": "Combine",
+                        "source": "Ripple Down Rules for question answering"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Abbreviation",
+                        "source": "Learning Question Classifiers"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Entity",
+                        "source": "Learning Question Classifiers"
+                    },
+                    {
+                        "name": "Entity",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "Entities",
+                        "source": "Linguistically Motivated Question Classification"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Description",
+                        "source": "Learning Question Classifiers"
+                    },
+                    {
+                        "name": "Base-Rate - Descriptive-Process",
+                        "source": "Selecting Empirical Methods for Software Engineering Research"
+                    },
+                    {
+                        "name": "Description and Classification",
+                        "source": "Formulation of Research Question - Stepwise Approach"
+                    },
+                    {
+                        "name": "Description",
+                        "source": "Linguistically Motivated Question Classification"
+                    },
+                    {
+                        "name": "Descriptive",
+                        "source": "Types of research questions: descriptive, predictive, or causal"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Human",
+                        "source": "Learning Question Classifiers"
+                    },
+                    {
+                        "name": "Person",
+                        "source": "AT&T at TREC-8"
+                    },
+                    {
+                        "name": "Social",
+                        "source": "A Taxonomy for Classifying Questions Asked in Social Question and Answering"
+                    },
+                    {
+                        "name": "Human",
+                        "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                    },
+                    {
+                        "name": "Human",
+                        "source": "Learning foci for Question Answering over Topic Maps"
+                    },
+                    {
+                        "name": "Human Description",
+                        "source": "Linguistically Motivated Question Classification"
+                    },
+                    {
+                        "name": "Answer Type - Person",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Location",
+                        "source": "Learning Question Classifiers"
+                    },
+                    {
+                        "name": "Location",
+                        "source": "AT&T at TREC-8"
+                    },
+                    {
+                        "name": "Location",
+                        "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                    },
+                    {
+                        "name": "Location",
+                        "source": "Linguistically Motivated Question Classification"
+                    },
+                    {
+                        "name": "Answer Type - Location",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    },
+                    {
+                        "name": "Location",
+                        "source": "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset"
+                    },
+                    {
+                        "name": "Location",
+                        "source": "Learning foci for Question Answering over Topic Maps"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Numeric Value",
+                        "source": "Learning Question Classifiers"
+                    },
+                    {
+                        "name": "Quantity",
+                        "source": "AT&T at TREC-8"
+                    },
+                    {
+                        "name": "Quantification Questions",
+                        "source": "Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering"
+                    },
+                    {
+                        "name": "Numeric",
+                        "source": "Learning foci for Question Answering over Topic Maps"
+                    },
+                    {
+                        "name": "Many",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "Many-Class",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "Answer Type - Number",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "What-When",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "What-Who",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "WHAT",
+                        "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                    },
+                    {
+                        "name": "What",
+                        "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                    },
+                    {
+                        "name": "What",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "What",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "When",
+                        "source": "Ripple Down Rules for question answering"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Which-Where",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "WHERE",
+                        "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                    },
+                    {
+                        "name": "Where",
+                        "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                    },
+                    {
+                        "name": "Where",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "Where",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Which-What",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "Which",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Who-What",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "WHO",
+                        "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                    },
+                    {
+                        "name": "Who",
+                        "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                    },
+                    {
+                        "name": "Who",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "Who",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "WHY",
+                        "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                    },
+                    {
+                        "name": "Why",
+                        "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                    },
+                    {
+                        "name": "Why",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "How",
+                        "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                    },
+                    {
+                        "name": "HowWhy",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "How",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Whose",
+                        "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Whom",
+                        "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                    },
+                    {
+                        "name": "Whom",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Orkg Content - Paper based",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "Orkg Content - Comparison based",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "SparQL Characteristics",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "Number Property",
+                        "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Question Content - Non-Factoid - Ranking",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "Ranking",
+                        "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Question Content - Non-Factoid - Temporal",
+                        "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                    },
+                    {
+                        "name": "Trends over Time",
+                        "source": "Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering"
+                    },
+                    {
+                        "name": "Temporal Aspect",
+                        "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                    },
+                    {
+                        "name": "Temporal Aggregators",
+                        "source": "10th Question Answering over Linked Data (QALD) Challenge"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Date",
+                        "source": "AT&T at TREC-8"
+                    },
+                    {
+                        "name": "Month",
+                        "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                    },
+                    {
+                        "name": "Answer Type - Date",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    },
+                    {
+                        "name": "Date",
+                        "source": "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset"
+                    },
+                    {
+                        "name": "Date",
+                        "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Other Named Entity",
+                        "source":"AT&T at TREC-8"
+                    },
+                    {
+                        "name": "Other",
+                        "source": "Learning foci for Question Answering over Topic Maps"
+                    },
+                    {
+                        "name": "Other",
+                        "source": "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Answer Type - Undefined",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    },
+                    {
+                        "name": "Unknown",
+                        "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                    },
+                    {
+                        "name": "Miscellaneous",
+                        "source":"AT&T at TREC-8"
+                    },
+                    {
+                        "name": "Fourth Order -Extra",
+                        "source": "The Classification of Research Questions"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Linear Measure",
+                        "source":"AT&T at TREC-8"
+                    },
+                    {
+                        "name": "Answer Type - Distance",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Monetary Amount",
+                        "source":"AT&T at TREC-8"
+                    },
+                    {
+                        "name": "Answer Type - Money",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    },
+                    {
+                        "name": "Answer Type - Price",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Organization",
+                        "source":"AT&T at TREC-8"
+                    },
+                    {
+                        "name":"Human Groups",
+                        "source": "Linguistically Motivated Question Classification"
+                    },
+                    {
+                        "name": "Answer Type - Organization",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    },
+                    {
+                        "name": "Organization",
+                        "source": "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Duration",
+                        "source":"AT&T at TREC-8"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Factual Questions",
+                        "source": "Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering"
+                    },
+                    {
+                        "name": "Evidence-Based",
+                        "source": "A Non-Factoid Question-Answering Taxonomy"
+                    },
+                    {
+                        "name": "Accuracy",
+                        "source": "A Taxonomy for Classifying Questions Asked in Social Question and Answering"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Method or Means of Development",
+                        "source": "Writing good software engineering research papers"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Method for Analysis or Evaluation",
+                        "source": "Writing good software engineering research papers"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Design, Evaluation, or Analysis of a particular Instance",
+                        "source": "Writing good software engineering research papers"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Generalization or Characterization",
+                        "source": "Writing good software engineering research papers"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Procedure or Technique",
+                        "source": "Writing good software engineering research papers"
+                    }
+                ]
+            },
+            {
+                "types":[
+                    {
+                        "name": "Instruction",
+                        "source": "A Non-Factoid Question-Answering Taxonomy"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Qualitative or Descriptive Model",
+                        "source": "Writing good software engineering research papers"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Empirical Model",
+                        "source": "Writing good software engineering research papers"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Analytic Model",
+                        "source": "Writing good software engineering research papers"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Tool or Notation",
+                        "source": "Writing good software engineering research papers"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Specific Solution, Prototype, or Judgment",
+                        "source": "Writing good software engineering research papers"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Report",
+                        "source": "Writing good software engineering research papers"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Exploratory - Existence",
+                        "source": "Selecting Empirical Methods for Software Engineering Research"
+                    },
+                    {
+                        "name": "Exploratory - Description and Classification",
+                        "source": "Selecting Empirical Methods for Software Engineering Research"
+                    },
+                    {
+                        "name": "Exploratory - Descriptive-Comparative",
+                        "source": "Selecting Empirical Methods for Software Engineering Research"
+                    },
+                    {
+                        "name": "Research Approach - Knowledge Goal",
+                        "source": "Construction of Design Science Research Questions"
+                    },
+                    {
+                        "name": "Existence",
+                        "source": "Formulation of Research Question - Stepwise Approach"
+                    },
+                    {
+                        "name": "Feasibility Study or Exploration",
+                        "source": "Writing good software engineering research papers"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Causality - Causality",
+                        "source": "Selecting Empirical Methods for Software Engineering Research"
+                    },
+                    {
+                        "name": "Causality-Comparative",
+                        "source": "Selecting Empirical Methods for Software Engineering Research"
+                    },
+                    {
+                        "name": "Causality-Comparative Interaction",
+                        "source":"Selecting Empirical Methods for Software Engineering Research"
+                    },
+                    {
+                        "name": "Third Order -Contingencies",
+                        "source": "The Classification of Research Questions"
+                    },
+                    {
+                        "name": "Causality",
+                        "source": "Formulation of Research Question - Stepwise Approach"
+                    },
+                    {
+                        "name": "Causality - Comparative interactions",
+                        "source": "Formulation of Research Question - Stepwise Approach"
+                    },
+                    {
+                        "name": "Causal",
+                        "source": "Types of research questions: descriptive, predictive, or causal"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Fact with Qualifiers",
+                        "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "String Operation",
+                        "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                    },
+                    {
+                        "name": "String",
+                        "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Reason",
+                        "source": "A Non-Factoid Question-Answering Taxonomy"
+                    },
+                    {
+                        "name": "Answer Type - Reason",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Comparison",
+                        "source": "A Non-Factoid Question-Answering Taxonomy"
+                    },
+                    {
+                        "name": "Comparative",
+                        "source": "10th Question Answering over Linked Data (QALD) Challenge"
+                    },
+                    {
+                        "name": "Second Order - Comparisons",
+                        "source": "The Classification of Research Questions"
+                    },
+                    {
+                        "name": "Compare",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "Descriptive - Comparative",
+                        "source": "Formulation of Research Question - Stepwise Approach"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Experience",
+                        "source": "A Non-Factoid Question-Answering Taxonomy"
+                    },
+                    {
+                        "name": "Knowledge",
+                        "source": "A Taxonomy for Classifying Questions Asked in Social Question and Answering"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Debate",
+                        "source": "A Non-Factoid Question-Answering Taxonomy"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Aggregation",
+                        "source": "Question Answering on Scholarly Knowledge Graphs"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Motivation - Problem Solving",
+                        "source": "Construction of Design Science Research Questions"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Motivation - Gap Spotting",
+                        "source": "Construction of Design Science Research Questions"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Motivation - Problematization",
+                        "source": "Construction of Design Science Research Questions"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Problem Statement",
+                        "source": "Construction of Design Science Research Questions"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Usage of RQ",
+                        "source": "Construction of Design Science Research Questions"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Types of RQ",
+                        "source": "Construction of Design Science Research Questions"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Research Activities - Mode of Inquiry",
+                        "source": "Construction of Design Science Research Questions"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Theory-in-Use",
+                        "source": "Construction of Design Science Research Questions"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Outcome Artifacts",
+                        "source": "Construction of Design Science Research Questions"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Question Analysis/Focus",
+                        "source": "The question answering systems: A survey"
+                    },
+                    {
+                        "name": "Focus",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Question Type",
+                        "source": "The question answering systems: A survey"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Answer Type",
+                        "source": "The question answering systems: A survey"
+                    },
+                    {
+                        "name": "Answer Type",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Conversational",
+                        "source": "A Taxonomy for Classifying Questions Asked in Social Question and Answering"
+                    },
+                    {
+                        "name": "Zero Order",
+                        "source": "The Classification of Research Questions"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "First Order - Properties",
+                        "source": "The Classification of Research Questions"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Design",
+                        "source": "Selecting Empirical Methods for Software Engineering Research"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Relationship",
+                        "source": "Formulation of Research Question - Stepwise Approach"
+                    },
+                    {
+                        "name": "UnknRel",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "Entity-relationship Questions",
+                        "source": "Large-scale Simple Question Answering with Memory Networks"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Actor",
+                        "source": "The Future of Empirical Methods in Software Engineering Research"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Technology",
+                        "source": "The Future of Empirical Methods in Software Engineering Research"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name":"Activity",
+                        "source": "The Future of Empirical Methods in Software Engineering Research"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Software System",
+                        "source": "The Future of Empirical Methods in Software Engineering Research"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Time",
+                        "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                    },
+                    {
+                        "name": "Time",
+                        "source": "Learning foci for Question Answering over Topic Maps"
+                    },
+                    {
+                        "name": "Time",
+                        "source": "Linguistically Motivated Question Classification"
+                    },
+                    {
+                        "name": "Answer Type - Time",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Asking Point (AP)",
+                        "source": "Learning foci for Question Answering over Topic Maps"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Expected Answer Type (EAT)",
+                        "source": "Learning foci for Question Answering over Topic Maps"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Definition",
+                        "source": "Learning foci for Question Answering over Topic Maps"
+                    },
+                    {
+                        "name": "Definition",
+                        "source": "Ripple Down Rules for question answering"
+                    },
+                    {
+                        "name": "Answer Type - Definition",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "request questions",
+                        "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "UnknTerm",
+                        "source": "Ripple Down Rules for question answering"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "ThreeTerm",
+                        "source": "Ripple Down Rules for question answering"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Human Relations",
+                        "source": "Linguistically Motivated Question Classification"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Multilabel",
+                        "source": "Linguistically Motivated Question Classification"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Name",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Answer Type - NNP",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Answer Type - Title",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Answer Type - Manner",
+                        "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Predictive",
+                        "source": "Types of research questions: descriptive, predictive, or causal"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Bibliometric Numbers",
+                        "source": "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Research Works",
+                        "source": "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Resource Typed",
+                        "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Resource Untyped",
+                        "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                    }
+                ]
+            },
+            {
+                "types": [
+                    {
+                        "name": "Clause",
+                        "source": "Ripple Down Rules for question answering"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "iteration": 2,
+        "iteration_info": "In the second iteration, our goal was two fold. We gave each existing cluster a name and a description. Then based on this information, we grouped the clusters into a parent cluster. This parent cluster is a higher level cluster that groups the clusters based on their similarity in terms of the information they provide.",
+        "clusters": [
+            {
+                "id": 1000,
+                "name": "Knowledge Graph Representation | Knowledge Graph Organization | Fact Granularity",
+                "info": "Groups those clusters that describe how the data that is asked for is organized in the Knowledge Graph. It distinguishes between the amount of facts that are needed to answer a question.",
+                "subclusters": [
+                    {
+                        "name": "Single Fact",
+                        "info": "Classifies questions that can be fully answered by retrieving a single fact from the Knowledge Graph.",
+                        "id": 1,
+                        "types": [
+                            {
+                                "name": "Single Fact",
+                                "source": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                            },
+                            {
+                                "name": "Question Content - Factoid",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "single fact",
+                                "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                            },
+                            {
+                                "name": "Single Fact with Type",
+                                "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                            },
+                            {
+                                "name": "Normal",
+                                "source": "Question Answering on Scholarly Knowledge Graphs"
+                            },
+                            {
+                                "name": "Single Fact",
+                                "source": "Large-scale Simple Question Answering with Memory Networks"
+                            },
+                            {
+                                "name": "Normal",
+                                "source": "Ripple Down Rules for question answering"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Multi Fact",
+                        "info": "Classifies questions that require multiple facts to be retrieved from the Knowledge Graph to be fully answered.",
+                        "id": 2,
+                        "types": [
+                            {
+                                "name": "Multi Facts",
+                                "source": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                            },
+                            {
+                                "name": "Question Content - Non-Factoid - sequence of facts",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "Multi Fact",
+                                "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                            },
+                            {
+                                "name": "Combining",
+                                "source": "Question Answering on Scholarly Knowledge Graphs"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 1001,
+                "name": "Answer Type | Answer Output Types & Formats",
+                "info": "Defines the expected answer format or data type. As such it classifies what the question expect to be in the answer.",
+                "subclusters": [
+                    {
+                        "name": "Generic Answer Type",
+                        "info": "Generically defines the expected answer type.",
+                        "id": 3,
+                        "types": [
+                            {
+                                "name": "Answer Type",
+                                "source": "The question answering systems: A survey"
+                            },
+                            {
+                                "name": "Answer Type",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+   
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Undefined",
+                        "info": "Groups questions for which the expected answer type is unclear or cannot be determined by standard classification rules.",
+                        "id": 4,
+                        "types": [
+                            {
+                                "name": "Answer Type - Undefined",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            },
+                            {
+                                "name": "Unknown",
+                                "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                            },
+                            {
+                                "name": "Miscellaneous",
+                                "source":"AT&T at TREC-8"
+                            },
+                            {
+                                "name": "Fourth Order -Extra",
+                                "source": "The Classification of Research Questions"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Date",
+                        "info": "Classifies questions that expect a date as an answer.",
+                        "id": 5,
+                        "types": [
+                            {
+                                "name": "Date",
+                                "source": "AT&T at TREC-8"
+                            },
+                            {
+                                "name": "Month",
+                                "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                            },
+                            {
+                                "name": "Answer Type - Date",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            },
+                            {
+                                "name": "Date",
+                                "source": "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset"
+                            },
+                            {
+                                "name": "Date",
+                                "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Other",
+                        "info": "Classifies those questions that expect an answer type that does not fit in any of the other categories.",
+                        "id": 6,
+                        "types": [
+                            {
+                                "name": "Other Named Entity",
+                                "source":"AT&T at TREC-8"
+                            },
+                            {
+                                "name": "Other",
+                                "source": "Learning foci for Question Answering over Topic Maps"
+                            },
+                            {
+                                "name": "Other",
+                                "source": "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Distance Measurement",
+                        "info": "Classifies answers that expect a linear measure such as distance or length",
+                        "id": 7,
+                        "types": [
+                            {
+                                "name": "Linear Measure",
+                                "source":"AT&T at TREC-8"
+                            },
+                            {
+                                "name": "Answer Type - Distance",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Actor",
+                        "info": "Identifies questions that ask for an actor which is a individual, team, project, organization, or industry that performs an act.",
+                        "id": 8,
+                        "types": [
+                            {
+                                "name": "Actor",
+                                "source": "The Future of Empirical Methods in Software Engineering Research"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Technology",
+                        "info": "Classifies questions where the answer should be a technology which can be a process model, method, technique, tool, or language that is applied on the Software System",
+                        "id": 9,
+                        "types": [
+                            {
+                                "name": "Technology",
+                                "source": "The Future of Empirical Methods in Software Engineering Research"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Expected Answer Type (EAT)",
+                        "info": "Relates to questions where the expected answer type is not explicitly given in the question but must be inferred from the context.",
+                        "id": 10,
+                        "types": [
+                            {
+                                "name": "Expected Answer Type (EAT)",
+                                "source": "Learning foci for Question Answering over Topic Maps"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Asking Point Given",
+                        "info": "Specifies those questions where the asking point is directly included in the question.",
+                        "id": 11,
+                        "types": [
+                            {
+                                "name": "Asking Point (AP)",
+                                "source": "Learning foci for Question Answering over Topic Maps"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Definition",
+                        "info": "Classifies questions that expect a definition or explanation, where the answer provides a clear definition or description of a concept.",
+                        "id": 12,
+                        "types": [
+                            {
+                                "name": "Definition",
+                                "source": "Learning foci for Question Answering over Topic Maps"
+                            },
+                            {
+                                "name": "Definition",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "Answer Type - Definition",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Time",
+                        "info": "Classifies those questions that ask for a time.",
+                        "id": 13,
+                        "types": [
+                            {
+                                "name": "Time",
+                                "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                            },
+                            {
+                                "name": "Time",
+                                "source": "Learning foci for Question Answering over Topic Maps"
+                            },
+                            {
+                                "name": "Time",
+                                "source": "Linguistically Motivated Question Classification"
+                            },
+                            {
+                                "name": "Answer Type - Time",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Name",
+                        "info": "Focuses on answers that ask for names (or named entities) like persons, locations, or objects.",
+                        "id": 14,
+                        "types": [
+                            {
+                                "name": "Name",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Title",
+                        "info": "Covers answer types where the answer is expected to be a title such as the title of a publication or work.",
+                        "id": 15,
+                        "types": [
+                            {
+                                "name": "Answer Type - Title",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Bibliometric Numbers",
+                        "info": "Specifies answers that involve bibliometric data such as publication counts, citation numbers, h-index, or i10-index.",
+                        "id": 16,
+                        "types": [
+                            {
+                                "name": "Bibliometric Numbers",
+                                "source": "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Manner",
+                        "info": "Used when the answer is expected to detail the manner by which an action is performed.",
+                        "id": 17,
+                        "types": [
+                            {
+                                "name": "Answer Type - Manner",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Software System",
+                        "info": "Classifies answers that describe features of a software system, such as its size, complexity, or application domain.",
+                        "id": 18,
+                        "types": [
+                            {
+                                "name": "Software System",
+                                "source": "The Future of Empirical Methods in Software Engineering Research"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Monetary",
+                        "info": "Classifies questions that expect a monetary amount as an answer.",
+                        "id": 19,
+                        "types": [
+                            {
+                                "name": "Monetary Amount",
+                                "source":"AT&T at TREC-8"
+                            },
+                            {
+                                "name": "Answer Type - Money",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            },
+                            {
+                                "name": "Answer Type - Price",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Abbreviation",
+                        "info": "Classifies questions that expect the long or short form of an abbreviation as an answer.",
+                        "id": 20,
+                        "types": [
+                            {
+                                "name": "Abbreviation",
+                                "source": "Learning Question Classifiers"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Procedure/Technique",
+                        "info": "Given a question, the expected result is a concept for implementation, representation, management, or analysis.",
+                        "id": 97,
+                        "types": [
+                            {
+                                "name": "Procedure or Technique",
+                                "source": "Writing good software engineering research papers"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Instructional",
+                        "info": "Covers those questions that expect as answer step-by-step procedures, instructions, or techniques to achieve a specified task.",
+                        "id": 21,
+                        "types": [
+                            {
+                                "name": "Instruction",
+                                "source": "A Non-Factoid Question-Answering Taxonomy"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Organization",
+                        "info": "Groups answers that identify organizations or human groups, including universities, research centers, laboratories, and other entities.",
+                        "id": 22,
+                        "types": [
+                            {
+                                "name": "Organization",
+                                "source":"AT&T at TREC-8"
+                            },
+                            {
+                                "name":"Human Groups",
+                                "source": "Linguistically Motivated Question Classification"
+                            },
+                            {
+                                "name": "Answer Type - Organization",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            },
+                            {
+                                "name": "Organization",
+                                "source": "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Duration",
+                        "info": "Covers answers that express time durations such as 'three years' or 'few hours'.",
+                        "id": 23,
+                        "types": [
+                            {
+                                "name": "Duration",
+                                "source":"AT&T at TREC-8"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Boolean",
+                        "info": "Classifies questions that expect an affirmative or negative response.",
+                        "id": 24,
+                        "types": [
+                            {
+                                "name": "Boolean",
+                                "source": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                            },
+                            {
+                                "name": "Boolean",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "Boolean",
+                                "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                            },
+                            {
+                                "name": "Ask",
+                                "source": "Question Answering on Scholarly Knowledge Graphs"
+                            },
+                            {
+                                "name": "Yes/No",
+                                "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                            },
+                            {
+                                "name": "Affirm_MoreTuples",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "Affirm",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "Affirm_3Term",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "YesNo",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "Boolean",
+                                "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Entity",
+                        "info": "Used for questions where the answer is expected to name one or more entities or objects identified within the question.",
+                        "id": 25,
+                        "types": [
+                            {
+                                "name": "Entity",
+                                "source": "Learning Question Classifiers"
+                            },
+                            {
+                                "name": "Entity",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "Entities",
+                                "source": "Linguistically Motivated Question Classification"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Description",
+                        "info": "Focuses on answers that provide descriptions, classifications, or overviews of processes or phenomena.",
+                        "id": 26,
+                        "types": [
+                            {
+                                "name": "Description",
+                                "source": "Learning Question Classifiers"
+                            },
+                            {
+                                "name": "Base-Rate - Descriptive-Process",
+                                "source": "Selecting Empirical Methods for Software Engineering Research"
+                            },
+                            {
+                                "name": "Description and Classification",
+                                "source": "Formulation of Research Question - Stepwise Approach"
+                            },
+                            {
+                                "name": "Description",
+                                "source": "Linguistically Motivated Question Classification"
+                            },
+                            {
+                                "name": "Descriptive",
+                                "source": "Types of research questions: descriptive, predictive, or causal"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Properties",
+                        "info": "Classifies answers that list or detail the properties or characteristics inherent to a phenomenon or entity.",
+                        "id": 27,
+                        "types": [
+                            {
+                                "name": "First Order - Properties",
+                                "source": "The Classification of Research Questions"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Human/Person",
+                        "info": "Covers answers that refer to human subjects",
+                        "id": 28,
+                        "types": [
+                            {
+                                "name": "Human",
+                                "source": "Learning Question Classifiers"
+                            },
+                            {
+                                "name": "Person",
+                                "source": "AT&T at TREC-8"
+                            },
+                            {
+                                "name": "Social",
+                                "source": "A Taxonomy for Classifying Questions Asked in Social Question and Answering"
+                            },
+                            {
+                                "name": "Human",
+                                "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                            },
+                            {
+                                "name": "Human",
+                                "source": "Learning foci for Question Answering over Topic Maps"
+                            },
+                            {
+                                "name": "Human Description",
+                                "source": "Linguistically Motivated Question Classification"
+                            },
+                            {
+                                "name": "Answer Type - Person",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Location",
+                        "info": "Specifies answers that are geographic in nature.",
+                        "id": 29,
+                        "types": [
+                            {
+                                "name": "Location",
+                                "source": "Learning Question Classifiers"
+                            },
+                            {
+                                "name": "Location",
+                                "source": "AT&T at TREC-8"
+                            },
+                            {
+                                "name": "Location",
+                                "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                            },
+                            {
+                                "name": "Location",
+                                "source": "Linguistically Motivated Question Classification"
+                            },
+                            {
+                                "name": "Answer Type - Location",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            },
+                            {
+                                "name": "Location",
+                                "source": "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset"
+                            },
+                            {
+                                "name": "Location",
+                                "source": "Learning foci for Question Answering over Topic Maps"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Quantitative",
+                        "info": "Groups answers that provide numerical information, counts, or quantitative measures.",
+                        "id": 30,
+                        "types": [
+                            {
+                                "name": "Numeric Value",
+                                "source": "Learning Question Classifiers"
+                            },
+                            {
+                                "name": "Quantity",
+                                "source": "AT&T at TREC-8"
+                            },
+                            {
+                                "name": "Quantification Questions",
+                                "source": "Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering"
+                            },
+                            {
+                                "name": "Numeric",
+                                "source": "Learning foci for Question Answering over Topic Maps"
+                            },
+                            {
+                                "name": "Many",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "Many-Class",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "Answer Type - Number",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Tool/Notation",
+                        "info": "The question asks for a specific software tool that embodies a technique or a formal language that should have a calculus, semantics, or other basis for computing or inference.",
+                        "id": 31,
+                        "types": [
+                            {
+                                "name": "Tool or Notation",
+                                "source": "Writing good software engineering research papers"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Solution",
+                        "info": "The question asks for a specific solution, design prototype, or evaluative judgment based on established software engineering principles.",
+                        "id": 32,
+                        "types": [
+                            {
+                                "name": "Specific Solution, Prototype, or Judgment",
+                                "source": "Writing good software engineering research papers"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Report",
+                        "info": "Interesting insights or general guidelines are provided in a report. The authors mention that the answer is not general or systematic enough to be categorized as a descriptive model.",
+                        "id": 33,
+                        "types": [
+                            {
+                                "name": "Report",
+                                "source": "Writing good software engineering research papers"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Theoretical Framework",
+                        "info": "Questions that ask for theoretical statements that support a research approach. This is categorized into no specific theory, kernel theory, formal theory, or testable theory.",
+                        "id": 35,
+                        "types": [
+                            {
+                                "name": "Theory-in-Use",
+                                "source": "Construction of Design Science Research Questions"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 1003,
+                "name": "Question Type | Information Retrieval Actions | Question Processing Steps | Retrieval Operations",
+                "info": "Includes those clusters that indicate what activities are required from the retriever to be performed to arrive at the answer. As such it specifies the retrieval operations and query-processing steps required to derive an answer",
+                "subclusters": [
+                    {
+                        "name": "Question Type",
+                        "info": "Generically defines the type of information request",
+                        "id": 36,
+                        "types": [
+                            {
+                                "name": "Question Type",
+                                "source": "The question answering systems: A survey"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Activity",
+                        "info": "Generically defines the acitivies that are required to be performed to arrive at the answer.",
+                        "id": 37,
+                        "types": [
+                            {
+                                "name":"Activity",
+                                "source": "The Future of Empirical Methods in Software Engineering Research"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Negation",
+                        "info": "Expects the retrieval process to include negations.",
+                        "id": 38,
+                        "types": [
+                            {
+                                "name": "Negation",
+                                "source": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                            },
+                            {
+                                "name": "Question Content - Non-Factoid - Negation",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Clause",
+                        "info": "Defines questions where one part depends on another.",
+                        "id": 39,
+                        "types": [
+                            {
+                                "name": "Clause",
+                                "source": "Ripple Down Rules for question answering"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Contingencies",
+                        "info": "Groups questions that involve cause effect relationships. It involves correlations but also causal relationships.",
+                        "id": 40,
+                        "types": [
+                            {
+                                "name": "Causality - Causality",
+                                "source": "Selecting Empirical Methods for Software Engineering Research"
+                            },
+                            {
+                                "name": "Causality-Comparative",
+                                "source": "Selecting Empirical Methods for Software Engineering Research"
+                            },
+                            {
+                                "name": "Causality-Comparative Interaction",
+                                "source":"Selecting Empirical Methods for Software Engineering Research"
+                            },
+                            {
+                                "name": "Third Order -Contingencies",
+                                "source": "The Classification of Research Questions"
+                            },
+                            {
+                                "name": "Causality",
+                                "source": "Formulation of Research Question - Stepwise Approach"
+                            },
+                            {
+                                "name": "Causality - Comparative interactions",
+                                "source": "Formulation of Research Question - Stepwise Approach"
+                            },
+                            {
+                                "name": "Causal",
+                                "source": "Types of research questions: descriptive, predictive, or causal"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Double Negation",
+                        "info": "Requires to dobule negate parts of the query to arrive at the answer.",
+                        "id": 41,
+                        "types": [
+                            {
+                                "name": "Double Negation",
+                                "source": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Counts",
+                        "info": "Classifies questions that require to count information.",
+                        "id": 42,
+                        "types": [
+                            {
+                                "name": "Count",
+                                "source": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                            },
+                            {
+                                "name": "Question Content - Non-Factoid - counting",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "Base-Rate - Frequency and Distribution",
+                                "source": "Selecting Empirical Methods for Software Engineering Research"
+                            },
+                            {
+                                "name": "Count",
+                                "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                            },
+                            {
+                                "name": "Count based",
+                                "source": "10th Question Answering over Linked Data (QALD) Challenge"
+                            },
+                            {
+                                "name": "Number Count",
+                                "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Request",
+                        "info": "Generically classifies questions by the task that is specifically states like 'give' or 'list'",
+                        "id": 43,
+                        "types": [
+                            {
+                                "name": "request questions",
+                                "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Superlatives",
+                        "info": "Groups questions asking for extreme values (maximum/minimum).",
+                        "id": 44,
+                        "types": [
+                            {
+                                "name": "Superlative/Comparative",
+                                "source": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                            },
+                            {
+                                "name": "Question Content - Non-Factoid - Superlatives",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "Superlatives",
+                                "source": "10th Question Answering over Linked Data (QALD) Challenge"
+                            },
+                            {                                
+                                "name": "Question Content - Non-Factoid - Minimum or Maximum",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Comparison",
+                        "info": "Classifies questions that compare two or more entities by extracting their similarities or differences",
+                        "id": 45,
+                        "types": [
+                            {
+                                "name": "Comparison",
+                                "source": "A Non-Factoid Question-Answering Taxonomy"
+                            },
+                            {
+                                "name": "Comparative",
+                                "source": "10th Question Answering over Linked Data (QALD) Challenge"
+                            },
+                            {
+                                "name": "Second Order - Comparisons",
+                                "source": "The Classification of Research Questions"
+                            },
+                            {
+                                "name": "Compare",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "Descriptive - Comparative",
+                                "source": "Formulation of Research Question - Stepwise Approach"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Listing",
+                        "info": "Classifies questions that require to retrieve multiple properties about a phenomenon and list them.",
+                        "id": 46,
+                        "types": [
+                            {
+                                "name": "Union",
+                                "source":"DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                            },
+                            {
+                                "name": "Listing",
+                                "source": "Question Answering on Scholarly Knowledge Graphs"
+                            },
+                            {
+                                "name": "List Questions",
+                                "source": "Large-scale Simple Question Answering with Memory Networks"
+                            },
+                            {
+                                "name": "List",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "Resource List Typed",
+                                "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                            },
+                            {
+                                "name": "Resource List Untyped",
+                                "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "String Operation",
+                        "info": "Specifies questions that demand operations on string data",
+                        "id": 47,
+                        "types": [
+                            {
+                                "name": "String Operation",
+                                "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                            },
+                            {
+                                "name": "String",
+                                "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Multiple Intents",
+                        "info": "Classifies questions that have multiple intentions which could be broken up into multiple different questions",
+                        "id": 48,
+                        "types": [
+                            {
+                                "name": "Double Intent",
+                                "source":"DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                            },
+                            {
+                                "name": "Two Intention",
+                                "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                            },
+                            {
+                                "name": "Composition",
+                                "source": "Formulation of Research Question - Stepwise Approach"
+                            },
+                            {
+                                "name": "And/Or",
+                                "source": "Ripple Down Rules for question answering"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Disambiguation",
+                        "info": "Focuses on the activity of resolving ambiguity in questions by identifying the correct subject or term among several possibilities before retrieval.",
+                        "id": 49,
+                        "types":[
+                            {
+                                "name": "Disambiguation",
+                                "source":"DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph"
+                            },
+                            {
+                                "name": "Combine",
+                                "source": "Ripple Down Rules for question answering"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Ranking",
+                        "info": "Classifies questions that not only count or list facts but also rank or order them",
+                        "id": 50,
+                        "types": [
+                            {
+                                "name": "Question Content - Non-Factoid - Ranking",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "Ranking",
+                                "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Temporal",
+                        "info": "Classifies questions that that involve time series or trends over time, incorporating temporal aggregators and aspects into the retrieval process.",
+                        "id": 51,
+                        "types": [
+                            {
+                                "name": "Question Content - Non-Factoid - Temporal",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "Trends over Time",
+                                "source": "Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering"
+                            },
+                            {
+                                "name": "Temporal Aspect",
+                                "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                            },
+                            {
+                                "name": "Temporal Aggregators",
+                                "source": "10th Question Answering over Linked Data (QALD) Challenge"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Aggregation",
+                        "info": "Focuses on queries that require aggregation functions (such as average, sum, or grouping) to synthesize data into a meaningful answer.",
+                        "id": 52,
+                        "types": [
+                            {
+                                "name": "Aggregation",
+                                "source": "Question Answering on Scholarly Knowledge Graphs"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Relationship",
+                        "info": "Targets questions that ask for the relationship between entities by identifying the connecting predicates or relationships in the knowledge graph.",
+                        "id": 53,
+                        "types": [
+                            {
+                                "name": "Relationship",
+                                "source": "Formulation of Research Question - Stepwise Approach"
+                            },
+                            {
+                                "name": "UnknRel",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "Entity-relationship Questions",
+                                "source": "Large-scale Simple Question Answering with Memory Networks"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 1004,
+                "name": "WH-Patterns",
+                "info": "Groups questions by their interrogative form (Wh-questions), distinguishing between different wh-word patterns.",
+                "subclusters": [
+                    {
+                        "name": "What",
+                        "info": "Classifies questions that begin with 'What'.",
+                        "id": 54,
+                        "types": [
+                            {
+                                "name": "What-When",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "What-Who",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "WHAT",
+                                "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                            },
+                            {
+                                "name": "What",
+                                "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                            },
+                            {
+                                "name": "What",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "What",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Where",
+                        "info": "Classifies questions that begin with 'Where'.",
+                        "id": 55,
+                        "types": [
+                            {
+                                "name": "Which-Where",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "WHERE",
+                                "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                            },
+                            {
+                                "name": "Where",
+                                "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                            },
+                            {
+                                "name": "Where",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "Where",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Which",
+                        "info": "Classifies questions that begin with 'Which'.",
+                        "id": 56,
+                        "types": [
+                            {
+                                "name": "Which-What",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "Which",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "When",
+                        "info": "Classifies questions that begin with 'When'.",
+                        "id": 57,
+                        "types": [
+                            {
+                                "name": "When",
+                                "source": "Ripple Down Rules for question answering"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Who",
+                        "info": "Classifies questions that begin with 'Who'.",
+                        "id": 58,
+                        "types": [
+                            {
+                                "name": "Who-What",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "WHO",
+                                "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                            },
+                            {
+                                "name": "Who",
+                                "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                            },
+                            {
+                                "name": "Who",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "Who",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Why",
+                        "info": "Classifies questions that begin with 'Why'.",
+                        "id": 59,
+                        "types": [
+                            {
+                                "name": "WHY",
+                                "source": "A Rule-based Question Answering System for Reading Comprehension Tests"
+                            },
+                            {
+                                "name": "Why",
+                                "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                            },
+                            {
+                                "name": "Why",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "How",
+                        "info": "Classifies questions that begin with 'How'.",
+                        "id": 60,
+                        "types": [
+                            {
+                                "name": "How",
+                                "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                            },
+                            {
+                                "name": "HowWhy",
+                                "source": "Ripple Down Rules for question answering"
+                            },
+                            {
+                                "name": "How",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Whose",
+                        "info": "Classifies questions that begin with 'Whose'.",
+                        "id": 61,
+                        "types": [
+                            {
+                                "name": "Whose",
+                                "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Whom",
+                        "info": "Classifies questions that begin with 'Whom'.",
+                        "id": 62,
+                        "types": [
+                            {
+                                "name": "Whom",
+                                "source": "A Comparative Study of Question Answering over Knowledge Bases"
+                            },
+                            {
+                                "name": "Whom",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 1005,
+                "name": "Specialized Knowledge Base Types",
+                "info": "Contains classifications specific to querying specialized knowledge bases. Therefore to apply these classifications, it is required to run the question on that specific knowledge base.",
+                "subclusters": [
+                    {
+                        "name": "ORKG and SPARQL Queries",
+                        "info": "Classifies questions specific to the ORKG, including those about paper‐based content, comparison instances, and the complexity of underlying SPARQL query structures.",
+                        "id": 63,
+                        "types": [
+                            {
+                                "name": "Orkg Content - Paper based",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "Orkg Content - Comparison based",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "SparQL Characteristics",
+                                "source": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+                            },
+                            {
+                                "name": "Number Property",
+                                "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Wikidata Qualifiers",
+                        "info": "Specifies questions that require answers including qualifiers (which are additional detail properties in Wikidata) to enrich the retrieved fact.",
+                        "id": 64,
+                        "types": [
+                            {
+                                "name": "Fact with Qualifiers",
+                                "source": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 1006,
+                "name": "Research-Orientation | Research-Focus | Scholarly Question Type",
+                "info": "Focuses on scholarly and research-oriented questions",
+                "subclusters": [
+                    {
+                        "name": "Research Output",
+                        "info": "Classifies questions focused on research outputs from publications",
+                        "id": 65,
+                        "types": [
+                            {
+                                "name": "Research Works",
+                                "source": "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Development Methods",
+                        "info": "Covers questions that request details on the methods, processes, or procedures used to develop software solutions, including aspects such as design patterns, best practices, and algorithmic strategies.",
+                        "id": 66,
+                        "types": [
+                            {
+                                "name": "Method or Means of Development",
+                                "source": "Writing good software engineering research papers"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Analytical Methods",
+                        "info": "Covers questions that seek details on strategies, techniques, or frameworks used for analyzing or evaluating software tools, technologies, or approaches.",
+                        "id": 67,
+                        "types": [
+                            {
+                                "name": "Method for Analysis or Evaluation",
+                                "source": "Writing good software engineering research papers"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Instance-Specific",
+                        "info": "The same as 'Development Methods' but specific to a particular instance.",
+                        "id": 68,
+                        "types": [
+                            {
+                                "name": "Design, Evaluation, or Analysis of a particular Instance",
+                                "source": "Writing good software engineering research papers"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Generalization ",
+                        "info": "Classifies questions that seek broad concepts, taxonomies, or general principles in software engineering.",
+                        "id": 69,
+                        "types": [
+                            {
+                                "name": "Generalization or Characterization",
+                                "source": "Writing good software engineering research papers"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Qualitative Modeling",
+                        "info": "Groups questions expecting qualitative models which covers a wide variety of different types of models, including structures or taxonomies, architecture designs, frameworks, design patterns, and other non quantitative results. ",
+                        "id": 70,
+                        "types": [
+                            {
+                                "name": "Qualitative or Descriptive Model",
+                                "source": "Writing good software engineering research papers"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Empirical Modeling",
+                        "info": "Classifies questions that ask for predictive models based on observed data.",
+                        "id": 71,
+                        "types": [
+                            {
+                                "name": "Empirical Model",
+                                "source": "Writing good software engineering research papers"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Analytic Modeling",
+                        "info": "Focuses on questions expecting formal, mathematically defined models to facilitate analysis or computation.",
+                        "id": 72,
+                        "types": [
+                            {
+                                "name": "Analytic Model",
+                                "source": "Writing good software engineering research papers"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 1007,
+                "name": "Answer Credibility | Answer Reliability",
+                "info": "Classifies questions by the credibility of the answer with regard to the truthfulness.",
+                "subclusters": [
+                    {
+                        "name": "Factual",
+                        "info": "Groups questions that expect factual, evidence-based answers.",
+                        "id": 73,
+                        "types": [
+                            {
+                                "name": "Factual Questions",
+                                "source": "Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering"
+                            },
+                            {
+                                "name": "Evidence-Based",
+                                "source": "A Non-Factoid Question-Answering Taxonomy"
+                            },
+                            {
+                                "name": "Accuracy",
+                                "source": "A Taxonomy for Classifying Questions Asked in Social Question and Answering"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Opinion",
+                        "info": "Covers questions where the answer is expected to reflect personal experiences, opinions, or recommendations rather than strict facts.",
+                        "id": 74,
+                        "types": [
+                            {
+                                "name": "Experience",
+                                "source": "A Non-Factoid Question-Answering Taxonomy"
+                            },
+                            {
+                                "name": "Knowledge",
+                                "source": "A Taxonomy for Classifying Questions Asked in Social Question and Answering"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Debate",
+                        "info": "Classifies questions that intend to provoke discussion or argumentation rather than factual answers.",
+                        "id": 75,
+                        "types": [
+                            {
+                                "name": "Debate",
+                                "source": "A Non-Factoid Question-Answering Taxonomy"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Conversational",
+                        "info": "Identifies questions that are rhetorical or conversational in nature, where a definitive factual answer is not required.",
+                        "id": 76,
+                        "types": [
+                            {
+                                "name": "Conversational",
+                                "source": "A Taxonomy for Classifying Questions Asked in Social Question and Answering"
+                            },
+                            {
+                                "name": "Zero Order",
+                                "source": "The Classification of Research Questions"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Predictive",
+                        "info": "Focuses on questions that ask for predictions or forecasts.",
+                        "id": 77,
+                        "types": [
+                            {
+                                "name": "Predictive",
+                                "source": "Types of research questions: descriptive, predictive, or causal"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 1008,
+                "name": "Question Goal | Question Intent | Question Objective",
+                "info": "Defines the overall goal or intent behind a question.",
+                "subclusters": [
+                    {
+                        "name": "Exploratory",
+                        "info": "Classifies questions aimed at exploring the existence, description, or comparative features of a phenomenon.",
+                        "id": 78,
+                        "types": [
+                            {
+                                "name": "Exploratory - Existence",
+                                "source": "Selecting Empirical Methods for Software Engineering Research"
+                            },
+                            {
+                                "name": "Exploratory - Description and Classification",
+                                "source": "Selecting Empirical Methods for Software Engineering Research"
+                            },
+                            {
+                                "name": "Exploratory - Descriptive-Comparative",
+                                "source": "Selecting Empirical Methods for Software Engineering Research"
+                            },
+                            {
+                                "name": "Research Approach - Knowledge Goal",
+                                "source": "Construction of Design Science Research Questions"
+                            },
+                            {
+                                "name": "Existence",
+                                "source": "Formulation of Research Question - Stepwise Approach"
+                            },
+                            {
+                                "name": "Feasibility Study or Exploration",
+                                "source": "Writing good software engineering research papers"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Reasoning",
+                        "info": "Classifies questions that seek reasons or causes behind events or phenomena.",
+                        "id": 79,
+                        "types": [
+                            {
+                                "name": "Reason",
+                                "source": "A Non-Factoid Question-Answering Taxonomy"
+                            },
+                            {
+                                "name": "Answer Type - Reason",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Problem Solving",
+                        "info": "Focuses on questions that seek to find solutions or resolve issues.",
+                        "id": 80,
+                        "types": [
+                            {
+                                "name": "Motivation - Problem Solving",
+                                "source": "Construction of Design Science Research Questions"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Gap Spotting",
+                        "info": "Classifies questions that aim to spot gaps in existing literature or research, thereby highlighting areas needing further investigation.",
+                        "id": 81,
+                        "types": [
+                            {
+                                "name": "Motivation - Gap Spotting",
+                                "source": "Construction of Design Science Research Questions"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Problematization",
+                        "info": "Classifies questions that aim to articulate deficiencies or problems in current theories and practices suggesting a need for additional research.",
+                        "id": 82,
+                        "types": [
+                            {
+                                "name": "Motivation - Problematization",
+                                "source": "Construction of Design Science Research Questions"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Focus",
+                        "info": "Generally defines the aim of a question as the focus, which should guide the extraction of most relevant information from the Knowledge Graph",
+                        "id": 83,
+                        "types": [
+                            {
+                                "name": "Question Analysis/Focus",
+                                "source": "The question answering systems: A survey"
+                            },
+                            {
+                                "name": "Focus",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Design",
+                        "info": "Discovering improved methods for software design.",
+                        "id": 84,
+                        "types": [
+                            {
+                                "name": "Design",
+                                "source": "Selecting Empirical Methods for Software Engineering Research"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 1009,
+                "name": "Application-Specific",
+                "info": "Groups those clusters where the type is specific to an application or use case and not useful for our task.",
+                "subclusters": [
+                    {
+                        "name": "Problem Statement Identification",
+                        "info": "Defines the issue being addressed. This could be a research challenge, gap, problem, opportunity, or a specific requirement.",
+                        "id": 85,
+                        "types": [
+                            {
+                                "name": "Problem Statement",
+                                "source": "Construction of Design Science Research Questions"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Research Question Utilization",
+                        "info": "Whether a publication has used research questions at all.",
+                        "id": 86,
+                        "types": [
+                            {
+                                "name": "Usage of RQ",
+                                "source": "Construction of Design Science Research Questions"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Research Question Typology",
+                        "info": "Categorizes broad types related to the design process, product, knowledge or other types.",
+                        "id": 87,
+                        "types": [
+                            {
+                                "name": "Types of RQ",
+                                "source": "Construction of Design Science Research Questions"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Inquiry Mode Classification",
+                        "info": "Defines the activities required for the question. This can be developmental, evaluative, or a mix of both.",
+                        "id": 88,
+                        "types": [
+                            {
+                                "name": "Research Activities - Mode of Inquiry",
+                                "source": "Construction of Design Science Research Questions"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Outcome Artifact Classification",
+                        "info": "Encompasses categories such as instantiation, model, construct, and method. Additionally, it incorporates mixed categories, such as model combined with instantiation, and another combination consisting of construct, model, and instantiation.",
+                        "id": 89,
+                        "types": [
+                            {
+                                "name": "Outcome Artifacts",
+                                "source": "Construction of Design Science Research Questions"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Missing Term Resolution",
+                        "info": "Defines a question where two key parts are missing. It requires to find both a relation and a term.",
+                        "id": 90,
+                        "types": [
+                            {
+                                "name": "UnknTerm",
+                                "source": "Ripple Down Rules for question answering"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Three Term Resolution",
+                        "info": "Question either asks for the relation or concept",
+                        "id": 91,
+                        "types": [
+                            {
+                                "name": "ThreeTerm",
+                                "source": "Ripple Down Rules for question answering"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Human Relationship Inquiry",
+                        "info": "Focuses on questions that capture relationships between people",
+                        "id": 92,
+                        "types": [
+                            {
+                                "name": "Human Relations",
+                                "source": "Linguistically Motivated Question Classification"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Multi Category Classification",
+                        "info": "General type for question that span multiple categories simultaneously",
+                        "id": 93,
+                        "types": [
+                            {
+                                "name": "Multilabel",
+                                "source": "Linguistically Motivated Question Classification"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "NNP Answer Type",
+                        "info": "Uknown what this type is used for",
+                        "id": 94,
+                        "types": [
+                            {
+                                "name": "Answer Type - NNP",
+                                "source": "The Structure and Performance of an Open-Domain Question Answering System"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Resource Typed",
+                        "info": "Classifies questions that expect a single resource of a specific, predefined type as the answer.",
+                        "id": 95,
+                        "types": [
+                            {
+                                "name": "Resource Typed",
+                                "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Resource Untyped",
+                        "info": "Specifies questions that expect an answer in the form of a resource without any explicit type classification.",
+                        "id": 96,
+                        "types": [
+                            {
+                                "name": "Resource Untyped",
+                                "source": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

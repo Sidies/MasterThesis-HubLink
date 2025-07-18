@@ -1,0 +1,5 @@
+This folder contains the scripts that we used to collect the publication data from ICSA and ECSA conferences. The selection of papers was based on the bibtex file from the [Replication Package of "Evaluation Methods and Replicability of Software Architecture Research Objects"](https://ieeexplore.ieee.org/document/9779823). Using this bibtex file, we collected the papers using their DOIs from the IEEE and Springer websites using the following process:
+
+1. We collected the PDFs from the IEEE website and Springer website using the `springer_scapper` and `ieee_scrapper` scripts respectively. 
+2. Then we processed the pdfs to extract the text from them using the `fulltext_scapper` script.
+3. Then we combined the text from the papers with the metadata from the bibtex file to create a final Json file using the `combine_exports` script.

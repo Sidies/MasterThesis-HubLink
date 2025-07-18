@@ -1,0 +1,3 @@
+graph_representation,hit@10_triples,map@10_triples,mrr@10_triples,precision@10_triples,recall@10_triples,f1@10_triples,f2@10_triples,precision_triples,recall_triples,f1_triples,f2_triples,exact_match@10_triples,exact_match_triples,answer_relevancy,non_llm_string_similarity,faithfulness,semantic_similarity,instruction_following,runtime,llm_cost,llm_tokens,emissions
+single fact,0.944,0.416,0.416,0.375,0.944,0.488,0.650,0.368,0.944,0.476,0.628,0.376,0.369,0.655,0.479,0.467,0.832,0.889,77.124,0.042,37802.222,0.002
+multi fact,0.462,0.285,0.510,0.290,0.461,0.343,0.398,0.231,0.733,0.310,0.429,0.290,0.232,0.560,0.235,0.443,0.753,0.625,189.845,0.096,87719.250,0.004

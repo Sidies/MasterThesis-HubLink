@@ -1,0 +1,3 @@
+semi-typed,hit@10_triples,map@10_triples,mrr@10_triples,precision@10_triples,recall@10_triples,f1@10_triples,f2@10_triples,precision_triples,recall_triples,f1_triples,f2_triples,exact_match@10_triples,exact_match_triples,answer_relevancy,non_llm_string_similarity,faithfulness,semantic_similarity,instruction_following,runtime,llm_cost,llm_tokens,emissions
+True,0.567,0.328,0.512,0.323,0.566,0.392,0.469,0.258,0.763,0.352,0.484,0.323,0.259,0.559,0.276,0.434,0.779,0.632,178.560,0.090,81449.517,0.004
+False,0.456,0.268,0.488,0.273,0.456,0.323,0.379,0.233,0.747,0.302,0.414,0.273,0.233,0.583,0.245,0.457,0.743,0.675,177.229,0.092,83465.759,0.004

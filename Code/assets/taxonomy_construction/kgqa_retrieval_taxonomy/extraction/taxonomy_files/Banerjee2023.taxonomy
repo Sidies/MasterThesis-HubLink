@@ -1,0 +1,48 @@
+/* Key: Banerjee2023
+ * Authors: Debayan Banerjee, Sushil Awale, Ricardo Usbeck, Chris Biemann
+ * Title: DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph
+ * Venue: . CEUR Workshop Proceedings 
+ * Classification Type: KGQA (scientific (DBLP))
+ * DOI: 2303.13351v3
+ * URL: https://doi.org/10.48550/arXiv.2303.13351
+ * References:
+ * Jaradeh2020 10.48550/arXiv.2006.01527 Question answering on scholarly knowledge 
+ * Kwiatkowski2019 10.1162/tacl_a_00276 Natural questions: a benchmark for question answering research
+ * Yih2016 10.18653/v1/P16-2033 The Value of Semantic Parse Labeling for Knowledge Base Question Answering
+ * Dubey2019 10.1007/978-3-030-30796-7_5 LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and DBpedia
+ * Gu2021 10.1145/3442381.3449992 Three Levels of Generalization for Question Answering on Knowledge Bases
+ * Citations:
+ * Taffa2023 10.48550/ARXIV.2311.09841 Leveraging LLMs in Scholarly Knowledge Graph Question Answering
+ * Taffa2024 10.48550/arXiv.2412.02788 Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset
+ */ 
+ 
+Types of Questions{ /* 10 different query types */
+ 	Single fact, /* These questions can be answered using a single fact. For example, “What year was ‘SIRA: SNR-Aware Intra-Frame Rate Adaptation’ published?”*/
+ 	Multiple facts, /*These questions require connecting two or more facts to answer. For
+example, “In SIGCSE, which paper written by Darina Dicheva with Dichev, Christo was
+published?” */
+ 	Boolean, /*These questions answer where a given fact is true or false. We can also add
+negation keywords to negate the questions. For example, “Does Szeider, Stefan have an
+ORCID?” */
+ 	Negation, /*These questions require to negate the answer to the Boolean questions. For
+example, “Did M. Hachani not publish in ICCP?” */
+ 	Double negation, /*These questions require to negate the Boolean question answers twice
+which results. For example, “Wasn’t the paper ‘Multi-Task Feature Selection on Multiple
+Networks via Maximum Flows’ not published in 2014?” */
+ 	Double intent, /*questions poses two user intentions, usually about the same subject. For
+example, “In which venue was the paper ‘Interactive Knowledge Distillation for image
+classification’ published and when? */
+ 	Union, /*questions cover a single intent but for multiple subjects at the same time. For
+example, “List all the papers that Pitas, Konstantinos published in ICML and ISCAS.”
+ 	 */
+ 	Count, /* These questions pertain to the count of occurrence of facts. For example, “Count
+the authors of ‘Optimal Symmetry Breaking for Graph Problems’ who have Carnegie
+Mellon University as their primary affiliation.” */
+ 	Superlative-Comparative, /* Superlative questions ask about the maximum and minimum
+for a subject and comparative questions compare values between two subjects. We group
+both types under one group. For example, “Who has published the most papers among
+the authors of ‘k-Pareto optimality for many-objective genetic optimization’?” */
+ 	Disambiguation /*questions requires identifying the correct subject in the question. For
+example, “Which author with the name Li published the paper about Buck power converters?” */
+ }
+

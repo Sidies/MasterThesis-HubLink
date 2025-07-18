@@ -1,0 +1,115 @@
+{
+    "name": "pipeline_75b43e694a5810f900efcbd7e64a69bd",
+    "additional_params": {},
+    "pipes": [
+        {
+            "name": "pre_retrieval_augmentation",
+            "additional_params": {},
+            "type": "pre_retrieval_processing",
+            "pre_technique": "augmentation",
+            "llm_config": {
+                "name": "openai_gpt-4o-mini_tmp0.0_maxt-1",
+                "additional_params": {},
+                "endpoint": "OpenAI",
+                "name_model": "gpt-4o-mini",
+                "temperature": 0.0,
+                "max_tokens": -1,
+                "reasoning_effort": null
+            },
+            "enabled": false
+        },
+        {
+            "name": "retrieval_config",
+            "additional_params": {
+                "width": 10,
+                "max_depth": 7,
+                "retain_threshold": 10,
+                "n_retain_entity": 10,
+                "technique": "llm",
+                "bidirectional": true,
+                "replace_contribution_name": false
+            },
+            "type": "kg_retrieval",
+            "retriever_type": "tog",
+            "llm_config": {
+                "name": "openai_gpt-4o-mini_tmp0.0_maxt-1_reasoningNone",
+                "additional_params": {},
+                "endpoint": "OpenAI",
+                "name_model": "gpt-4o-mini",
+                "temperature": 0.0,
+                "max_tokens": -1,
+                "reasoning_effort": null
+            },
+            "knowledge_graph_config": {
+                "name": "orkg_merged_ecsa_icsa.json_jsonpublicationloader_limit-1",
+                "additional_params": {
+                    "contribution_building_blocks": {
+                        "Paper Class 2": [
+                            "paper_class"
+                        ],
+                        "Research Level 2": [
+                            "research_level"
+                        ],
+                        "First Research Object 2": [
+                            "first_research_object"
+                        ],
+                        "Second Research Object 2": [
+                            "second_research_object"
+                        ],
+                        "Validity 2": [
+                            "validity"
+                        ],
+                        "Evidence 2": [
+                            "evidence"
+                        ]
+                    },
+                    "force_cache_update": false,
+                    "force_publication_update": false,
+                    "subgraph_root_entity_id": "R659055",
+                    "orkg_base_url": "https://sandbox.orkg.org"
+                },
+                "graph_type": "orkg",
+                "dataset_config": {
+                    "name": "merged_ecsa_icsa.json_jsonpublicationloader_limit-1",
+                    "additional_params": {},
+                    "file_name": "merged_ecsa_icsa.json",
+                    "loader": "JsonPublicationLoader",
+                    "loader_limit": -1
+                },
+                "extraction_llm": null,
+                "extraction_context_size": 4000,
+                "extraction_chunk_repetitions": 2
+            }
+        },
+        {
+            "name": "post_retrieval_processing",
+            "additional_params": {},
+            "type": "post_retrieval_processing",
+            "post_technique": "reranking",
+            "llm_config": {
+                "name": "openai_gpt-4o-mini_tmp0.0_maxt-1",
+                "additional_params": {},
+                "endpoint": "OpenAI",
+                "name_model": "gpt-4o-mini",
+                "temperature": 0.0,
+                "max_tokens": -1,
+                "reasoning_effort": null
+            },
+            "enabled": false
+        },
+        {
+            "name": "generation_openai_gpt-4o-mini_tmp0.0_maxt-1_reasoningNone",
+            "additional_params": {},
+            "type": "generation",
+            "llm_config": {
+                "name": "openai_gpt-4o-mini_tmp0.0_maxt-1_reasoningNone",
+                "additional_params": {},
+                "endpoint": "OpenAI",
+                "name_model": "gpt-4o-mini",
+                "temperature": 0.0,
+                "max_tokens": -1,
+                "reasoning_effort": null
+            }
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+/* Key: Allam2016
+ * Authors: Allam, Ali and Haggag, Mohamed
+ * Title: The Question Answering Systems: A Survey
+ * Classification Type: General
+ * DOI:
+ * URL: https://www.semanticscholar.org/paper/The-Question-Answering-Systems-%3A-A-Survey-.-Allam-Haggag/b2944a85b9cb428a28e30bdd236471e712667e91
+ * References:
+ * Li2002 https://aclanthology.org/C02-1150 Learning Question Classifiers
+ * Hermjakob2001 10.3115/1117856.1117859 Parsing and Question Classification for Question Answering
+ * Zhang2003 10.1145/860435.860443 Question Classification using Support Vector Machines
+ * Citations: 
+ * Zhu2021 10.48550/arXiv.2101.00774 Retrieving and reading: A comprehensive survey on open-domain question answering
+ */ 
+
+
+Question Analysis/Focus,
+Question Type,
+Answer Type
+

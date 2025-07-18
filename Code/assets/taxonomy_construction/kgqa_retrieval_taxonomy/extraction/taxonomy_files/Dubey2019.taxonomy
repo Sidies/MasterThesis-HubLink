@@ -1,0 +1,36 @@
+/* Key: Dubey2019
+ * Authors: Mohnish Dubey, Debayan Banerjee, Abdelrahman Abdelkawi & Jens Lehmann 
+ * Title: LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and DBpedia
+ * Venue: The Semantic Web – ISWC 2019 
+ * Classification Type: KGQA (non-scientific)
+ * DOI: 10.1007/978-3-030-30796-7_5
+ * URL: https://link.springer.com/chapter/10.1007/978-3-030-30796-7_5 
+ * References: 
+ * Bordes2015 arXiv:1506.02075 Large-scale simple question answering with memory networks.
+ * Dubey2016 10.1007/978-3-319-34129-3_19 AskNow: A framework for natural language query formalization in SPARQL
+ * Usbeck2018 https://api.semanticscholar.org/CorpusID:53220210 9th Question Answering over Linked Data challenge (QALD-9)
+ * Serban2016 10.48550/arXiv.1603.06807 Generating factoid questions with recurrent neural networks: the 30M factoid question-answer corpus
+ * Trivedi2017 10.1007/978-3-319-68204-4_22 LC-QuAD: a corpus for complex question answering over knowledge graphs
+ * Zafar2018 10.1007/978-3-319-93417-4_46 Formal query generation for question answering over knowledge bases
+ * Citations:
+ * Auer2023 10.1038/s41598-023-33607-z The sciqa scientific question answering benchmark for scholarly knowledge
+ * Chakraborty2019 10.48550/arXiv.1907.09361 Introduction to neural network based approaches for question answering over knowledge graphs
+ */
+
+ 
+Types of Questions {
+	Single Fact, /* These queries are over a single fact(S-P-O). The query could return subject or object as answer. Example: “Who is the screenwriter of Mr. Bean?” */
+	Single Fact With Type, /* This template brings type of constraint in single triple query. Example: “Billie Jean was on the tracklist of which studio album?” */
+	Multi-fact, /* These queries are over two connected facts in Wikidata and have six variations to them. Example: “What is the name of the sister city tied to Kansas City, which is located in the county of Seville Province?” */
+	Fact with Qualifiers, /* Qualifiers are additional property for a fact stored in KG. LC-QuAD 2.0 utilise qualifiers to make more informative questions. Such as “What is the venue of Barack Obama’s marriage ?” */
+	Two Intention, /* A new category of query in KGQA, where the user question poses two intentions. This set of questions could also utilise the qualifier information as mentioned above and a two intention question could be generated, such as “Who is the wife of Barack Obama and where did he got married?” or “When and where did Barack Obama get married to Michelle Obama?” */
+	Boolean, /* In boolean question, user intends to know if the given fact is true or false. LC-QuAD 2.0 not only generates questions which returns true by graph matching, but also generate false facts so that boolean question with “false” answers could be generated. We also use predicates that returns a number as an object, so that boolean questions regarding numbers could be generated. Example: “Did Breaking Bad have 5 seasons?” */
+	Count, /* This set of questions uses the keyword “COUNT” in SPARQL, and performs count over the number of times a certain predicate is used with a entity or object. Example “What is the number of Siblings of Edward III of England ?” */
+	Ranking, /* By using aggregates, we generate queries where the user intends an entity with maximum or minimum value of a certain property. We have three variations in this set of questions. Example : “what is the binary star which has the highest color index?” */
+	String Operation, /* By applying string operations in SPARQL we generated questions where the user asks about an entity either at word level or character level. Example : “Give me all the Rock bands that starts with letter R ?” */
+	Temporal Aspect /* This dataset covers temporal property in the question space and also in the answer space. A lot of the times facts with qualifiers poses temporal information. Example: “With whom did Barack Obama get married in 1992 ?” */
+}
+
+
+
+

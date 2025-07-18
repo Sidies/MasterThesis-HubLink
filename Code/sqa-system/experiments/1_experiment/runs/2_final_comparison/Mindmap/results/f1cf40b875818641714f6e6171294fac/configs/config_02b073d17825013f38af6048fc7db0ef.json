@@ -1,0 +1,85 @@
+{
+    "name": "pipeline_02b073d17825013f38af6048fc7db0ef",
+    "additional_params": {},
+    "pipes": [
+        {
+            "name": "retrieval_config",
+            "additional_params": {
+                "embedding_config": {
+                    "additional_params": {},
+                    "endpoint": "OpenAI",
+                    "name_model": "text-embedding-3-large"
+                },
+                "final_paths_to_keep": 10,
+                "neighbor_entities_to_keep": 10,
+                "shortest_paths_to_keep": 10,
+                "max_workers": 16
+            },
+            "type": "kg_retrieval",
+            "retriever_type": "mindmap",
+            "llm_config": {
+                "name": "openai_o3-mini_tmpNone_maxt-1_reasoninglow",
+                "additional_params": {},
+                "endpoint": "OpenAI",
+                "name_model": "o3-mini",
+                "temperature": null,
+                "max_tokens": -1,
+                "reasoning_effort": "low"
+            },
+            "knowledge_graph_config": {
+                "name": "orkg_merged_ecsa_icsa.json_jsonpublicationloader_limit-1",
+                "additional_params": {
+                    "contribution_building_blocks": {
+                        "Paper Class 2": [
+                            "paper_class"
+                        ],
+                        "Research Level 2": [
+                            "research_level"
+                        ],
+                        "First Research Object 2": [
+                            "first_research_object"
+                        ],
+                        "Second Research Object 2": [
+                            "second_research_object"
+                        ],
+                        "Validity 2": [
+                            "validity"
+                        ],
+                        "Evidence 2": [
+                            "evidence"
+                        ]
+                    },
+                    "force_cache_update": false,
+                    "force_publication_update": false,
+                    "subgraph_root_entity_id": "R659055",
+                    "orkg_base_url": "https://sandbox.orkg.org"
+                },
+                "graph_type": "orkg",
+                "dataset_config": {
+                    "name": "merged_ecsa_icsa.json_jsonpublicationloader_limit-1",
+                    "additional_params": {},
+                    "file_name": "merged_ecsa_icsa.json",
+                    "loader": "JsonPublicationLoader",
+                    "loader_limit": -1
+                },
+                "extraction_llm": null,
+                "extraction_context_size": 4000,
+                "extraction_chunk_repetitions": 2
+            }
+        },
+        {
+            "name": "generation_openai_gpt-4o-mini_tmp0.0_maxt-1_reasoningNone",
+            "additional_params": {},
+            "type": "generation",
+            "llm_config": {
+                "name": "openai_gpt-4o-mini_tmp0.0_maxt-1_reasoningNone",
+                "additional_params": {},
+                "endpoint": "OpenAI",
+                "name_model": "gpt-4o-mini",
+                "temperature": 0.0,
+                "max_tokens": -1,
+                "reasoning_effort": null
+            }
+        }
+    ]
+}

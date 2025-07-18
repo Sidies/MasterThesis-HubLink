@@ -1,0 +1,60 @@
+/* Key: Dillon1984
+ * Authors: J.T. Dillon
+ * Title: "The Classification of Research Questions"
+ * Venue: Review of Educational Research, 54(3), 327-361. Sage Journals 
+ * Classification Type: Research Questions (General)
+ * DOI: 10.3102/00346543054003327
+ * URL: https://journals.sagepub.com/doi/10.3102/00346543054003327
+ * References: /
+ * Citations: /
+ */
+
+Zero Order {
+	Rhetorical
+},
+
+First order - Properties {
+	Existence - affirmation-negation,
+ 	Instance - identification,
+ 	Substance - definition {
+		Nature,
+		Label,
+		Meaning
+	},
+	Character- description,
+	Function - application {
+		Modes,
+		Uses,
+		Means
+	},
+	Rationale - explication
+},
+
+Second order - Comparisons {
+ 	Concomitance {
+ 		Conjunction,
+		Disjunction
+ 	},
+	Equivalence,
+	Difference {
+		Disproportion,
+		Subordination
+	}	
+},
+
+Third order - Contingencies {
+	Relation,
+ 	Correlation,
+	Conditionality {
+		Consequence,
+		Antecedence
+	},
+	Biconditionality /* (causality) */ 	
+},
+
+Extra order - Other {
+	Deliberation,
+	Unspecified,
+	Unclear
+}
+

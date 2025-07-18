@@ -1,0 +1,23 @@
+/* Key: Taffa2024
+ * Authors: Taffa, Tilahun Abedissa and Banerjee, Debayan and Assabie, Yaregal and Usbeck, Ricardo
+ * Title: "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset"
+ * Venue: arXiv. 2024.
+ * Classification Type: KGQA dataset
+ * DOI: 10.48550/arXiv.2412.02788
+ * URL: http://arxiv.org/abs/2412.02788
+ * References: 
+ * Auer2023 10.1038/s41598-023-33607-z The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge
+ * Banerjee2023 arXiv:2303.13351 Dblp-quad: A question answering dataset over the DBLP scholarly knowledge graph
+ * Feng2022 10.18653/v1/2022.findings-naacl.12 Multi-hop open-domain question answering over structured and unstructured knowledge
+ * Jaraedh2020 10.1007/978-3-030-54956-5_2 Question Answering on Scholarly Knowledge Graphs
+ * Taffa2023 10.48550/ARXIV.2311.09841 Leveraging llms in scholarly knowledge graph question answering
+ * Citations: /
+ */
+
+Bibliometric Numbers,
+Biographical Information,
+Organization,
+Location,
+Date,
+Research Works,
+Other

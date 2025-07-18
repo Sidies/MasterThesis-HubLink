@@ -1,0 +1,28 @@
+Graph Representation - Single Fact
+Graph Representation - Multi Fact
+Answer Type - Named Entity
+Answer Type - Description
+Answer Type - Temporal
+Answer Type - Quantitative
+Answer Type - Boolean
+Answer Type - Other Type
+Answer Format - Simple
+Answer Format - Explanatory
+Answer Format - Enumerative
+Answer Format - Other Format
+Question Type - Negation
+Question Type - Relationship
+Question Type - Superlative
+Question Type - Counting
+Question Type - Ranking
+Question Type - Comparison
+Question Type - Multiple Intentions
+Question Type - Temporal
+Question Type - Aggregation
+Answer Credibility - Objective
+Answer Credibility - Subjective
+Question Goal - Reasoning
+Question Goal - Problem Solving
+Question Goal - Problematization
+Question Goal - Improvement
+Question Goal - Prediction

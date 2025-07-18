@@ -1,0 +1,4 @@
+data/cache/novel_retriever/94e4d53661c9651e0729b322248fc577_aa75df9c5f9e58b29809a96d6b00bec5/chroma.sqlite3 filter=lfs diff=lfs merge=lfs -text
+data/cache/novel_retriever/94e4d53661c9651e0729b322248fc577_aa75df9c5f9e58b29809a96d6b00bec5/9a4f44b7-2be6-4103-9fcf-df37e063bdd6/data_level0.bin filter=lfs diff=lfs merge=lfs -text
+*.sqlite3 filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,42 @@
+/* Key: Shaw2003
+ * Authors: Mary Shaw
+ * Title: "Writing good software engineering research papers"
+ * Venue: 25th International Conference on Software Engineering (ICSE2003)
+ * Classification Type: Research Questions (Software Engineering)
+ * DOI: 10.1109/ICSE.2003.1201262
+ * URL: https://ieeexplore.ieee.org/document/1201262
+ * References: /
+ * Citations:
+ * Stol2018 10.1145/3241743 The ABC of Software Engineering Research
+ * Theisen2017 10.1109/ICSE-C.2017.51 Writing Good Software Engineering Research Papers: Revisited
+ */
+
+Type of Questions {
+	Method or means of development, /* How can we do/create/modify/evolve (or automate doing) X? What is a better way to do/create/modify/evolve X? */
+	Method for analysis or evaluation, /* How can I evaluate the quality/correctness of X? How do I choose between X and Y? */
+	Design - evaluation - or analysis of a particular instance, /* How good is Y? What is property X of artifact/method Y? What is a (better) design, implementation, maintenance, or adaptation for application X? How does X compare to Y? What is the current state of X / practice of Y? */
+	Generalization or characterization, /* Given X, what will Y (necessarily) be? What, exactly, do we mean by X? What are its important characteristics? What is a good formal/empirical model for X? What are the varieties of X, how are they related? */
+	Feasibility study or exploration /* Does X even exist, and if so what is it like? Is it possible to accomplish X at all? */	
+},
+
+Type of Results {
+	Procedure or technique, /* New or better way to do some task, such as design, implementation, maintenance, measurement, evaluation, selection from alternatives; 
+	 * includes techniques for implementation, representation, management, and analysis; 
+	 * a technique should be operational—not advice or guidelines, but a procedure */
+	Qualitative or descriptive model, /* Structure or taxonomy for a problem area; architectural style, framework, or design pattern;
+non-formal domain analysis, well-grounded checklists, well-argued informal generalizations, guidance for integrating other results, well-organized interesting observations */
+	Empirical model, /* Empirical predictive model based on observed data */
+	Analytic model, /* Structural model that permits formal analysis or automatic manipulation */
+	Tool or notation, /* Implemented tool that embodies a technique; formal language to support a technique or model (should have a calculus, semantics, or other basis for computing or doing inference) */
+	Specific solution or prototype or answer or judgment, /* Solution to application problem that shows application of SE principles – may be design, prototype, or full implementation; careful analysis of a system or its development, result of a specific analysis, evaluation, or compariso */
+	Report /* Interesting observations, rules of thumb, but not sufficiently general or systematic to rise to the level of a descriptive model. */
+},
+
+Type of Validation {
+	Analysis,
+	Evaluation,
+	Experience,
+	Example,
+	Persuasion,
+	Blatant assertion /* No serious attempt to evaluate result. This is highly unlikely to be acceptable */
+}

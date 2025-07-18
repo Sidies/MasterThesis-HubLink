@@ -1,0 +1,3 @@
+condition_type,hit@10_triples,map@10_triples,mrr@10_triples,precision@10_triples,recall@10_triples,f1@10_triples,f2@10_triples,precision_triples,recall_triples,f1_triples,f2_triples,exact_match@10_triples,exact_match_triples,answer_relevancy,non_llm_string_similarity,faithfulness,semantic_similarity,instruction_following,runtime,llm_cost,llm_tokens,emissions
+named entity,0.550,0.313,0.516,0.315,0.550,0.380,0.453,0.260,0.769,0.343,0.467,0.315,0.261,0.582,0.274,0.473,0.767,0.669,167.720,0.089,80559.850,0.004
+"named entity, temporal",0.378,0.244,0.445,0.241,0.377,0.282,0.325,0.195,0.708,0.270,0.388,0.241,0.195,0.528,0.216,0.345,0.743,0.595,214.538,0.098,89170.432,0.005

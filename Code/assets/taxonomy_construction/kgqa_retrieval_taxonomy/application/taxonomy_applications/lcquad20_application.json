@@ -1,0 +1,172 @@
+[
+    {
+      "research_question": "How well do measures for assessing coupling-related decision options and their associated tenets perform?",
+      "title": "Assessing Architecture Conformance to Coupling-Related Patterns and Practices in Microservices",
+      "doi": "10.1007/978-3-030-58923-3_1",
+      "annotations": [
+        "multi-fact",
+        "two intention"
+      ]
+    },
+    {
+      "research_question": "Which architectural patterns are considered for architecting Android apps?",
+      "title": "Guidelines for Architecting Android Apps: A Mixed-Method Empirical Study",
+      "doi": "10.1109/ICSA.2019.00023",
+      "annotations": [
+        "multi-fact"
+      ]
+    },
+    {
+      "research_question": "What is the advantage of Butterfly Space modeling in identifying performance optimization opportunities compared to dynamic profiling?",
+      "title": "Butterfly Space: An Architectural Approach for Investigating Performance Issues",
+      "doi": "10.1109/ICSA47634.2020.00027",
+      "annotations": [
+        "multi-fact"
+      ]
+    },
+    {
+      "research_question": "How does this time vary between the types of queries?",
+      "title": "REST vs GraphQL: A Controlled Experiment",
+      "doi": "10.1109/ICSA47634.2020.00016",
+      "annotations": [
+        "multi-fact"
+      ]
+    },
+    {
+      "research_question": "RQ1: does the DICER tool cover the needs of the considered industrial use cases?",
+      "title": "Infrastructure-as-Code for Data-Intensive Architectures: A Model-Driven Development Approach",
+      "doi": "10.1109/ICSA.2018.00025",
+      "annotations": [
+        "multi-fact",
+        "boolean"
+      ]
+    },
+    {
+      "research_question": "If the seed method of a Butterfly Space contains performance problems, how likely the other methods in the space also contain performance problems? In particular, how does this compare to butterfly spaces whose seeds are free of performance issues?",
+      "title": "Butterfly Space: An Architectural Approach for Investigating Performance Issues",
+      "doi": "10.1109/ICSA47634.2020.00027",
+      "annotations": [
+        "multi-fact",
+        "two intention"
+      ]
+    },
+    {
+      "research_question": "Does DDS meet automotive requirements?",
+      "title": "Data-Centric Communication and Containerization for Future Automotive Software Architectures",
+      "doi": "10.1109/ICSA.2018.00016",
+      "annotations": [
+        "boolean",
+        "multi-fact"
+      ]
+    },
+    {
+      "research_question": "RQ1 What is the impact of using different SP model configurations on the client services quality attributes?",
+      "title": "Model-Based Analysis of Microservice Resiliency Patterns",
+      "doi": "10.1109/ICSA47634.2020.00019",
+      "annotations": [
+        "multi-fact"
+      ]
+    },
+    {
+      "research_question": "How long does it take for ADABTics to make a BDCA system adapt to the changes (i.e., adaptation time)?",
+      "title": "An Architecture-Driven Adaptation Approach for Big Data Cyber Security Analytics",
+      "doi": "10.1109/ICSA.2019.00013",
+      "annotations": [
+        "temporal aspect",
+        "multi-fact"
+      ]
+    },
+    {
+      "research_question": "How does this time vary depending on the participants experience in REST and GraphQL?",
+      "title": "REST vs GraphQL: A Controlled Experiment",
+      "doi": "10.1109/ICSA47634.2020.00016",
+      "annotations": [
+        "multi-fact"
+      ]
+    },
+    {
+      "research_question": "Is the accuracy of the incremental calibrated PM stable over the incremental evolution?",
+      "title": "Incremental Calibration of Architectural Performance Models with Parametric Dependencies",
+      "doi": "10.1109/ICSA47634.2020.00011",
+      "annotations": [
+        "boolean",
+        "multi-fact"
+      ]
+    },
+    {
+      "research_question": "What dimensions impact how interfaces in agile automotive contexts are changed and how are the dimensions related?",
+      "title": "On Interfaces to Support Agile Architecting in Automotive: An Exploratory Case Study",
+      "doi": "10.1109/ICSA.2019.00025",
+      "annotations": [
+        "multi-fact",
+        "two intention"
+      ]
+    },
+    {
+      "research_question": "How to guide developers when architecting Android apps?",
+      "title": "Guidelines for Architecting Android Apps: A Mixed-Method Empirical Study",
+      "doi": "10.1109/ICSA.2019.00023",
+      "annotations": [
+        "multi-fact"
+      ]
+    },
+    {
+      "research_question": "How to reinforce the participation in DIIs, and support a stable supply and demand in DDIs?",
+      "title": "A Blockchain-Based Micro Economy Platform for Distributed Infrastructure Initiatives",
+      "doi": "10.1109/ICSA.2018.00010",
+      "annotations": [
+        "multi-fact",
+        "two intention"
+      ]
+    },
+    {
+      "research_question": "Q1 Do the components introduced by COCOS add overhead to Kubernetes?",
+      "title": "COCOS: A Scalable Architecture for Containerized Heterogeneous Systems",
+      "doi": "10.1109/ICSA47634.2020.00018",
+      "annotations": [
+        "multi-fact",
+        "boolean"
+      ]
+    },
+    {
+      "research_question": "What software architecture can support a Continuous Experimentation decision process on a complex cyber-physical systems such as an automotive system?",
+      "title": "Continuous Experimentation for Automotive Software on the Example of a Heavy Commercial Vehicle in Daily Operation",
+      "doi": "10.1007/978-3-030-58923-3_5",
+      "annotations": [
+        "multi-fact"        
+      ]
+    },
+    {
+      "research_question": "RQ2: are the DICER UML profile and its consistency checking feature useful and effective for modeling data-intensive architectures?",
+      "title": "Infrastructure-as-Code for Data-Intensive Architectures: A Model-Driven Development Approach",
+      "doi": "10.1109/ICSA.2018.00025",
+      "annotations": [
+        "multi-fact",
+        "two intention"
+      ]
+    },
+    {
+      "research_question": "RQ2 Compared to the best SP model configuration, what is the impact of using different RP model configurations on the client services quality attributes?",
+      "title": "Model-Based Analysis of Microservice Resiliency Patterns",
+      "doi": "10.1109/ICSA47634.2020.00019",
+      "annotations": [
+        "multi-fact"
+      ]
+    },
+    {
+      "research_question": "How much can the adaptive instrumentation reduce the monitoring overhead?",
+      "title": "Incremental Calibration of Architectural Performance Models with Parametric Dependencies",
+      "doi": "10.1109/ICSA47634.2020.00011",
+      "annotations": [
+        "multi-fact"
+      ]
+    },
+    {
+      "research_question": "What is a minimal communication model need for tracking cyclic dependencies on API operation level?",
+      "title": "Identifying Domain-Based Cyclic Dependencies in Microservice APIs Using Source Code Detectors",
+      "doi": "10.1007/978-3-030-86044-8_15",
+      "annotations": [
+        "multi-fact"
+      ]
+    }
+  ]

@@ -1,0 +1,26 @@
+/* Key: Mikhailan2009
+ * Authors: Alexander Mikhailian, Tiphaine Dalmas, Rani Pinchuk
+ * Title: Learning foci for Question Answering over Topic Maps
+ * Venue: ACL | IJCNLP
+ * Classification Type: General 
+ * DOI: --
+ * URL: https://aclanthology.org/P09-2082/
+ * References: 
+ * Li2002 https://aclanthology.org/C02-1150 Learning question classifiers.
+ * Li2006 10.1017/S1351324905003955 Learning Question Classifiers: The Role of Semantic Information
+ * Ferret2001 https://api.semanticscholar.org/CorpusID:33683130 Finding an Answer Based on the Recognition of the Question Focus
+ * Citations: 
+ * Auer2023 10.1038/s41598-023-33607-z The sciqa scientific question answering benchmark for scholarly knowledge
+ * Chernov2015 https://aclanthology.org/W15-1809 Linguistically motivated question classification
+ */
+
+AP extraction, /* Asking Point  */
+
+EAT extraction { /* Expected Answer Type  */
+	HUMAN,
+	NUMERIC,
+	TIME,
+	LOCATION,
+	DEFINITION,
+	OTHER
+}

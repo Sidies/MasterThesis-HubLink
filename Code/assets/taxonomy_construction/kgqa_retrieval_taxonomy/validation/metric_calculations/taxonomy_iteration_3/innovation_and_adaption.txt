@@ -1,0 +1,2 @@
+innovation: 0.22 (8/37)
+adaptation: 0.78 (29/37)

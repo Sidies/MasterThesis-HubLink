@@ -1,0 +1,146 @@
+9%|▉         | 4/44 [00:13<02:06,  3.16s/it]Line: 4, Found grammar issues in the question
+Original Question: In which publication year has the paper with the title 'Continuous Architecture: Towards the Goldilocks Zone and Away from Vicious Circles' been published in comparison to the publication year of the paper with the title 'Designing Robust Software Systems through Parametric Markov Chain Synthesis'?
+Corrected Question: In which publication year was the paper with the title 'Continuous Architecture: Towards the Goldilocks Zone and Away from Vicious Circles' published in comparison to the publication year of the paper with the title 'Designing Robust Software Systems through Parametric Markov Chain Synthesis'?
+Difference: ['was']
+
+ 11%|█▏        | 5/44 [00:16<01:57,  3.00s/it]Line: 5, Found inconsistency between question and answer
+Original Answer: Konstantinos Plakidas has published three papers in the following years: 2021, 2020, and 2019. Therefore, the distribution of papers published per year is as follows: one paper in 2021, one paper in 2020, and one paper in 2019, resulting in a total of three papers over three years, which is one paper per year.
+Corrected Answer: Konstantinos Plakidas published one paper per publication year.
+Difference: ['publication']
+
+ 18%|█▊        | 8/44 [00:24<01:43,  2.87s/it]Line: 8, Found inconsistency between question and answer
+Original Answer: The paper has two threats to validity: internal validity and construct validity.
+Corrected Answer: Two.
+Difference: ['Two.']
+
+ 20%|██        | 9/44 [00:27<01:44,  2.98s/it]Line: 9, Found inconsistency between question and answer
+Original Answer: The properties evaluated in the paper with the title 'Monolith Migration Complexity Tuning Through the Application of Microservices Patterns', ranked in descending alphabetical order, are: 1. Satisfaction and 2. Functional suitability.
+Corrected Answer: Satisfaction, Functional suitability.
+Difference: ['Satisfaction,']
+
+ 27%|██▋       | 12/44 [00:39<01:58,  3.72s/it]Line: 12, Found inconsistency between question and answer
+Original Answer: The paper with the title 'Designing Robust Software Systems through Parametric Markov Chain Synthesis' is the only paper that evaluates the property robustness.
+Corrected Answer: The paper 'Designing Robust Software Systems through Parametric Markov Chain Synthesis' evaluates the property robustness.
+Difference: []
+
+ 36%|███▋      | 16/44 [00:54<01:56,  4.16s/it]Line: 16, Found grammar issues in the question
+Original Question: How many papers that apply the evaluation method Data Science have not used input data compared to those that state their input data is made available?
+Corrected Question: How many papers that apply the evaluation method Data Science have not used input data compared to those that state their input data is available?
+Difference: []
+
+ 39%|███▊      | 17/44 [00:57<01:45,  3.91s/it]Line: 17, Found inconsistency between question and answer
+Original Answer: The paper 'EASIER: An Evolutionary Approach for Multi-objective Software ArchItecturE Refactoring' investigates the research object Architecture Optimization Method and does not have any input data available. Additionally, the paper 'Dynamic Updates of Virtual PLCs Deployed as Kubernetes Microservices' also investigates the research object Architecture Optimization Method without any input data. Lastly, the paper 'Modeling of Parametric Dependencies for Performance Prediction of Component-Based Software Systems at Run-Time' also utilizes the research object Architecture Optimization Method without any input data.
+Corrected Answer: The papers 'EASIER: An Evolutionary Approach for Multi-objective Software ArchItecturE Refactoring', 'Dynamic Updates of Virtual PLCs Deployed as Kubernetes Microservices', and 'Modeling of Parametric Dependencies for Performance Prediction of Component-Based Software Systems at Run-Time' investigate the research object Architecture Optimization Method and indicate that no input data was used.
+Difference: ['was', 'that', 'investigate', "Refactoring',", 'papers', 'used.', 'no', 'indicate', "Microservices',"]
+
+ 43%|████▎     | 19/44 [01:07<01:46,  4.26s/it]Line: 19, Found grammar issues in the question
+Original Question: How are the papers that investigate the research object Technical Debt distributed by their publication year?
+Corrected Question: How are the papers that investigate the research object of Technical Debt distributed by their publication year?
+Difference: ['of']
+
+ 45%|████▌     | 20/44 [01:11<01:40,  4.20s/it]Line: 20, Found grammar issues in the question
+Original Question: What are the research objects investigated in papers of the paper class philosophical paper?
+Corrected Question: What are the research objects investigated in papers of the philosophical paper class?
+Difference: ['class?']
+
+Line: 20, Found grammar issues in the answer
+Original Answer: The research objects investigated in papers of the philosophical paper class are Architecture Decision Making.
+Corrected Answer: The research objects investigated in papers of the philosophical paper class are architecture decision making.
+Difference: ['making.', 'decision', 'architecture']
+
+Line: 20, Found inconsistency between question and answer
+Original Answer: The research objects investigated in papers of the philosophical paper class are Architecture Decision Making.
+Corrected Answer: The research objects investigated in papers of the philosophical paper class are architecture decisions.
+Difference: ['decisions.', 'architecture']
+
+ 50%|█████     | 22/44 [01:18<01:21,  3.71s/it]Line: 21, found typing issues in the question template
+Original Question Template: What are the research objects that are investigated in papers that apply the evaluation method [evaluation method]?
+Corrected Question Template: What are the research objects that are investigated in papers that apply the evaluation method [evaluation method name]?
+Difference: ['name]?']
+
+ 52%|█████▏    | 23/44 [01:21<01:11,  3.42s/it]Line: 23, Found inconsistency between question and answer
+Original Answer: Among those publications that evaluate the Reliability property, the evaluation methods that have been applied, ranked in descending alphabetical order, are: Technical Experiment, Field Experiment, Case Study, and Argumentation.
+Corrected Answer: Among those papers that evaluate the property Reliability, the evaluation methods that have been applied, ranked in descending alphabetical order, are: Technical Experiment, Field Experiment, Case Study, and Argumentation.
+Difference: ['property', 'Reliability,', 'papers']
+
+ 59%|█████▉    | 26/44 [01:32<01:03,  3.51s/it]Line: 25, found typing issues in the question template
+Original Question Template: What are the evaluation properties that are evaluated in papers that investigate the research object [research object name] without adhering to a evaluation guideline?
+Corrected Question Template: What are the evaluation properties that are evaluated in papers that investigate the research object [research object name] without adhering to an evaluation guideline?
+Difference: ['an']
+
+ 61%|██████▏   | 27/44 [01:35<00:58,  3.47s/it]Line: 27, Found grammar issues in the answer
+Original Answer: The research object Technical Debt was investigated in the years 2017, 2020 and 2021 one time each.
+Corrected Answer: The research object Technical Debt was investigated in the years 2017, 2020, and 2021, one time each.
+Difference: ['2020,', '2021,']
+
+Line: 27, Found inconsistency between question and answer
+Original Answer: The research object Technical Debt was investigated in the years 2017, 2020 and 2021 one time each.
+Corrected Answer: The research object Technical Debt is investigated one time per publication year.
+Difference: ['year.', 'is', 'per', 'publication']
+
+ 68%|██████▊   | 30/44 [01:47<00:51,  3.64s/it]Line: 30, Found grammar issues in the answer
+Original Answer: There are two evaluation methods applied by the author David Monschein with the property Efficiency.
+Corrected Answer: There are two evaluation methods applied by the author David Monschein with the property of efficiency.
+Difference: ['of', 'efficiency.']
+
+ 77%|███████▋  | 34/44 [02:01<00:36,  3.66s/it]Line: 34, Found grammar issues in the question
+Original Question: In the publication year 2021, what is the most used evaluation method that is applied in papers that investigate the research object Architecture Evolution?
+Corrected Question: In the publication year 2021, what is the most used evaluation method applied in papers that investigate the research object Architecture Evolution?
+Difference: []
+
+ 80%|███████▉  | 35/44 [02:04<00:32,  3.61s/it]Line: 35, Found grammar issues in the question
+Original Question: From the publication years 2019 to 2021, how frequently per publication year have the research objects of papers been evaluated with the evaluation method Data Science?
+Corrected Question: From the publication years 2019 to 2021, how frequently per publication year have the research objects of papers been evaluated using the evaluation method Data Science?
+Difference: ['using']
+
+Line: 35, Found inconsistency between question and answer
+Original Answer: The frequency of research objects in papers evaluated using the Data Science method is one object in 2021, one in 2019, and one in 2020, for a total of three objects between 2019 and 2021.
+Corrected Answer: The frequency per publication year of research objects in papers evaluated using the Data Science method is: one in 2019, one in 2020, and one in 2021.
+Difference: ['year', 'per', 'is:', 'publication']
+
+ 82%|████████▏ | 36/44 [02:13<00:40,  5.02s/it]Line: 36, Found inconsistency between question and answer
+Original Answer: The paper with the title 'Architectural Design Decisions for Systems Supporting Model-Based Analysis of Runtime Events: A Qualitative Multi-method Study' investigates the research object Architecture Decision Making and is classified as a philosophical paper.
+Corrected Answer: The title of the paper is 'Architectural Design Decisions for Systems Supporting Model-Based Analysis of Runtime Events: A Qualitative Multi-method Study.'
+Difference: ["Study.'"]
+
+ 84%|████████▍ | 37/44 [02:17<00:32,  4.66s/it]Line: 37, Found grammar issues in the question
+Original Question: Which papers investigate the research object Technical Debt in the publication year 2017?
+Corrected Question: Which papers investigate the research object 'Technical Debt' in the publication year 2017?
+Difference: ["'Technical", "Debt'"]
+
+ 86%|████████▋ | 38/44 [02:19<00:23,  3.91s/it]Line: 38, Found grammar issues in the question
+Original Question: How many papers applied the evaluation method Controlled Experiment in the publication year 2018?
+Corrected Question: How many papers applied the evaluation method 'Controlled Experiment' in the publication year 2018?
+Difference: ["'Controlled", "Experiment'"]
+
+ 91%|█████████ | 40/44 [02:27<00:16,  4.04s/it]Line: 39, found typing issues in the question template
+Original Question Template: Which papers have [author name] as an author and apply the evaluation method [evaluation method]? Rank the papers in descending order of their publication year.
+Corrected Question Template: Which papers have [author name] as an author and apply the evaluation method [evaluation method name]? Rank the papers in descending order of their publication year.
+Difference: ['name]?']
+
+Line: 40, Found inconsistency between question and answer
+Original Answer: In the year 2020, there were two papers that investigated the research object Architecture Evolution. In comparison, in the year 2021, there were two papers that investigated the research object.
+Corrected Answer: In the year 2020, there were two papers that investigated the research object Architecture Evolution. In comparison, in the year 2021, there were two papers that investigated the research object Architecture Evolution.
+Difference: []
+
+ 93%|█████████▎| 41/44 [02:31<00:11,  3.98s/it]Line: 41, Found grammar issues in the question
+Original Question: Which papers that were published in the publication year 2017 investigate the research object Architecture Design Method and have not used input data?
+Corrected Question: Which papers published in the publication year 2017 investigate the research object Architecture Design Method and have not used input data?
+Difference: []
+
+ 95%|█████████▌| 42/44 [02:35<00:08,  4.12s/it]Line: 42, Found grammar issues in the question
+Original Question: Among papers that apply the evaluation method Benchmark, which paper class is applied the most to papers published in the publication year 2020?
+Corrected Question: Among papers that apply the evaluation method Benchmark, which paper class is most frequently applied to papers published in the publication year 2020?
+Difference: ['frequently']
+
+Line: 42, Found grammar issues in the answer
+Original Answer: The paper class that has the most papers applying the evaluation method Benchmark in the publication year 2020 is the proposal of a solution.
+Corrected Answer: The paper class that has the most papers applying the evaluation method Benchmark in the publication year 2020 is the proposal of a solution class.
+Difference: ['solution', 'class.']
+
+Line: 42, Found inconsistency between question and answer
+Original Answer: The paper class that has the most papers applying the evaluation method Benchmark in the publication year 2020 is the proposal of a solution.
+Corrected Answer: The proposal of a solution class.
+Difference: ['solution', 'class.']
+
+100%|██████████| 44/44 [02:46<00:00,  3.78s/it]

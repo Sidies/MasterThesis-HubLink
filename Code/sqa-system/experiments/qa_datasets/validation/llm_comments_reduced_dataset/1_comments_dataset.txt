@@ -1,0 +1,156 @@
+0%|          | 0/44 [00:00<?, ?it/s]Line: 2, Found inconsistency between question and answer
+Original Answer: The paper 'Availability-Driven Architectural Change Propagation Through Bidirectional Model Transformations Between UML and Petri Net Models' has been published at the International Conference on Software Architecture (ICSA).
+Corrected Answer: International Conference on Software Architecture (ICSA).
+Difference: []
+
+  9%|▉         | 4/44 [00:15<02:33,  3.84s/it]Line: 6, Found inconsistency between question and answer
+Original Answer: The publication 'Continuous Architecture: Towards the Goldilocks Zone and Away from Vicious Circles' was published in 2019, while 'Designing Robust Software Systems through Parametric Markov Chain Synthesis' was published in 2017.
+Corrected Answer: 'Continuous Architecture: Towards the Goldilocks Zone and Away from Vicious Circles' was published after 'Designing Robust Software Systems through Parametric Markov Chain Synthesis'.
+Difference: ["Synthesis'.", 'after']
+
+ 11%|█▏        | 5/44 [00:19<02:32,  3.90s/it]Line: 7, Found inconsistency between question and answer
+Original Answer: Konstantinos Plakidas has published three papers in the following years: 2021, 2020, and 2019. Therefore, the distribution of papers published per year is as follows: one paper in 2021, one paper in 2020, and one paper in 2019, resulting in a total of three papers over three years, which is one paper per year.
+Corrected Answer: Konstantinos Plakidas published one paper per publication year.
+Difference: ['publication']
+
+ 18%|█▊        | 8/44 [00:31<02:22,  3.97s/it]Line: 10, Found inconsistency between question and answer
+Original Answer: The paper has two threats to validity: internal validity and construct validity.
+Corrected Answer: Two.
+Difference: ['Two.']
+
+ 20%|██        | 9/44 [00:35<02:17,  3.92s/it]Line: 11, Found inconsistency between question and answer
+Original Answer: The paper has the following properties ranked in descending alphabetical order: 1. Satisfaction and 2. Functional Suitability.
+Corrected Answer: Satisfaction, Functional Suitability.
+Difference: ['Satisfaction,']
+
+ 27%|██▋       | 12/44 [00:46<02:00,  3.78s/it]Line: 14, Found inconsistency between question and answer
+Original Answer: The paper with the title 'Designing Robust Software Systems through Parametric Markov Chain Synthesis' is the only paper that evaluates the property robustness.
+Corrected Answer: The paper 'Designing Robust Software Systems through Parametric Markov Chain Synthesis' evaluates the property robustness.
+Difference: []
+
+ 36%|███▋      | 16/44 [01:01<01:43,  3.68s/it]Line: 18, Found grammar issues in the question
+Original Question: Among papers that apply the evaluation method Data Science, how many have not used input data compared to those that have made their input data available?
+Corrected Question: Among papers that apply the evaluation method Data Science, how many have not made their input data available compared to those that have?
+Difference: ['have?', 'available']
+
+ 39%|███▊      | 17/44 [01:11<02:29,  5.53s/it]Line: 19, Found inconsistency between question and answer
+Original Answer: The paper 'EASIER: An Evolutionary Approach for Multi-objective Software ArchItecturE Refactoring' investigates the research object Architecture Optimization Method and does not have any input data available. Additionally, the paper 'Dynamic Updates of Virtual PLCs Deployed as Kubernetes Microservices' also investigates the research object Architecture Optimization Method without any input data. Lastly, the paper 'Modeling of Parametric Dependencies for Performance Prediction of Component-Based Software Systems at Run-Time' also utilizes the research object Architecture Optimization Method without any input data.
+Corrected Answer: The papers 'EASIER: An Evolutionary Approach for Multi-objective Software ArchItecturE Refactoring', 'Dynamic Updates of Virtual PLCs Deployed as Kubernetes Microservices', and 'Modeling of Parametric Dependencies for Performance Prediction of Component-Based Software Systems at Run-Time' investigate the research object Architecture Optimization Method and indicate that no input data was used.
+Difference: ["Refactoring',", 'investigate', 'used.', 'indicate', 'papers', "Microservices',", 'was', 'no', 'that']
+
+ 43%|████▎     | 19/44 [01:20<02:04,  5.00s/it]Line: 21, Found grammar issues in the question
+Original Question: How are the papers that investigate the research object Technical Debt distributed by their publication year?
+Corrected Question: How are the papers that investigate the research object of Technical Debt distributed by their publication year?
+Difference: ['of']
+
+ 45%|████▌     | 20/44 [01:25<01:55,  4.82s/it]Line: 22, Found grammar issues in the question
+Original Question: What are the research objects investigated in papers of the paper class philosophical paper?
+Corrected Question: What are the research objects investigated in papers of the philosophical paper class?
+Difference: ['class?']
+
+Line: 22, Found grammar issues in the answer
+Original Answer: The research object investigated in papers of the philosophical paper class is Architecture Decision Making.
+Corrected Answer: The research object investigated in papers of the philosophical paper class is architecture decision making.
+Difference: ['architecture', 'decision', 'making.']
+
+ 48%|████▊     | 21/44 [01:29<01:48,  4.72s/it]Line: 23, Found grammar issues in the question
+Original Question: What are the research objects that are investigated in papers that apply the evaluation method Field Experiment?
+Corrected Question: What are the research objects investigated in papers that apply the evaluation method Field Experiment?
+Difference: []
+
+ 52%|█████▏    | 23/44 [01:41<01:50,  5.24s/it]Line: 25, Found inconsistency between question and answer
+Original Answer: Among those publications that evaluate the Reliability property, the evaluation methods that have been applied, ranked in descending alphabetical order are: Technical Experiment, Field Experiment, Case Study, and Argumentation.
+Corrected Answer: Technical Experiment, Field Experiment, Case Study, Argumentation.
+Difference: []
+
+ 59%|█████▉    | 26/44 [01:52<01:11,  3.99s/it]Line: 28, Found grammar issues in the answer
+Original Answer: The evaluation method that has been applied most frequently in papers investigating Technical Debt is case study.
+Corrected Answer: The evaluation method that has been applied most frequently in papers investigating Technical Debt is the case study.
+Difference: ['the']
+
+ 61%|██████▏   | 27/44 [01:55<01:03,  3.71s/it]Line: 29, Found grammar issues in the question
+Original Question: How frequently per publication year is the research object Technical Debt investigated?
+Corrected Question: How frequently is the research object Technical Debt investigated per publication year?
+Difference: ['year?', 'investigated']
+
+Line: 29, Found grammar issues in the answer
+Original Answer: The research object Technical Debt was investigated in the years 2017, 2020 and 2021 one time each.
+Corrected Answer: The research object Technical Debt was investigated in the years 2017, 2020, and 2021, one time each.
+Difference: ['2020,', '2021,']
+
+Line: 29, Found inconsistency between question and answer
+Original Answer: The research object Technical Debt was investigated in the years 2017, 2020 and 2021 one time each.
+Corrected Answer: The research object Technical Debt is investigated one time per publication year.
+Difference: ['publication', 'is', 'per', 'year.']
+
+ 68%|██████▊   | 30/44 [02:07<00:52,  3.76s/it]Line: 32, Found grammar issues in the answer
+Original Answer: There are two evaluation methods applied by the author David Monschein with the property Efficiency.
+Corrected Answer: There are two evaluation methods applied by the author David Monschein with the property of Efficiency.
+Difference: ['of']
+
+ 73%|███████▎  | 32/44 [02:13<00:42,  3.51s/it]Line: 34, Found grammar issues in the answer
+Original Answer: There are two papers where the research object Architecture Extraction is investigated in 2018 and one paper in 2020.
+Corrected Answer: There are two papers in which the research object Architecture Extraction is investigated in 2018 and one paper in 2020.
+Difference: ['which']
+
+ 77%|███████▋  | 34/44 [02:22<00:37,  3.79s/it]Line: 36, Found grammar issues in the question
+Original Question: In the publication year 2021, what is the most used evaluation method that is applied in papers that investigate the research object Architecture Evolution?
+Corrected Question: In the publication year 2021, what is the most used evaluation method applied in papers that investigate the research object Architecture Evolution?
+Difference: []
+
+ 80%|███████▉  | 35/44 [02:26<00:35,  3.91s/it]Line: 37, Found inconsistency between question and answer
+Original Answer: The frequency of research objects in papers evaluated using the Data Science method is one object in 2021, one in 2019, and one in 2020, for a total of three objects between 2019 and 2021.
+Corrected Answer: The frequency per publication year of research objects evaluated with the Data Science method is: one in 2019, one in 2020, and one in 2021.
+Difference: ['year', 'per', 'with', 'publication', 'is:']
+
+ 82%|████████▏ | 36/44 [02:29<00:29,  3.72s/it]Line: 38, Found inconsistency between question and answer
+Original Answer: The paper with the title 'Architectural Design Decisions for Systems Supporting Model-Based Analysis of Runtime Events: A Qualitative Multi-method Study' investigates the research object Architecture Decision Making and is classified as a philosophical paper.
+Corrected Answer: The title of the paper is 'Architectural Design Decisions for Systems Supporting Model-Based Analysis of Runtime Events: A Qualitative Multi-method Study.'
+Difference: ["Study.'"]
+
+ 84%|████████▍ | 37/44 [02:32<00:25,  3.62s/it]Line: 39, Found grammar issues in the question
+Original Question: Which papers investigate the research object Technical Debt in the publication year 2017?
+Corrected Question: Which papers investigate the research object 'Technical Debt' in the publication year 2017?
+Difference: ["'Technical", "Debt'"]
+
+ 86%|████████▋ | 38/44 [02:36<00:21,  3.58s/it]Line: 40, Found grammar issues in the question
+Original Question: How many papers applied the evaluation method Controlled Experiment in the publication year 2018?
+Corrected Question: How many papers applied the evaluation method Controlled Experiment in the publication year 2018?
+Difference: []
+
+Line: 40, Found inconsistency between question and answer
+Original Answer: Two papers applied Controlled Experiment as an evaluation method in the publication year 2018. These papers are 'Improving the Search for Architecture Knowledge in Online Developer Communities' and 'Two Architectural Threat Analysis Techniques Compared'.
+Corrected Answer: Two papers applied Controlled Experiment as an evaluation method in the publication year 2018.
+Difference: []
+
+ 91%|█████████ | 40/44 [02:42<00:13,  3.37s/it]Line: 42, Found grammar issues in the answer
+Original Answer: In the year 2020, there are two papers that investigate the research object Architecture Evolution. In comparison, in the year 2021, there are two papers that investigate the research object.
+Corrected Answer: In the year 2020, there are two papers that investigate the research object of Architecture Evolution. In comparison, in the year 2021, there are two papers that investigate the research object.
+Difference: ['of']
+
+ 93%|█████████▎| 41/44 [02:46<00:10,  3.43s/it]Line: 43, Found grammar issues in the question
+Original Question: Which papers that have been published in the publication year 2017 investigate the research object Architecture Design Method and have not used input data?
+Corrected Question: Which papers published in the publication year 2017 investigate the research object Architecture Design Method and have not used input data?
+Difference: []
+
+Line: 43, Found grammar issues in the answer
+Original Answer: The papers that investigate the research object Architecture Design Method and to not have input data available in the publication year 2017 are 'An Architecture Framework for Modelling and Simulation of Situational-Aware Cyber-Physical Systems', 'Microservice Ambients: An Architectural Meta-Modelling Approach for Microservice Granularity', and 'Design Criteria to Architect Continuous Experimentation for Self-Driving Vehicles'.
+Corrected Answer: The papers that investigate the research object Architecture Design Method and do not have input data available in the publication year 2017 are 'An Architecture Framework for Modelling and Simulation of Situational-Aware Cyber-Physical Systems', 'Microservice Ambients: An Architectural Meta-Modelling Approach for Microservice Granularity', and 'Design Criteria to Architect Continuous Experimentation for Self-Driving Vehicles'.
+Difference: ['do']
+
+ 95%|█████████▌| 42/44 [02:49<00:06,  3.48s/it]Line: 44, Found grammar issues in the question
+Original Question: Among papers that apply the evaluation method Benchmark, what is the paper class that is applied the most to papers that are published in the publication year 2020?
+Corrected Question: Among papers that apply the evaluation method Benchmark, what is the paper class that is most frequently applied to papers published in the publication year 2020?
+Difference: ['frequently']
+
+Line: 44, Found grammar issues in the answer
+Original Answer: The paper class that has the most papers applying the evaluation method Benchmark in the publication year 2020 is the proposal of a solution.
+Corrected Answer: The paper class that has the most papers applying the evaluation method Benchmark in the publication year 2020 is the proposal of solutions.
+Difference: ['solutions.']
+
+Line: 44, Found inconsistency between question and answer
+Original Answer: The paper class that has the most papers applying the evaluation method Benchmark in the publication year 2020 is the proposal of a solution.
+Corrected Answer: The paper class that is most frequently applied to papers published in the publication year 2020 among papers that apply the evaluation method Benchmark is the proposal of solutions.
+Difference: ['solutions.', 'apply', 'among', 'frequently', 'to', 'applied', 'published']
+
+100%|██████████| 44/44 [03:01<00:00,  4.11s/it]

@@ -1,0 +1,21 @@
+/* Key: Tran2022
+ * Authors: Khiem Vinh Tran, Hao Phu Phan, Khang Nguyen Duc Quach, Ngan Luu-Thuy Nguyen, Jun Jo & Thanh Tam Nguyen
+ * Title: A Comparative Study of Question Answering over Knowledge Bases
+ * Venue:  Advanced Data Mining and Applications 
+ * Classification Type: KGQA
+ * DOI: 10.1007/978-3-319-68204-4_22
+ * URL: https://aclanthology.org/P09-2082/
+ * Repo: https://github.com/kvt0012/kbqa
+ * References: TODO
+ * Trivedi2017 10.1007/978-3-319-68204-4_22 Lc-quad: A corpus for complex question answering over knowledge graphs
+ * Citations: /
+ */
+
+Who,
+What,
+Where,
+Why,
+How,
+Whom,
+Yes/No,
+Request

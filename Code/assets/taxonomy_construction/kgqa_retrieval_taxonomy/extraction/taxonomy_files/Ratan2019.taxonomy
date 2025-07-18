@@ -1,0 +1,23 @@
+/* Key: Ratan2019
+ * Authors: SimmiK Ratan, Tanu Anand, and John Ratan.
+ * Title: "Formulation of Research Question – Stepwise Approach"
+ * Venue: Journal of Indian Association of Pediatric Surgeons 
+ * Classification Type: Research Questions (Social and health research)
+ * DOI: 10.4103/jiaps.JIAPS_76_18
+ * URL: https://journals.lww.com/jiap/fulltext/2019/24010/formulation_of_research_question___stepwise.3.aspx
+ * References: /
+ * Citations: 
+ * Beck2023 10.1016/B978-0-323-90300-4.00107-5 The question: types of research questions and how to develop them
+ */
+
+Types of research question {
+    Existence , /* This is designed to uphold the existence of a particular phenomenon or to rule out rival explanation, for example, can neonates perceive pain? */
+    Description and classification, /* This type of question encompasses statement of uniqueness, for example, what are characteristics and types of neuropathic bladders? */ 
+    Composition, /* It calls for breakdown of whole into components, for example, what are stages of reflux nephropathy? */ 
+    Relationship, /* Evaluate relation between variables, for example, association between tumor rupture and recurrence rates in Wilm's tumor */ 
+    Descriptive—comparative, /* Expected that researcher will ensure that all is same between groups except issue in question, for example, Are germ cell tumors occurring in gonads more aggressive than those occurring in extragonadal sites? */ 
+    Causality, /* Does deletion of p53 leads to worse outcome in patients with neuroblastoma? */ 
+    Causality—comparative, /* Such questions frequently aim to see effect of two rival treatments, for example, does adding surgical resection improves survival rate outcome in children with neuroblastoma than with chemotherapy alone? */ 
+    Causality–Comparative interactions /* Does immunotherapy leads to better survival outcome in neuroblastoma Stage IV S than with chemotherapy in the setting of adverse genetic profile than without it? (Does X cause more changes in Y than those caused by Z under certain condition and not under other conditions).*/ 
+
+}

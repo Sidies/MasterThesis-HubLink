@@ -1,0 +1,70 @@
+/* Key: Mikhailan2009
+ * Authors: Moldovan, Dan and Harabagiu, Sanda and Pasca, Marius and Mihalcea, Rada and Girju, Roxana and Goodrum, Richard and Rus, Vasile
+ * Title: The Structure and Performance of an Open-Domain Question Answering System
+ * Publisher: Association for Computational Linguistics
+ * Classification Type: General 
+ * DOI: 10.3115/1075218.1075289
+ * URL: https://aclanthology.org/P00-1071
+ * References: /
+ * Citations: 
+ * Mishra2016 10.1016/j.jksuci.2014.10.007 A survey on question answering systems with classification
+ * Auer2023 10.1038/s41598-023-33607-z The sciqa scientific question answering benchmark for scholarly knowledge
+ * Chen2020 10.18653/v1/2020.acl-tutorials.8 Open-Domain Question Answering
+ */
+
+Question Class {
+    what{
+        basic what,
+        what-who,
+        what-when,
+        what-where
+    },
+    who,
+    how {
+        basic how,
+        how-many,
+        how-long,
+        how-much,
+        how-much-<modifier>,
+        how-far,
+        how-tall,
+        how-rich,
+        how-large
+    },
+    where,
+    which {
+        which-who,
+        which-where,
+        which-when,
+        which-what
+    },
+    name {
+        name-who,
+        name-where,
+        name-what
+    },
+    why,
+    whom
+}
+
+Answer Type {
+    Money,
+    Number,
+    Definition,
+    Title,
+    NNP,
+    Undefined,
+    Person,
+    Organization,
+    Date,
+    Location,
+    Manner,
+    Time,
+    Distance,
+    Price,
+    Reason
+}
+
+Focus
+
+

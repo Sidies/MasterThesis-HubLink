@@ -1,0 +1,8 @@
+[
+    {
+        "config_name": "retrieval_config",
+        "parameter_name": "additional_params",
+        "dict_key": "alpha",
+        "values": [0.1, 0.3, 0.6]
+    }
+]

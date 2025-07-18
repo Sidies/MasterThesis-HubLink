@@ -1,0 +1,76 @@
+/* Key: Auer2023
+ * Authors: Sören Auer, Dante A. C. Barone, Cassiano Bartz, Eduardo G. Cortes, Mohamad Yaser Jaradeh, Oliver Karras, Manolis Koubarakis, Dmitry Mouromtsev, Dmitrii Pliukhin, Daniil Radyush, Ivan Shilin, Markus Stocker & Eleni Tsalapati 
+ * Title: "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge"
+ * Venue: Future of Software Engineering (FOSE ’07).
+ * Classification Type: KGQA (scientific (ORKG))
+ * DOI: 10.1038/s41598-023-33607-z
+ * URL: https://doi.org/10.1038/s41598-023-33607-z
+ * References:
+ * Lehnert1986 10.5555/21922.24361 A conceptual theory of question answering
+ * Chakraborty2019 10.48550/arXiv.1907.09361 Introduction to neural network-based question answering over knowledge graphs
+ * Saikh2022 10.1007/s00799-022-00329-y Scienceqa: A novel resource for question answering on scholarly articles
+ * Bordes2015 arXiv:1506.02075 Large-scale simple question answering with memory networks
+ * Trivedi2017 10.1007/978-3-319-68204-4_22 Lc-quad: A corpus for complex question answering over knowledge graphs
+ * Dubey2019 10.1007/978-3-030-30796-7_5 LC-QuAD 2.0: A large dataset for complex question answering over Wikidata and DBpedia.
+ * Li2002 10.1017/S1351324905003955 Learning question classifiers
+ * Singhal1999 https://trec.nist.gov/pubs/trec8/papers/att-trec8.pdf AT&T at TREC-8
+ * Rilof2000 10.3115/1117595.1117598 A Rule-based Question Answering System for Reading Comprehension Tests
+ * Leidner2002 10.48550/arXiv.cs/0207058 Question Answering over Unstructured Data without Domain Restrictions
+ * Mikhailian2009 https://aclanthology.org/P09-2082/ Learning foci for question answering over topic maps
+ * NoAuthor2023 10.3233/SW-233471 10th Question Answering over Linked Data (QALD) Challenge
+ * Citations:
+ * Karras2023 10.1109/ESEM56168.2023.10304795 Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering
+ * Taffa2024 10.48550/arXiv.2412.02788 Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset
+ * Giglou2024 10.48550/arXiv.2406.07257 Scholarly Question Answering using Large Language Models in the NFDI4DataScience Gateway
+ */
+
+Excepted Answers { /* modified the approach of Moldovan et al. */
+	BOOLEAN, 
+	WHAT-WHO, 
+	WHAT-WHEN, 
+	WHICH-WHERE, 
+	WHICH-WHAT,	
+	WHO-WHAT /* “Who is the author of the most recent paper about insects?” */
+},
+
+ORKG Content { /* This classification is based on the structure of the ORKG schema */
+	Paper-based, /* Questions on the content of a single or multiple research papers, e.g., “Which papers use DBLP as a dataset?”. */
+	Comparison-based /* Questions on the content of a comparison, i.e., on the properties that the contributions participating in a comparison share, e.g., “What is the most common knowledge representation method in Semantic Representations of Scholarly Communication?”. */
+},
+
+Question Content { /* approach of Mikhailian et al. */
+	factoid, /* AP Asking Point; Factoid questions assume an explicit AP mapping to the entities of the ORKG ontology. */
+	non-factoid { /* EAT ExpectedAnswerType */
+		superlatives,
+		negation questions,
+		questions with counts,
+		ranking questions, /*  asking for a min/max value */
+		temporal questions,
+		combination of various types of content /* e.g., “Which was the most popular approach for summarization until 2002?”. */
+	} 	
+},
+
+SPARQL query properties {
+	Number of triple patterns {
+		min,
+		med,
+		max	
+	},
+	Query shape { /* Bonifati et al.: https://link.springer.com/article/10.1007/s00778-019-00558-9 */
+		single edge, 
+		chain, 
+		star, 
+		cycle, 
+		tree,
+		todo
+	},
+	Query components {
+		SELECT, 
+		ASK, 
+		DESCRIBE, 
+		COUNT, 
+		REGEX, 
+		STR, 
+		FILTER
+	} 
+}

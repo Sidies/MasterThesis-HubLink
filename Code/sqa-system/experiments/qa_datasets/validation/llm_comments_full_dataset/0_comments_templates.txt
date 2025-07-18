@@ -1,0 +1,173 @@
+0%|          | 0/170 [00:00<?, ?it/s]Warning: Traces will not be logged. Call weave.init to log your traces to a project.
+ (subsequent messages of this type will be suppressed)
+ 29%|██▉       | 50/170 [00:37<01:42,  1.17it/s]Line: 51, found template issues in the question
+Original Question Template: Which paper applies [evaluation method name] as a method in their evaluation?
+Corrected Question Template: Which paper applies [placeholder] as a method in their evaluation?
+Difference: ['[placeholder]']
+
+ 30%|███       | 51/170 [00:38<01:37,  1.21it/s]Line: 52, found template issues in the question
+Original Question Template: In which paper is the [property name] evaluated?
+Corrected Question Template: In which paper is the [placeholder] evaluated?
+Difference: ['[placeholder]']
+
+ 32%|███▏      | 54/170 [00:41<01:36,  1.20it/s]Line: 55, found template issues in the question
+Original Question Template: Which papers use [evaluation method name]s as a method in their evaluations?
+Corrected Question Template: Which papers use [evaluation method name] as a method in their evaluations?
+Difference: ['name]']
+
+ 33%|███▎      | 56/170 [00:42<01:35,  1.20it/s]Line: 57, found template issues in the question
+Original Question Template: Which publications assess the [property name] of a [research object name] and make their input data available?
+Corrected Question Template: Which publications assess the [property name] of a [research object name] and make their input data available?
+Difference: []
+
+ 35%|███▍      | 59/170 [00:45<01:46,  1.04it/s]Line: 60, found template issues in the question
+Original Question Template: How many papers that discuss [threat to validity] as a validity threat use [evaluation method name]s in their evaluation?
+Corrected Question Template: How many papers that discuss [threat to validity] as a validity threat use [evaluation method name] in their evaluation?
+Difference: ['name]']
+
+ 36%|███▋      | 62/170 [00:47<01:23,  1.29it/s]Line: 63, found template issues in the question
+Original Question Template: Which studies evaluate [property name] in their work sorted from the most recent publication to the earliest?
+Corrected Question Template: Which studies evaluate [placeholder] in their work sorted from the most recent publication to the earliest?
+Difference: ['[placeholder]']
+
+ 38%|███▊      | 64/170 [00:48<01:28,  1.20it/s]Line: 65, found template issues in the question
+Original Question Template: Give me all the papers that apply a [evaluation method name] in their evaluation ranked from the most recent to the oldest.
+Corrected Question Template: Give me all the papers that apply a [placeholder] in their evaluation ranked from the most recent to the oldest.
+Difference: ['[placeholder]']
+
+ 39%|███▉      | 66/170 [00:50<01:30,  1.15it/s]Line: 67, found template issues in the question
+Original Question Template: Among publications that use [evaluation method name] for evaluation, what is the number of papers with publicly available input data versus those without?
+Corrected Question Template: Among publications that use [evaluation method name] for evaluation, what is the number of papers with publicly available input data versus those without?
+Difference: []
+
+ 39%|███▉      | 67/170 [00:51<01:19,  1.29it/s]Line: 69, found template issues in the question
+Original Question Template: Among papers that investigate a [research object name], how many focus on [property name] compared to [property name]?
+Corrected Question Template: Among papers that investigate a [research object name], how many focus on [property name] compared to [property name]?
+Difference: []
+
+ 41%|████      | 70/170 [00:52<00:51,  1.94it/s]Line: 71, found template issues in the question
+Original Question Template: Which papers that investigate [research object name] have not used input data?
+Corrected Question Template: Which papers that investigate architecture evolution have not used input data?
+Difference: ['architecture', 'evolution']
+
+ 42%|████▏     | 72/170 [00:53<00:57,  1.70it/s]Line: 73, found template issues in the question
+Original Question Template: Which papers apply a [evaluation method name] and do not have any input data available?
+Corrected Question Template: Which papers apply a [placeholder] and do not have any input data available?
+Difference: ['[placeholder]']
+
+ 44%|████▍     | 75/170 [00:56<01:24,  1.12it/s]Line: 76, found template issues in the question
+Original Question Template: Among the publications that investigate [research object name] and apply case studies in their evaluation, which is the most used paper class?
+Corrected Question Template: Among the publications that investigate [placeholder] and apply case studies in their evaluation, which is the most used paper class?
+Difference: ['[placeholder]']
+
+ 45%|████▍     | 76/170 [00:58<01:44,  1.11s/it]Line: 77, found template issues in the question
+Original Question Template: Among the publications that investigate [research object name] and apply [evaluation method name] in their evaluation, which is the most used paper class?
+Corrected Question Template: Among the publications that investigate [research object name] and apply [evaluation method name] in their evaluation, which is the most used paper class?
+Difference: []
+
+ 46%|████▌     | 78/170 [00:59<01:22,  1.11it/s]Line: 79, found template issues in the question
+Original Question Template: How are the papers that investigate [research object name] distributed per publication year?
+Corrected Question Template: What is the frequency of papers that investigate [research object name] per year?
+Difference: ['of', 'frequency', 'What', 'is']
+
+ 46%|████▋     | 79/170 [01:01<01:36,  1.06s/it]Line: 80, found template issues in the question
+Original Question Template: What is the distribution of papers that apply the evaluation method [evaluation method name] per publication year?
+Corrected Question Template: What is the frequency of papers that apply the evaluation method [evaluation method name] per publication year?
+Difference: ['frequency']
+
+ 49%|████▉     | 84/170 [01:03<01:02,  1.38it/s]Line: 85, found template issues in the question
+Original Question Template: Which research objects are investigated in papers that evaluate the [property name]?
+Corrected Question Template: Which research objects are investigated in papers that evaluate the [placeholder]?
+Difference: ['[placeholder]?']
+
+ 55%|█████▍    | 93/170 [01:09<01:01,  1.26it/s]Line: 94, found template issues in the question
+Original Question Template: Among those publications that evaluate [property name] in their investigation, what are the research objects the evaluation is applied on? Rank the objects in descending alphabetical order.
+Corrected Question Template: Among those publications that evaluate [placeholder] in their investigation, what are the research objects the evaluation is applied on? Rank the objects in descending alphabetical order.
+Difference: ['[placeholder]']
+
+ 56%|█████▌    | 95/170 [01:11<01:03,  1.19it/s]Line: 96, found template issues in the question
+Original Question Template: Among publications that investigate [research object name], how often is the [property name] evaluated in comparison to [property name]?
+Corrected Question Template: Among publications that investigate [research object name], how often is the [property name 1] evaluated in comparison to [property name 2]?
+Difference: ['2]?', 'name', '1]']
+
+ 57%|█████▋    | 97/170 [01:13<01:08,  1.06it/s]Line: 98, found template issues in the question
+Original Question Template: Among publications that apply a [evaluation method name] in their evaluation, how often is [property name] evaluated in comparison to [property name]?
+Corrected Question Template: Among publications that apply a [evaluation method name] in their evaluation, how often is [property name] evaluated in comparison to [another property name]?
+Difference: ['[another', 'property']
+
+ 58%|█████▊    | 98/170 [01:14<01:14,  1.03s/it]Line: 99, found template issues in the question
+Original Question Template: What are the properties that are evaluated in papers that investigate the research object [research object name] without adhering to an evaluation guideline?
+Corrected Question Template: What are the properties that are evaluated in papers that investigate the research object [research object] without adhering to an evaluation guideline?
+Difference: ['object]']
+
+ 58%|█████▊    | 99/170 [01:15<01:10,  1.01it/s]Line: 100, found template issues in the question
+Original Question Template: Among publications that investigate [research object name], which properties have been evaluated without following a guideline for their evaluation?
+Corrected Question Template: Among publications that investigate [research object name], which properties have been evaluated without follwing a guideline for their evaluation?
+Difference: ['follwing']
+
+ 59%|█████▉    | 101/170 [01:17<01:05,  1.05it/s]Line: 102, found template issues in the question
+Original Question Template: Among publications that apply [evaluation method name] in their evaluation, what are the research objects evaluated without using a guideline for the evaluation?
+Corrected Question Template: Among publications that apply [evaluation method] in their evaluation, what are the research objects evaluated without using a guideline for the evaluation?
+Difference: ['method]']
+
+ 61%|██████    | 104/170 [01:19<00:49,  1.34it/s]Line: 105, found template issues in the question
+Original Question Template: Among publications that investigate [research object name], what properties have been evaluated the most often?
+Corrected Question Template: Among publications that investigate [placeholder], what properties have been evaluated the most often?
+Difference: ['[placeholder],']
+
+ 63%|██████▎   | 107/170 [01:21<00:55,  1.13it/s]Line: 108, found template issues in the question
+Original Question Template: Among publications that investigate [research object name], how are they distributed per year?
+Corrected Question Template: Among publications that investigate [placeholder], how are they distributed per year?
+Difference: ['[placeholder],']
+
+ 64%|██████▍   | 109/170 [01:22<00:30,  2.01it/s]Line: 110, found template issues in the question
+Original Question Template: How often per year are [evaluation method name]s used for evaluation?
+Corrected Question Template: How often per year are [placeholder] used for evaluation?
+Difference: ['[placeholder]']
+
+ 65%|██████▌   | 111/170 [01:23<00:38,  1.52it/s]Line: 112, found template issues in the question
+Original Question Template: What property is evaluated in the [research object name] investigation of the paper '[paper title]'?
+Corrected Question Template: What property is evaluated in the [investigation type] investigation of the paper '[paper title]'?
+Difference: ['[investigation', 'type]']
+
+ 68%|██████▊   | 116/170 [01:27<00:38,  1.40it/s]Line: 117, found template issues in the question
+Original Question Template: Which methods have been applied to evaluate the [property name] of objects investigated in papers published by [author name]?
+Corrected Question Template: Which methods have been applied to evaluate the usability of objects investigated in papers published by [author name]?
+Difference: ['usability']
+
+ 73%|███████▎  | 124/170 [01:32<00:36,  1.26it/s]Line: 125, found template issues in the question
+Original Question Template: What properties have been evaluated with a [evaluation method name] in papers published by [author name]? Rank them in descending alphabetical order.
+Corrected Question Template: What properties have been evaluated with a [evaluation method name] in papers published by [author name]? Rank them in descending alphabetical order.
+Difference: []
+
+ 78%|███████▊  | 132/170 [01:38<00:31,  1.22it/s]Line: 133, found template issues in the question
+Original Question Template: What are the evaluation methods that were applied without a guideline in papers published by [author name]?
+Corrected Question Template: What are the evaluation methods that were applied without a guideline in papers published by [placeholder]?
+Difference: ['[placeholder]?']
+
+ 79%|███████▉  | 135/170 [01:40<00:30,  1.14it/s]Line: 136, found template issues in the question
+Original Question Template: What is the property that is evaluated the most often in papers that investigate [research object name]s published by [author name]?
+Corrected Question Template: What is the property that is evaluated the most often in papers that investigate [research object name] published by [author name]?
+Difference: ['name]']
+
+ 86%|████████▌ | 146/170 [01:48<00:19,  1.23it/s]Line: 147, found template issues in the question
+Original Question Template: In [year], which papers applied [evaluation method name]s for evaluation?
+Corrected Question Template: In [year], which papers applied [evaluation method name] for evaluation?
+Difference: ['name]']
+
+ 91%|█████████ | 154/170 [01:52<00:09,  1.72it/s]Line: 157, found template issues in the question
+Original Question Template: How many papers investigate [research object name] in [year] in comparison to [year]?
+Corrected Question Template: How many papers investigate [research object name] in [year1] in comparison to [year2]?
+Difference: ['[year1]', '[year2]?']
+
+ 98%|█████████▊| 166/170 [01:59<00:03,  1.16it/s]Line: 167, found template issues in the question
+Original Question Template: Which paper class was used the most for publications that investigate [research object name]s in [year]?
+Corrected Question Template: Which paper class was used the most for publications that investigated [research object name]s in [year]?
+Difference: ['investigated']
+
+ 99%|█████████▉| 168/170 [02:01<00:01,  1.17it/s]Line: 169, found template issues in the question
+Original Question Template: What is the distribution of papers that investigate the object [research object name] between [year] and [year]?
+Corrected Question Template: What is the distribution of papers that investigate the object [architecture description] between [2018] and [2020]?
+Difference: ['[architecture', '[2018]', 'description]', '[2020]?']
+
+100%|██████████| 170/170 [02:02<00:00,  1.39it/s]

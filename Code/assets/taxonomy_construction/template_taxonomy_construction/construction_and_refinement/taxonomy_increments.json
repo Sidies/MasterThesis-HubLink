@@ -1,0 +1,58 @@
+[
+    {
+        "iteration": 1,
+        "taxonomy": [
+            {
+                "name": "[Name of the Taxonomy Category]",
+                "description": "[Description of the Category]",
+                "based_on_clusters": [
+                    1000
+                ],
+                "categories": [
+                    {
+                        "name": "[Name of a Class inside of the Category]",
+                        "description": "[Description of the class]",
+                        "based_on_clusters": [
+                            1
+                        ]
+                    },
+                    {
+                        "name": "[Name of a Class inside of the Category]",
+                        "description": "[Description of the class]",
+                        "based_on_clusters": [
+                            2
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "iteration": 2,
+        "taxonomy": [
+            {
+                "name": "[Name of the Taxonomy Category]",
+                "description": "[Description of the Category]",
+                "based_on_clusters": [
+                    1000
+                ],
+                "categories": [
+                    {
+                        "name": "[Name of a Class inside of the Category]",
+                        "description": "[Description of the class]",
+                        "based_on_clusters": [
+                            1
+                        ]
+                    },
+                    {
+                        "name": "[Name of a Class inside of the Category]",
+                        "description": "[Description of the class]",
+                        "based_on_clusters": [
+                            2
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,70 @@
+[
+    {
+        "iteration": 1,
+        "iteration_info": "The goal of the first iteration is to build an initial clustering of the extracted question types. The clustering is done manually by processing the extracted types from each paper and trying to group them into similar clusters by the semantic meaning of the name and description of the types. For this, for each type, it is manually determined whether it would fit any of the existing clusters. If so, the type is added to this cluster. If not, a new cluster is built.",
+        "clusters": [
+            {
+                "types": [
+                    {
+                        "name": "[The name of the extracted question type as stated by the authors]",
+                        "source": "[Source Paper Title]"
+                    },
+                    {
+                        "name": "[The name of the extracted question type as stated by the authors]",
+                        "source": "[Source Paper Title]"
+                    }
+                ]
+            }            
+        ]
+    },
+    {
+        "iteration": 2,
+        "iteration_info": "In the second iteration, the goal is two fold. Each existing cluster is given a name and a description. Then based on this information, the clusters are grouped into a parent cluster. This parent cluster is a higher level cluster that groups the clusters based on their similarity in terms of the information they provide.",
+        "clusters": [
+            {
+                "id": 1000,
+                "name": "[Parent cluster name]",
+                "info": "[Description of the parent cluster]",
+                "subclusters": [
+                    {
+                        "name": "[The name of the subcluster/merged class]",
+                        "info": "[A description that explains each type inside of the subcluster]",
+                        "id": 1,
+                        "types": [
+                            {
+                                "name": "[The name of the extracted question type as stated by the authors]",
+                                "source": "[Source Paper Title]"
+                            },
+                            {
+                                "name": "[The name of the extracted question type as stated by the authors]",
+                                "source": "[Source Paper Title]"
+                            }
+                        ]
+                    }                            
+                ]
+            },
+            {
+                "id": 1001,
+                "name": "[Parent cluster name]",
+                "info": "[Description of the parent cluster]",
+                "subclusters": [
+                    {
+                        "name": "[The name of the subcluster/merged class]",
+                        "info": "[A description that explains each type inside of the subcluster]",
+                        "id": 2,
+                        "types": [
+                            {
+                                "name": "[The name of the extracted question type as stated by the authors]",
+                                "source": "[Source Paper Title]"
+                            },
+                            {
+                                "name": "[The name of the extracted question type as stated by the authors]",
+                                "source": "[Source Paper Title]"
+                            }
+                        ]
+                    }                            
+                ]
+            }
+        ]
+    }
+]

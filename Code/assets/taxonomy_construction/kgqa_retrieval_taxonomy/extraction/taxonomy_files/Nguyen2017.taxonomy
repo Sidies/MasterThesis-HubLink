@@ -1,0 +1,28 @@
+/* Key: Nguyen2017
+ * Authors: Nguyen, Dat Quoc and Nguyen, Dai Quoc and Pham, Son Bao
+ * Title: Ripple Down Rules for question answering
+ * Venue: Semantic Web, vol. 8, no. 4, pp. 511-532, 2017
+ * Classification Type: KGQA 
+ * DOI: 10.3233/SW-150204
+ * URL: https://content.iospress.com/articles/semantic-web/sw204 (alternative: https://arxiv.org/pdf/1412.4160)
+ * References: 
+ * Garcia2006 https://aclanthology.org/N06-4005/ AquaLog: An Ontology-driven Question Answering System for Organizational Semantic Intranets
+ * Citations: /
+ */
+
+Question Structure Types {
+    Normal,
+    UnknTerm,
+    UnknRel,
+    Definition,
+    Affirm,
+    ThreeTerm,
+    Affirm_3Term,
+    Affirm_MoreTuples,
+    Compare,
+    And,
+    Or,
+    Combine,
+    Clause
+}
+

@@ -1,0 +1,91 @@
+{
+    "name": "TripleEmbed_PipelineConfig",
+    "additional_params": {},
+    "pipes": [
+        {
+            "name": "tripleembed_openai_gpt-4o-mini_tmp0.1_maxt-1_local_rdflib_merged_ecsa.json_jsonpublicationloader_limit-1",
+            "additional_params": {
+                "distance_metric": "l2",
+                "embedding_config": {
+                    "name": "huggingface_mixedbread-ai/mxbai-embed-large-v1",
+                    "additional_params": {},
+                    "endpoint": "HuggingFace",
+                    "name_model": "mixedbread-ai/mxbai-embed-large-v1"
+                },
+                "n_results": 15,
+                "indexing_root_entity_types": "http://schema.org/ScholarlyArticle",
+                "convert_to_text": false,
+                "force_index_update": false
+            },
+            "type": "kg_retrieval",
+            "retriever_type": "tripleembed",
+            "llm_config": {
+                "name": "huggingface_mistralai/mistral-7b-instruct-v0.3_tmp0.1_maxt4096",
+                "additional_params": {},
+                "endpoint": "HuggingFace",
+                "name_model": "mistralai/Mistral-7B-Instruct-v0.3",
+                "temperature": 0.1,
+                "max_tokens": 4096
+            },
+            "knowledge_graph_config": {
+                "name": "Local Graph",
+                "additional_params": {
+                    "building_blocks": [
+                        "metadata",
+                        "authors",
+                        "publisher",
+                        "venue",
+                        "research_field",
+                        "additional_fields",
+                        "annotations",
+                        "content"
+                    ]
+                },
+                "graph_type": "local_rdflib",
+                "dataset_config": {
+                    "name": "merged_ecsa.json_jsonpublicationloader_limit-1",
+                    "additional_params": {},
+                    "file_name": "merged_ecsa_icsa.json",
+                    "loader": "JsonPublicationLoader",
+                    "loader_limit": 30
+                },
+                "extraction_llm": {
+                    "name": "openai_gpt-4o-mini_tmp0.1_maxt-1",
+                    "additional_params": {},
+                    "endpoint": "OpenAI",
+                    "name_model": "gpt-4o-mini",
+                    "temperature": 0.1,
+                    "max_tokens": -1
+                },
+                "extraction_context_size": 4000
+            }
+        },
+        {
+            "name": "post_retrieval_processing_reranking_openai_gpt-4o-mini_tmp0.0_maxt-1",
+            "additional_params": {},
+            "type": "post_retrieval_processing",
+            "post_technique": "reranking",
+            "llm_config": {
+                "name": "ollama_mistral_tmp0.1_maxt4096",
+                "additional_params": {},
+                "endpoint": "Ollama",
+                "name_model": "mistral",
+                "temperature": 0.1,
+                "max_tokens": 4096
+            }
+        },
+        {
+            "name": "generation_openai_gpt-4o-mini_tmp0.0_maxt-1",
+            "additional_params": {},
+            "type": "generation",
+            "llm_config": {
+                "name": "ollama_mistral_tmp0.1_maxt4096",
+                "additional_params": {},
+                "endpoint": "Ollama",
+                "name_model": "mistral",
+                "temperature": 0.1,
+                "max_tokens": 4096
+            }
+        }
+    ]
+}

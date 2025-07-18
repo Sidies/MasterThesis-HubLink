@@ -1,0 +1,22 @@
+/* Key: Steinmetz2021
+ * Authors: Steinmetz, Nadine and Sattler, Kai-Uwe
+ * Title: "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+ * Venue: Journal on Data Semantics
+ * Classification Type: KGQA dataset
+ * DOI: 10.1007/s13740-021-00128-9
+ * URL: https://doi.org/10.1007/s13740-021-00128-9
+ * References: 
+ * Trivedi2017 10.1007/978-3-319-68204-4_22 Lc-quad: A corpus for complex question answering over knowledge graphs.
+ * Citations: /
+ */
+
+Date,
+Boolean,
+String,
+Number Count,
+Number Property,
+Resource List Typed,
+Resource List Untyped,
+Resource Typed,
+Resource Untyped,
+Unknown

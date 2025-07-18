@@ -1,0 +1,90 @@
+[
+    {
+        "iteration": 1,
+        "candidate_list": [
+            "[Title of the Paper]",
+            "[Title of the Paper]",
+            "[Title of the Paper]"
+        ],
+        "final_list": [],
+        "processing": [
+            {
+                "title": "[Title of the Paper]",
+                "added_to_final": true,
+                "reason": "[Reasoning on whether the paper was added to the final list or not]",
+                "references": [
+                    "[Title of the Paper that is referenced in the paper that is added to the candidates list]",
+                    "[Title of the Paper that is referenced in the paper that is added to the candidates list]",
+                    "[Title of the Paper that is referenced in the paper that is added to the candidates list]"
+                ],
+                "citations": [
+                    "[Title of the Paper that references the paper and is added to the candidates list]",
+                    "[Title of the Paper that references the paper and is added to the candidates list]",
+                    "[Title of the Paper that references the paper and is added to the candidates list]"
+                ]
+            },
+            {
+                "title": "[Title of the Paper]",
+                "added_to_final": false,
+                "reason": "[Reasoning on whether the paper was added to the final list or not]"
+            }
+        ]
+    },
+    {
+        "search_on": "google_scholar",
+        "sorted_by": "relevance",
+        "looked_at": 40,
+        "search_queries": [
+            {
+                "search_query": "[The search query that was used]",
+                "amount_of_results": 999999,
+                "extracted_candidates": [
+                    "[The title of the paper that was added to the candidate list from the search results]",
+                    "[The title of the paper that was added to the candidate list from the search results]"
+                ]
+            },
+            {
+                "search_query": "[The search query that was used]",
+                "amount_of_results": 999999,
+                "extracted_candidates": [
+                    "[The title of the paper that was added to the candidate list from the search results]",
+                    "[The title of the paper that was added to the candidate list from the search results]"
+                ]
+            }
+        ]
+    },
+    {
+        "iteration": 2,
+        "candidate_list": [
+            "[Title of the paper that is in the current candidate list that was examined in this iteration]",
+            "[Title of the paper that is in the current candidate list that was examined in this iteration]",
+            "[Title of the paper that is in the current candidate list that was examined in this iteration]"
+        ],
+        "final_list": [
+            "[Title of the paper that is in the final list up until this iteration]",
+            "[Title of the paper that is in the final list up until this iteration]"
+        ],
+        "processing": [
+            {
+                "title": "[Title of the Paper]",
+                "added_to_final": true,
+                "reason": "[Reasoning on whether the paper was added to the final list or not]",
+                "references": [
+                    "[Title of the Paper that is referenced in the paper that is added to the candidates list]",
+                    "[Title of the Paper that is referenced in the paper that is added to the candidates list]",
+                    "[Title of the Paper that is referenced in the paper that is added to the candidates list]"
+                ],
+                "citations": [
+                    "[Title of the Paper that references the paper and is added to the candidates list]",
+                    "[Title of the Paper that references the paper and is added to the candidates list]",
+                    "[Title of the Paper that references the paper and is added to the candidates list]"
+                ]
+            },
+            {
+                "title": "[Title of the Paper]",
+                "added_to_final": false,
+                "reason": "[Reasoning on whether the paper was added to the final list or not]"
+            }
+        ]
+    }
+]

@@ -1,0 +1,30 @@
+/* Key: Jaradeh2020
+ * Authors: Mohamad Yaser Jaradeh, Markus Stocker, Sören Auer
+ * Title: Question Answering on Scholarly Knowledge Graphs
+ * Venue: 
+ * Classification Type: KGQA
+ * DOI: 10.1007/978-3-030-54956-5_2
+ * URL: https://link.springer.com/chapter/10.1007/978-3-030-54956-5_2
+ * Note: They do not provide a link to a repository to extract further information.
+ * References: 
+ * Bloehdorn2007 10.1007/978-3-540-74851-9_2 Ontology-based question answering for digital libraries
+ * Jauhar2016 10.48550/arXiv.1602.03960 TabMCQ: A Dataset of General Knowledge Tables and Multiple-choice Questions
+ * Citations:
+ * Auer2023 10.1038/s41598-023-33607-z The sciqa scientific question answering benchmark for scholarly knowledge
+ * Banerjee2023 arXiv:2303.13351 Dblp-quad: A question answering dataset over the dblp scholarly knowledge graph
+ * Taffa2023 10.48550/ARXIV.2311.09841 Leveraging LLMs in Scholarly Knowledge Graph Question Answering
+ * Taffa2024 10.48550/arXiv.2412.02788 Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset
+ * Nguyen2024 10.1007/978-981-97-3076-6_20 Semantic Parsing for Question and Answering over Scholarly Knowledge Graph with Large Language Models
+ */
+
+Aggregation questions, /*(e.g., min, average and most common) */
+Ask questions, /*(i.e., true, false) */
+Answer listing questions,
+Questions that rely on combing information,
+Normal questions addressing individual cells in tables, /*  In the ORKG-QA dataset6 */
+Questions for which the answer relates to other parts of the table,
+Questions of different types {	
+	listings,
+	ask queries,
+	empty answers
+}

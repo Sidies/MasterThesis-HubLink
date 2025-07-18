@@ -1,0 +1,709 @@
+[
+    {
+        "iteration": 1,
+        "candidate_list": [
+            "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge",
+            "A conceptual theory of question answering",
+            "Learning Question Classifiers",
+            "AT&T at TREC-8",
+            "Modern Question Answering Datasets and Benchmarks: A Survey",
+            "ScienceQA: a novel resource for question answering on scholarly articles",
+            "Large Language Models for Scientific Question Answering: An Extensive Analysis of the SciQA Benchmark",
+            "SceMQA: A Scientific College Entrance Level Multimodal Question Answering Benchmark",
+            "Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering",
+            "Writing good software engineering research papers",
+            "Selecting Empirical Methods for Software Engineering Research"
+        ],
+        "final_list": [],
+        "processing": [
+            {
+                "title": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge",
+                "added_to_final": true,
+                "reason": "The paper includes question type information",
+                "references": [
+                    "A conceptual theory of question answering",
+                    "Introduction to neural network-based question answering over knowledge graphs",
+                    "Large-scale simple question answering with memory networks",
+                    "Lc-quad: A corpus for complex question answering over knowledge graphs",
+                    "LC-QuAD 2.0: A large dataset for complex question answering over Wikidata and DBpedia",
+                    "Learning question classifiers",
+                    "AT&T at TREC-8",
+                    "A Rule-based Question Answering System for Reading Comprehension Tests",
+                    "Question Answering over Unstructured Data without Domain Restrictions",
+                    "Learning foci for question answering over topic maps",
+                    "10th Question Answering over Linked Data (QALD) Challenge"
+                ],
+                "citations": [
+                    "Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering",
+                    "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset",
+                    "Scholarly Question Answering using Large Language Models in the NFDI4DataScience Gateway"
+                ]
+            },
+            {
+                "title": "A conceptual theory of question answering",
+                "added_to_final": false,
+                "reason": "There was no fulltext available"
+            },
+            {
+                "title": "Learning Question Classifiers",
+                "added_to_final": true,
+                "reason": "The paper includes a taxonomy for free-form questions",
+                "note": "The paper is cited more than 2000 times. In our most related search on google scholar we did not find any paper that is relevant to our task.",
+                "references": [
+                    "Parsing and Question Classification for Question Answering",
+                    "A conceptual theory of question answering",
+                    ""
+                ],
+                "citations": [
+                    "Linguistically Motivated Question Classification"
+                ]
+            },
+            {
+                "title": "AT&T at TREC-8",
+                "added_to_final": true,
+                "reason": "The paper includes a taxonomy for questions.",
+                "references": [],
+                "citations": [
+                    "Learning question classifiers",
+                    "The sciqa scientific question answering benchmark for scholarly knowledge",
+                    "Learning question classifiers: the role of semantic information"
+                ]
+                    
+            },
+            {
+                "title": "Modern Question Answering Datasets and Benchmarks: A Survey",
+                "added_to_final": false,
+                "reason": "While the paper contains some information about answer types, this is more towards qa datasets overall and does not specify engough information to be relevant to our task."
+            },
+            {
+                "title": "ScienceQA: a novel resource for question answering on scholarly articles",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "Large Language Models for Scientific Question Answering: An Extensive Analysis of the SciQA Benchmark",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "SceMQA: A Scientific College Entrance Level Multimodal Question Answering Benchmark",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering",
+                "added_to_final": true,
+                "reason": "The replication package includes question type information",
+                "references": [
+                    "The Role of Competency Questions in Enterprise Engineering",
+                    "The Future of Empirical Methods in Software Engineering Research",
+                    "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge",
+                    "Question Answering on Scholarly Knowledge Graphs"
+                ],
+                "citations": [
+                    "A RAG Approach for Generating Competency Questions in Ontology Engineering"
+                ]
+            },
+            {
+                "title": "Writing good software engineering research papers",
+                "added_to_final": true,
+                "reason": "Includes a taxonomy for the types of research question in software engineering",
+                "references": [],
+                "citations": [
+                    "The ABC of Software Engineering Research",
+                    "Writing Good Software Engineering Research Papers: Revisited"
+                ]
+            },
+            {
+                "title": "Selecting Empirical Methods for Software Engineering Research",
+                "added_to_final": true,
+                "reason": "Includes information about the types of research questions in software engineering",
+                "references": [],
+                "citations": [
+                    "The ABC of Software Engineering Research"
+                ]
+            }
+        ]
+    },
+    {
+        "search_on": "google_scholar",
+        "sorted_by": "relevance",
+        "looked_at": 40,
+        "search_queries": [
+            {
+                "search_query": "'research questions' AND 'classifiction' OR 'taxonomy' OR 'types'",
+                "amount_of_results": 3620000,
+                "extracted_candidates": [
+                    "The classification of research questions",
+                    "Types of research questions: descriptive, predictive, or causal",
+                    "Chapter 18 - The question: types of research questions and how to develop them",
+                    "A Taxonomy for Classifying Questions Asked in Social Question and Answering"
+                ]
+            },
+            {
+                "search_query": "'questions' AND 'classifiction' OR 'taxonomy' OR 'types'",
+                "amount_of_results": 6560000,
+                "note": "While some of the papers looked to be interesting, they were not accessible or their full text was not available.",
+                "extracted_candidates": []
+            },
+            {
+                "search_query": "'research question' AND 'construction' OR 'development' OR 'formulation'",
+                "amount_of_results":  2960000,
+                "extracted_candidates": [
+                    "Construction of design science research questions",
+                    "Developing qualitative research questions: a reflective process",
+                    "Formulation of research question–Stepwise approach",
+                    "Formulating a good research question: Pearls and pitfalls"
+                ]
+            },
+            {
+                "search_query": "'question' AND 'construction' OR 'development' OR 'formulation'",
+                "amount_of_results": 4560000,
+                "extracted_candidates": []
+            },
+            {
+                "search_query": "'software engineering' AND 'research questions' OR 'classification' OR 'taxonomy'",
+                "amount_of_results": 1240000,
+                "extracted_candidates": [
+                    "Towards Supporting Software Engineering Using Deep Learning: A Case of Software Requirements Classification",
+                    "Towards a classification model for component-based software engineering research",
+                    "Bloom's taxonomy in software engineering education: A systematic mapping study",
+                    "Ontology Classification for Semantic-Web-Based Software Engineering",
+                    "An extended global software engineering taxonomy",
+                    "The ABC of software engineering research"
+                ]
+            },
+            {
+                "search_query": "'question answering' AND 'classification' OR 'taxonomy' OR 'types'",
+                "amount_of_results":  308000 ,
+                "extracted_candidates": [
+                    "A survey on question answering systems with classification",
+                    "A Non-Factoid Question-Answering Taxonomy",
+                    "Parsing and question classification for question answering",
+                    "The question answering systems: A survey",
+                    "Ripple Down Rules for question answering"
+                ]
+            },
+            {
+                "search_query": "'question answering' AND 'datasets' AND 'graph'",
+                "amount_of_results":  76900,
+                "extracted_candidates": [
+                    "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs",
+                    "SciGraphQA: A Large-Scale Synthetic Multi-Turn Question-Answering Dataset for Scientific Graphs",
+                    "Dblp-quad: A question answering dataset over the dblp scholarly knowledge graph",
+                    "LC-QuAD: A Corpus for Complex Question Answering over Knowledge Graphs"
+                ]
+            },
+            {
+                "search_query": "'question answering' AND 'scholarly' AND 'graph'",
+                "amount_of_results":  5040,
+                "extracted_candidates": [
+                    "Question answering on scholarly knowledge graphs",
+                    "Leveraging LLMs in Scholarly Knowledge Graph Question Answering",
+                    "ScienceQA: a novel resource for question answering on scholarly articles",
+                    "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge",
+                    "Dblp-quad: A question answering dataset over the dblp scholarly knowledge graph",
+                    "Scigraphqa: A large-scale synthetic multi-turn question-answering dataset for scientific graphs",
+                    "Leveraging Large Language Models for Semantic Query Processing in a Scholarly Knowledge Graph",
+                    "Scholarly Question Answering using Large Language Models in the NFDI4DataScience Gateway",
+                    "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset",
+                    "Semantic Parsing for Question and Answering over Scholarly Knowledge Graph with Large Language Models",
+                    "Large Language Models for Scientific Question Answering: An Extensive Analysis of the SciQA Benchmark"
+                ]
+            },
+            {
+                "search_query": "'question answering' AND 'structure'",
+                "amount_of_results":  196000 ,
+                "extracted_candidates": [
+                    "The Structure and Performance of an Open-Domain Question Answering System",
+                    "Question answering from structured knowledge sources",
+                    "Question Answering in Restricted Domains: An Overview",
+                    "A survey on question answering systems with classification",
+                    "Template-based question answering over RDF data",
+                    "A Comparative Study of Question Answering over Knowledge Bases"
+                ]
+            }
+        ]
+    },
+    {
+        "iteration": 2,
+        "candidate_list": [
+            "Introduction to neural network-based question answering over knowledge graphs",
+            "Large-scale simple question answering with memory networks",
+            "Lc-quad: A corpus for complex question answering over knowledge graphs",
+            "LC-QuAD 2.0: A large dataset for complex question answering over Wikidata and DBpedia",
+            "A Rule-based Question Answering System for Reading Comprehension Tests",
+            "Question Answering over Unstructured Data without Domain Restrictions",
+            "Learning foci for question answering over topic maps",
+            "10th Question Answering over Linked Data (QALD) Challenge",
+            "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset",
+            "Scholarly Question Answering using Large Language Models in the NFDI4DataScience Gateway",
+            "Parsing and Question Classification for Question Answering",
+            "Learning question classifiers: the role of semantic information",
+            "The Role of Competency Questions in Enterprise Engineering",
+            "The Future of Empirical Methods in Software Engineering Research",
+            "Question Answering on Scholarly Knowledge Graphs",
+            "A RAG Approach for Generating Competency Questions in Ontology Engineering",
+            "The ABC of Software Engineering Research",
+            "Writing Good Software Engineering Research Papers: Revisited",
+            "Leveraging LLMs in Scholarly Knowledge Graph Question Answering",
+            "Dblp-quad: A question answering dataset over the dblp scholarly knowledge graph",
+            "Scigraphqa: A large-scale synthetic multi-turn question-answering dataset for scientific graphs",
+            "Leveraging Large Language Models for Semantic Query Processing in a Scholarly Knowledge Graph",
+            "Semantic Parsing for Question and Answering over Scholarly Knowledge Graph with Large Language Models",
+            "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs",
+            "A survey on question answering systems with classification",
+            "A Non-Factoid Question-Answering Taxonomy",
+            "The question answering systems: A survey",
+            "Towards Supporting Software Engineering Using Deep Learning: A Case of Software Requirements Classification",
+            "Towards a classification model for component-based software engineering research",
+            "Bloom's taxonomy in software engineering education: A systematic mapping study",
+            "Ontology Classification for Semantic-Web-Based Software Engineering",
+            "An extended global software engineering taxonomy",
+            "Construction of design science research questions",
+            "Developing qualitative research questions: a reflective process",
+            "Formulation of research question–Stepwise approach",
+            "Ripple Down Rules for question answering",
+            "The classification of research questions",
+            "Types of research questions: descriptive, predictive, or causal",
+            "Chapter 18 - The question: types of research questions and how to develop them",
+            "A Taxonomy for Classifying Questions Asked in Social Question and Answering",
+            "Formulating a good research question: Pearls and pitfalls",
+            "The Structure and Performance of an Open-Domain Question Answering System",
+            "A Comparative Study of Question Answering over Knowledge Bases",
+            "Question answering from structured knowledge sources",
+            "Question Answering in Restricted Domains: An Overview",
+            "Template-based question answering over RDF data"
+        ],
+        "final_list": [
+            "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge",
+            "Learning Question Classifiers",
+            "AT&T at TREC-8",
+            "Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering",
+            "Writing good software engineering research papers",
+            "Selecting Empirical Methods for Software Engineering Research"
+        ],
+        "processing": [
+            {
+                "title": "Question Answering over Unstructured Data without Domain Restrictions",
+                "added_to_final": false,
+                "reason": "The paper has been withdrawn by the author"
+            },
+            {
+                "title": "Lc-quad: A corpus for complex question answering over knowledge graphs",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "LC-QuAD 2.0: A large dataset for complex question answering over Wikidata and DBpedia",
+                "added_to_final": true,
+                "reason": "The paper explicitly has a section about the types of question that are applied to the dataset",
+                "references": [
+                    "Large-scale simple question answering with memory networks.",
+                    "AskNow: A framework for natural language query formalization in SPARQL",
+                    "9th Question Answering over Linked Data challenge (QALD-9)",
+                    "Generating factoid questions with recurrent neural networks: the 30M factoid question-answer corpus",
+                    "LC-QuAD: a corpus for complex question answering over knowledge graphs",
+                    "Formal query generation for question answering over knowledge bases"
+                ],
+                "citations": [
+                    "The sciqa scientific question answering benchmark for scholarly knowledge",
+                    "Introduction to neural network based approaches for question answering over knowledge graphs"
+                ]
+            },
+            {
+                "title": "A Non-Factoid Question-Answering Taxonomy",
+                "added_to_final": true,
+                "reason": "The paper includes a taxonomy for question types",
+                "references": [
+                    "Function-Based Question Classification for General QA",
+                    "Question Classification using HDAG Kernel",
+                    "Performance Prediction for Non-Factoid Question Answering",
+                    "Learning Question Classifiers",
+                    "A Human Generated MAchine Reading COmprehension Dataset",
+                    "NLQuAD: A NonFactoid Long Question Answering Data Set"
+                ],
+                "citations": []
+            },
+            {
+                "title": "Question Answering on Scholarly Knowledge Graphs",
+                "added_to_final": true,
+                "reason": "The paper includes a description of the question types that are used in the dataset",
+                "references": [
+                    "Ontology-based question answering for digital libraries",
+                    "TabMCQ: A Dataset of General Knowledge Tables and Multiple-choice Questions"
+                ],
+                "citations": [
+                    "The sciqa scientific question answering benchmark for scholarly knowledge",
+                    "Dblp-quad: A question answering dataset over the dblp scholarly knowledge graph",
+                    "Leveraging LLMs in Scholarly Knowledge Graph Question Answering",
+                    "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset",
+                    "Semantic Parsing for Question and Answering over Scholarly Knowledge Graph with Large Language Models"
+                ]
+            },
+            {
+                "title": "Formulating a good research question: Pearls and pitfalls",
+                "added_to_final": false,
+                "reason": "The paper does not provide a suitable taxonomy for our task."
+            },
+            {
+                "title": "Developing qualitative research questions: a reflective process",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "An extended global software engineering taxonomy",
+                "added_to_final": false,
+                "reason": "While the paper provides a taxonomy which looked to be promising at first, a closer look revealed that it is too specific to software project classifications. It provides no information about question classifications in software engineering research."
+            },
+            {
+                "title": "Bloom's taxonomy in software engineering education: A systematic mapping study",
+                "added_to_final": false,
+                "reason": "The paper did not include a taxonomy for questions related to SWA literature research."
+            },
+            {
+                "title": "Ontology Classification for Semantic-Web-Based Software Engineering",
+                "added_to_final": false,
+                "reason": "We were unable to access the full text of the paper."
+            },
+            {
+                "title": "Towards a classification model for component-based software engineering research",
+                "added_to_final": false,
+                "reason": "No applicable taxonomy was found in the paper."
+            },
+            {
+                "title": "Towards Supporting Software Engineering Using Deep Learning: A Case of Software Requirements Classification",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "Construction of design science research questions",
+                "added_to_final": true,
+                "reason": "The paper provides information about question types.",
+                "references": [],
+                "citations": []
+            },
+            {
+                "title": "The question answering systems: A survey",
+                "added_to_final": true,
+                "reason": "The paper does not directly propose question types but components from which we extracted question types. They further list other taxonomies in related work which we cover directly from the sources.",
+                "references": [
+                    "Learning Question Classifiers",
+                    "Parsing and Question Classification for Question Answering",
+                    "Question Classification using Support Vector Machines"
+                ],
+                "citations": [
+                    "Retrieving and reading: A comprehensive survey on open-domain question answering"
+                ]
+            },
+            {
+                "title": "A Taxonomy for Classifying Questions Asked in Social Question and Answering",
+                "added_to_final": true,
+                "reason": "The paper includes a taxonomy for question types",
+                "references": [],
+                "citations": []
+            },
+            {
+                "title": "A Rule-based Question Answering System for Reading Comprehension Tests",
+                "added_to_final": true,
+                "reason": "The paper contains a set of rules that can be seen as classifications for questions",
+                "references": [],
+                "citations": [
+                    "A survey on question answering systems with classification",
+                    "The sciqa scientific question answering benchmark for scholarly knowledge"
+                ]
+            },
+            {
+                "title": "Large-scale Simple Question Answering with Memory Networks",
+                "added_to_final": true,
+                "reason": "The paper includes some information about question types",
+                "references": [
+                    "Template-based question answering over RDF data"
+                ],
+                "citations": [
+                    "Lc-quad 2.0: A large dataset for complex question answering over wikidata and dbpedia"
+                ]
+            },
+            {
+                "title": "Introduction to neural network-based question answering over knowledge graphs",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "Learning foci for question answering over topic maps",
+                "added_to_final": true,
+                "reason": "The paper includes information about the focus of questions which is interesting for our taxonomy",
+                "references": [
+                    "Learning question classifiers.",
+                    "Learning Question Classifiers: The Role of Semantic Information",
+                    "Finding an Answer Based on the Recognition of the Question Focus"
+                ],
+                "citations": [
+                    "The sciqa scientific question answering benchmark for scholarly knowledge",
+                    "Linguistically motivated question classification"
+                ]
+            },
+            {
+                "title": "Linguistically Motivated Question Classification",
+                "added_to_final": true,
+                "reason": "The paper includes a taxonomy for question types",
+                "references": [
+                    "A conceptual theory of question answering.",
+                    "AT&T at TREC-8",
+                    "Learning question classifiers",
+                    "The Structure and Performance of an Open-Domain Question Answering System",
+                    "Learning foci for Question Answering over Topic Maps",
+                    "Finding an Answer Based on the Recognition of the Question Focus"
+                ],
+                "citations": []
+            },
+            {
+                "title": "The Structure and Performance of an Open-Domain Question Answering System",
+                "added_to_final": true,
+                "reason": "The paper includes a taxonomy for question types",
+                "references": [],
+                "citations": [
+                    "A survey on question answering systems with classification",
+                    "The sciqa scientific question answering benchmark for scholarly knowledge",
+                    "Open-Domain Question Answering"
+                ]
+            },
+            {
+                "title": "Scholarly Question Answering using Large Language Models in the NFDI4DataScience Gateway",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "QALD-10 – The 10th challenge on question answering over linked data",
+                "added_to_final": true,
+                "reason": "The paper has some information about question types in the text of their paper.",
+                "references": [
+                    "LC-QuAd 2.0: A Large Dataset for Complex Question Answering over Wikidata and DBpedia",
+                    "Evaluating question answering over linked data"
+                ],
+                "citations": []
+            },
+            {
+                "title": "Scigraphqa: A large-scale synthetic multi-turn question-answering dataset for scientific graphs",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "Leveraging LLMs in Scholarly Knowledge Graph Question Answering",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "Types of research questions: descriptive, predictive, or causal",
+                "added_to_final": true,
+                "reason": "While the domain of the paper differs from our objective, the types provided by the authors can be generally applied.",
+                "references": [],
+                "citations": []
+            },
+            {
+                "title": "Learning question classifiers: the role of semantic information",
+                "added_to_final": false,
+                "reason": "While the paper provides a taxonomy for answer types, this taxonomy does not orginate from the paper itself. Therefore we did not include this paper in our final list but we include the original source of the taxonomy."
+            },
+            {
+                "title": "Parsing and Question Classification for Question Answering",
+                "added_to_final": false,
+                "reason": "The paper did not include meaningful information about question types."
+            },
+            {
+                "title": "Dblp-quad: A question answering dataset over the dblp scholarly knowledge graph",
+                "added_to_final": true,
+                "reason": "The paper includes a taxonomy of the questions in their dataset.",
+                "references": [
+                    "Question answering on scholarly knowledge",
+                    "Natural questions: a benchmark for question answering research",
+                    "The Value of Semantic Parse Labeling for Knowledge Base Question Answering",
+                    "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and DBpedia",
+                    "Three Levels of Generalization for Question Answering on Knowledge Bases"
+                ],
+                "citations": [
+                    "Leveraging LLMs in Scholarly Knowledge Graph Question Answering",
+                    "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset"
+                ]
+            },
+            {
+                "title": "Leveraging Large Language Models for Semantic Query Processing in a Scholarly Knowledge Graph",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "Chapter 18 - The question: types of research questions and how to develop the",
+                "added_to_final": false,
+                "reason": "We were unable to access the full text of the paper."
+            },
+            {
+                "title": "The classification of research questions",
+                "added_to_final": true,
+                "reason": "The paper includes a taxonomy for research questions",
+                "references": [],
+                "citations": []
+            },
+            {
+                "title": "The ABC of Software Engineering Research",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "Formulation of research question–Stepwise approach",
+                "added_to_final": true,
+                "reason": "The paper includes a taxonomy for research questions",
+                "references": [],
+                "citations": [
+                    "The question: types of research questions and how to develop them"
+                ]
+            },
+            {
+                "title": "Question answering from structured knowledge sources",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "The Future of Empirical Methods in Software Engineering Research",
+                "added_to_final": true,
+                "reason": "The paper introduces archetype classes which are interesting for the answer type taxonomy",
+                "references": [],
+                "citations": [
+                    "The ABC of software engineering research",
+                    "Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering"
+                ]
+            },
+            {
+                "title": "A Comparative Study of Question Answering over Knowledge Bases",
+                "added_to_final": true,
+                "reason": "The paper includes information about the question types in their dataset",
+                "references": [
+                    "Lc-quad: A corpus for complex question answering over knowledge graphs"
+                ],
+                "citations": []
+            },
+            {
+                "title": "Ripple Down Rules for question answering",
+                "added_to_final": true,
+                "reason": "The paper includes information about question types.",
+                "references": [
+                    "AquaLog: An Ontology-driven Question Answering System for Organizational Semantic Intranets"
+                ],
+                "citations": []
+            },
+            {
+                "title": "The Role of Competency Questions in Enterprise Engineering",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "A RAG Approach for Generating Competency Questions in Ontology Engineering",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "Writing Good Software Engineering Research Papers: Revisited",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset",
+                "added_to_final": true,
+                "reason": "The paper includes a taxonomy for question types",
+                "references": [
+                    "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge",
+                    "Dblp-quad: A question answering dataset over the DBLP scholarly knowledge graph",
+                    "Multi-hop open-domain question answering over structured and unstructured knowledge",
+                    "Question Answering on Scholarly Knowledge Graphs",
+                    "Leveraging llms in scholarly knowledge graph question answering"
+                ],
+                "citations": []
+            },
+            {
+                "title": "A survey on question answering systems with classification",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "Question Answering in Restricted Domains: An Overview",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "Template-based question answering over RDF data",
+                "added_to_final": false,
+                "reason": "Skimming the paper did not reveal information about question types."
+            },
+            {
+                "title": "Semantic Parsing for Question and Answering over Scholarly Knowledge Graph with Large Language Models",
+                "added_to_final": false,
+                "reason": "While the paper provides a taxonomy for question types, it does not originate from the paper itself. Therefore we did not include this paper in our final list but we include the original source of the taxonomy."
+            },
+            {
+                "title": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs",
+                "added_to_final": true,
+                "reason": "The paper includes a taxonomy for answer types",
+                "references": [
+                    "LC-QuAD: a corpus for complex question answering over knowledge graphs"
+                ],
+                "citations": []
+            }
+        ]
+    },
+    {
+        "iteration": 3,
+        "candidate_list": [
+            "Multi-hop open-domain question answering over structured and unstructured knowledge",
+            "AquaLog: An Ontology-driven Question Answering System for Organizational Semantic Intranets",
+            "Natural questions: a benchmark for question answering research",
+            "The Value of Semantic Parse Labeling for Knowledge Base Question Answering",
+            "Three Levels of Generalization for Question Answering on Knowledge Bases",
+            "Evaluating question answering over linked data",
+            "Open-Domain Question Answering",
+            "Finding an Answer Based on the Recognition of the Question Focus",
+            "Retrieving and reading: A comprehensive survey on open-domain question answering",
+            "Question Classification using Support Vector Machines",
+            "Ontology-based question answering for digital libraries",
+            "TabMCQ: A Dataset of General Knowledge Tables and Multiple-choice Questions",
+            "NLQuAD: A NonFactoid Long Question Answering Data Set",
+            "A Human Generated MAchine Reading COmprehension Dataset",
+            "Performance Prediction for Non-Factoid Question Answering",
+            "Question Classification using HDAG Kernel",
+            "Function-Based Question Classification for General QA",
+            "Formal query generation for question answering over knowledge bases",
+            "Generating factoid questions with recurrent neural networks: the 30M factoid question-answer corpus",
+            "9th Question Answering over Linked Data challenge (QALD-9)",
+            "AskNow: A framework for natural language query formalization in SPARQL",
+            "Large-scale simple question answering with memory networks."
+        ],
+        "final_list": [
+            "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge",
+            "Learning Question Classifiers",
+            "AT&T at TREC-8",
+            "Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering",
+            "Writing good software engineering research papers",
+            "Selecting Empirical Methods for Software Engineering Research",
+
+            "LC-QuAD 2.0: A large dataset for complex question answering over Wikidata and DBpedia",
+            "A Non-Factoid Question-Answering Taxonomy",
+            "Question Answering on Scholarly Knowledge Graphs",
+            "Construction of design science research questions",
+            "The question answering systems: A survey",
+            "A Taxonomy for Classifying Questions Asked in Social Question and Answering",
+            "A Rule-based Question Answering System for Reading Comprehension Tests",
+            "Large-scale Simple Question Answering with Memory Networks",
+            "Learning foci for question answering over topic maps",
+            "Linguistically Motivated Question Classification",
+            "The Structure and Performance of an Open-Domain Question Answering System",
+            "QALD-10 - The 10th challenge on question answering over linked data",
+            "Types of research questions: descriptive, predictive, or causal",
+            "Dblp-quad: A question answering dataset over the dblp scholarly knowledge graph",
+            "The classification of research questions",
+            "Formulation of research question–Stepwise approach",
+            "The Future of Empirical Methods in Software Engineering Research",
+            "A Comparative Study of Question Answering over Knowledge Bases",
+            "Ripple Down Rules for question answering",
+            "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset",
+            "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs"
+        ]
+    }
+]

@@ -1,0 +1,3 @@
+In this folder, the files are contained for the application of the own taxonomy against other taxonomies. The folder contains the following files:
+- `main_taxonomy_application.json`: Here you should document the process of applying your own taxonomy to a set of questions
+- `other_taxonomy.json`: This file should be **copied and renamed** to the name of the taxonomy you are applying from the literature.

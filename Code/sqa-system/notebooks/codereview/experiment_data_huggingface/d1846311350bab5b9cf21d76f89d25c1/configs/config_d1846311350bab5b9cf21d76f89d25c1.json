@@ -1,0 +1,108 @@
+{
+    "name": "pipeline_d1846311350bab5b9cf21d76f89d25c1",
+    "additional_params": {},
+    "pipes": [
+        {
+            "name": "hublink_ollama_deepseek-r1:14b_tmp0.1_maxt4096_local_rdflib_merged_ecsa_icsa.json_jsonpublicationloader_limit3",
+            "additional_params": {
+                "embedding_config": {
+                    "additional_params": {},
+                    "endpoint": "HuggingFace",
+                    "name_model": "mixedbread-ai/mxbai-embed-large-v1"
+                },
+                "max_workers": 8,
+                "number_of_hubs": 5,
+                "top_paths_to_keep": 10,
+                "run_indexing": true,
+                "indexing_root_entity_types": "",
+                "force_index_update": false,
+                "max_hub_path_length": 10,
+                "force_hub_update": false,
+                "hub_types": "",
+                "hub_edges": -1,
+                "use_topic_if_given": false,
+                "compare_hubs_with_same_hop_amount": true,
+                "max_level": 5,
+                "use_source_documents": true,
+                "source_vector_store_config": {
+                    "additional_params": {
+                        "distance_metric": "l2"
+                    },
+                    "vector_store_type": "chroma",
+                    "chunking_strategy_config": {
+                        "additional_params": {},
+                        "chunking_strategy_type": "RecursiveCharacterChunkingStrategy",
+                        "chunk_size": 500,
+                        "chunk_overlap": 0
+                    },
+                    "embedding_config": {
+                        "additional_params": {},
+                        "endpoint": "HuggingFace",
+                        "name_model": "mixedbread-ai/mxbai-embed-large-v1"
+                    },
+                    "dataset_config": {
+                        "additional_params": {},
+                        "file_name": "merged_ecsa_icsa.json",
+                        "loader": "JsonPublicationLoader",
+                        "loader_limit": 3
+                    }
+                }
+            },
+            "type": "kg_retrieval",
+            "retriever_type": "hublink",
+            "llm_config": {
+                "name": "ollama_deepseek-r1:14b_tmp0.1_maxt4096",
+                "additional_params": {},
+                "endpoint": "Ollama",
+                "name_model": "deepseek-r1:14b",
+                "temperature": 0.1,
+                "max_tokens": 4096
+            },
+            "knowledge_graph_config": {
+                "name": "local_rdflib_merged_ecsa_icsa.json_jsonpublicationloader_limit3",
+                "additional_params": {
+                    "building_blocks": [
+                        "metadata",
+                        "authors",
+                        "publisher",
+                        "venue",
+                        "research_field",
+                        "additional_fields",
+                        "annotations",
+                        "content"
+                    ]
+                },
+                "graph_type": "local_rdflib",
+                "dataset_config": {
+                    "name": "merged_ecsa_icsa.json_jsonpublicationloader_limit3",
+                    "additional_params": {},
+                    "file_name": "merged_ecsa_icsa.json",
+                    "loader": "JsonPublicationLoader",
+                    "loader_limit": 3
+                },
+                "extraction_llm": {
+                    "name": "openai_gpt-4o-mini_tmp0.1_maxt-1",
+                    "additional_params": {},
+                    "endpoint": "OpenAI",
+                    "name_model": "gpt-4o-mini",
+                    "temperature": 0.1,
+                    "max_tokens": -1
+                },
+                "extraction_context_size": 4000
+            }
+        },
+        {
+            "name": "generation_ollama_deepseek-r1:14b_tmp0.1_maxt4096",
+            "additional_params": {},
+            "type": "generation",
+            "llm_config": {
+                "name": "ollama_deepseek-r1:14b_tmp0.1_maxt4096",
+                "additional_params": {},
+                "endpoint": "Ollama",
+                "name_model": "deepseek-r1:14b",
+                "temperature": 0.1,
+                "max_tokens": 4096
+            }
+        }
+    ]
+}

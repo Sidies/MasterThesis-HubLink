@@ -1,0 +1,76 @@
+{
+    "additional_params": {},
+    "pipes": [
+        {
+            "name": "retrieval_config",
+            "additional_params": {
+                "convert_to_text": false,
+                "distance_metric": "cosine",
+                "embedding_config": {
+                    "additional_params": {},
+                    "endpoint": "Ollama",
+                    "name_model": "mxbai-embed-large"
+                },
+                "n_results": 150,                
+                "force_index_update": false,
+                "indexing_root_entity_ids": ["R659055"]                      
+            },
+            "type": "kg_retrieval",
+            "retriever_type": "difar",
+            "llm_config": {
+                "additional_params": {},
+                "endpoint": "OpenAI",
+                "name_model": "o3-mini",
+                "temperature": null,
+                "max_tokens": -1,
+                "reasoning_effort": "low"
+            },
+            "knowledge_graph_config": {
+                "additional_params": {
+                    "contribution_building_blocks": {
+                        "Paper Class 2": [
+                            "paper_class"
+                        ],
+                        "Research Level 2": [
+                            "research_level"
+                        ],
+                        "First Research Object 2": [
+                            "first_research_object"
+                        ],
+                        "Second Research Object 2": [
+                            "second_research_object"
+                        ],
+                        "Validity 2": [
+                            "validity"
+                        ],
+                        "Evidence 2": [
+                            "evidence"
+                        ]
+                    },
+                    "force_cache_update": false,
+                    "force_publication_update": false,
+                    "subgraph_root_entity_id": "R659055",
+                    "orkg_base_url": "https://sandbox.orkg.org"
+                },
+                "graph_type": "orkg",
+                "dataset_config": {
+                    "additional_params": {},
+                    "file_name": "merged_ecsa_icsa.json",
+                    "loader": "JsonPublicationLoader",
+                    "loader_limit": -1
+                }
+            }
+        },
+        {
+            "additional_params": {},
+            "type": "generation",
+            "llm_config": {
+                "additional_params": {},
+                "endpoint": "OpenAI",
+                "name_model": "gpt-4o-mini",
+                "temperature": 0.0,
+                "max_tokens": -1
+            }
+        }      
+    ]
+}

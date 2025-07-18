@@ -1,0 +1,1208 @@
+[
+    {
+        "title": "The SciQA Scientific Question Answering Benchmark for Scholarly Knowledge",
+        "doi": "10.1038/s41598-023-33607-z",
+        "year": 2023,
+        "authors": "Auer et al.",
+        "category": "Knowledge Graph Question Answering Dataset",
+        "domain": "Scholarly",
+        "iteration": 1,
+        "types": [
+            {
+                "type": "Boolean",
+                "description": "Question expecting a yes or a no."
+            },
+            {
+                "type": "What-Who",
+                "description": "Question starting with \"what\" and asking for \"who\"."
+            },
+            {
+                "type": "What-When",
+                "description": "Question starting with \"what\" and asking for \"when\"."
+            },
+            {
+                "type": "Which-Where",
+                "description": "Question starting with \"which\" and asking for \"where\"."
+            },
+            {
+                "type": "Which-What",
+                "description": "Question starting with \"which\" and asking for \"what\"."
+            },
+            {
+                "type": "Who-What",
+                "description": "Question starting with \"who\" and asking for \"what\"."
+            },
+            {
+                "type": "Orkg Content - Paper based",
+                "description": "Specific type of question that asks for data coming from a paper instance in the ORKG."
+            },
+            {
+                "type": "Orkg Content - Comparison based",
+                "description": "Specific type of question that asks for data coming from a comparison instance in the ORKG."
+            },
+            {
+                "type": "Question Content - Factoid",
+                "description": "A factoid question type is assumed to have an explicit Asking Point mapping to an entity in the graph."
+            },
+            {
+                "type": "Question Content - Non-Factoid - sequence of facts",
+                "description": "A factoid question type that has multiple mappings to the graph."
+            },
+            {
+                "type": "Question Content - Non-Factoid - counting",
+                "description": "No further description."
+            },
+            {
+                "type": "Question Content - Non-Factoid - Superlatives",
+                "description": "No further description."
+            },
+            {
+                "type": "Question Content - Non-Factoid - Negation",
+                "description": "No further description."
+            },
+            {
+                "type": "Question Content - Non-Factoid - Ranking",
+                "description": "No further description."
+            },
+            {
+                "type": "Question Content - Non-Factoid - Minimum or Maximum",
+                "description": "No further description."
+            },
+            {
+                "type": "Question Content - Non-Factoid - Temporal",
+                "description": "No further description."
+            },
+            {
+                "type": "SparQL Characteristics",
+                "description": "This classification is used because the dataset they developed contains a query for each question to determine the answer. The first categorization is the number of triple patterns required to query the answer. The second category is the shape of the required query. The third SPARQL category is intended to provide an understanding of the complexity of the query. This is achieved by identifying the components necessary for query formulation, such as SELECT, ASK, DESCRIBE, COUNT, etc."
+            }
+        ]
+    },
+    {
+        "title": "Learning Question Classifiers",
+        "doi": "10.3115/1072228.107237",
+        "year": 2002,
+        "authors": "Li and Roth",
+        "category": "Question Classifier",
+        "domain": "General",
+        "iteration": 1,
+        "types": [
+            {
+                "type": "Abbreviation",
+                "description": "No explanation."
+            },
+            {
+                "type": "Entity",
+                "description": "No explanation."
+            },
+            {
+                "type": "Description",
+                "description": "No explanation."
+            },
+            {
+                "type": "Human",
+                "description": "No explanation."
+            },
+            {
+                "type": "Location",
+                "description": "No explanation."
+            },
+            {
+                "type": "Numeric Value",
+                "description": "No explanation."
+            }
+        ]
+    },
+    {
+        "title": "AT&T at TREC-8",
+        "doi": "",
+        "year": 1999,
+        "authors": "Singhal et al.",
+        "category": "Question Classifier",
+        "domain": "General",
+        "iteration": 1,
+        "types": [
+            {
+                "type": "Person",
+                "description": "Defined as names of properties."
+            },
+            {
+                "type": "Location",
+                "description": "Defined as names of properties."
+            },
+            {
+                "type": "Date",
+                "description": "Defined as years."
+            },
+            {
+                "type": "Quantity",
+                "description": "Defined as bare numbers"
+            },
+            {
+                "type": "Other Named Entity",
+                "description": "Not stated"
+            },
+            {
+                "type": "Miscellaneous",
+                "description": "Not stated"
+            },
+            {
+                "type": "Linear Measure",
+                "description": "Measure amounts such as 170 miles or 180 feet."
+            },
+            {
+                "type": "Monetary Amount",
+                "description": "Monetary amounts"
+            },
+            {
+                "type": "Organization",
+                "description": "Defined as names of properties."
+            },
+            {
+                "type": "Duration",
+                "description": "Time durations such as three years, four hours and so on."
+            }
+        ]
+    },
+    {
+        "title": "Divide and Conquer the EmpiRE: A Community-Maintainable Knowledge Graph of Empirical Research in Requirements Engineering",
+        "doi": "10.1109/ESEM56168.2023.10304795",
+        "year": 2023,
+        "authors": "Karras et al.",
+        "category": "Knowledge Graph Question Answering Dataset",
+        "domain": "Requirements Engineering",
+        "iteration": 1,
+        "note": "The paper did not provide a taxonomy of question types in their paper but rather a list of questions in their replication package. We looked at those questions and categorized them into the types mentioned below.",
+        "types": [
+            {
+                "type": "Trends over Time",
+                "description": "For example: How has the reporting of threats to validity evolved over time?"
+            },
+            {
+                "type": "Factual Questions",
+                "description": "For example: What types of threats to validity do the authors report?"
+            },
+            {
+                "type": "Quantification Questions",
+                "description": "For example: How many different empirical methods are used per publication?"
+            }
+        ]
+    },
+    {
+        "title": "Writing good software engineering research papers",
+        "doi": "10.1109/ICSE.2003.1201262",
+        "year": 2003,
+        "category": "Research Questions",
+        "domain": "Software Engineering",
+        "iteration": 1,
+        "info": "The paper has later been reviewed in 'Software Engineering Research at the International Conference on Software Engineering in 2016' by Allam et al. who confirm the current relevance of the paper.",
+        "types": [
+            {
+                "type": "Method or Means of Development",
+                "description": "Has an emphasis on how a software problem is solved. The focus is on methods of development or analysis that enhance productivity, quality, or automation."
+            },
+            {
+                "type": "Method for Analysis or Evaluation",
+                "description": "Focused on methods that evaluate software approaches, tools, or technologies."
+            },
+            {
+                "type": "Design, Evaluation, or Analysis of a particular Instance",
+                "description": "Are concerned with a certain instance that may be a particular system, practice, design or other instance of a system or method. The purpose of these questions is to evaluate or contrast the efficiency or performance of the mentioned instance or various instances."
+            },
+            {
+                "type": "Generalization or Characterization",
+                "description": "Seek to define or understand broad concepts or systems in Software Engineering by asking for definitions, taxonomies, or general principles."
+            },
+            {
+                "type": "Feasibility Study or Exploration",
+                "description": "Focuses on approaches that deal with a specific problem in a new way. Because these approaches address innovative or theoretical aspects, the questions ask for either an affirmative or a negative answer toward the feasibility or existence of a certain approach."
+            },
+            {
+                "type": "Procedure or Technique",
+                "description": "Given a question, the expected result is a concept for implementation, representation, management, or analysis. The answer of a procedure or technique should be practical, providing actionable steps or new methodologies."
+            },
+            {
+                "type": "Qualitative or Descriptive Model",
+                "description": "Insights that provide structure or taxonomy for a given problem area. This includes architectural styles, frameworks, design patterns, non-formal domain analysis, well-grounded checklists, well-argued informal generalizations, guidance for integrating other results, and well-organized interesting observations."
+            },
+            {
+                "type": "Empirical Model",
+                "description": "Based on observed data that often uses statistical or observational analysis to validate its conclusions."
+            },
+            {
+                "type": "Analytic Model",
+                "description": "Formal meaning that it is often mathematically defined to allow for a formal analysis or automatic manipulation."
+            },
+            {
+                "type": "Tool or Notation",
+                "description": "The asking point concerns a specific software tool that embodies a technique or a formal language that should have a calculus, semantics, or other basis for computing or inference."
+            },
+            {
+                "type": "Specific Solution, Prototype, or Judgment",
+                "description": "The solution must adhere to Software Engineering principles and can take the form of a design, a prototype, or a complete implementation. The answer could also involve a thorough analysis of a system or its development."
+            },
+            {
+                "type": "Report",
+                "description": "Interesting insights or general guidelines are provided in a report. The authors mention that the answer is not general or systematic enough to be categorized as a descriptive model."
+            }
+        ]
+    },
+    {
+        "title": "Selecting Empirical Methods for Software Engineering Research",
+        "doi": "10.1007/978-1-84800-044-5_11",
+        "year": 2008,
+        "category": "Research Questions",
+        "domain": "Software Engineering",
+        "iteration": 1,
+        "types": [
+            {
+                "type": "Exploratory - Existence",
+                "description": "Explore the existence of a phenomena for example: Does X exist?"
+            },
+            {
+                "type": "Exploratory - Description and Classification",
+                "description": "Address characteristics or classifications for instance: What are the properties of X?"
+            },
+            {
+                "type": "Exploratory - Descriptive-Comparative",
+                "description": "Intent to investigate similarities and differences between two or more phenomena, for example: How does X differ from Y?"
+            },
+            {
+                "type": "Base-Rate - Frequency and Distribution",
+                "description": "Relates to questions that seek to quantify the phenomenon. For example How often does X occur? or What is the average amount of X?"
+            },
+            {
+                "type": "Base-Rate - Descriptive-Process",
+                "description": "Ask about describing the functionality of a process. For instance: How does X normally work? or What are the steps X goes through as it evolves?"
+            },
+            {
+                "type": "Causality - Causality",
+                "description": "Asks if one factor affects another, for example: Does X cause Y? or Does X prevent Y?."
+            },
+            {
+                "type": "Causality-Comparative",
+                "description": "Investigates relationships between different causes: Does X cause more Y than does Z?"
+            },
+            {
+                "type": "Causality-Comparative Interaction",
+                "description": "Examines how context affects a cause-effect relationship."
+            },
+            {
+                "type": "Design",
+                "description": "Discovering improved methods for software design. For example: What is an effective way to achieve X? or What strategies help to achieve X?"
+            }
+        ]
+    },
+    {
+        "title": "LC-QuAD 2.0: A Large Dataset for Complex Question Answering over Wikidata and Dbpedia",
+        "doi": "10.1007/978-3-030-30796-7_5",
+        "year": 2019,
+        "authors": "Dubey et al.",
+        "category": "Knowledge Graph Question Answering Dataset",
+        "domain": "General",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "single fact",
+                "description": "If the question requires a single fact to be retrieved."
+            },
+            {
+                "type": "Single Fact with Type",
+                "description": "If the question requires a single fact to be retrieved and imposes an additional type constraint."
+            },
+            {
+                "type": "Multi Fact",
+                "description": "If the question requires multiple facts to be retrieved."
+            },
+            {
+                "type": "Fact with Qualifiers",
+                "description": "Special type related to the Wikidata KG. The term qualifiers refers to special property type used in a Wikidata graph to add further details to a triple. See: https://www.wikidata.org/wiki/Help:Qualifiers"
+            },
+            {
+                "type": "Two Intention",
+                "description": "Questions with two separate but related intentions that could be split into two kinds of questions."
+            },
+            {
+                "type": "Boolean",
+                "description": "Expects a \"Yes\" or a \"No\" as an answer."
+            },
+            {
+                "type": "Ranking",
+                "description": "Questions that require counting facts within the graph and further aggregation of these counts."
+            },
+            {
+                "type": "String Operation",
+                "description": "Involves performing operations on strings related to the facts of the graph, such as matching or filtering with string patterns."
+            },
+            {
+                "type": "Temporal Aspect",
+                "description": "Includes time requirements such as dates or timed events."
+            },
+            {
+                "type": "Count",
+                "description": "Questions that require counting facts within the graph."
+            }
+        ]
+    },
+    {
+        "title": "A Non-Factoid Question-Answering Taxonomy",
+        "doi": "10.1145/3477495.3531926",
+        "year": 2022,
+        "authors": "Bolotova et al.",
+        "category": "Question Classifier",
+        "domain": "General",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Instruction",
+                "description": "You want to understand the procedure/method of doing/achieving something. The expected answer structure are Instructions/guidelines provided in a step-by-step manner. Example patterns are: How to ...? How can I do . . . ? What is the process for . . . ? What is the best way to . . . ?"
+            },
+            {
+                "type": "Reason",
+                "description": "You want to find out reasons of/for something. The answer expects a list of reasons with evidence. Example patterns are: Why does . . . ? What is the reason for . . . ? What causes . . . ? How come ... happened?"
+            },
+            {
+                "type": "Evidence-Based",
+                "description": "You want to learn about the features/description/definition of a concept/idea/object/event. The answer expects Wikipedia-like passage describing/defining an event/object or its properties based only on facts. Example patterns are: What is . . . ? How does/do . . . work? What are the properties of . . . ? What is the meaning of . . . ? How do you describe . . . ?"
+            },
+            {
+                "type": "Comparison",
+                "description": "You want to compare/contrast two or more things, understand their differences/similarities. The answer expects A list of key differences and/or similarities of something compared to another thing. Example patterns are: How is X . . . to/from Y? What are the . . . of X over Y? How does X . . . against Y?"
+            },
+            {
+                "type": "Experience",
+                "description": "You want to get advice or recommendations on a particular topic. The answer expects Advantages, disadvantages, and main features of an entity (product, event, person, etc) summarised from personal experiences. Example patterns are: Would you recommend . . . ? How do you like . . . ? What do you think about . . . ? Should I . . . ?"
+            },
+            {
+                "type": "Debate",
+                "description": "You want to debate on a hypothetical question (is someone right or wrong, is some event perceived positively or negatively?). The answer expects Arguments on a debatable topic consisting of different opinions on something supported or weakened by pros and cons of the topic in the question. Example patterns are: Does . . . exist? Can . . . be successful? Do you think . . . are . . . ? Is . . . really a . . . ?"
+            }
+        ]
+    },
+    {
+        "title": "Question Answering on Scholarly Knowledge Graphs",
+        "doi": "10.48550/arXiv.2006.01527",
+        "year": 2020,
+        "authors": "Jaradeh et al.",
+        "category": "Knowledge Graph Question Answering Dataset",
+        "domain": "Scholarly",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Aggregation",
+                "description": "Involves questions that need to aggregate information, for example, to infer the minimum, average, or most common of something."
+            },
+            {
+                "type": "Ask",
+                "description": "Expects a 'Yes' or a 'No' as an answer."
+            },
+            {
+                "type": "Combining",
+                "description": "Combination of information that requires multiple facts from the graph to collect the answer to the question"
+            },
+            {
+                "type": "Normal",
+                "description": "Requires only one fact from the graph."
+            },
+            {
+                "type": "Listing",
+                "description": "Related to queries that list elements of information from the graph"
+            }
+        ]
+    },
+    {
+        "title": "Construction of Design Science Research Questions",
+        "doi": "10.17705/1CAIS.04420",
+        "year": 2019,
+        "authors": "Thuan et al.",
+        "category": "Research Questions",
+        "domain": "Design Science",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Motivation - Problem Solving",
+                "description": "Identifying certain kinds of problems and to build solution artifacts to address these."
+            },
+            {
+                "type": "Motivation - Gap Spotting",
+                "description": "Focuses on identifying a gap in the literature and suggest an artifact to bridge it."
+            },
+            {
+                "type": "Motivation - Problematization",
+                "description": "Indicates deficiencies in current theories that require additional research to address these issues."
+            },
+            {
+                "type": "Problem Statement",
+                "description": "Defines the issue being addressed. This could be a research challenge, gap, problem, opportunity, or a specific requirement."
+            },
+            {
+                "type": "Usage of RQ",
+                "description": "Whether a publication has used research questions at all."
+            },
+            {
+                "type": "Types of RQ",
+                "description": "Categorizes broad types related to the design process, product, knowledge or other types."
+            },
+            {
+                "type": "Research Approach - Knowledge Goal",
+                "description": "Defines the goal of the research question. This can be exploratory, prescriptive, constructive, confirmatory, explanatory, or descriptive."
+            },
+            {
+                "type": "Research Activities - Mode of Inquiry",
+                "description": "Defines the activities required for the question. This can be developmental, evaluative, or a mix of both."
+            },
+            {
+                "type": "Theory-in-Use",
+                "description": "Concerns theoretical statements that support the research approach. This is categorized into no specific theory, kernel theory, formal theory, or testable theory."
+            },
+            {
+                "type": "Outcome Artifacts",
+                "description": "Encompasses categories such as instantiation, model, construct, and method. Additionally, it incorporates mixed categories, such as model combined with instantiation, and another combination consisting of construct, model, and instantiation."
+            }
+        ]
+    },
+    {
+        "title": "The question answering systems: A survey",
+        "doi": "",
+        "year": 2016,
+        "authors": "Allam et al.",
+        "category": "Question Classifier",
+        "domain": "General",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Question Analysis/Focus",
+                "description": "The focus of a question has been defined by Moldovan et al. to be a word or sequence of words which indicate what information is being asked for in the question."
+            },
+            {
+                "type": "Question Type",
+                "description": "In order to correctly answer a question, it is required to understand what type of information the question asks for, because knowing the type of a question can provide constraints on what constitutes relevant data (the answer), which helps other modules to correctly locate and verify an answer."
+            },
+            {
+                "type": "Answer Type",
+                "description": "Answer type classification is a subsequent and related component to question classification. It is based on a mapping of the question classification. Once a question has been classified, a simple rule based mapping would be used to determine the potential answer types. Again, because question classification can be ambiguous, the system should allow for multiple answer types. "
+            }
+        ]
+    },
+    {
+        "title": "A Taxonomy for Classifying Questions Asked in Social Question and Answering",
+        "doi": "10.1145/2702613.2732928",
+        "year": 2015,
+        "authors": "Liu and Jansen",
+        "category": "Question Classifier",
+        "domain": "Social Science",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Accuracy",
+                "description": "The intent of an accuracy question is to receive answers based on some factual or prescriptive knowledge. The purpose of it is to receive one or more correct answers, instead of responses based on the answerer’s personal experience. This type of questions usually looks for facts, definitions, and prescriptive methods on how to do something."
+            },
+            {
+                "type": "Social",
+                "description": "The intent of a social question is to request for either companionship or coordination from others. It includes questions searching for someone who share the same agendas or someone who can provide physical or emotional assistance."
+            },
+            {
+                "type": "Knowledge",
+                "description": "The intent of a knowledge question is to receive responses reflecting the answerer’s personal opinions, advices, preferences, or experiences. It is usually with a “survey” purpose, which encourages the audience to provide their personal answers."
+            },
+            {
+                "type": "Conversational",
+                "description": "The conversational tweet is usually with social or conversational purpose, and does not convey any real information need."
+            }
+        ]
+    },
+    {
+        "title": "DBLP-QuAD: A Question Answering Dataset over the DBLP Scholarly Knowledge Graph",
+        "doi": "arXiv.2303.13351",
+        "year": 2023,
+        "authors": "Banerjee et al.",
+        "category": "Knowledge Graph Question Answering Dataset",
+        "domain": "Scholarly",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Single Fact",
+                "description": "Related to questions that can be answered with a single fact from the Knowledge graph"
+            },
+            {
+                "type": "Multi Facts",
+                "description": "Requires connection of two or more facts to derive the answer."
+            },
+            {
+                "type": "Boolean",
+                "description": "Expects a \"Yes\" or a \"No\" as an answer."
+            },
+            {
+                "type": "Negation",
+                "description": "Negates the answer to a boolean type"
+            },
+            {
+                "type": "Double Negation",
+                "description": "Requires to negate the boolean question twice"
+            },
+            {
+                "type": "Count",
+                "description": "Quantifies the amount of occurrences of facts in the graph"
+            },
+            {
+                "type": "Superlative/Comparative",
+                "description": "Include two types of question. The first is about asking the maximum and minimum for a subject. The comparative question compares values between two subjects"
+            },
+            {
+                "type": "Union",
+                "description": "Covers questions with a single intend but for multiple facts in the graph at the same time, which includes listing multiple facts"
+            },
+            {
+                "type": "Double Intent",
+                "description": "Includes questions that could be split into two questions"
+            },
+            {
+                "type": "Disambiguation",
+                "description": "Requires to identify the correct subject in the question."
+            }
+        ]
+    },
+    {
+        "title": "10th Question Answering over Linked Data (QALD) Challenge",
+        "doi": "10.3233/SW-233471",
+        "year": 2023,
+        "authors": "Usbeck et al.",
+        "category": "Knowledge Graph Question Answering Dataset",
+        "domain": "General",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Comparative",
+                "description": "(e.g., Show me all basketball players that are higher than 2 meters.)"
+            },
+            {
+                "type": "Superlatives",
+                "description": "(e.g., Which poet wrote the most books?)"
+            },
+            {
+                "type": "Count based",
+                "description": "(e.g., How many grand-children did Jacques Cousteau have?)"
+            },
+            {
+                "type": "Temporal Aggregators",
+                "description": "(e.g., Give me all libraries established before 1400.)"
+            }
+        ]
+    },
+    {
+        "title": "Large-scale Simple Question Answering with Memory Networks",
+        "doi": "arXiv:1506.02075",
+        "year": 2015,
+        "authors": "Bordes et al.",
+        "category": "Knowledge Graph Question Answering Dataset",
+        "domain": "General",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Single Fact",
+                "description": "Questions that require a single fact to be retrieved."
+            },
+            {
+                "type": "List Questions",
+                "description": "Questions that expect more than one answer."
+            },
+            {
+                "type": "Entity-relationship Questions",
+                "description": "Questions that ask for the object in a triple (subject, relationship, ?)."
+            }
+        ]
+    },
+    {
+        "title": "The Classification of Research Questions",
+        "doi": "10.3102/00346543054003327",
+        "year": 1984,
+        "authors": "Dillon et al.",
+        "category": "Research Questions",
+        "domain": "General",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "First Order - Properties",
+                "description": "Describes questions that ask for the properties or characteristics that a phenomenon has"
+            },
+            {
+                "type": "Second Order - Comparisons",
+                "description": "Deals with three types of comparative relationship. First, it addresses co-occurrence, which involves conjunction and disjunction. Then it examines equivalence and considers differences, which include disproportion and subordination."
+            },
+            {
+                "type": "Third Order -Contingencies",
+                "description": "Explores different types of relationships between phenomena. First, correlation where two phenomena are related without a clear cause. Second, conditionality where one phenomenon causes the other, or bi-conditionality where both phenomena mutually influence each other."
+            },
+            {
+                "type": "Fourth Order -Extra",
+                "description": "Unspecified or unclear questions"
+            },
+            {
+                "type": "Zero Order",
+                "description": "Rhetorical Questions"
+            }
+        ]
+    },
+    {
+        "title": "Formulation of Research Question - Stepwise Approach",
+        "doi": "10.4103/jiaps.JIAPS_76_18",
+        "year": 2019,
+        "authors": "Ratan et al.",
+        "category": "Research Questions",
+        "domain": "General",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Existence",
+                "description": "Verifies whether a phenomenon exists or to rule out a rival explanation."
+            },
+            {
+                "type": "Description and Classification",
+                "description": "Classifies questions that ask for descriptions or categorizations of phenomena."
+            },
+            {
+                "type": "Composition",
+                "description": "Breaks down complex phenomena into components."
+            },
+            {
+                "type": "Relationship",
+                "description": "Examines the relationship between variables."
+            },
+            {
+                "type": "Descriptive - Comparative",
+                "description": "Flawed description, possibly because of a language barrier"
+            },
+            {
+                "type": "Causality",
+                "description": "Aims to investigate cause-effect relationships"
+            },
+            {
+                "type": "Causality - Comparative interactions",
+                "description": "Aims to investigate interactions between variables under different conditions."
+            }
+        ]
+    },
+    {
+        "title": "The Future of Empirical Methods in Software Engineering Research",
+        "doi": "10.1109/FOSE.2007.30",
+        "year": 2007,
+        "authors": "Sjoberg et al.",
+        "category": "Other",
+        "domain": "Software Engineering",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Actor",
+                "description": "The Actor can be a individual, team, project, organization, or industry that performs an act."
+            },
+            {
+                "type": "Technology",
+                "description": "The Technology is a process model, method, technique, tool, or language that is applied on the Software System"
+            },
+            {
+                "type": "Activity",
+                "description": "Can be of type: plan, create, modify, or analyze."
+            },
+            {
+                "type": "Software System",
+                "description": "The Software System can further have classifications such as size, complexity, application domain, etc."
+            }
+        ]
+    },
+    {
+        "title": "A Rule-based Question Answering System for Reading Comprehension Tests",
+        "doi": "10.3115/1117595.1117598",
+        "year": 2000,
+        "authors": "Riloff et al.",
+        "category": "Question Classifier",
+        "domain": "General",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "WHO",
+                "description": "Questions starting with \"Who\"."
+            },
+            {
+                "type": "WHAT",
+                "description": "Questions starting with \"What\"."
+            },
+            {
+                "type": "WHERE",
+                "description": "Questions starting with \"Where\"."
+            },
+            {
+                "type": "WHY",
+                "description": "Questions starting with \"Why\"."
+            },
+            {
+                "type": "Human",
+                "description": "No further description."
+            },
+            {
+                "type": "Location",
+                "description": "No further description."
+            },
+            {
+                "type": "Month",
+                "description": "No further description."
+            },
+            {
+                "type": "Time",
+                "description": "No further description."
+            }
+        ]
+    },
+    {
+        "title": "Learning foci for Question Answering over Topic Maps",
+        "doi": "",
+        "year": 2009,
+        "authors": "Mikhailian et al.",
+        "category": "Other",
+        "domain": "General",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Asking Point (AP)",
+                "description": "When the question exactly includes the word to which the question is related."
+            },
+            {
+                "type": "Expected Answer Type (EAT)",
+                "description": "Occurs when the type of answer is implicitly given in the question, but can be inferred by understanding the syntactic and contextual cues in the question."
+            },
+            {
+                "type": "Human",
+                "description": "No further description."
+            },
+            {
+                "type": "Numeric",
+                "description": "No further description."
+            },
+            {
+                "type": "Time",
+                "description": "No further description."
+            },
+            {
+                "type": "Location",
+                "description": "No further description."
+            },
+            {
+                "type": "Definition",
+                "description": "No further description."
+            },
+            {
+                "type": "Other",
+                "description": "No further description."
+            }
+        ]
+    },
+    {
+        "title": "A Comparative Study of Question Answering over Knowledge Bases",
+        "doi": "10.48550/arXiv.2211.08170",
+        "year": 2022,
+        "authors": "Tran et al.",
+        "category": "Knowledge Graph Question Answering Dataset",
+        "domain": "Covid",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Who",
+                "description": "Questions starting with \"Who\"."
+            },
+            {
+                "type": "What",
+                "description": "Questions starting with \"What\"."
+            },
+            {
+                "type": "Where",
+                "description": "Questions starting with \"Where\"."
+            },
+            {
+                "type": "Why",
+                "description": "Questions starting with \"Why\"."
+            },
+            {
+                "type": "How",
+                "description": "Questions starting with \"How\"."
+            },
+            {
+                "type": "Whose",
+                "description": "Questions starting with \"Whose\"."
+            },
+            {
+                "type": "Whom",
+                "description": "Questions starting with \"Whom\"."
+            },
+            {
+                "type": "Yes/No",
+                "description": "Questions that expect a yes or a no as anwer."
+            },
+            {
+                "type": "request questions",
+                "description": "Question that ask for: Count, Provide, Give, Tell, Specify"
+            }
+        ]
+    },
+    {
+        "title": "Ripple Down Rules for question answering",
+        "doi": "10.3233/SW-150204",
+        "year": 2017,
+        "authors": "Nguyen et al.",
+        "category": "Question Classifier",
+        "domain": "Vietnamese Language",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Normal",
+                "description": "Defined as a standard question where one main part is missing that needs to be provided in the answer"
+            },
+            {
+                "type": "UnknTerm",
+                "description": "Defines a question where two key parts are missing. It requires to find both a relation and a term."
+            },
+            {
+                "type": "UnknRel",
+                "description": "Describes questions where the relationship between things is unclear and should be provided in the answer."
+            },
+            {
+                "type": "Definition",
+                "description": "Classifies questions that are asking for a definition or explanation."
+            },
+            {
+                "type": "Compare",
+                "description": "Involves questions comparing two or more things"
+            },
+            {
+                "type": "ThreeTerm",
+                "description": "Question either asks for the relation or concept"
+            },
+            {
+                "type": "Clause",
+                "description": "Defines questions where one part depends on another."
+            },
+            {
+                "type": "Combine",
+                "description": "Questions are made up of two or more independent parts that are not sharing the same terms or relations as opposed to the And/Or type."
+            },
+            {
+                "type": "And/Or",
+                "description": "Combine multiple questions using And or Or."
+            },
+            {
+                "type": "Entity",
+                "description": "Categorizes questions containing noun-phrases followed up with strings such as which or what."
+            },
+            {
+                "type": "Affirm_MoreTuples",
+                "description": "Classifies questions that expect a Yes or a No while asking for multiple things"
+            },
+            {
+                "type": "Affirm",
+                "description": "Questions that can be answered with Yes or No."
+            },
+            {
+                "type": "Affirm_3Term",
+                "description": "ThreeTerm type that is also affirmative, meaning it can be answered with a yes or no."
+            },
+            {
+                "type": "What",
+                "description": "Question including the word \"What\"."
+            },
+            {
+                "type": "When",
+                "description": "Question including the word \"When\"."
+            },
+            {
+                "type": "Where",
+                "description": "Question including the word \"Where\"."
+            },
+            {
+                "type": "Who",
+                "description": "Question including the word \"Who\"."
+            },
+            {
+                "type": "HowWhy",
+                "description": "Questions that contain words such as \"How\" and \"Why\"."
+            },
+            {
+                "type": "YesNo",
+                "description": "Questions that can be answered with a Yes or a No."
+            },
+            {
+                "type": "Many",
+                "description": "Classifies questions asking about quantities including words like \"how many\" or \"how much\"."
+            },
+            {
+                "type": "Many-Class",
+                "description": "Basically the same as the Many type, we assume the reason for having two categories lies in the nature of the Vietnamese language."
+            },
+            {
+                "type": "List",
+                "description": "Contains words like \"give\", \"show\", \"tell\", \"find\" and \"list\"."
+            }
+        ]
+    },
+    {
+        "title": "Linguistically Motivated Question Classification",
+        "doi": "",
+        "year": 2015,
+        "authors": "Chernov et al.",
+        "category": "Question Classifier",
+        "domain": "Spoken Natural Language Processing",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Entities",
+                "description": "Focuses on general entities, events, or object descriptions."
+            },
+            {
+                "type": "Human Description",
+                "description": "Focuses on general descriptions of individuals."
+            },
+            {
+                "type": "Human Groups",
+                "description": "Focuses on groups or relationships involving people, for example employees or founders."
+            },
+            {
+                "type": "Time",
+                "description": "Focuses on time related answers like time expressions or specific dates."
+            },
+            {
+                "type": "Location",
+                "description": "Focuses on questions like birthplaces, origins or general locations."
+            },
+            {
+                "type": "Human Relations",
+                "description": "Captures relationships of people."
+            },
+            {
+                "type": "Description",
+                "description": "Defines general descriptions of events, objects, or the purpose."
+            },
+            {
+                "type": "Multilabel",
+                "description": "Used for questions that can have multiple of the categories mentioned above."
+            }
+        ]
+    },
+    {
+        "title": "The Structure and Performance of an Open-Domain Question Answering System",
+        "doi": "10.3115/1075218.1075289",
+        "year": 2000,
+        "authors": "Moldovan et al.",
+        "category": "Question Classifier",
+        "domain": "General",
+        "iteration": 2,
+        "note": "The taxonomy of this paper includes many classifications with the 'wh-' words. We decided against such a classification as our taxonomy should be more focused towards the meaning, intention and complexity of the question and less on the structure of the questions themselves. In our opinion, to focus on the structure of question was more important before the advent of LLMs, but now it is less important to classify the structure of the question.",
+        "types": [
+            {
+                "type": "What",
+                "description": "There is no further description by the authors. However, they also include several subtypes for this type which are: basic what, what-who, what-when, what-where"
+            },
+            {
+                "type": "Who",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "How",
+                "description": "There is no further description by the authors. However, they provide further subtypes which are: basic how, how-many, how-long, how-much, how-much-<modifier>, how-far, how-tall, how-rich how-large"
+            },
+            {
+                "type": "Where",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Which",
+                "description": "There is no further description by the authors. However, they provide further subtypes: which-who, which-where, which-when, which-what"
+            },
+            {
+                "type": "Name",
+                "description": "There is no further description by the authors. However they provide further subtypes: name-who, name-where, name-what"
+            },
+            {
+                "type": "Why",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Whom",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - Money",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - Number",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - Definition",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - Title",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - NNP",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - Undefined",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - Person",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - Organization",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - Date",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - Location",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - Manner",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - Time",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - Distance",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - Price",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Answer Type - Reason",
+                "description": "There is no further description by the authors."
+            },
+            {
+                "type": "Focus",
+                "description": "There is no further description by the authors."
+            }
+        ]
+    },
+    {
+        "title": "Types of research questions: descriptive, predictive, or causal",
+        "doi": "10.2519/jospt.2020.0703",
+        "year": 2020,
+        "authors": "Kamper",
+        "category": "Research Questions",
+        "domain": "Healthcare",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Descriptive",
+                "description": "Descriptive questions seek to describe the landscape, to provide an overview of the situation. These types of questions use data to provide a quantitative summary of certain features of the world."
+            },
+            {
+                "type": "Predictive",
+                "description": "Predictive questions help readers form expectations about what is likely to happen in the future. The aim is to learn something about the future using information from the present, which requires a longitudinal study design."
+            },
+            {
+                "type": "Causal",
+                "description": "Causal research questions aim to find treatment targets, identify factors that increase the risk of getting a condition or injury, or estimate what will happen to people who receive one treatment compared to another."
+            }
+        ]
+    },
+    {
+        "title": "Hybrid-SQuAD: Hybrid Scholarly Question Answering Dataset",
+        "doi": "10.48550/arXiv.2412.02788",
+        "year": 2024,
+        "authors": "Taffa et al.",
+        "category": "Knowledge Graph Question Answering Dataset",
+        "domain": "Scholarly",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Bibliometric Numbers",
+                "description": "These questions typically inquire about bibliometric metrics, including publication counts, citation numbers, the h-index, and the i10-index."
+            },
+            {
+                "type": "Organization",
+                "description": "Includes the names of Universities, research centers, or laboratories."
+            },
+            {
+                "type": "Location",
+                "description": "Answers about places."
+            },
+            {
+                "type": "Date",
+                "description": "Question that provide specific dates"
+            },
+            {
+                "type": "Research Works",
+                "description": "Questions about research outputs and publications"
+            },
+            {
+                "type": "Other",
+                "description": "Questions that do not fit into any of the other categories"
+            }
+        ]
+    },
+    {
+        "title": "What is in the KGQA Benchmark Datasets? Survey on Challenges in Datasets for Question Answering on Knowledge Graphs",
+        "doi": "10.1007/s13740-021-00128-9",
+        "year": 2021,
+        "authors": "Steinmetz et al.",
+        "category": "Knowledge Graph Question Answering Dataset",
+        "domain": "General",
+        "iteration": 2,
+        "types": [
+            {
+                "type": "Date",
+                "description": "No further description."
+            },
+            {
+                "type": "Boolean",
+                "description": "Resulting from an ASK question"
+            },
+            {
+                "type": "String",
+                "description": "Asking for string objects, such as last names or nick names"
+            },
+            {
+                "type": "Number Count",
+                "description": "A number resulting from a COUNT operator in the SPARQL query"
+            },
+            {
+                "type": "Number Property",
+                "description": "a number resulting from a property in the SPARQL query"
+            },
+            {
+                "type": "Resource List Typed",
+                "description": "A list of resources of a specific type"
+            },
+            {
+                "type": "Resource List Untyped",
+                "description": "A list of resources without a specific type"
+            },
+            {
+                "type": "Resource Typed",
+                "description": "One resource of a specific type"
+            },
+            {
+                "type": "Resource Untyped",
+                "description": "One resource without a specific type"
+            },
+            {
+                "type": "Unknown",
+                "description": "The answer type could not be detected"
+            }
+        ]
+    }
+]

@@ -1,0 +1,22 @@
+/* Key: Bolotova2022
+ * Authors: Bolotova, Valeriia and Blinov, Vladislav and Scholer, Falk and Croft, W. Bruce and Sanderson, Mark
+ * Title: A Non-Factoid Question-Answering Taxonomy
+ * Classification Type: Question Classification
+ * DOI: 10.1145/3477495.3531926
+ * URL: https://dl.acm.org/doi/10.1145/3477495.3531926
+ * References:
+ * Bu2010 https://aclanthology.org/D10-1109/ Function-Based Question Classification for General QA
+ * Suzuki2003 10.3115/1119312.1119320 Question Classification using HDAG Kernel
+ * Hashemi2019 10.1145/3341981.3344249 Performance Prediction for Non-Factoid Question Answering.
+ * Li2002 https://aclanthology.org/C02-1150 Learning Question Classifiers
+ * Bajaj2018 arXiv:1611.09268 MS MARCO: A Human Generated MAchine Reading COmprehension Dataset.
+ * Soleimani2021 10.18653/v1/2021.eacl-main.106 NLQuAD: A NonFactoid Long Question Answering Data Set.
+ * Citations: /
+ */ 
+
+Instruction,
+Reason,
+Evidence-Based,
+Comparison,
+Experience,
+Debate
